@@ -8,6 +8,15 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
+    	
+    	<action name="MainPageSearch" class="action.MainPageSearch"><!-- 主页面的搜索 -->
+            <result>/WEB-INF/content/mainpage.jsp</result>
+        </action>
+        
+        <action name="LoginAction" class="action.LoginAction"><!-- 登录过程的处理 -->
+            <result name="success">/WEB-INF/content/mainpage.jsp</result>
+            <result name="failed">/WEB-INF/content/loginpage.jsp</result>
+        </action>
 
         <action name="*">
             <result>/WEB-INF/content/{1}.jsp</result>
