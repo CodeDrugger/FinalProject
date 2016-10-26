@@ -3,6 +3,7 @@ package domain;
 public class Login {
 	private String username;
 	private String password;
+	private String userclass;
 	public String getUsername() {
 		return username;
 	}
@@ -14,6 +15,12 @@ public class Login {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getUserclass() {
+		return userclass;
+	}
+	public void setUserclass(String userclass) {
+		this.userclass = userclass;
 	}
 	
 }

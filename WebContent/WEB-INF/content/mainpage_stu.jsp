@@ -9,7 +9,7 @@
 <body>
 <form action="MainPageSearch" method="get">
   <input type="text" name="sch.keyword" value="">
-  <input type="submit" vlaue="给我搜">
+  <input type="submit" value="给我搜">
 </form>
 </body>
 </html>

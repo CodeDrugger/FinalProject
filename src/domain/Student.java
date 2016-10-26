@@ -8,8 +8,8 @@ public class Student {
 	private String benke_major;
 	private String wish_major;
 	private boolean zhibo;
-	private int wish_class;//±¨¿¼Ë¶Ê¿Àà±ğ£¨0£ºÑ§Ë¶¡¢1£»×¨Ë¶¡¢2£º²»È·¶¨£©
-	private String bein_class;//ÈëÑ¡·½Ê½
+	private int wish_class;//æŠ¥è€ƒç¡•å£«ç±»åˆ«ï¼ˆ0ï¼šå­¦ç¡•ã€1ï¼›ä¸“ç¡•ã€2ï¼šä¸ç¡®å®šï¼‰
+	private String bein_class;//å…¥é€‰æ–¹å¼
 	private String score;
 	private String honor;
 	private String self_intro;

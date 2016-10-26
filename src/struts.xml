@@ -9,7 +9,7 @@
 
     <package name="default" namespace="/" extends="struts-default">
     	
-    	<action name="MainPageSearch" class="action.MainPageSearch"><!-- 主页面的搜索 -->
+    	<action name="SearchStu" class="action.MainPageSearch"><!-- 主页面的搜索 -->
             <result>/WEB-INF/content/mainpage.jsp</result>
         </action>
         
@@ -17,7 +17,16 @@
             <result name="success">/WEB-INF/content/mainpage.jsp</result>
             <result name="failed">/WEB-INF/content/loginpage.jsp</result>
         </action>
-
+		
+		<action name="SignUpInit" class="action.SignUpInit"><!-- 注册初始化 -->
+            <result name="success">/WEB-INF/content/signup.jsp</result>
+        </action>
+        
+        <action name="SignUp" class="action.SignUp"><!-- 注册 -->
+            <result name="success">/WEB-INF/content/loginpage.jsp</result>
+            <result name="error">/WEB-INF/content/error.jsp</result>
+        </action>
+		
         <action name="*">
             <result>/WEB-INF/content/{1}.jsp</result>
         </action>

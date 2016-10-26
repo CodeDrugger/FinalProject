@@ -33,7 +33,7 @@ public class LoginAction implements Action {
 			return SUCCESS;
 		else 
 		{
-			setInfo("ÕËºÅ»òÃÜÂë´íÎó£¡");
+			setInfo("è´¦å·æˆ–å¯†ç é”™è¯¯ï¼");
 			return "failed";
 		}
 			

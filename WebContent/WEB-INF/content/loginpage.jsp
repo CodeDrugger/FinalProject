@@ -12,6 +12,7 @@ ${info }
   用户名：<input type="text" name="login.username">
   密码：<input type="text" name="login.password">
   <input type="submit" value="登录">
+<a href="./signup_init.action">注册</a>
 </form>
 </body>
 </html>
