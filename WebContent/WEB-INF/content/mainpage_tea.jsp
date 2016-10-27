@@ -7,9 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="MainPageSearch" method="get">
-  <input type="text" name="sch.keyword" value="">
+<form action="SearchTea" method="get">
+  <input type="hidden" name="search.user" value="0">
+  <input type="text" name="search.keyword" value="">
   <input type="submit" value="给我搜">
 </form>
+<a href="./profile_tea.action">${login.username }</a>
 </body>
 </html>

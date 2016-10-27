@@ -8,13 +8,22 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
-    	
-    	<action name="SearchStu" class="action.MainPageSearch"><!-- 主页面的搜索 -->
+   
+   		<action name="show_stu" class="action.Show_stu"><!-- 学生搜索 -->
+            <result name="success">/WEB-INF/content/profile_stu.jsp</result>
+        </action>
+   		
+    	<action name="SearchStu" class="action.MainSearch"><!-- 学生搜索 -->
+            <result>/WEB-INF/content/mainpage.jsp</result>
+        </action>
+        
+        <action name="SearchTea" class="action.MainSearch"><!-- 学生搜索 -->
             <result>/WEB-INF/content/mainpage.jsp</result>
         </action>
         
         <action name="LoginAction" class="action.LoginAction"><!-- 登录过程的处理 -->
-            <result name="success">/WEB-INF/content/mainpage.jsp</result>
+            <result name="success_tea">/WEB-INF/content/mainpage_tea.jsp</result>
+            <result name="success_stu">/WEB-INF/content/mainpage_stu.jsp</result>
             <result name="failed">/WEB-INF/content/loginpage.jsp</result>
         </action>
 		

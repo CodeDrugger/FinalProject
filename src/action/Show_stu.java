@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.Action;
 import domain.Student;
 
 public class Show_stu implements Action {
-	private Student stus;
+	private Student stus = new Student();
 	
 	public Student getStus() {
 		return stus;
@@ -33,9 +33,9 @@ public class Show_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
-	          rst = stmt.executeQuery("select"+ stus.getName() + "from stu_inf");
+	          rst = stmt.executeQuery("select * from stu_inf where id='"+stus.getId()+"'");
 	        	  while(rst.next())
 	        	  {
 	        		  stus.setName(rst.getString("name"));

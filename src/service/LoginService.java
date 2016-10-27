@@ -21,6 +21,8 @@ public class LoginService {
 		    {
 		    	if (login.getPassword().equals(rs.getString("password")))
 		    	{
+		    		login.setUserclass(rs.getString("userclass"));
+		    		login.setId(rs.getString("id"));
 		    		connect.close();
 		    		return 1;//成功
 		    	}
