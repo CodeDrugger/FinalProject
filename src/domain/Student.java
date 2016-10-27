@@ -1,25 +1,25 @@
 package domain;
 
 public class Student {
-	private int id;
+	private String id;
 	private String name;
 	private String sex;
 	private String age;
 	private String benke_major;
 	private String wish_major;
-	private boolean zhibo;
-	private int wish_class;//报考硕士类别（0：学硕、1；专硕、2：不确定）
-	private String bein_class;//入选方式
+	private String zhibo;
+	private String wish_class;//����˶ʿ���0��ѧ˶��1��ר˶��2����ȷ����
+	private String bein_class;//��ѡ��ʽ
 	private String score;
 	private String honor;
 	private String self_intro;
 	private String tel;
 	private String email;
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -52,16 +52,16 @@ public class Student {
 	public void setWish_major(String wish_major) {
 		this.wish_major = wish_major;
 	}
-	public boolean isZhibo() {
+	public String getZhibo() {
 		return zhibo;
 	}
-	public void setZhibo(boolean zhibo) {
+	public void setZhibo(String zhibo) {
 		this.zhibo = zhibo;
 	}
-	public int getWish_class() {
+	public String getWish_class() {
 		return wish_class;
 	}
-	public void setWish_class(int wish_class) {
+	public void setWish_class(String wish_class) {
 		this.wish_class = wish_class;
 	}
 	public String getBein_class() {
@@ -99,5 +99,7 @@ public class Student {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}	
+	}
+	
+	
 }
