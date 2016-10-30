@@ -26,10 +26,6 @@
             <result name="success_stu">/WEB-INF/content/mainpage_stu.jsp</result>
             <result name="failed">/WEB-INF/content/loginpage.jsp</result>
         </action>
-		
-		<action name="SignUpInit" class="action.SignUpInit"><!-- 注册初始化 -->
-            <result name="success">/WEB-INF/content/signup.jsp</result>
-        </action>
         
         <action name="SignUp" class="action.SignUp"><!-- 注册 -->
             <result name="success">/WEB-INF/content/loginpage.jsp</result>

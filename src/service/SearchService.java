@@ -40,13 +40,7 @@ public class SearchService {
 					tel varchar(20) not null,
 					email varchar(20) not null
 		    	 */
-		    	ResultSet rSet = stmt.executeQuery(
-		    			"select * from stu_inf where"
-		    			+ "name like '%" + k + "%' or"
-		    			+ "sex like '" + k + "'"
-		    			+ "benke_major like '%" + k + "%'"
-		    			+ "wish_major like '%" + k + "%'"
-		    			+ "wish_major like '%" + k + "%'");
+		    	
 		    }
 		    else if (search.getUser() == 1)//学生执行搜索 
 		    {

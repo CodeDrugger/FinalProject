@@ -8,9 +8,12 @@
 </head>
 <body>
   <form action="SignUp" method="get">
-    <input type="hidden" name="login.userclass" value="${userclass }">
       用户名：<input type="text" name="login.username">
       密码：<input type="text" name="login.password">
+      <br>
+      我是导师<input type="radio" name="login.userclass" value="1">
+      我是学生<input type="radio" name="login.userclass" value="2">
+      <br>
     <input type="submit" value="注册">
   </form>
 </body>
