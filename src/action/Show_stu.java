@@ -19,7 +19,10 @@ public class Show_stu implements Action {
 	public void setStus(Student stus) {
 		this.stus = stus;
 	}
-	@Override
+	public String Return_profile(){
+		return "return_stu";
+	}
+
 	public String execute() throws Exception {
 		
 		  String ret = SUCCESS;
@@ -71,7 +74,7 @@ public class Show_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	        
+	      
 	
 	return ret;
 	}
