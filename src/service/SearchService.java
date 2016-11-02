@@ -78,7 +78,8 @@ public class SearchService {
 		    				rs.getString("honor"), 
 		    				rs.getString("self_intro"), 
 		    				rs.getString("tel"), 
-		    				rs.getString("email"));
+		    				rs.getString("email"),
+		    				rs.getString("picture_name"));
 		    		list.add(st);
 		    	}
 		    }

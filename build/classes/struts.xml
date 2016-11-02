@@ -8,13 +8,12 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
+    
     	<action name="Upload" class="action.Upload_pic" ><!--添加照片-->
             <result name="success">/WEB-INF/content/pfchange_stu.jsp</result>
         </action>
-    	<action name="MainPageSearch" class="action.MainPageSearch"><!-- 主页面的搜索 -->
-		</action>
    
-   		<action name="show_stu" class="action.Show_stu"><!-- 学生资料 -->
+   		<action name="Show_stu" class="action.Show_stu"><!-- 学生资料 -->
             <result name="success">/WEB-INF/content/profile_stu.jsp</result>
         </action>
    		
