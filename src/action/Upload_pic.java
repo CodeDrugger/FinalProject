@@ -10,8 +10,26 @@ public class Upload_pic extends ActionSupport{
     private File image; //上传的文件
     private String imageFileName; //文件名称
     private String imageContentType; //文件类型
+    private String id;
+    private String visitfile;
     
-    public File getImage() {
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getVisitfile() {
+		return visitfile;
+	}
+
+	public void setVisitfile(String visitfile) {
+		this.visitfile = visitfile;
+	}
+
+	public File getImage() {
 		return image;
 	}
 
@@ -36,7 +54,8 @@ public class Upload_pic extends ActionSupport{
 	}
 
 	public String execute() throws Exception {
-        String realpath = ServletActionContext.getServletContext().getRealPath("/images");
+		id = "22";
+        String realpath = "C:/bigproject/FinalProject/WebContent/photos/"+id;
         //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
         System.out.println("realpath: "+realpath);
         if (image != null) {
@@ -46,6 +65,7 @@ public class Upload_pic extends ActionSupport{
             FileUtils.copyFile(image, savefile);
             ActionContext.getContext().put("message", "文件上传成功");
         }
+        visitfile = "photos/"+id+"/"+imageFileName;
         return "success";
     }    
 }

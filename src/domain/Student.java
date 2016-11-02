@@ -15,7 +15,14 @@ public class Student {
 	private String self_intro;
 	private String tel;
 	private String email;
+	private String picture_name;
 	
+	public String getPicture_name() {
+		return picture_name;
+	}
+	public void setPicture_name(String picture_name) {
+		this.picture_name = picture_name;
+	}
 	public String getId() {
 		return id;
 	}
