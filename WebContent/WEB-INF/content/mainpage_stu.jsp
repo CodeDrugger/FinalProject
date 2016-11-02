@@ -36,6 +36,6 @@ try {
   	e.printStackTrace();
 }
 %>
-您好，<a href="./show_stu.action?stus.id=${login.id }"><%=name%></a>
+您好，<a href="./Show_stu.action?stus.id=${login.id }"><%=name%></a>
 </body>
 </html>
