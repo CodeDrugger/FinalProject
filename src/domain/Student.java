@@ -15,11 +15,13 @@ public class Student {
 	private String self_intro;
 	private String tel;
 	private String email;
+	private String picture_name;
+
 	public Student() {}
 	
 	public Student(String id, String name, String sex, String age, String benke_major, String wish_major, String zhibo,
 			String wish_class, String bein_class, String score, String honor, String self_intro, String tel,
-			String email) {
+			String email, String picture_name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -35,8 +37,16 @@ public class Student {
 		this.self_intro = self_intro;
 		this.tel = tel;
 		this.email = email;
+		this.picture_name = picture_name;
 	}
+
 	
+	public String getPicture_name() {
+		return picture_name;
+	}
+	public void setPicture_name(String picture_name) {
+		this.picture_name = picture_name;
+	}
 	public String getId() {
 		return id;
 	}
@@ -121,6 +131,4 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 }

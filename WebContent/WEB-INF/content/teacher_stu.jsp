@@ -10,7 +10,7 @@
 <body>
 
     <h1>学生信息</h1>
-      <p>照片：<img src=${visitfilel}  name="picture" width="32" height="32" id="picture" style="background-color: #999999" />
+      <p>照片：<img src="" alt="" name="picture" width="120" height="32" id="picture" style="background-color: #999999" />
       </p>
       <p>姓名：${stus.name}
       </p>
@@ -37,12 +37,12 @@
       <p>个人简介：${stus.self_intro}
   </p>
   <p>电话：${stus.tel}
-      </p>
-      <p>email：${stus.email}
 </p>
-<form name="form4" method="post" action="Change_stu">
+<p>email：${stus.email}
+</p>
+<form id="form1" name="form1" method="post" action="">
   <p>
-    <input type="submit"  value="更改信息">
+    <input type="submit" value="选择" />
   </p>
 </form>
 <form name="form3" method="post" action="Return_stu_search">
