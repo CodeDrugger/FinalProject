@@ -10,7 +10,21 @@ public class Teacher {
 	private String college;//学校
 	private String xueyuan;//学院
 	private String major;//专业
+	private String tel;
+	private String email;
 	
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getId() {
 		return id;
 	}

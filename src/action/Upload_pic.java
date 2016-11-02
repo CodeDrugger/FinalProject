@@ -58,8 +58,9 @@ public class Upload_pic implements Action{
         System.out.println("realpath: "+realpath);
         if (image != null) {
             File savefile = new File(new File(realpath), imageFileName);
-            if (!savefile.getParentFile().exists())
-                savefile.getParentFile().mkdirs();
+            if (savefile.getParentFile().exists())
+            	savefile.getParentFile().delete();
+            savefile.getParentFile().mkdirs();
             FileUtils.copyFile(image, savefile);
             ActionContext.getContext().put("message", "文件上传成功");
         }

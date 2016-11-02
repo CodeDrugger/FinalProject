@@ -1,6 +1,5 @@
 package action;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,27 +8,22 @@ import java.sql.Statement;
 
 import com.opensymphony.xwork2.Action;
 
-import domain.Student;
+import domain.Teacher;
 
-public class Change_stu implements Action {
-	private Student stuc;
+public class Show_tea implements Action {
+	private  Teacher teas;
 	
-	public Student getStuc() {
-		return stuc;
+	
+	public String Return_profile(){
+		return "return_stu";
 	}
 
-	public void setStuc(Student stuc) {
-		this.stuc = stuc;
-	}
-
-	@Override
-	public String execute() throws Exception{
+	public String execute() throws Exception {
 		
 		  String ret = SUCCESS;
 	      Connection con = null;
 	      Statement stmt = null;
 	      ResultSet rst = null;
-	      String sql = "update stu_inf set name='"+stuc.getName()+"',"+"sex='"+stuc.getSex()+"',"+"age='"+stuc.getAge()+"',"+"benke_major="+stuc.getBenke_major()+"',"+"wish_major='"+stuc.getWish_major()+"',"+"zhibo='"+stuc.getZhibo()+"',"+"wish_class='"+stuc.getWish_class()+"',"+"bein_class='"+stuc.getBein_class()+"',"+"score='"+stuc.getScore()+"',"+"honor='"+stuc.getHonor()+"',"+"self_intro='"+stuc.getSelf_intro()+"',"+"tel='"+stuc.getTel()+"',"+"email='"+stuc.getEmail()+"',"+"picture_name='"+stuc.getPicture_name()+"'" +  " where id='"+stuc.getId() +"'";
 	      try {
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
@@ -37,10 +31,26 @@ public class Change_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
-	          int i=stmt.executeUpdate(sql);
-	          
+	          rst = stmt.executeQuery("select * from tea_inf where id='"+teas.getId()+"'");
+	        	  while(rst.next())
+	        	  {
+	        		  teas.setName(rst.getString("name"));
+	        		  teas.setSex(rst.getString("sex"));
+	        		  teas.setId(rst.getString("id"));
+	        		  teas.setPicture_name(rst.getString("picture_name"));
+	        		  teas.setSelf_intro(rst.getString("self_intro"));
+	        		  teas.setResearch_field(rst.getString("research_field"));
+	        		  teas.setCollege(rst.getString("college"));
+	        		  teas.setXueyuan(rst.getString("xueyuan"));
+	        		  teas.setMajor(rst.getString("major"));
+	        		  teas.setTel(rst.getString("tel"));
+	        		  teas.setEmail(rst.getString("email"));
+	        	  }
+
+	        	  
+
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
@@ -57,10 +67,9 @@ public class Change_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	        
+	      
 	
 	return ret;
 	}
-
 
 }

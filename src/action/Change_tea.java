@@ -9,17 +9,17 @@ import java.sql.Statement;
 
 import com.opensymphony.xwork2.Action;
 
-import domain.Student;
+import domain.Teacher;
 
-public class Change_stu implements Action {
-	private Student stuc;
+public class Change_tea implements Action {
+	private Teacher teac;
 	
-	public Student getStuc() {
-		return stuc;
+	public Teacher getTeac() {
+		return teac;
 	}
 
-	public void setStuc(Student stuc) {
-		this.stuc = stuc;
+	public void setTeac(Teacher teac) {
+		this.teac = teac;
 	}
 
 	@Override
@@ -29,8 +29,7 @@ public class Change_stu implements Action {
 	      Connection con = null;
 	      Statement stmt = null;
 	      ResultSet rst = null;
-	      String sql = "update stu_inf set name='"+stuc.getName()+"',"+"sex='"+stuc.getSex()+"',"+"age='"+stuc.getAge()+"',"+"benke_major="+stuc.getBenke_major()+"',"+"wish_major='"+stuc.getWish_major()+"',"+"zhibo='"+stuc.getZhibo()+"',"+"wish_class='"+stuc.getWish_class()+"',"+"bein_class='"+stuc.getBein_class()+"',"+"score='"+stuc.getScore()+"',"+"honor='"+stuc.getHonor()+"',"+"self_intro='"+stuc.getSelf_intro()+"',"+"tel='"+stuc.getTel()+"',"+"email='"+stuc.getEmail()+"',"+"picture_name='"+stuc.getPicture_name()+"'" +  " where id='"+stuc.getId() +"'";
-	      try {
+	      String sql = "update tea_inf set name='"+teac.getName()+"',"+"sex='"+teac.getSex()+"',"+"name='"+teac.getPicture_name()+"',"+"self_intro="+teac.getSelf_intro()+"',"+"research_field='"+teac.getResearch_field()+"',"+"college='"+teac.getCollege()+"',"+"xueyuan='"+teac.getXueyuan()+"',"+"major='"+teac.getMajor()+"',"+"tel='"+teac.getTel()+"',"+"email='"+teac.getEmail()+"'" + " where id='"+teac.getId() +"'";	      try {
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
