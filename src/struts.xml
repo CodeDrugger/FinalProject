@@ -8,22 +8,35 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
-    	<action name="Upload" class="action.Upload_pic" >
+    	<action name="Upload" class="action.Upload_pic" ><!--添加照片-->
             <result name="success">/WEB-INF/content/pfchange_stu.jsp</result>
         </action>
-    	<action name="Show_stu" class="action.Show_stu"><!-- 主页面的搜索 -->
-            <result>/WEB-INF/content/profile_stu</result>
-        </action>
-                
     	<action name="MainPageSearch" class="action.MainPageSearch"><!-- 主页面的搜索 -->
+		</action>
+   
+   		<action name="show_stu" class="action.Show_stu"><!-- 学生搜索 -->
+            <result name="success">/WEB-INF/content/profile_stu.jsp</result>
+        </action>
+   		
+    	<action name="SearchStu" class="action.MainSearch"><!-- 学生搜索 -->
+            <result>/WEB-INF/content/mainpage.jsp</result>
+        </action>
+        
+        <action name="SearchTea" class="action.MainSearch"><!-- 学生搜索 -->
             <result>/WEB-INF/content/mainpage.jsp</result>
         </action>
         
         <action name="LoginAction" class="action.LoginAction"><!-- 登录过程的处理 -->
-            <result name="success">/WEB-INF/content/mainpage.jsp</result>
+            <result name="success_tea">/WEB-INF/content/mainpage_tea.jsp</result>
+            <result name="success_stu">/WEB-INF/content/mainpage_stu.jsp</result>
             <result name="failed">/WEB-INF/content/loginpage.jsp</result>
         </action>
-
+        
+        <action name="SignUp" class="action.SignUp"><!-- 注册 -->
+            <result name="success">/WEB-INF/content/loginpage.jsp</result>
+            <result name="error">/WEB-INF/content/error.jsp</result>
+        </action>
+		
         <action name="*">
             <result>/WEB-INF/content/{1}.jsp</result>
         </action>

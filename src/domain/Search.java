@@ -1,10 +1,10 @@
 package domain;
 /*
- * ¸ÃÀàÓÃÓÚÖ÷Ò³µÄËÑË÷¹¦ÄÜ
+ * è¯¥ç±»ç”¨äºä¸»é¡µçš„æœç´¢åŠŸèƒ½
  */
 public class Search {
-	private String keyword;//²éÑ¯µÄ¹Ø¼ü×Ö
-	private int user;//Ö´ĞĞ²éÑ¯Ê±µÄÓÃ»§Àà±ğ£º0£º½ÌÊ¦£¬1£ºÑ§Éú
+	private String keyword;//æŸ¥è¯¢çš„å…³é”®å­—
+	private int user;//æ‰§è¡ŒæŸ¥è¯¢æ—¶çš„ç”¨æˆ·ç±»åˆ«ï¼š0ï¼šæ•™å¸ˆï¼Œ1ï¼šå­¦ç”Ÿ
 	public String getKeyword() {
 		return keyword;
 	}

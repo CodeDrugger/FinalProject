@@ -29,11 +29,13 @@ public class LoginAction implements Action {
 	public String execute() throws Exception {
 		LoginService ls = new LoginService();
 		int status = ls.doLogin(login);
-		if (status == 1)
-			return SUCCESS;
+		if (status == 1 && login.getUserclass().equals("1"))
+			return "success_tea";
+		else if(status == 1 && login.getUserclass().equals("2"))
+			return "success_stu";
 		else 
 		{
-			setInfo("ÕËºÅ»òÃÜÂë´íÎó£¡");
+			setInfo("è´¦å·æˆ–å¯†ç é”™è¯¯ï¼");
 			return "failed";
 		}
 			

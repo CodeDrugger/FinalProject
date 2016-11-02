@@ -8,8 +8,8 @@ public class Student {
 	private String benke_major;
 	private String wish_major;
 	private String zhibo;
-	private String wish_class;//����˶ʿ���0��ѧ˶��1��ר˶��2����ȷ����
-	private String bein_class;//��ѡ��ʽ
+	private String wish_class;
+	private String bein_class;
 	private String score;
 	private String honor;
 	private String self_intro;

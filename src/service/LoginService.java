@@ -21,14 +21,16 @@ public class LoginService {
 		    {
 		    	if (login.getPassword().equals(rs.getString("password")))
 		    	{
+		    		login.setUserclass(rs.getString("userclass"));
+		    		login.setId(rs.getString("id"));
 		    		connect.close();
-		    		return 1;//µÇÂ½³É¹¦
+		    		return 1;//æˆåŠŸ
 		    	}
 		    }
 		    connect.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return 0;//µÇÂ¼Ê§°Ü
+		return 0;//å¤±è´¥
 	}
 }
