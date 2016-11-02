@@ -25,6 +25,10 @@
             <result>/WEB-INF/content/mainpage.jsp</result>
         </action>
         
+        <action name="AdvSearch_tea" class="action.MainSearch"><!-- 导师高级搜索 -->
+            <result>/WEB-INF/content/mainpage.jsp</result>
+        </action>
+        
         <action name="LoginAction" class="action.LoginAction"><!-- 登录过程的处理 -->
             <result name="success_tea">/WEB-INF/content/mainpage_tea.jsp</result>
             <result name="success_stu">/WEB-INF/content/mainpage_stu.jsp</result>

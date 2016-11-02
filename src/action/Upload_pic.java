@@ -1,12 +1,10 @@
 package action;
 import java.io.File;
+import com.opensymphony.xwork2.Action;
 import org.apache.commons.io.FileUtils;
-import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-@SuppressWarnings("serial")
-public class Upload_pic extends ActionSupport{
 
+public class Upload_pic implements Action{
     private File image; //上传的文件
     private String imageFileName; //文件名称
     private String imageContentType; //文件类型
