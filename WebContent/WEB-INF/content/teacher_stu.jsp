@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>学生信息</title>
+</head>
 
 <body>
 
@@ -24,11 +25,9 @@
 </p>
   <p>报考硕士类别: ${stus.wish_class}
   </p>
-  <p>入选方式：: ${stus.bein_class}
-  <p>研究生意愿学科：${stus.wish_major}
-</p>
+  <p>入选方式：: ${stus.bein_class}</p>
+  <p>研究生意愿学科：${stus.wish_major}</p>
       <p>是否有直博意愿：${stus.zhibo}
-        </label>
       </p>
       <p>本科学分绩：${stus.score}
   </p>
@@ -46,7 +45,7 @@
   </p>
 </form>
 <form name="form3" method="post" action="Return_stu_search">
-  <input type="submit"  value="返回">
+  <input type="submit"  value="返回"/>
 </form>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

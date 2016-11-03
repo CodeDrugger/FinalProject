@@ -8,7 +8,22 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
-    
+    	<action name="Choose_tea" class="action.Show_tea" ><!--添加照片-->
+            <result name="success">/WEB-INF/content/student_tea.jsp</result>
+            <result name="choose_fail">/WEB-INF/content/student_tea.jsp</result>
+            <result name="error">/WEB-INF/content/student_tea.jsp</result>
+        </action>
+        <action name="Choose_stu" class="action.Show_stu" ><!--添加照片-->
+            <result name="success">/WEB-INF/content/teacher_stu.jsp</result>
+            <result name="choose_fail">/WEB-INF/teacher_stu.jsp.jsp</result>
+            <result name="error">/WEB-INF/content/teacher_stu.jsp.jsp</result>
+        </action>
+    	<action name="Return_stu_search" class="action.Jump" ><!--添加照片-->
+            <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
+        </action>
+        <action name="Return_tea_search" class="action.Jump" ><!--添加照片-->
+            <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
+        </action>
     	<action name="Upload" class="action.Upload_pic" ><!--添加照片-->
             <result name="success">/WEB-INF/content/pfchange_stu.jsp</result>
         </action>

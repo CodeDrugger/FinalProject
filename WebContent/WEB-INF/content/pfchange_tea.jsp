@@ -8,7 +8,7 @@
 <title>更改学生信息</title>
 </head>
 <body>
-    <h1>导师信息</h1>
+<h1>导师信息</h1>
       <c:set var="visit" value="${visitfile}" scope="request"></c:set>
       <%String visitl =(String)request.getAttribute("visit");%>
       <p>${visitfile}</p>
@@ -20,19 +20,22 @@
 <p>//</p>
 <p>照片：<img src="photos/22/1.png"/></p>
     <form action="Upload" enctype="multipart/form-data" method="post">
-            文件:<input type="file" name="image">
+            文件:<input type="file" name="image"/>
        <input type="submit" value="上传" /> ${message}
 </form>
         
 <form id="form1" name="form1" method="post" action="Change_tea">
   <p>姓名：
       <input type="text" name="teac.name" />
-      </p>
-      <p>
-        性别：
-        男<input type="radio" name="teac.sex"  id="sex_m" value = "男"/> 
+  </p>
+  <p>招生人数：
+    <input type="text" name="teac.erollment" />
+   *招生人数应大于目前已招人数</p>
+  <p>
+    性别：
+    男<input type="radio" name="teac.sex"  id="sex_m" value = "男"/> 
         女 <input type="radio" name="teac.sex" id="sex_f" value = "女"/>
-      </p>
+  </p>
       <p>学校：
         <input type="text" name="teac.college" />
 </p>
@@ -42,9 +45,9 @@
       <p>专业：
         <input type="text" name="teac.major" />
       </p>
-      <p>研究方向：
+  <p>研究方向：
         <input type="text" name="teac.research_field" />
-      </p>
+  </p>
       <p>个人简介：
         <input type="text" name="teac.self_intro" />
 <br />
@@ -56,11 +59,11 @@
         <input type="text" name="teac.email"/>
       </p>
       <p>
-        <input type="submit" value="提交">
+        <input type="submit" value="提交"/>
       </p>
 </form>
-<form name="form4" method="post" action="Return_tea">
-  <input type="submit"  value="返回">
+<form name="form4" method="post" action="Return_tea_search">
+  <input type="submit"  value="返回"/>
 </form>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

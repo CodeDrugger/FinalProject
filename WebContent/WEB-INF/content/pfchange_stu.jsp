@@ -76,7 +76,7 @@
         <input type="submit" value="提交">
       </p>
 </form>
-<form name="form4" method="post" action="Return_stu">
+<form name="form4" method="post" action="Return_stu_search">
   <input type="submit"  value="返回">
 </form>
 <p>&nbsp;</p>
