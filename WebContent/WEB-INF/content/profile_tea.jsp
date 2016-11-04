@@ -24,7 +24,7 @@
 <p>专业：: ${teas.major}
 <p>研究方向：${teas.research_field}
 </p>
-<p>个人简介：${teas.zhibo}
+<p>个人简介：${teas.self_intro}
         </label>
 </p>
 <p>电话：${teas.tel}

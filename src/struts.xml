@@ -16,6 +16,10 @@
    		<action name="Show_stu" class="action.Show_stu"><!-- 学生资料 -->
             <result name="success">/WEB-INF/content/profile_stu.jsp</result>
         </action>
+        
+        <action name="Show_tea" class="action.Show_tea"><!-- 导师资料 -->
+            <result name="success">/WEB-INF/content/profile_tea.jsp</result>
+        </action>
    		
     	<action name="SearchStu" class="action.MainSearch"><!-- 学生搜索 -->
             <result>/WEB-INF/content/mainpage.jsp</result>

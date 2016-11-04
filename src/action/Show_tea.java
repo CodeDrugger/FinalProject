@@ -13,7 +13,14 @@ import domain.Teacher;
 public class Show_tea implements Action {
 	private  Teacher teas;
 	
-	
+	public Teacher getTeas() {
+		return teas;
+	}
+
+	public void setTeas(Teacher teas) {
+		this.teas = teas;
+	}
+
 	public String Return_profile(){
 		return "return_stu";
 	}
