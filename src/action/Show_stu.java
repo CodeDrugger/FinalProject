@@ -12,6 +12,8 @@ import domain.Student;
 
 public class Show_stu implements Action {
 	private Student stus = new Student();
+	private String number1;
+	private String number2;
 	
 	public Student getStus() {
 		return stus;

@@ -18,6 +18,7 @@
             <result name="choose_fail">/WEB-INF/teacher_stu.jsp.jsp</result>
             <result name="error">/WEB-INF/content/teacher_stu.jsp.jsp</result>
         </action>
+        
     	<action name="Return_stu_search" class="action.Jump" ><!--添加照片-->
             <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
         </action>
@@ -27,11 +28,30 @@
     	<action name="Upload" class="action.Upload_pic" ><!--添加照片-->
             <result name="success">/WEB-INF/content/pfchange_stu.jsp</result>
         </action>
-   
+        
+        <action name="Change_stu" class="action.Change_stu"><!-- 学生资料 -->
+            <result name="success" type="redirectAction">
+        	<param name="namespace">/</param>  
+       	    <param name="actionName">Jt_change_stu</param>
+        	<param name="stuc.id">${stuc.id}</param> 
+			</result>
+        </action>
+        <action name="Change_stu" class="action.Change_tea"><!-- 学生资料 -->
+            <result name="success">/WEB-INF/content/pfchange_tea.jsp</result>
+        </action>
+        
+   		<action name="Jt_change_stu" class="action.Change_stu" method="Show_stu"><!-- 学生资料 -->
+            <result name="success">/WEB-INF/content/pfchange_stu.jsp</result>
+        </action>
+        <action name="Jt_change_tea" class="action.Show_tea" method="Show_tea"><!-- 学生资料 -->
+            <result name="success">/WEB-INF/content/pfchange_tea.jsp</result>
+        </action>
    		<action name="Show_stu" class="action.Show_stu"><!-- 学生资料 -->
             <result name="success">/WEB-INF/content/profile_stu.jsp</result>
         </action>
-   		
+   		<action name="Show_tea" class="action.Show_tea"><!-- 学生资料 -->
+            <result name="success">/WEB-INF/content/profile_tea.jsp</result>
+        </action>
     	<action name="SearchStu" class="action.MainSearch"><!-- 学生搜索 -->
             <result>/WEB-INF/content/mainpage.jsp</result>
         </action>
