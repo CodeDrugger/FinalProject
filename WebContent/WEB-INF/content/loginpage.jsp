@@ -1,33 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=utf8"
-    pageEncoding="utf8"%>
+<%@ page language="java" contentType="text/html; charset=utf8" pageEncoding="utf8"%>
 <!DOCTYPE html>
-<html>
+<html lang="zh-cn">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>登录</title>
-<link rel="stylesheet" href="css/uikit.almost-flat.min.css">
-<script src="js/uikit.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <title>登录</title>
+    <style>
+        body{
+            font-family: 'microsoft yahei',Arial,sans-serif;
+            background-image: url("images/1.png");
+        }
+        .loginpanel {
+            text-align: center;
+            width: 300px;
+            border-radius: 0.5rem;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 10px auto;
+            padding: 20px;
+            opacity:0.8;
+        }
+        .row {
+            padding: 13% 0px;
+        }
+        input {
+            margin-bottom: 17px;
+            padding: 15px;
+            background-color: #ECF4F4;
+            border-radius: 2px;
+            border: none;
+        }
+
+    </style>
 </head>
- <body class="uk-height-1-1">
-        <div class="uk-vertical-align uk-text-center uk-height-1-1">
-            <div class="uk-vertical-align-middle" style="width: 27%;">
-                <form class="uk-panel uk-panel-box uk-form" action="LoginAction" method="get">
-                    <h2 class="uk-panel-title">登录</h2>
-                    <div class="uk-form-row">
-                        <input class="uk-width-1-1 uk-form-large" type="text" placeholder="用户名" name="login.username">
-                    </div>
-                    <div class="uk-form-row">
-                        <input class="uk-width-1-1 uk-form-large" type="text" placeholder="密码" name="login.password">
-                    </div>
-                    ${info}
-                    <div class="uk-form-row">
-                    	<input class="uk-width-1-1 uk-button uk-button-primary uk-button-large" type="submit" value="登录">
-                    </div>
-                     <div class="uk-form-row uk-text-small">
-                        <a class="uk-float-right uk-link uk-link-muted" href="./signup.action">没有账号?注册</a>
-                    </div>
-                </form>
-            </div>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="panel loginpanel">
+            <h2>
+                <span class="fa fa-user-circle-o"></span>
+                登录
+            </h2>
+            <form role="form" action="LoginAction" method="get">
+                <input class="form-control" name="login.username" type="text" placeholder="登录账号">
+                <input class="form-control" name="login.password" type="password" placeholder="输入密码">
+                ${info}
+                <input class="form-control" type="submit" value="登录">
+            </form>
+            <a  href="./signup.action">没有账号?注册</a>
         </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>

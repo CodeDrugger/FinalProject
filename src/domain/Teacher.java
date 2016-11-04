@@ -12,7 +12,22 @@ public class Teacher {
 	private String major;//专业
 	private String tel;
 	private String email;
+	private String enrollment;//招生人数
+	private String in_enrollment;//已招人数
+	private String students;
 	
+	public String getEnrollment() {
+		return enrollment;
+	}
+	public void setEnrollment(String enrollment) {
+		this.enrollment = enrollment;
+	}
+	public String getIn_enrollment() {
+		return in_enrollment;
+	}
+	public void setIn_enrollment(String in_enrollment) {
+		this.in_enrollment = in_enrollment;
+	}
 	public String getTel() {
 		return tel;
 	}

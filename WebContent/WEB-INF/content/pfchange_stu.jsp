@@ -24,59 +24,71 @@
             文件:<input type="file" name="image">
        <input type="submit" value="上传" /> ${message}
      </form>
-        
+	<c:set var="sexmid" value="${sex}" scope="request"></c:set>
+     <%String sex =(String)request.getAttribute("sexmid");
+	   String checkman;
+	   String checkwoman;
+	  if(sex.equals("man"))
+	      {
+			  checkman = "checked";
+			  checkwoman = "";
+		  }
+	  else 
+	  	  {
+			  checkwoman = "checked";
+			  checkman = "";
+		  }
+	 %>   
+     
 <form id="form1" name="form1" method="post" action="Change_stu">
       <p>姓名：
-        <label for="name_stu"></label>
-      <input type="text" name="stuc.name" id="name_stu" />
+      <input name="stuc.name" type="text" id="name_stu" value="stuc.name" />
       </p>
       <p>
-        <label for="name_stu2"></label>
         性别：
-        男<input type="radio" name="stuc.sex"  id="sex_m" value = "男"/> 
-        女 <input type="radio" name="stuc.sex" id="sex_f" value = "女"/>
+        男<input name="stuc.sex" type="radio"  id="sex_m" value = "男" checked=<%=checkman%>/> 
+        女 <input type="radio" name="stuc.sex" id="sex_f" value = "女" checked=<%=checkwoman%>/>
         <br />
       </p>
       <p>年龄：
-        <input name="stuc.age" type="text" id="age_stu" />
+        <input name="stuc.age" type="text" id="age_stu" value="stuc.age" />
 </p>
   <p>本科学科：
-    <input name="stuc.benke_major" type="text" id="name_stu4"  />
+    <input name="stuc.benke_major" type="text" id="name_stu4" value="stuc.benke_major"  />
 </p>
-  <p>报考硕士类别: 学硕<input type="radio" name="stuc.wish_class"  id="sex_m" value = "学硕"/> 
+  <p>报考硕士类别: 学硕<input name="stuc.wish_class" type="radio"  id="sex_m" value = "学硕"/> 
           专硕 <input type="radio" name="stuc.wish_class" id="sex_f" value = "专硕"/>
           不确定 <input type="radio" name="stuc.wish_class" id="sex_f" value = "不确定"/>
   </p>
       <p>入选方式：: 保研<input type="radio" name="stuc.bein_class"  id="stuc.bein_class" value = "保研"/> 
   			   考研 <input type="radio" name="stuc.bein_class" id="stuc.bein_class" value = "考研"/></p>
       <p>研究生意愿学科：
-        <input type="text" name="stuc.wish_major" id="stuc.wish_major" />
+        <input name="stuc.wish_major" type="text" id="stuc.wish_major" value="stuc.wish_major" />
 </p>
       <p>是否有直博意愿：
         是 <input type="radio" name="stuc.zhibo" value="是" />
         否 <input type="radio" name="stuc.zhibo" value="否" />
-        </label>
       </p>
       <p>本科学分绩：
-        <input type="text" name="stuc.score"/>
+        <input name="stuc.score" type="text" value="stuc.score"/>
       </p>
       <p>个人荣誉：
-        <input type="text" name="stuc.honor"/>
+        <input name="stuc.honor" type="text" value="stuc.honor"/>
       </p>
       <p>个人简介：
-        <input type="text" name="stuc.self_intro" />
+        <input name="stuc.self_intro" type="text" value="stuc.self_intro" />
       </p>
   <p>电话：
-    <input type="text" name="stuc.tel"/>
+    <input name="stuc.tel" type="text" value="stuc.tel"/>
       </p>
       <p>email：
-        <input type="text" name="stuc.email"/>
+        <input name="stuc.email" type="text" value="stuc.email"/>
       </p>
       <p>
-        <input type="submit" value="提交">
+        <input type="submit" value="提交"/>
       </p>
 </form>
-<form name="form4" method="post" action="Return_stu">
+<form name="form4" method="post" action="Return_stu_search">
   <input type="submit"  value="返回">
 </form>
 <p>&nbsp;</p>
