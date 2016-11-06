@@ -18,6 +18,28 @@ public class Student {
 	private String picture_name;
 	private String teacher;
 	
+	public Student() {}
+	public Student(String id, String name, String sex, String age, String benke_major, String wish_major, String zhibo,
+			String wish_class, String bein_class, String score, String honor, String self_intro, String tel,
+			String email, String picture_name, String teacher) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.benke_major = benke_major;
+		this.wish_major = wish_major;
+		this.zhibo = zhibo;
+		this.wish_class = wish_class;
+		this.bein_class = bein_class;
+		this.score = score;
+		this.honor = honor;
+		this.self_intro = self_intro;
+		this.tel = tel;
+		this.email = email;
+		this.picture_name = picture_name;
+		this.teacher = teacher;
+	}
 	public String getTeacher() {
 		return teacher;
 	}

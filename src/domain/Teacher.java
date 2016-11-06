@@ -15,7 +15,34 @@ public class Teacher {
 	private String enrollment;//招生人数
 	private String in_enrollment;//已招人数
 	private String students;
+	public Teacher() {}
 	
+	public Teacher(String id, String name, String sex, String picture_name, String self_intro, String research_field,
+			String college, String xueyuan, String major, String tel, String email, String enrollment,
+			String in_enrollment, String students) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sex = sex;
+		this.picture_name = picture_name;
+		this.self_intro = self_intro;
+		this.research_field = research_field;
+		this.college = college;
+		this.xueyuan = xueyuan;
+		this.major = major;
+		this.tel = tel;
+		this.email = email;
+		this.enrollment = enrollment;
+		this.in_enrollment = in_enrollment;
+		this.students = students;
+	}
+
+	public String getStudents() {
+		return students;
+	}
+	public void setStudents(String students) {
+		this.students = students;
+	}
 	public String getEnrollment() {
 		return enrollment;
 	}

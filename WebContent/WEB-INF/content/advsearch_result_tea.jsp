@@ -89,7 +89,7 @@
     <option value="1">小于</option>
     <option value="2">等于</option>
   </select>
-  <input id="score" type="text" name="advsch.score" value="请填写小于100的数" onclick="resetInput()">
+  <input id="input" type="text" name="advsch.score" value="请填写小于100的数" onclick="resetInput()">
   <input type="submit" value="给我搜">
 </form>
 <div>
@@ -97,14 +97,9 @@
     <div>
 	   <h3><a href="">${l.name}</a></h3>
 	   <div>
-		 <div>
-		   <img src="photo/${l.picture_name}.png">
-		 </div>
-		 <div>
-		   <p>姓名：${l.name}</p>
-		   <p>性别：${l.sex}</p>
-		   <p>本科专业：${l.benke_major}</p>
-		 </div>
+		 <p>姓名：${l.name}</p>
+		 <p>性别：${l.sex}</p>
+		 <p>本科专业：${l.benke_major}</p>
 	   </div>
 	 </div>
   </s:iterator>

@@ -1,6 +1,6 @@
 function resetInput()
 {
-	var ipt = document.getElementById("score");
+	var ipt = document.getElementById("input");
 	ipt.value = "";
 }
 function addBenkeOption(val, txt)
