@@ -6,8 +6,9 @@ public class AdvSearch_tea {
 	private String zhibo;
 	private String wish_class;
 	private String bein_class;
-	private int score;
+	private double score;
 	private int range;//0:bigger,1:smaller,2:equal
+	
 	public String getBenke_major() {
 		return benke_major;
 	}
@@ -38,10 +39,10 @@ public class AdvSearch_tea {
 	public void setBein_class(String bein_class) {
 		this.bein_class = bein_class;
 	}
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
-	public void setScore(int score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 	public int getRange() {
@@ -50,6 +51,5 @@ public class AdvSearch_tea {
 	public void setRange(int range) {
 		this.range = range;
 	}
-	
 	
 }
