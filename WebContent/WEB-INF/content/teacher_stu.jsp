@@ -45,9 +45,9 @@
    	<input type="hidden"  name="stus.name" value="${stus.name}"  />
     <input type="hidden"  name="stus.id" value="${stus.id}"  />
     <input type="hidden"  name="stus.attentioned_me" value="${stus.attentioned_me}" />
-    <input type="hidden"  name="tea_select.name" value="${tea.name}"  />
-    <input type="hidden"  name="tea_select.id" value="${tea.id}"  />
-    <input type="hidden"  name="tea_select.attentioned_stu" value="${tea.attentioned_stu}"  />
+    <input type="hidden"  name="tea_select.name" value="${tea_name}"  />
+    <input type="hidden"  name="tea_select.id" value="${tea_id}"  />
+    <input type="hidden"  name="tea_select.attentioned_stu" value="${tea_attentioned_stu}"  />
   </p>
 </form>
 <form name="form3" method="post" action="Return_stu_search">

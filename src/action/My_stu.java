@@ -2,7 +2,7 @@ package action;
 
 import com.opensymphony.xwork2.Action;
 
-public class Choose_stu implements Action {
+public class My_stu implements Action {
 
 	@Override
 	public String execute() throws Exception {

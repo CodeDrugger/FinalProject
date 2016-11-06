@@ -5,15 +5,23 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.opensymphony.xwork2.Action;
 
 import domain.Student;
 import domain.Teacher;
+import packagea.Book;
 
 public class Show_tea implements Action {
 	private Teacher teas; //传入teas.id
 	private Student stu_select;
+	private Student id_in;
+	private String stu_id;
+	private String stu_name;
+	private String stu_attentioned_tea;
+	
 	//学生选老师
 	public String Attention_on_tea(){//需要传参数 tea.attentioned_me stu_select.attentioned_tea teas.id teas.name stu_selected.id name 
 			  String ret = SUCCESS;
@@ -37,6 +45,7 @@ public class Show_tea implements Action {
 		          stmt=con.createStatement();   
 		          int i1=stmt.executeUpdate(sql_tea);
 		          int i2=stmt.executeUpdate(sql_stu);
+		          
 		          
 		        }catch (SQLException e) {
 		            // TODO Auto-generated catch block
@@ -65,6 +74,7 @@ public class Show_tea implements Action {
 	      Connection con = null;
 	      Statement stmt = null;
 	      ResultSet rst = null;
+	      ResultSet rst2 = null;
 	      try {
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
@@ -90,8 +100,15 @@ public class Show_tea implements Action {
 	        		  teas.setMajor(rst.getString("major"));
 	        		  teas.setTel(rst.getString("tel"));
 	        		  teas.setEmail(rst.getString("email"));
+	        		  teas.setAttentioned_me(rst.getString("attentioned_me"));
 	        	  }
-
+	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+id_in+"'");
+	          while(rst2.next())
+        	  {
+        		  stu_name = rst.getString("name");
+        		  stu_id = rst.getString(("id"));
+        		  stu_attentioned_tea = rst.getString("attentioned_tea");
+        	  }
 	        	  
 
 	        }catch (SQLException e) {
@@ -121,4 +138,46 @@ public class Show_tea implements Action {
 	public void setTeas(Teacher teas) {
 		this.teas = teas;
 	}
+
+
+	public Student getStu_select() {
+		return stu_select;
+	}
+
+	public void setStu_select(Student stu_select) {
+		this.stu_select = stu_select;
+	}
+
+	public Student getId_in() {
+		return id_in;
+	}
+
+	public void setId_in(Student id_in) {
+		this.id_in = id_in;
+	}
+
+	public String getStu_id() {
+		return stu_id;
+	}
+
+	public void setStu_id(String stu_id) {
+		this.stu_id = stu_id;
+	}
+
+	public String getStu_name() {
+		return stu_name;
+	}
+
+	public void setStu_name(String stu_name) {
+		this.stu_name = stu_name;
+	}
+
+	public String getStu_attentioned_tea() {
+		return stu_attentioned_tea;
+	}
+
+	public void setStu_attentioned_tea(String stu_attentioned_tea) {
+		this.stu_attentioned_tea = stu_attentioned_tea;
+	}
+	
 }
