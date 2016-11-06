@@ -14,12 +14,47 @@ import domain.Teacher;
 public class Show_stu implements Action {
 	private Student stus;
 	private Teacher tea_select;
+	private Student id_in;
+	private String tea_id;
+	private String tea_name;
+	private String tea_attentioned_stu;
 	
 	public Student getStus() {
 		return stus;
 	}
 	public void setStus(Student stus) {
 		this.stus = stus;
+	}
+	
+	public Teacher getTea_select() {
+		return tea_select;
+	}
+	public void setTea_select(Teacher tea_select) {
+		this.tea_select = tea_select;
+	}
+	public Student getId_in() {
+		return id_in;
+	}
+	public void setId_in(Student id_in) {
+		this.id_in = id_in;
+	}
+	public String getTea_id() {
+		return tea_id;
+	}
+	public void setTea_id(String tea_id) {
+		this.tea_id = tea_id;
+	}
+	public String getTea_name() {
+		return tea_name;
+	}
+	public void setTea_name(String tea_name) {
+		this.tea_name = tea_name;
+	}
+	public String getTea_attentioned_stu() {
+		return tea_attentioned_stu;
+	}
+	public void setTea_attentioned_stu(String tea_attentioned_stu) {
+		this.tea_attentioned_stu = tea_attentioned_stu;
 	}
 	//老师选学生
 	public String Attention_on_tea(){//需要传参数 tea.attentioned_me stu_select.attentioned_tea teas.id teas.name stu_selected.id name 
@@ -72,7 +107,8 @@ public class Show_stu implements Action {
 	      Connection con = null;
 	      Statement stmt = null;
 	      ResultSet rst = null;
-	      try {
+	      ResultSet rst2 = null;
+	      try { 
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
@@ -84,6 +120,7 @@ public class Show_stu implements Action {
 	          rst = stmt.executeQuery("select * from stu_inf where id='"+stus.getId()+"'");
 	        	  while(rst.next())
 	        	  {
+	        		  stus.setId(rst.getString("id"));
 	        		  stus.setName(rst.getString("name"));
 	        		  stus.setSex(rst.getString("sex"));
 	        		  stus.setAge(rst.getString("age"));
@@ -97,7 +134,15 @@ public class Show_stu implements Action {
 	        		  stus.setSelf_intro(rst.getString("self_intro"));
 	        		  stus.setTel(rst.getString("tel"));
 	        		  stus.setEmail(rst.getString("email"));
+	        		  stus.setAttentioned_me(rst.getString("attentioned_me"));
 	        	  }
+	         rst2 = stmt.executeQuery("select * from tea_inf where id='"+id_in+"'");
+	         while(rst2.next())
+       	  {
+       		  tea_name = rst.getString("name");
+       		  tea_id = rst.getString(("id"));
+       		  tea_attentioned_stu = rst.getString("attentioned_stu");
+       	  }
 
 	        	  
 
