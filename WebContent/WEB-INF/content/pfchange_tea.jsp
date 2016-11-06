@@ -29,7 +29,7 @@
       <input type="text" name="teac.name" />
   </p>
   <p>招生人数：
-    <input type="text" name="teac.erollment" />
+    <input type="text" name="teac.enrollment" />
    *招生人数应大于目前已招人数</p>
   <p>
     性别：

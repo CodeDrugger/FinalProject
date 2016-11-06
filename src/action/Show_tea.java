@@ -8,26 +8,24 @@ import java.sql.Statement;
 
 import com.opensymphony.xwork2.Action;
 
+import domain.Student;
 import domain.Teacher;
 
 public class Show_tea implements Action {
-	private Teacher teas;
-	private String number1;
-	private String number2;
-	
-	public String Choose_tea(){
-		int i1 = Integer.valueOf(number1).intValue();
-		int i2 = Integer.valueOf(number2).intValue();
-		if(i1+1>i2)
-			return "choose_fail";
-		else 
-		{
-			  String s = i1+1+"";
+	private Teacher teas; //传入teas.id
+	private Student stu_select;
+	//学生选老师
+	public String Attention_on_tea(){//需要传参数 tea.attentioned_me stu_select.attentioned_tea teas.id teas.name stu_selected.id name 
 			  String ret = SUCCESS;
 		      Connection con = null;
 		      Statement stmt = null;
-		      ResultSet rst = null;
-		      String sql = "update tea_inf set in_enrollment='"+s+ "' where id='"+teas.getId() +"'";	      
+		      if(stu_select.getAttentioned_tea().contains(teas.getName()+" "+teas.getId()))
+		      		return "has_selected";
+		      String tea_beiguan = teas.getAttentioned_me()+"/"+stu_select.getName()+" "+stu_select.getId();
+		      //格式 /name id 0:待定 1:同一 2:不同意
+		      String stu_guan = stu_select.getAttentioned_tea()+"/"+teas.getName()+" "+teas.getId();
+		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_select.getId() +"'";
+		      String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+teas.getId() +"'";
 		      try {
 					Class.forName("com.mysql.jdbc.Driver");
 				} catch (ClassNotFoundException e) {
@@ -37,7 +35,8 @@ public class Show_tea implements Action {
 		    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
 		    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
 		          stmt=con.createStatement();   
-		          int i=stmt.executeUpdate(sql);
+		          int i1=stmt.executeUpdate(sql_tea);
+		          int i2=stmt.executeUpdate(sql_stu);
 		          
 		        }catch (SQLException e) {
 		            // TODO Auto-generated catch block
@@ -61,7 +60,6 @@ public class Show_tea implements Action {
 		}
 		
 		
-	}
 	public String execute() throws Exception {
 		
 		  String ret = SUCCESS;
@@ -80,9 +78,7 @@ public class Show_tea implements Action {
 	          rst = stmt.executeQuery("select * from tea_inf where id='"+teas.getId()+"'");
 	        	  while(rst.next())
 	        	  {
-	        		  number1 = rst.getString("in_enrollment");
-	        		  number2 = rst.getString("enrollment");
-	        		  teas.setEnrollment(number1);
+	        		  teas.setEnrollment(rst.getString("enrollment"));
 	        		  teas.setIn_enrollment(rst.getString("in_enrollment"));
 	        		  teas.setName(rst.getString("name"));
 	        		  teas.setSex(rst.getString("sex"));
@@ -119,5 +115,11 @@ public class Show_tea implements Action {
 	
 	return ret;
 	}
-
+	
+	public Teacher getTeas() {
+		return teas;
+	}
+	public void setTeas(Teacher teas) {
+		this.teas = teas;
+	}
 }

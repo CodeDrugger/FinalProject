@@ -14,8 +14,30 @@ public class Teacher {
 	private String email;
 	private String enrollment;//招生人数
 	private String in_enrollment;//已招人数
-	private String students;
+	private String selected_stu;
+	private String attentioned_stu;
+	private String attentioned_me;
 	
+	
+	
+	public String getSelected_stu() {
+		return selected_stu;
+	}
+	public void setSelected_stu(String selected_stu) {
+		this.selected_stu = selected_stu;
+	}
+	public String getAttentioned_stu() {
+		return attentioned_stu;
+	}
+	public void setAttentioned_stu(String attentioned_stu) {
+		this.attentioned_stu = attentioned_stu;
+	}
+	public String getAttentioned_me() {
+		return attentioned_me;
+	}
+	public void setAttentioned_me(String attentioned_me) {
+		this.attentioned_me = attentioned_me;
+	}
 	public String getEnrollment() {
 		return enrollment;
 	}

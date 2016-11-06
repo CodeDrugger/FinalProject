@@ -16,13 +16,34 @@ public class Student {
 	private String tel;
 	private String email;
 	private String picture_name;
-	private String teacher;
+	private String selected_tea; //只能有一个，改变状态
+	private String attentioned_tea;
+	private String attentioned_me;
+	private String state;
 	
-	public String getTeacher() {
-		return teacher;
+	public String getState() {
+		return state;
 	}
-	public void setTeacher(String teacher) {
-		this.teacher = teacher;
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getSelected_tea() {
+		return selected_tea;
+	}
+	public void setSelected_tea(String selected_tea) {
+		this.selected_tea = selected_tea;
+	}
+	public String getAttentioned_tea() {
+		return attentioned_tea;
+	}
+	public void setAttentioned_tea(String attentioned_tea) {
+		this.attentioned_tea = attentioned_tea;
+	}
+	public String getAttentioned_me() {
+		return attentioned_me;
+	}
+	public void setAttentioned_me(String attentioned_me) {
+		this.attentioned_me = attentioned_me;
 	}
 	public String getPicture_name() {
 		return picture_name;
