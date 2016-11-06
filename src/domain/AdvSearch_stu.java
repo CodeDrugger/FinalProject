@@ -1,10 +1,10 @@
 package domain;
 
 public class AdvSearch_stu {
-	private String research_filed;
-	private String xueyuan;
-	private String major;
-	private String isfull;
+	private String research_filed = "";
+	private String xueyuan = "";
+	private String major = "";
+	private String isfull = "";
 	public String getResearch_filed() {
 		return research_filed;
 	}

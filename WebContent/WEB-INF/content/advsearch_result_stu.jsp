@@ -39,7 +39,7 @@
   <select id="wish_major" name="advsch.major"></select>
   导师研究方向：
   <input id="input" type="text" name="advsch.research_filed" value="请填写研究方向" onclick="resetInput()">
-  是否已招满：
+  是否包括已招满的导师：
   <input type="checkbox" value="full">
   <input type="submit" value="给我搜">
 </form>

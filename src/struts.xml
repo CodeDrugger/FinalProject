@@ -50,11 +50,11 @@
         </action>
         
    		<action name="Show_stu" class="action.Show_stu"><!-- 学生资料 -->
-            <result name="success">/WEB-INF/content/profile_stu.jsp</result>
+            <result name="success">/WEB-INF/content/pfchange_stu.jsp</result>
         </action>
         
         <action name="Show_tea" class="action.Show_tea"><!-- 导师资料 -->
-            <result name="success">/WEB-INF/content/profile_tea.jsp</result>
+            <result name="success">/WEB-INF/content/pfchange_tea.jsp</result>
         </action>
 
     	<action name="SearchStu" class="action.MainSearch"><!-- 学生搜索 -->
@@ -67,8 +67,12 @@
             <result name="empty">/WEB-INF/content/advsearch_result_tea.jsp</result>
         </action>
         
-        <action name="AdvSearch_tea" class="action.MainSearch"><!-- 导师高级搜索 -->
-            <result>/WEB-INF/content/mainpage.jsp</result>
+        <action name="AdvSearch_tea" class="action.AdvSch_tea"><!-- 导师高级搜索 -->
+            <result name="success">/WEB-INF/content/advsearch_result_tea.jsp</result>
+        </action>
+        
+        <action name="AdvSearch_stu" class="action.AdvSch_stu"><!-- 学生高级搜索 -->
+            <result name="success">/WEB-INF/content/advsearch_result_stu.jsp</result>
         </action>
         
         <action name="LoginAction" class="action.LoginAction"><!-- 登录过程的处理 -->

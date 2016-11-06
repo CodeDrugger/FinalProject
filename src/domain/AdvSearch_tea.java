@@ -1,13 +1,13 @@
 package domain;
 
 public class AdvSearch_tea {
-	private String benke_major;
-	private String wish_major;
-	private String zhibo;
-	private String wish_class;
-	private String bein_class;
+	private String benke_major = "";
+	private String wish_major = "";
+	private String zhibo = "";
+	private String wish_class = "";
+	private String bein_class = "";
 	private double score;
-	private int range;//0:bigger,1:smaller,2:equal
+	private int range;//0:bigger,1:smaller,2:equal,-1:don't care
 	
 	public String getBenke_major() {
 		return benke_major;

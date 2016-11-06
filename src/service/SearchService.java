@@ -50,22 +50,25 @@ public class SearchService {
 		    	while (rs.next())
 		    	{
 		    		Student st = new Student(
-		    				rs.getString("id"), 
-		    				rs.getString("name"), 
-		    				rs.getString("sex"), 
-		    				rs.getString("age"), 
-		    				rs.getString("benke_major"), 
-		    				rs.getString("wish_major"), 
-		    				rs.getString("zhibo"), 
-		    				rs.getString("wish_class"), 
-		    				rs.getString("bein_class"), 
-		    				rs.getString("score"), 
-		    				rs.getString("honor"), 
-		    				rs.getString("self_intro"), 
-		    				rs.getString("tel"), 
+		    				rs.getString("id"),
+		    				rs.getString("name"),
+		    				rs.getString("sex"),
+		    				rs.getString("age"),
+		    				rs.getString("benke_major"),
+		    				rs.getString("wish_major"),
+		    				rs.getString("zhibo"),
+		    				rs.getString("wish_class"),
+		    				rs.getString("bein_class"),
+		    				rs.getString("score"),
+		    				rs.getString("honor"),
+		    				rs.getString("self_intro"),
+		    				rs.getString("tel"),
 		    				rs.getString("email"),
 		    				rs.getString("picture_name"),
-		    				rs.getString("teacher"));
+		    				rs.getString("selected_tea"),
+		    				rs.getString("attentioned_tea"),
+		    				rs.getString("attentioned_me"),
+		    				rs.getString("state"));
 		    		list.add(st);
 		    	}
 		    }
@@ -95,20 +98,6 @@ public class SearchService {
 		    			break;
 		    		}		    			
 		    	}
-		    	 /*
-			     * create table tea_inf(
-				    id varchar(20) not null,
-				    name varchar(20) not null,
-				    sex varchar(20) not null,
-				    picture_name varchar(20) not null,
-				    self_intro varchar(1000) not null,
-				    research_field varchar(20) not null,
-				    college varchar(20) not null,
-				    xueyuan varchar(20) not null,
-				    major varchar(20) not null,
-				    tel varchar(20) not null,
-				    email varchar(20) not null);
-			     */
 		    	ResultSet rs = stmt.executeQuery("select * from tea_inf where "
 		    			+ "name like '%" + k + "%' or "
 		    			+ "sex like '%" + k + "%' or "
@@ -120,19 +109,22 @@ public class SearchService {
 		    	while(rs.next())
 		    	{
 		    		Teacher tr = new Teacher(
-		    				rs.getString("id"), 
-		    				rs.getString("name"), 
-		    				rs.getString("sex"), 
-		    				rs.getString("picture_name"), 
-		    				rs.getString("self_intro"), 
-		    				rs.getString("research_field"), 
-		    				rs.getString("college"), 
-		    				rs.getString("xueyuan"), 
-		    				rs.getString("major"), 
-		    				rs.getString("tel"), 
-		    				rs.getString("email"), 
-		    				rs.getString("enrollment"), 
-		    				rs.getString("in_enrollment"), 
+		    				rs.getString("id"),
+		    				rs.getString("name"),
+		    				rs.getString("sex"),
+		    				rs.getString("picture_name"),
+		    				rs.getString("self_intro"),
+		    				rs.getString("research_field"),
+		    				rs.getString("college"),
+		    				rs.getString("xueyuan"),
+		    				rs.getString("major"),
+		    				rs.getString("tel"),
+		    				rs.getString("email"),
+		    				rs.getString("enrollment"),
+		    				rs.getString("in_enrollment"),
+		    				rs.getString("selected_stu"),
+		    				rs.getString("attentioned_stu"),
+		    				rs.getString("attentioned_me"),
 		    				rs.getString("students"));
 		    		list.add(tr);
 		    	}

@@ -84,7 +84,7 @@
   </select>
   学分绩范围：
   <select name="advsch.range">
-    <option value="">-请选择-</option>
+    <option value="-1">-请选择-</option>
     <option value="0">大于</option>
     <option value="1">小于</option>
     <option value="2">等于</option>

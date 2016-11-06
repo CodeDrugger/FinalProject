@@ -23,38 +23,32 @@ public class Student {
 	
 	public Student() {}
 
-	public String getTeacher() {
-		return teacher;
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
+	public Student(String id, String name, String sex, String age, String benke_major, String wish_major, String zhibo,
+			String wish_class, String bein_class, String score, String honor, String self_intro, String tel,
+			String email, String picture_name, String selected_tea, String attentioned_tea, String attentioned_me,
+			String state) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.benke_major = benke_major;
+		this.wish_major = wish_major;
+		this.zhibo = zhibo;
+		this.wish_class = wish_class;
+		this.bein_class = bein_class;
+		this.score = score;
+		this.honor = honor;
+		this.self_intro = self_intro;
+		this.tel = tel;
+		this.email = email;
+		this.picture_name = picture_name;
+		this.selected_tea = selected_tea;
+		this.attentioned_tea = attentioned_tea;
+		this.attentioned_me = attentioned_me;
 		this.state = state;
 	}
-	public String getSelected_tea() {
-		return selected_tea;
-	}
-	public void setSelected_tea(String selected_tea) {
-		this.selected_tea = selected_tea;
-	}
-	public String getAttentioned_tea() {
-		return attentioned_tea;
-	}
-	public void setAttentioned_tea(String attentioned_tea) {
-		this.attentioned_tea = attentioned_tea;
-	}
-	public String getAttentioned_me() {
-		return attentioned_me;
-	}
-	public void setAttentioned_me(String attentioned_me) {
-		this.attentioned_me = attentioned_me;
-	}
-	public String getPicture_name() {
-		return picture_name;
-	}
-	public void setPicture_name(String picture_name) {
-		this.picture_name = picture_name;
-	}
+
 	public String getId() {
 		return id;
 	}
@@ -139,4 +133,35 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getPicture_name() {
+		return picture_name;
+	}
+	public void setPicture_name(String picture_name) {
+		this.picture_name = picture_name;
+	}
+	public String getSelected_tea() {
+		return selected_tea;
+	}
+	public void setSelected_tea(String selected_tea) {
+		this.selected_tea = selected_tea;
+	}
+	public String getAttentioned_tea() {
+		return attentioned_tea;
+	}
+	public void setAttentioned_tea(String attentioned_tea) {
+		this.attentioned_tea = attentioned_tea;
+	}
+	public String getAttentioned_me() {
+		return attentioned_me;
+	}
+	public void setAttentioned_me(String attentioned_me) {
+		this.attentioned_me = attentioned_me;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	
 }

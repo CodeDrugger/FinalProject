@@ -27,7 +27,8 @@ public class AdvSch_stu implements Action {
 	@Override
 	public String execute() throws Exception {
 		AdvSchService_stu ass = new AdvSchService_stu();
-		return null;
+		ass.doAdvSch_stu(advsch);
+		return SUCCESS;
 	}
 
 }
