@@ -20,9 +20,7 @@
 <p>学院: ${teas.xueyuan}
   </p>
 <p>专业：: ${teas.major}</p>
-<p>研究方向：${teas.research_field}
-</p>
-<<<<<<< HEAD
+<p>研究方向：${teas.research_field}</p>
 <p>个人简介：${teas.self_intro}
 </p>
 <p>电话：${teas.tel}

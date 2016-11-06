@@ -39,9 +39,15 @@
 </p>
 <p>email：${stus.email}
 </p>
-<form id="form1" name="form1" method="post" action="">
+<form id="form1" name="form1" method="post" action="Attention_stu">
   <p>
-    <input type="submit" value="选择" />
+    <input type="submit" value="关注该学生" />
+   	<input type="hidden"  name="stus.name" value="${stus.name}"  />
+    <input type="hidden"  name="stus.id" value="${stus.id}"  />
+    <input type="hidden"  name="stus.attentioned_me" value="${stus.attentioned_me}" />
+    <input type="hidden"  name="tea_select.name" value="${tea.name}"  />
+    <input type="hidden"  name="tea_select.id" value="${tea.id}"  />
+    <input type="hidden"  name="tea_select.attentioned_stu" value="${tea.attentioned_stu}"  />
   </p>
 </form>
 <form name="form3" method="post" action="Return_stu_search">
