@@ -20,13 +20,14 @@ public class Student {
 	private String attentioned_tea;
 	private String attentioned_me;
 	private String state;
+	private String rate;
 	
 	public Student() {}
 
 	public Student(String id, String name, String sex, String age, String benke_major, String wish_major, String zhibo,
 			String wish_class, String bein_class, String score, String honor, String self_intro, String tel,
 			String email, String picture_name, String selected_tea, String attentioned_tea, String attentioned_me,
-			String state) {
+			String state,String rate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -47,8 +48,15 @@ public class Student {
 		this.attentioned_tea = attentioned_tea;
 		this.attentioned_me = attentioned_me;
 		this.state = state;
+		this.rate = rate;
 	}
 
+	public String getRate() {
+		return rate;
+	}
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
 	public String getId() {
 		return id;
 	}

@@ -29,7 +29,7 @@ public class My_tea implements Action {
 	      Connection con = null;
 	      Statement stmt = null;
 	      ResultSet rst = null;
-	      ResultSet rst2 = null;
+	      //ResultSet rst2 = null;
 	      String am = null;
 	      String at = null;
 	      String st = null;

@@ -17,13 +17,13 @@ public class Teacher {
 	private String selected_stu;
 	private String attentioned_stu;
 	private String attentioned_me;
-	private String students;
+	private String rate;
 	
 	public Teacher() {}
 
 	public Teacher(String id, String name, String sex, String picture_name, String self_intro, String research_field,
 			String college, String xueyuan, String major, String tel, String email, String enrollment,
-			String in_enrollment, String selected_stu, String attentioned_stu, String attentioned_me, String students) {
+			String in_enrollment, String selected_stu, String attentioned_stu, String attentioned_me, String rate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -41,14 +41,14 @@ public class Teacher {
 		this.selected_stu = selected_stu;
 		this.attentioned_stu = attentioned_stu;
 		this.attentioned_me = attentioned_me;
-		this.students = students;
+		this.rate = rate;
 	}
 
-	public String getStudents() {
-		return students;
+	public String getRate() {
+		return rate;
 	}
-	public void setStudents(String students) {
-		this.students = students;
+	public void setRate(String rate) {
+		this.rate = rate;
 	}
 	public String getSelected_stu() {
 		return selected_stu;

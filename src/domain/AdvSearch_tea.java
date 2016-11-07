@@ -8,6 +8,7 @@ public class AdvSearch_tea {
 	private String bein_class = "";
 	private double score;
 	private int range;//0:bigger,1:smaller,2:equal,-1:don't care
+	private String keyword;
 	
 	public String getBenke_major() {
 		return benke_major;
@@ -50,6 +51,12 @@ public class AdvSearch_tea {
 	}
 	public void setRange(int range) {
 		this.range = range;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 	
 }

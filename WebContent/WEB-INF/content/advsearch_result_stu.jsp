@@ -41,6 +41,8 @@
   <input id="input" type="text" name="advsch.research_filed" value="请填写研究方向" onclick="resetInput()">
   是否包括已招满的导师：
   <input type="checkbox" value="full">
+  其他关键字：
+  <input type="text" name="advsch.keyword">
   <input type="submit" value="给我搜">
 </form>
 <div>

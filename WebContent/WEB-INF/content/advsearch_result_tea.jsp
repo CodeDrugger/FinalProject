@@ -90,6 +90,8 @@
     <option value="2">等于</option>
   </select>
   <input id="input" type="text" name="advsch.score" value="请填写小于100的数" onclick="resetInput()">
+  其他关键字：
+  <input type="text" name="advsch.keyword">
   <input type="submit" value="给我搜">
 </form>
 <div>

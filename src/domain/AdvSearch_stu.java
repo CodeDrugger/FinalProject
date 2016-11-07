@@ -5,6 +5,7 @@ public class AdvSearch_stu {
 	private String xueyuan = "";
 	private String major = "";
 	private String isfull = "";
+	private String keyword = "";
 	public String getResearch_filed() {
 		return research_filed;
 	}
@@ -28,6 +29,12 @@ public class AdvSearch_stu {
 	}
 	public void setIsfull(String isfull) {
 		this.isfull = isfull;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 	
 }

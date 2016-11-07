@@ -68,7 +68,8 @@ public class SearchService {
 		    				rs.getString("selected_tea"),
 		    				rs.getString("attentioned_tea"),
 		    				rs.getString("attentioned_me"),
-		    				rs.getString("state"));
+		    				rs.getString("state"),
+		    				rs.getString("rate"));
 		    		list.add(st);
 		    	}
 		    }
@@ -125,7 +126,7 @@ public class SearchService {
 		    				rs.getString("selected_stu"),
 		    				rs.getString("attentioned_stu"),
 		    				rs.getString("attentioned_me"),
-		    				rs.getString("students"));
+		    				rs.getString("rate"));
 		    		list.add(tr);
 		    	}
 			}

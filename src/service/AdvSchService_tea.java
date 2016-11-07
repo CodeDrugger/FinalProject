@@ -34,6 +34,33 @@ public class AdvSchService_tea {
 				sqlstr += (" and score<" + advsch.getScore());
 			else if (advsch.getRange() == 2)
 				sqlstr += (" and score=" + advsch.getScore());
+			if (!advsch.getKeyword().equals(""))
+			{
+				/*
+				 * private String id;
+				private String name;
+				private String sex;
+				private String age;
+				private String honor;
+				private String self_intro;
+				private String tel;
+				private String email;
+				private String picture_name;
+				private String selected_tea; //只能有一个，改变状态
+				private String attentioned_tea;
+				private String attentioned_me;
+				private String state;
+				 */
+				String k = advsch.getKeyword();
+				sqlstr += (" and ("
+						+ "name like '%" + k + "%' or "
+						+ "sex like '%" + k + "%' or "
+					    + "age like '%" + k + "%' or "
+						+ "honor like '%" + k + "%' or "
+						+ "self_intro like '%" + k + "%' or "
+						+ "tel like '%" + k + "%' or "
+						+ "email like '%" + k + "%')");
+			}
 			ResultSet rs = stmt.executeQuery(sqlstr);					
 			while (rs.next())
 			{
@@ -56,7 +83,8 @@ public class AdvSchService_tea {
 	    				rs.getString("selected_tea"),
 	    				rs.getString("attentioned_tea"),
 	    				rs.getString("attentioned_me"),
-	    				rs.getString("state"));
+	    				rs.getString("state"),
+	    				rs.getString("rate"));
 	    		list.add(st);
 			}
 		} catch (SQLException e) {

@@ -34,6 +34,17 @@ public class AdvSchService_stu {
 						+ "research_filed like '%" + advsch.getResearch_filed() + "%' and "
 						+ "xueyuan like '%" + advsch.getXueyuan() + "%' and "
 						+ "major like '%" + advsch.getMajor() + "%'";
+			if (!advsch.getKeyword().equals(""))
+			{
+				String k = advsch.getKeyword();
+				sqlstr += (" and ("
+						+ "name like '%" + k + "%' or "
+						+ "sex like '%" + k + "%' or "
+						+ "self_intro like '%" + k + "%' or "
+						+ "college like '%" + k + "%' or "
+						+ "tel like '%" + k + "%' or "
+						+ "email like '%" + k + "%')");
+			}
 			ResultSet rs = stmt.executeQuery(sqlstr);
 			while(rs.next())
 			{
@@ -54,7 +65,7 @@ public class AdvSchService_stu {
 	    				rs.getString("selected_stu"),
 	    				rs.getString("attentioned_stu"),
 	    				rs.getString("attentioned_me"),
-	    				rs.getString("students"));
+	    				rs.getString("rate"));
 	    		list.add(tr);
 			}
 		} catch (SQLException e) {

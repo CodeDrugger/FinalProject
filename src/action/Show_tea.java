@@ -5,14 +5,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import com.opensymphony.xwork2.Action;
 
 import domain.Student;
 import domain.Teacher;
-import packagea.Book;
+//import packagea.Book;
 
 public class Show_tea implements Action {
 	private Teacher teas; //传入teas.id
@@ -29,11 +29,11 @@ public class Show_tea implements Action {
 		      Statement stmt = null;
 		      if(stu_select.getAttentioned_tea().contains(teas.getName()+" "+teas.getId()))
 		      		return "has_selected";
-		      String tea_beiguan = teas.getAttentioned_me()+"/"+stu_select.getName()+" "+stu_select.getId();
+		      //String tea_beiguan = teas.getAttentioned_me()+"/"+stu_select.getName()+" "+stu_select.getId();
 		      //格式 /name id 0:待定 1:同一 2:不同意
-		      String stu_guan = stu_select.getAttentioned_tea()+"/"+teas.getName()+" "+teas.getId();
-		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_select.getId() +"'";
-		      String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+teas.getId() +"'";
+		      //String stu_guan = stu_select.getAttentioned_tea()+"/"+teas.getName()+" "+teas.getId();
+		      //String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_select.getId() +"'";
+		      //String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+teas.getId() +"'";
 		      try {
 					Class.forName("com.mysql.jdbc.Driver");
 				} catch (ClassNotFoundException e) {
@@ -43,8 +43,8 @@ public class Show_tea implements Action {
 		    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
 		    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
 		          stmt=con.createStatement();   
-		          int i1=stmt.executeUpdate(sql_tea);
-		          int i2=stmt.executeUpdate(sql_stu);
+		         // int i1=stmt.executeUpdate(sql_tea);
+		         // int i2=stmt.executeUpdate(sql_stu);
 		          
 		          
 		        }catch (SQLException e) {
