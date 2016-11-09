@@ -64,11 +64,11 @@ public class Show_stu implements Action {
 	      //ResultSet rst = null;
 	      if(tea_select.getAttentioned_stu().contains(stus.getName()+" "+stus.getId()))
 	      		return "has_selected";
-	      //String stu_beiguan = stus.getAttentioned_me()+"/"+tea_select.getName()+" "+tea_select.getId();
+	      String stu_beiguan = stus.getAttentioned_me()+"/"+tea_select.getName()+" "+tea_select.getId();
 	      //格式 /name id 0:待定 1:同一 2:不同意
-	      //String tea_guan = tea_select.getAttentioned_stu()+"/"+stus.getName()+" "+stus.getId();
-	      //String sql_tea = "update tea_inf set attentioned_tea='"+tea_guan+ "' where id='"+tea_select.getId() +"'";
-	      //String sql_stu = "update stu_inf set attentioned_me='"+stu_beiguan+ "' where id='"+stus.getId() +"'";
+	      String tea_guan = tea_select.getAttentioned_stu()+"/"+stus.getName()+" "+stus.getId();
+	      String sql_tea = "update tea_inf set attentioned_tea='"+tea_guan+ "' where id='"+tea_select.getId() +"'";
+	      String sql_stu = "update stu_inf set attentioned_me='"+stu_beiguan+ "' where id='"+stus.getId() +"'";
 	      try {
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
@@ -78,8 +78,8 @@ public class Show_stu implements Action {
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
 	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
-	          //int i1=stmt.executeUpdate(sql_tea);
-	          //int i2=stmt.executeUpdate(sql_stu);
+	          int i1=stmt.executeUpdate(sql_tea);
+	          int i2=stmt.executeUpdate(sql_stu);
 	          
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block

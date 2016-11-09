@@ -15,6 +15,7 @@ public class Teacher {
 	private String enrollment;//招生人数
 	private String in_enrollment;//已招人数
 	private String selected_stu;
+	private String selected_me;
 	private String attentioned_stu;
 	private String attentioned_me;
 	private String rate;
@@ -50,6 +51,15 @@ public class Teacher {
 	public void setRate(String rate) {
 		this.rate = rate;
 	}
+	
+	public String getSelected_me() {
+		return selected_me;
+	}
+
+	public void setSelected_me(String selected_me) {
+		this.selected_me = selected_me;
+	}
+
 	public String getSelected_stu() {
 		return selected_stu;
 	}

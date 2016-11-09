@@ -92,10 +92,16 @@ a:hover, a:active, a:focus { /* 此组选择器将为键盘导航者提供与鼠
     <table width = "300" border = "1">
 	<tr>
 	<th>导师姓名</th>
+    <th>操作</th>
 	</tr>
-  	<s:iterator value = "select_tea_list" var = "st">
+  	<s:iterator value = "select_tea" var = "st">
     <tr>
-    <td><a href="Choose_tea.action?books.isbn=${aa.isbn}">${st.name}</a></td>
+    <td><a href="Mytea_inf.action?tea_inf_id=${at.id}&id_in=${id_in}">${st.name}</a></td>
+    <td><form name="form3" method="post" action="Stu_cancel_choose">
+    	<input type="hidden"  name="teacher_id" value="${st.id}" />
+        <input type="hidden"  name="student_id" value="${id_in}" />
+  		<input type="submit"  value="取消选择"/>
+		</form></td>
     </tr>
     </s:iterator>
     </table>
@@ -105,10 +111,22 @@ a:hover, a:active, a:focus { /* 此组选择器将为键盘导航者提供与鼠
     <table width = "300" border = "1">
 	<tr>
 	<th>导师姓名</th>
+    <th>操作</th>
+    <th>操作</th>
 	</tr>
-  	<s:iterator value = "attention_tea_list" var = "at">
+  	<s:iterator value = "attention_tea" var = "at">
     <tr>
-    <td><a href="Choose_tea.action?books.isbn=${aa.isbn}">${at.name}</a></td>
+    <td><a href="Mytea_inf.action?tea_inf_id=${at.id}&id_in=${id_in}">${at.name}</a></td>
+    <td><form name="form3" method="post" action="Choose_tea">
+    	<input type="hidden"  name="teacher_id" value="${at.id}" />
+        <input type="hidden"  name="student_id" value="${id_in}" />
+  		<input type="submit"  value="选择该导师"/>
+		</form></td>
+    <td><form name="form3" method="post" action="Stu_cancel_attention">
+    	<input type="hidden"  name="teacher_id" value="${at.id}" />
+        <input type="hidden"  name="student_id" value="${id_in}" />
+  		<input type="submit"  value="取消关注"/>
+		</form></td>
     </tr>
     </s:iterator>
     </table>
@@ -118,10 +136,16 @@ a:hover, a:active, a:focus { /* 此组选择器将为键盘导航者提供与鼠
     <table width = "300" border = "1">
 	<tr>
 	<th>导师姓名</th>
+    <th>操作</th>
 	</tr>
-  	<s:iterator value = "attention_me_list" var = "am">
+  	<s:iterator value = "attention_me" var = "am">
     <tr>
-    <td><a href="Choose_tea.action?books.isbn=${aa.isbn}&">${am.name}</a></td>
+    <td><a href="Mytea_inf.action?tea_inf_id=${at.id}&id_in=${id_in}">${am.name}</a></td>
+    <td><form name="form4" method="post" action="Attention_tea">
+    	<input type="hidden"  name="teacher_id" value="${am.id}" />
+        <input type="hidden"  name="student_id" value="${id_in}" />
+    	<input type="submit"  value="关注该导师"/>
+    </form></td>
     </tr>
     </s:iterator>
     </table>

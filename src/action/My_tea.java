@@ -21,6 +21,384 @@ public class My_tea implements Action {
 	List<Teacher> select_tea = new ArrayList<>();
     List<Teacher> attention_tea = new ArrayList<>();
     List<Teacher> attention_me = new ArrayList<>();
+    
+	private String tea_inf_id;
+	private Teacher tea_inf;
+	
+	private String teacher_id;
+	private String student_id;
+	
+	
+	public String Attention_tea(){
+		//need things teacher id student id
+		 
+		  String ret = SUCCESS;
+	      Connection con = null;
+	      Statement stmt = null;
+	      ResultSet rst = null;
+	      ResultSet rst2 = null;
+	      String stu_name = null;
+	      String stu_id = null;
+	      String stu_attentioned_tea = null;
+	      String tea_name = null;
+	      String tea_id = null;
+	      String tea_attentioned_me = null;
+	      
+	      
+	      stu_id = student_id;
+	      tea_id = teacher_id;
+	      try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	      try{   
+	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	          stmt=con.createStatement();   
+	          rst = stmt.executeQuery("select * from tea_inf where id='"+tea_id+"'");
+	          while(rst.next())
+	          {
+	       		  tea_name = rst.getString("name");
+	       		  tea_id=rst.getString("id");
+	       		  tea_attentioned_me=rst.getString("attentioned_me");
+	       	  }
+	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
+	          while(rst2.next())
+      	      {
+      		  stu_name = rst.getString("name");
+      		  stu_id = rst.getString(("id"));
+      		  stu_attentioned_tea = rst.getString("attentioned_tea");
+      	      }
+	          if(stu_attentioned_tea.contains(tea_name+" "+tea_id))
+		      		return "has attentioned";
+		      String tea_beiguan = tea_attentioned_me+"/"+stu_name+" "+stu_id;
+		      //格式 /name id 0:待定 1:同一 2:不同意
+		      String stu_guan = stu_attentioned_tea+"/"+tea_name+" "+tea_id;
+		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
+		      String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
+		      int i1=stmt.executeUpdate(sql_tea);
+	          int i2=stmt.executeUpdate(sql_stu);
+	        	  
+
+	        }catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	            ret = ERROR;
+	        }finally{
+	            try{
+	            	if(stmt!=null)
+	            		stmt.close();
+	            	if(con!=null)           
+	                    con.close();
+	            	
+	                } catch (SQLException e) {
+	                    // TODO Auto-generated catch block
+	                    e.printStackTrace();
+	                }   
+	            }
+	return ret;
+	
+	}
+	public String Cancel_attention(){
+		//need things teacher id student id
+		String ret = SUCCESS;
+	      Connection con = null;
+	      Statement stmt = null;
+	      ResultSet rst = null;
+	      ResultSet rst2 = null;
+	      String stu_name = null;
+	      String stu_id = null;
+	      String stu_attentioned_tea = null;
+	      String tea_name = null;
+	      String tea_id = null;
+	      String tea_attentioned_me = null;
+	      
+	      
+	      stu_id = student_id;
+	      tea_id = teacher_id;
+	      try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	      try{   
+	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	          stmt=con.createStatement();   
+	          rst = stmt.executeQuery("select * from tea_inf where id='"+tea_id+"'");
+	          while(rst.next())
+	          {
+	       		  tea_name = rst.getString("name");
+	       		  tea_id=rst.getString("id");
+	       		  tea_attentioned_me=rst.getString("attentioned_me");
+	       	  }
+	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
+	          while(rst2.next())
+    	      {
+    		  stu_name = rst.getString("name");
+    		  stu_id = rst.getString(("id"));
+    		  stu_attentioned_tea = rst.getString("attentioned_tea");
+    	      }
+	          if(!stu_attentioned_tea.contains(tea_name+" "+tea_id))
+		      		return "not attentioned";
+		      String tea_beiguan = tea_attentioned_me.replaceAll("/"+stu_name+" "+stu_id,"");
+		      //格式 /name id 0:待定 1:同一 2:不同意
+		      String stu_guan = stu_attentioned_tea.replaceAll("/"+tea_name+" "+tea_id,"");
+		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
+		      String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
+		      int i1=stmt.executeUpdate(sql_tea);
+	          int i2=stmt.executeUpdate(sql_stu);
+	        	  
+
+	        }catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	            ret = ERROR;
+	        }finally{
+	            try{
+	            	if(stmt!=null)
+	            		stmt.close();
+	            	if(con!=null)           
+	                    con.close();
+	            	
+	                } catch (SQLException e) {
+	                    // TODO Auto-generated catch block
+	                    e.printStackTrace();
+	                }   
+	            }
+	return ret;
+	}
+	public String Choose_tea(){
+		//need things teacher id student id
+		String ret = SUCCESS;
+	      Connection con = null;
+	      Statement stmt = null;
+	      ResultSet rst = null;
+	      ResultSet rst2 = null;
+	      String stu_name = null;
+	      String stu_id = null;
+	      String stu_selected_tea = null;
+	      String tea_name = null;
+	      String tea_id = null;
+	      String tea_selected_me = null;
+	      String tea_attentioned_stu = null;
+	      //String tea_enrollment = null;
+	      //String tea_in_enrollment = null;
+	      //int tea_num1;
+	      //int tea_num2;
+	      
+	      
+	      stu_id = student_id;
+	      tea_id = teacher_id;
+	      try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	      try{   
+	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	          stmt=con.createStatement();   
+	          rst = stmt.executeQuery("select * from tea_inf where id='"+tea_id+"'");
+	          while(rst.next())
+	          {
+	       		  tea_name = rst.getString("name");
+	       		  tea_id=rst.getString("id");
+	       		  tea_selected_me=rst.getString("selected_me");
+	       		  tea_attentioned_stu = rst.getString("attentioned_stu");
+	       		  //tea_enrollment = rst.getString("enrollment");
+	       		  //tea_in_enrollment = rst.getString("in_enrollment");
+	       	  }
+	          /*tea_num1 = Integer.parseInt(tea_in_enrollment);
+	          tea_num2 = Integer.parseInt(tea_enrollment);
+	          if(tea_num1>=tea_num2)
+	        	  return "teacher full";
+	          else 
+	          {
+	        	  tea_num1++;
+	        	  tea_in_enrollment = tea_num1+"";
+	          }
+	          */
+	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
+	        	  return "teacher not attention you";
+	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
+	          while(rst2.next())
+    	      {
+    		  stu_name = rst.getString("name");
+    		  stu_id = rst.getString(("id"));
+    		  stu_selected_tea = rst.getString("selected_tea");
+    	      }
+	          if(stu_selected_tea.contains(tea_name+" "+tea_id))
+		      		return "has selected";
+		      String tea_beiguan = tea_selected_me+"/"+stu_name+" "+stu_id;
+		      String stu_guan = stu_selected_tea+"/"+tea_name+" "+tea_id;
+		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
+		      String sql_tea = "update tea_inf set selected_me='"+tea_beiguan+"' where id='"+tea_id +"'";
+		      int i1=stmt.executeUpdate(sql_tea);
+	          int i2=stmt.executeUpdate(sql_stu);
+	        	  
+
+	        }catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	            ret = ERROR;
+	        }finally{
+	            try{
+	            	if(stmt!=null)
+	            		stmt.close();
+	            	if(con!=null)           
+	                    con.close();
+	            	
+	                } catch (SQLException e) {
+	                    // TODO Auto-generated catch block
+	                    e.printStackTrace();
+	                }   
+	            }
+	return ret;
+	}
+	public String Cancel_choose(){
+		//need things teacher id student id
+		String ret = SUCCESS;
+	      Connection con = null;
+	      Statement stmt = null;
+	      ResultSet rst = null;
+	      ResultSet rst2 = null;
+	      String stu_name = null;
+	      String stu_id = null;
+	      String stu_selected_tea = null;
+	      String tea_name = null;
+	      String tea_id = null;
+	      String tea_selected_me = null;
+	      String tea_attentioned_stu = null;
+	      //String tea_enrollment = null;
+	      //String tea_in_enrollment = null;
+	      //int tea_num1;
+	      //int tea_num2;
+	      
+	      
+	      stu_id = student_id;
+	      tea_id = teacher_id;
+	      try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	      try{   
+	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	          stmt=con.createStatement();   
+	          rst = stmt.executeQuery("select * from tea_inf where id='"+tea_id+"'");
+	          while(rst.next())
+	          {
+	       		  tea_name = rst.getString("name");
+	       		  tea_id=rst.getString("id");
+	       		  tea_selected_me=rst.getString("selected_me");
+	       		  tea_attentioned_stu = rst.getString("attentioned_stu");
+	       		  //tea_enrollment = rst.getString("enrollment");
+	       		  //tea_in_enrollment = rst.getString("in_enrollment");
+	       	  }
+	          /*tea_num1 = Integer.parseInt(tea_in_enrollment);
+	          tea_num2 = Integer.parseInt(tea_enrollment);
+	          if(tea_num1>=tea_num2)
+	        	  return "teacher full";
+	          else 
+	          {
+	        	  tea_num1++;
+	        	  tea_in_enrollment = tea_num1+"";
+	          }
+	          */
+	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
+	        	  return "teacher not attention you";
+	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
+	          while(rst2.next())
+	          {
+	        	  stu_name = rst.getString("name");
+	        	  stu_id = rst.getString(("id"));
+	        	  stu_selected_tea = rst.getString("selected_tea");
+	          }
+	          if(!stu_selected_tea.contains(tea_name+" "+tea_id))
+		      		return "not selected";
+		      String tea_beiguan = tea_selected_me.replaceAll("/"+stu_name+" "+stu_id,"");
+		      String stu_guan = stu_selected_tea.replaceAll("/"+tea_name+" "+tea_id,"");
+		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
+		      String sql_tea = "update tea_inf set selected_me='"+tea_beiguan+"' where id='"+tea_id +"'";
+		      int i1=stmt.executeUpdate(sql_tea);
+	          int i2=stmt.executeUpdate(sql_stu);
+	        	  
+
+	        }catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	            ret = ERROR;
+	        }finally{
+	            try{
+	            	if(stmt!=null)
+	            		stmt.close();
+	            	if(con!=null)           
+	                    con.close();
+	            	
+	                } catch (SQLException e) {
+	                    // TODO Auto-generated catch block
+	                    e.printStackTrace();
+	                }   
+	            }
+	return ret;
+	}
+	
+	public String Mytea_inf() {
+		//need tea_inf_id  id_in
+		  String ret = SUCCESS;
+	      Connection con = null;
+	      Statement stmt = null;
+	      ResultSet rst = null;
+	      try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	      try{   
+	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	          stmt=con.createStatement();   
+	          rst = stmt.executeQuery("select * from tea_inf where id='"+tea_inf_id+"'");
+	        	  while(rst.next())
+	        	  {
+	        		  tea_inf.setEnrollment(rst.getString("enrollment"));
+	        		  tea_inf.setIn_enrollment(rst.getString("in_enrollment"));
+	        		  tea_inf.setName(rst.getString("name"));
+	        		  tea_inf.setSex(rst.getString("sex"));
+	        		  tea_inf.setId(rst.getString("id"));
+	        		  tea_inf.setPicture_name(rst.getString("picture_name"));
+	        		  tea_inf.setSelf_intro(rst.getString("self_intro"));
+	        		  tea_inf.setResearch_field(rst.getString("research_field"));
+	        		  tea_inf.setCollege(rst.getString("college"));
+	        		  tea_inf.setXueyuan(rst.getString("xueyuan"));
+	        		  tea_inf.setMajor(rst.getString("major"));
+	        		  tea_inf.setTel(rst.getString("tel"));
+	        		  tea_inf.setEmail(rst.getString("email"));
+	        	  }	        	  
+
+	        }catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	            ret = ERROR;
+	        }finally{
+	            try{
+	            	if(stmt!=null)
+	            		stmt.close();
+	            	if(con!=null)           
+	                    con.close();
+	            	
+	                } catch (SQLException e) {
+	                    // TODO Auto-generated catch block
+	                    e.printStackTrace();
+	                }   
+	            }
+	      
+	
+	return ret;
+	}
 	
 	@Override
 	public String execute() throws Exception {
@@ -162,6 +540,33 @@ public class My_tea implements Action {
 		this.attention_me = attention_me;
 	}
 
+	public String getTea_inf_id() {
+		return tea_inf_id;
+	}
+
+	public void setTea_inf_id(String tea_inf_id) {
+		this.tea_inf_id = tea_inf_id;
+	}
+	public Teacher getTea_inf() {
+		return tea_inf;
+	}
+
+	public void setTea_inf(Teacher tea_inf) {
+		this.tea_inf = tea_inf;
+	}
+	public String getTeacher_id() {
+		return teacher_id;
+	}
+	public void setTeacher_id(String teacher_id) {
+		this.teacher_id = teacher_id;
+	}
+	public String getStudent_id() {
+		return student_id;
+	}
+	public void setStudent_id(String student_id) {
+		this.student_id = student_id;
+	}
+	
 	
 	
 }
