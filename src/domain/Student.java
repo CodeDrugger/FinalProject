@@ -17,6 +17,7 @@ public class Student {
 	private String email;
 	private String picture_name;
 	private String selected_tea; //只能有一个，改变状态
+	private String selected_me;
 	private String attentioned_tea;
 	private String attentioned_me;
 	private String state;
@@ -49,6 +50,14 @@ public class Student {
 		this.attentioned_me = attentioned_me;
 		this.state = state;
 		this.rate = rate;
+	}
+	
+	public String getSelected_me() {
+		return selected_me;
+	}
+
+	public void setSelected_me(String selected_me) {
+		this.selected_me = selected_me;
 	}
 
 	public String getRate() {
