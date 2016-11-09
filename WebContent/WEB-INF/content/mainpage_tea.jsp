@@ -16,6 +16,7 @@
 <c:set var="id" value="${login.id }" scope="request"></c:set>
 <%
 String name = "点此完善信息";
+String major = "";
 String id = (String)request.getAttribute("id");
 try {
 	Class.forName("com.mysql.jdbc.Driver");
@@ -29,13 +30,19 @@ try {
   	if (rs.next())
   	{
   		if (rs.getString("name").length() > 0)
+  		{
   			name = rs.getString("name");
+  			major = rs.getString("major");
+  		}	
   	}
+  	ResultSet rst = stmt.executeQuery("select * from stu_inf where wish_major='" + major + "' order by rate desc,score desc");
   	connect.close();
 } catch (SQLException e) {
   	e.printStackTrace();
 }
 %>
 您好，<a href="./Show_tea.action?teas.id=${login.id }"><%=name%></a>
+导师推荐：
+<a href=""></a>
 </body>
 </html>

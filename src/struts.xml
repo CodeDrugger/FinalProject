@@ -86,6 +86,10 @@
             <result name="error">/WEB-INF/content/error.jsp</result>
         </action>
 		
+		<action name="Create_ques" class="action.Create_ques"><!-- 问卷bug:跳转之后没有id！！ -->
+            <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
+        </action>
+		
         <action name="*">
             <result>/WEB-INF/content/{1}.jsp</result>
         </action>
