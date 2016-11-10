@@ -6,9 +6,18 @@ import domain.Login;
 import service.LoginService;
 
 public class LoginAction implements Action {
-	Login login = new Login();
-	String info = "";
+	private Login login = new Login();
+	private String id;
+	private String info = "";
 	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public Login getLogin() {
 		return login;
 	}
@@ -29,6 +38,7 @@ public class LoginAction implements Action {
 	public String execute() throws Exception {
 		LoginService ls = new LoginService();
 		int status = ls.doLogin(login);
+		setId(login.getId());
 		if (status == 1 && login.getUserclass().equals("1"))
 			return "success_tea";
 		else if(status == 1 && login.getUserclass().equals("2"))

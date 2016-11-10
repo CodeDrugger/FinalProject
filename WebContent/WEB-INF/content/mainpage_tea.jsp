@@ -13,7 +13,7 @@
   <input type="text" name="search.keyword" value="">
   <input type="submit" value="给我搜">
 </form>
-<c:set var="id" value="${login.id }" scope="request"></c:set>
+<c:set var="id" value="${id }" scope="request"></c:set>
 <%
 String name = "点此完善信息";
 String major = "";
@@ -41,7 +41,7 @@ try {
   	e.printStackTrace();
 }
 %>
-您好，<a href="./Show_tea.action?teas.id=${login.id }"><%=name%></a>
+您好，<a href="./Show_tea.action?teac.id=${id }"><%=name%></a>
 导师推荐：
 <a href=""></a>
 </body>

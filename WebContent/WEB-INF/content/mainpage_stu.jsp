@@ -13,7 +13,7 @@
   <input type="text" name="search.keyword" value="">
   <input type="submit" value="给我搜">
 </form>
-<c:set var="id" value="${login.id }" scope="request"></c:set>
+<c:set var="id" value="${id }" scope="request"></c:set>
 <%
 String name = "点此完善信息";
 String wish_major = "";
@@ -37,7 +37,7 @@ try {
   			wish_major = rs.getString("wish_major");
   		}
   	}
-  	ResultSet rst = stmt.executeQuery("select * from tea_inf where major='" + wish_major + "' order by rate desc");
+  	/*ResultSet rst = stmt.executeQuery("select * from tea_inf where major='" + wish_major + "' order by rate desc");
   	int i = 0;
   	while (rst.next())
   	{
@@ -49,13 +49,13 @@ try {
   		}
   		else
   			break;
-  	}
+  	}*/
   	connect.close();
 } catch (SQLException e) {
   	e.printStackTrace();
 }
 %>
-您好，<a href="./Show_stu.action?stus.id=${login.id }"><%=name%></a>
+您好，<a href="./Show_stu.action?stuc.id=${id }"><%=name%></a>
 推荐导师：
 <a href=""></a>
 </body>

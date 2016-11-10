@@ -5,6 +5,10 @@ import java.io.File;
 //import java.sql.ResultSet;
 //import java.sql.SQLException;
 //import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.opensymphony.xwork2.Action;
 import org.apache.commons.io.FileUtils;
@@ -17,50 +21,10 @@ public class Upload_pic implements Action{
     private String id;
     private String visitfile;
     
-    public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getVisitfile() {
-		return visitfile;
-	}
-
-	public void setVisitfile(String visitfile) {
-		this.visitfile = visitfile;
-	}
-
-	public File getImage() {
-		return image;
-	}
-
-	public void setImage(File image) {
-		this.image = image;
-	}
-
-	public String getImageFileName() {
-		return imageFileName;
-	}
-
-	public void setImageFileName(String imageFileName) {
-		this.imageFileName = imageFileName;
-	}
-
-	public String getImageContentType() {
-		return imageContentType;
-	}
-
-	public void setImageContentType(String imageContentType) {
-		this.imageContentType = imageContentType;
-	}
-
+    
 	public String execute() throws Exception {
 		String ret = SUCCESS;
-		id = "11";
-        String realpath = "C:/bigproject/FinalProject/WebContent/photos/"+id;
+        String realpath = "C:/Software/WebProject/FinalProject/WebContent/photos/"+id;
         //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
         System.out.println("realpath: "+realpath);
         if (image != null) {
@@ -73,12 +37,12 @@ public class Upload_pic implements Action{
         }
         visitfile = "photos/"+id+"/"+id+".png";
         
-	   /* Connection con = null;
-	    Statement stmt = null;
-	    ResultSet rst = null;
-	    String sql = "update tea_inf set picture_name='"+imageFileName+"'" +  " where id='"+id +"'";
-	    try {
-	    	Class.forName("com.mysql.jdbc.Driver");
+	      Connection con = null;
+	      Statement stmt = null;
+	      //ResultSet rst = null;
+	      String sql = "update stu_inf set picture_name='"+visitfile+"' where id='"+id +"'";
+	      try {
+				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -86,12 +50,12 @@ public class Upload_pic implements Action{
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
 	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
-	          int i=stmt.executeUpdate(sql);
+	          stmt.executeUpdate(sql);
 	          
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
-	        	ret = ERROR;
 	            e.printStackTrace();
+	            ret = ERROR;
 	        }finally{
 	            try{
 	            	if(stmt!=null)
@@ -104,8 +68,55 @@ public class Upload_pic implements Action{
 	                    e.printStackTrace();
 	                }   
 	            }
-	     */
 	
         return ret;
-    }    
+    }
+
+
+
+	public File getImage() {
+		return image;
+	}
+
+
+
+	public void setImage(File image) {
+		this.image = image;
+	}
+
+
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
+	}
+
+
+
+	public String getImageContentType() {
+		return imageContentType;
+	}
+
+
+
+	public void setImageContentType(String imageContentType) {
+		this.imageContentType = imageContentType;
+	}
+
+
+
+	public String getId() {
+		return id;
+	}
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}    
 }
