@@ -8,8 +8,8 @@
 </head>
 <body>
 ${message}
-<form action="Show_stu" method="get">
-<input type="hidden" name="stuc.id" value="${id }">
+<form action="Show_tea" method="get">
+<input type="hidden" name="teac.id" value="${id }">
 <input type="submit" value="返回">
 </form>
 </body>

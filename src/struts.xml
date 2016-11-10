@@ -47,6 +47,9 @@
         
         
         
+        
+        
+        
     	<action name="Return_stu_search" class="action.Jump" >
             <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
         </action>
@@ -56,7 +59,9 @@
     	<action name="Upload" class="action.Upload_pic" ><!--添加照片-->
             <result name="success">/WEB-INF/content/temp1.jsp</result>
         </action>
-        
+        <action name="Upload_tea" class="action.Upload_pic_tea" ><!--添加照片-->
+            <result name="success">/WEB-INF/content/temp2.jsp</result>
+        </action>
         <action name="Change_stu" class="action.Change_stu"><!-- 学生资料 -->
             <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
             <result name="error">/WEB-INF/content/error.jsp</result>

@@ -31,6 +31,66 @@
       	  sex_man = "";
     	  
       %>
+      
+      <c:set var="wish" value="${stuc.wish_class}" scope="request"></c:set>
+      <%
+    	  String wishzhuan="";
+      	  String wishxue="";
+      	  String wishno="";
+      	  String wish = (String)request.getAttribute("wish");
+      	  if(wish.equals("专硕"))
+      	  {
+      		  wishzhuan="checked";
+      		  wishxue="";
+      		  wishno="";
+      	  }
+      	  else if(wish.equals("学硕"))
+      	  {
+      		  wishxue="checked";
+      		  wishzhuan="";
+      		  wishno="";
+      	  }
+      	  else
+      	  {
+      		  wishno="checked";
+      		  wishxue="";
+      		  wishzhuan="";
+      	  }
+      %>
+      
+      <c:set var="zhibo" value="${stuc.zhibo}" scope="request"></c:set>
+      <%
+    	  String yes="";
+      	  String no="";
+      	  String zhibo=(String)request.getAttribute("zhibo");
+      	  if(zhibo.equals("是"))
+      	  {
+      		  yes="checked";
+      		  no="";
+      	  }
+      	  else
+      	  {
+      		  yes="";
+      		  no="checked";
+      	  }
+      %>
+      
+      <c:set var="benin" value="${stuc.benin_class}" scope="request"></c:set>
+      <%
+    	  String baoyan="";
+      	  String kaoyan="";
+      	  String benin=(String)request.getAttribute("benin");
+      	  if(benin.equals("保研"))
+      	  {
+      		  baoyan="checked";
+      		  kaoyan="";
+      	  }
+      	  else
+      	  {
+      		  baoyan="";
+      		  kaoyan="checked";
+      	  }
+      %>
         <form id="form1" name="form1" method="post" action="Change_stu">
           <p>姓名：
             <input name="stuc.name" type="text" id="name_stu" value="${stuc.name}" /></p>
@@ -43,17 +103,17 @@
           <p>本科学科：
             <input name="stuc.benke_major" type="text" id="name_stu4" value="${stuc.benke_major}" /></p>
           <p>报考硕士类别: 学硕
-            <input name="stuc.wish_class" type="radio" id="sex_m" value="学硕" />专硕
-            <input type="radio" name="stuc.wish_class" id="sex_f" value="专硕" />不确定
-            <input type="radio" name="stuc.wish_class" id="sex_f" value="不确定" /></p>
+            <input name="stuc.wish_class" type="radio"  value="学硕" checked="<%=wishxue%>"/>专硕
+            <input type="radio" name="stuc.wish_class"  value="专硕" checked="<%=wishzhuan%>"/>不确定
+            <input type="radio" name="stuc.wish_class"  value="不确定" checked="<%=wishno%>"/></p>
           <p>入选方式：: 保研
-            <input type="radio" name="stuc.bein_class" id="stuc.bein_class" value="保研" />考研
-            <input type="radio" name="stuc.bein_class" id="stuc.bein_class" value="考研" /></p>
+            <input type="radio" name="stuc.bein_class" id="stuc.bein_class" value="保研" checked="<%=baoyan%>"/>考研
+            <input type="radio" name="stuc.bein_class" id="stuc.bein_class" value="考研" checked="<%=kaoyan%>"/></p>
           <p>研究生意愿学科：
             <input name="stuc.wish_major" type="text" id="stuc.wish_major" value="${stuc.wish_major}" /></p>
           <p>是否有直博意愿： 是
-            <input type="radio" name="stuc.zhibo" value="是" />否
-            <input type="radio" name="stuc.zhibo" value="否" /></p>
+            <input type="radio" name="stuc.zhibo" value="是" checked="<%=yes%>"/>否
+            <input type="radio" name="stuc.zhibo" value="否" checked="<%=no%>"/></p>
           <p>本科学分绩：
             <input name="stuc.score" type="text" value="${stuc.score}" /></p>
           <p>个人荣誉：
