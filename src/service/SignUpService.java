@@ -28,19 +28,33 @@ public class SignUpService {
 				connect.close();
 		    	return 0;//失败
 			}
-		    int state = stmt.executeUpdate(
-		    		"insert into login (username,password,userclass,id) values " +
-		    		"('" + login.getUsername() +
-		    		"','" + login.getPassword() +
-		    		"','" + login.getUserclass() +
-		    		"','" + String.valueOf(id) +
-		    	    "')");
-		    int stat = stmt.executeUpdate("update id_alloc set id='" + String.valueOf(id + 1) + "'");
-		    if (state == 0 || stat == 0)
-		    {
-		    	connect.close();
-		    	return 0;//失败
-		    }
+			ResultSet rs = stmt.executeQuery("select * from login where username='" + login.getUsername() + "'");
+			if (rs.next() == false)
+			{
+				int state = stmt.executeUpdate(
+			    		"insert into login (username,password,userclass,id) values " +
+			    		"('" + login.getUsername() +
+			    		"','" + login.getPassword() +
+			    		"','" + login.getUserclass() +
+			    		"','" + String.valueOf(id) +
+			    	    "')");
+			    int sta = 0;
+			    if (login.getUserclass().equals("1"))
+			    	sta = stmt.executeUpdate("insert into tea_inf (id) values ('" + String.valueOf(id) + "')");
+			    else if(login.getUserclass().equals("2"))
+			    	sta = stmt.executeUpdate("insert into stu_inf (id) values ('" + String.valueOf(id) + "')");
+			    int stat = stmt.executeUpdate("update id_alloc set id='" + String.valueOf(id + 1) + "'");
+			    if (state == 0 || stat == 0 || sta == 0)
+			    {
+			    	connect.close();
+			    	return 0;//失败
+			    }
+			}
+			else
+			{
+				connect.close();
+				return 2;//已注册
+			}
 		    connect.close();
 		} catch (SQLException e) {
 			e.printStackTrace();

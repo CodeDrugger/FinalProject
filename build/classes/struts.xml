@@ -44,12 +44,11 @@
         <action name="Attention_stu" class="action.My_stu" method="Attention_stu">
             <result name="success">/WEB-INF/content/my_stu_inf.jsp</result>
         </action>
-        
-        
-        
-        
-        
-        
+
+
+
+
+
     	<action name="Return_stu_search" class="action.Jump" >
             <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
         </action>
@@ -68,7 +67,7 @@
         </action>
         
         <action name="Change_tea" class="action.Change_tea"><!-- 学生资料 -->
-            <result name="success">/WEB-INF/content/pfchange_tea.jsp</result>
+            <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
         </action>
         
    		<action name="Jt_change_stu" class="action.Change_stu" method="Show_stu"><!-- 学生资料 -->
@@ -114,6 +113,7 @@
         <action name="SignUp" class="action.SignUp"><!-- 注册 -->
             <result name="success">/WEB-INF/content/loginpage.jsp</result>
             <result name="error">/WEB-INF/content/error.jsp</result>
+            <result name="signed">/WEB-INF/content/signup.jsp</result>
         </action>
 		
 		<action name="Create_ques" class="action.Create_ques"><!-- 问卷bug:跳转之后没有id！！ -->

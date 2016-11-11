@@ -3,7 +3,7 @@ package domain;
 public class Login {
 	private String username;
 	private String password;
-	private String userclass;
+	private String userclass;//1:daoshi 2:xuesheng
 	private String id;
 	
 	public String getId() {

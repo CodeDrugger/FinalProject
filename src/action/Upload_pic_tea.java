@@ -26,7 +26,6 @@ public class Upload_pic_tea implements Action{
 		String ret = SUCCESS;
         String realpath = "C:/Software/WebProject/FinalProject/WebContent/photos_tea/"+id;
         //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
-        System.out.println("realpath: "+realpath);
         if (image != null) {
             File savefile = new File(new File(realpath), id+".png");
             if (savefile.getParentFile().exists())

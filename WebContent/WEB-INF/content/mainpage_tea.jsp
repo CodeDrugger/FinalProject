@@ -29,7 +29,7 @@ try {
 	ResultSet rs = stmt.executeQuery("select * from tea_inf where id='"+ id + "'");
   	if (rs.next())
   	{
-  		if (rs.getString("name").length() > 0)
+  		if (rs.getString("name") != null && rs.getString("name").length() > 0)
   		{
   			name = rs.getString("name");
   			major = rs.getString("major");

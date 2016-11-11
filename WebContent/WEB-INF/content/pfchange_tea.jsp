@@ -6,7 +6,9 @@
   
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>更改导师信息</title></head>
+    <title>更改导师信息</title>
+    <script src="js/pfchange.js" charset="utf-8"></script>
+    </head>
   
   <body>
     <h1>导师信息</h1>
@@ -26,8 +28,9 @@
         <p>招生人数：
           <input type="text" name="teac.enrollment" value="${teac.enrollment }"/>已招人数：${teac.in_enrollment}*招生人数应大于目前已招人数</p>
         <p>性别： 男
-          <input type="radio" name="teac.sex" id="sex_m" value="男"/>女
-          <input type="radio" name="teac.sex" id="sex_f" value="女"/></p>
+          <input id="sex" type="hidden" value="${teac.sex}"/>
+          <input id="sex_nan" type="radio" name="teac.sex" id="sex_m" value="男"/>女
+          <input id="sex_nv" type="radio" name="teac.sex" id="sex_f" value="女"/></p>
         <p>学校：
           <input type="text" name="teac.college" value="${teac.college}"/></p>
         <p>学院：

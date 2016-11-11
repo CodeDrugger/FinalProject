@@ -91,9 +91,9 @@ public class Change_tea implements Action {
 	      Statement stmt = null;
 	      //ResultSet rst = null;
 	      String sql = "update tea_inf set "
-	      		+ "name='"+teac.getName()+"',"
 	    		+"sex='"+teac.getSex()+"',"
-	      		+"name='"+teac.getPicture_name()+"',"
+	    	    +"name='"+teac.getName()+"',"
+	      		+"picture_name='"+teac.getPicture_name()+"',"
 	    		+"self_intro='"+teac.getSelf_intro()+"',"
 	      		+"research_field='"+teac.getResearch_field()+"',"
 	    		+"college='"+teac.getCollege()+"',"+"xueyuan='"+teac.getXueyuan()+"',"

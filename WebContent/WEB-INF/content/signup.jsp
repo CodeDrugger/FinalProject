@@ -14,6 +14,7 @@
       我是导师<input type="radio" name="login.userclass" value="1">
       我是学生<input type="radio" name="login.userclass" value="2">
       <br>
+      ${info}
     <input type="submit" value="注册">
   </form>
 </body>
