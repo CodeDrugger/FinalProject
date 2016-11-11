@@ -15,7 +15,8 @@ import domain.Teacher;
 
 
 public class My_tea implements Action {
-	private String id_in;
+	private String id_in;//主页面传入的学生id
+	
 	private Teacher teas;
 	private Student stu;
 	List<Teacher> select_tea = new ArrayList<>();
@@ -27,6 +28,8 @@ public class My_tea implements Action {
 	
 	private String teacher_id;
 	private String student_id;
+	
+	private String message;
 	
 	
 	public String Attention_tea(){
@@ -66,12 +69,15 @@ public class My_tea implements Action {
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
       	      {
-      		  stu_name = rst.getString("name");
-      		  stu_id = rst.getString(("id"));
-      		  stu_attentioned_tea = rst.getString("attentioned_tea");
+      		  stu_name = rst2.getString("name");
+      		  stu_id = rst2.getString(("id"));
+      		  stu_attentioned_tea = rst2.getString("attentioned_tea");
       	      }
 	          if(stu_attentioned_tea.contains(tea_name+" "+tea_id))
-		      		return "has attentioned";
+		      {
+	        	  message = "已经选过该导师！";
+	        	  return "has attentioned";
+		      }
 		      String tea_beiguan = tea_attentioned_me+"/"+stu_name+" "+stu_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String stu_guan = stu_attentioned_tea+"/"+tea_name+" "+tea_id;
@@ -84,6 +90,7 @@ public class My_tea implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
+	            message="关注失败！数据库语句出现错误!";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -97,6 +104,7 @@ public class My_tea implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
+	message = "关注成功!";
 	return ret;
 	
 	}
@@ -136,12 +144,13 @@ public class My_tea implements Action {
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
     	      {
-    		  stu_name = rst.getString("name");
-    		  stu_id = rst.getString(("id"));
-    		  stu_attentioned_tea = rst.getString("attentioned_tea");
+    		  stu_name = rst2.getString("name");
+    		  stu_id = rst2.getString(("id"));
+    		  stu_attentioned_tea = rst2.getString("attentioned_tea");
     	      }
-	          if(!stu_attentioned_tea.contains(tea_name+" "+tea_id))
+	          /*if(!stu_attentioned_tea.contains(tea_name+" "+tea_id))
 		      		return "not attentioned";
+		      */
 		      String tea_beiguan = tea_attentioned_me.replaceAll("/"+stu_name+" "+stu_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String stu_guan = stu_attentioned_tea.replaceAll("/"+tea_name+" "+tea_id,"");
@@ -154,6 +163,7 @@ public class My_tea implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
+	            message = "取消选择失败,数据库出现错误!";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -167,6 +177,7 @@ public class My_tea implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
+	message = "取消关注成功!";
 	return ret;
 	}
 	public String Choose_tea(){
@@ -179,6 +190,7 @@ public class My_tea implements Action {
 	      String stu_name = null;
 	      String stu_id = null;
 	      String stu_selected_tea = null;
+	      String stu_state=null;
 	      String tea_name = null;
 	      String tea_id = null;
 	      String tea_selected_me = null;
@@ -221,16 +233,28 @@ public class My_tea implements Action {
 	          }
 	          */
 	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
+	          {
+	        	  message="该导师未关注你的情况下无法选择该导师";
 	        	  return "teacher not attention you";
+	          }
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
     	      {
-    		  stu_name = rst.getString("name");
-    		  stu_id = rst.getString(("id"));
-    		  stu_selected_tea = rst.getString("selected_tea");
+    		  stu_name = rst2.getString("name");
+    		  stu_id = rst2.getString(("id"));
+    		  stu_selected_tea = rst2.getString("selected_tea");
+    		  stu_state=rst2.getString("state");
     	      }
+	          if(stu_state.equals("1"))
+	          {
+	        	  message="你已经和导师完成互选";
+	        	  return "has been selected";
+	          }
 	          if(stu_selected_tea.contains(tea_name+" "+tea_id))
-		      		return "has selected";
+		      {
+	        	  message="已经选择过该导师";
+	        	  return "has selected";
+		      }
 		      String tea_beiguan = tea_selected_me+"/"+stu_name+" "+stu_id;
 		      String stu_guan = stu_selected_tea+"/"+tea_name+" "+tea_id;
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
@@ -242,6 +266,7 @@ public class My_tea implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
+	            message="选择失败,数据库语句执行失败";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -255,8 +280,10 @@ public class My_tea implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
+	message="选择成功";
 	return ret;
 	}
+	
 	public String Cancel_choose(){
 		//need things teacher id student id
 		String ret = SUCCESS;
@@ -266,6 +293,7 @@ public class My_tea implements Action {
 	      ResultSet rst2 = null;
 	      String stu_name = null;
 	      String stu_id = null;
+	      String stu_state=null;
 	      String stu_selected_tea = null;
 	      String tea_name = null;
 	      String tea_id = null;
@@ -308,17 +336,23 @@ public class My_tea implements Action {
 	        	  tea_in_enrollment = tea_num1+"";
 	          }
 	          */
-	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
-	        	  return "teacher not attention you";
+	          
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
 	          {
-	        	  stu_name = rst.getString("name");
-	        	  stu_id = rst.getString(("id"));
-	        	  stu_selected_tea = rst.getString("selected_tea");
+	        	  stu_name = rst2.getString("name");
+	        	  stu_id = rst2.getString(("id"));
+	        	  stu_selected_tea = rst2.getString("selected_tea");
+	        	  stu_state=rst2.getString("state");
 	          }
+	          
 	          if(!stu_selected_tea.contains(tea_name+" "+tea_id))
 		      		return "not selected";
+	          if(stu_state.equals("1"))
+	          {
+	        	  message="你已经和导师完成互选";
+	        	  return "has been selected";
+	          }
 		      String tea_beiguan = tea_selected_me.replaceAll("/"+stu_name+" "+stu_id,"");
 		      String stu_guan = stu_selected_tea.replaceAll("/"+tea_name+" "+tea_id,"");
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
@@ -565,6 +599,12 @@ public class My_tea implements Action {
 	}
 	public void setStudent_id(String student_id) {
 		this.student_id = student_id;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 	

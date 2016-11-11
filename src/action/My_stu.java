@@ -21,13 +21,14 @@ public class My_stu implements Action {
 	List<Student> select_stu = new ArrayList<>();
     List<Student> attention_stu = new ArrayList<>();
     List<Student> attention_me = new ArrayList<>();
+    List<Student> selected_me = new ArrayList<>();
     
 	private String stu_inf_id;
 	private Student stu_inf;
 	
 	private String teacher_id;
 	private String student_id;
-	
+	private String message;
 	
 	public String Attention_stu(){
 		//need things teacher id student id
@@ -66,12 +67,15 @@ public class My_stu implements Action {
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
       	      {
-      		  stu_name = rst.getString("name");
-      		  stu_id = rst.getString(("id"));
-      		  stu_attentioned_me = rst.getString("attentioned_me");
+      		  stu_name = rst2.getString("name");
+      		  stu_id = rst2.getString(("id"));
+      		  stu_attentioned_me = rst2.getString("attentioned_me");
       	      }
 	          if(tea_attentioned_stu.contains(stu_name+" "+stu_id))
-		      		return "has attentioned";
+		      {
+	        	  message="已经关注该学生";
+	        	  return "has attentioned";
+		      }
 		      String stu_beiguan = stu_attentioned_me+"/"+stu_name+" "+stu_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String tea_guan = tea_attentioned_stu+"/"+tea_name+" "+tea_id;
@@ -84,6 +88,7 @@ public class My_stu implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
+	            message="数据库语句出现错误";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -97,6 +102,7 @@ public class My_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
+	message="关注成功";
 	return ret;
 	
 	}
@@ -136,12 +142,10 @@ public class My_stu implements Action {
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
     	      {
-    		  stu_name = rst.getString("name");
-    		  stu_id = rst.getString(("id"));
-    		  stu_attentioned_me = rst.getString("attentioned_me");
+    		  stu_name = rst2.getString("name");
+    		  stu_id = rst2.getString(("id"));
+    		  stu_attentioned_me = rst2.getString("attentioned_me");
     	      }
-	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
-		      		return "not attentioned";
 		      String stu_beiguan = stu_attentioned_me.replaceAll("/"+tea_name+" "+tea_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_name+" "+stu_id,"");
@@ -154,6 +158,7 @@ public class My_stu implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
+	            message="数据库执行出错";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -167,6 +172,7 @@ public class My_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
+	message="取消关注成功";
 	return ret;
 	}
 	public String Choose_stu(){
@@ -188,6 +194,7 @@ public class My_stu implements Action {
 	      String tea_selected_stu = null;
 	      String tea_enrollment = null;
 	      String tea_in_enrollment = null;
+	      String stu_state=null;
 	      int tea_num1;
 	      int tea_num2;
 	      
@@ -227,18 +234,18 @@ public class My_stu implements Action {
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
     	      {
-    		  stu_name = rst.getString("name");
-    		  stu_id = rst.getString(("id"));
-    		  stu_selected_tea = rst.getString("selected_tea");
-    		  stu_selected_me = rst.getString("selected_me");
+    		  stu_name = rst2.getString("name");
+    		  stu_id = rst2.getString(("id"));
+    		  stu_selected_tea = rst2.getString("selected_tea");
+    		  stu_selected_me = rst2.getString("selected_me");
+    		  stu_state=rst2.getString("state");
     	      }
-	          if(!stu_selected_tea.contains(tea_name+" "+tea_id))
-	        	  return "student not select";
-	          if(tea_selected_stu.contains(stu_name+" "+stu_id))
-		      		return "has selected";
-		      String stu_beiguan = stu_selected_me+"/"+stu_name+" "+stu_id;
+	          if(stu_state.equals("1"))
+	        	  return "has been selected";//该学生已经和导师完成互选了
+		      String stu_beiguan = stu_selected_me+"/"+tea_name+" "+tea_id;
+		             stu_selected_tea="/"+tea_name+" "+tea_id;
 		      String tea_guan = tea_selected_stu+"/"+stu_name+" "+stu_id;
-		      String sql_stu = "update stu_inf set selected_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
+		      String sql_stu = "update stu_inf set selected_me='"+stu_beiguan+"',selected_tea='"+stu_selected_tea+ "',state='1'"+" where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_stu='"+tea_guan+"',in_enrollment='"+tea_in_enrollment+"' where id='"+tea_id +"'";
 		      int i1=stmt.executeUpdate(sql_tea);
 	          int i2=stmt.executeUpdate(sql_stu);
@@ -260,6 +267,7 @@ public class My_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
+	      
 	return ret;
 	}
 	
@@ -330,6 +338,7 @@ public class My_stu implements Action {
 	      String am = null;
 	      String at = null;
 	      String st = null;
+	      String sm = null;
 	      try { 
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
@@ -345,19 +354,23 @@ public class My_stu implements Action {
 	        	 am = rst.getString("attentioned_me");
 	        	 at = rst.getString("attentioned_stu");
 	        	 st = rst.getString("selected_stu");
+	        	 sm = rst.getString("selected_me");
 	        	 stu.setAttentioned_me(am);
 	        	 stu.setAttentioned_tea(at);
 	        	 stu.setSelected_tea(st);
+	        	 stu.setSelected_me(sm);
 	          }
 	          //对字符串进行处理
 	          
 	          String aml[] = am.split("/");
 	          String atl[] = at.split("/");
 	          String stl[] = st.split("/");
+	          String sml[] = st.split("/");
 	          //提示信息的添加
 	          int len1 = aml.length;
 	          int len2 = atl.length;
 	          int len3 = stl.length;
+	          int len4 = sml.length;
 	          
 	          int i = 0;
 	        
@@ -386,7 +399,14 @@ public class My_stu implements Action {
 	        	 attention_me.add(t);
 	          }	  
 	          
-	          
+	          for(i=0;i<len4;i++)
+	          {
+	        	 Student t = new Student();
+	        	 String s[] = sml[i].split(" ");  
+	        	 t.setName(s[0]);
+	        	 t.setId(s[1]);
+	        	 selected_me.add(t);
+	          }	  
 
 	        	  
 
@@ -475,6 +495,18 @@ public class My_stu implements Action {
 	}
 	public void setStudent_id(String student_id) {
 		this.student_id = student_id;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public List<Student> getSelected_me() {
+		return selected_me;
+	}
+	public void setSelected_me(List<Student> selected_me) {
+		this.selected_me = selected_me;
 	}
 	
 	

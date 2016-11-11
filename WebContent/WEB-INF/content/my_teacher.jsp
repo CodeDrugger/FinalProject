@@ -141,7 +141,7 @@ a:hover, a:active, a:focus { /* 此组选择器将为键盘导航者提供与鼠
   	<s:iterator value = "attention_me" var = "am">
     <tr>
     <td><a href="Mytea_inf.action?tea_inf_id=${at.id}&id_in=${id_in}">${am.name}</a></td>
-    <td><form name="form4" method="post" action="Attention_tea">
+    <td><form name= "form4" method="post" action="Attention_tea">
     	<input type="hidden"  name="teacher_id" value="${am.id}" />
         <input type="hidden"  name="student_id" value="${id_in}" />
     	<input type="submit"  value="关注该导师"/>

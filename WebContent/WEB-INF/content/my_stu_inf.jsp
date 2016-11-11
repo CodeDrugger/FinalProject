@@ -39,9 +39,9 @@
 </p>
 <p>email：${stu.email}
 </p>
-<form name="form3" method="post" action="Mystu">
-  <input type="hidden"  name="id_in" value="${id_in}" />
-  <input type="submit"  value="返回"/>
+<form action="Mytea" method="get">
+<input type="hidden" name="id_in" value="${teacher_id}"/>
+<input type="submit" value="返回"/>
 </form>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

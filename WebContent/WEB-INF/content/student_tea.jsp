@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>导师信息</h1>
-      <p>照片：<img src=${visitfilel}  name="picture" width="32" height="32" id="picture" style="background-color: #999999" />
+      <p>照片：<img src="${teas.picture_name}" />
       </p>
       <p>已招人数/招生人数：${teas.in_enrollment}/${teas.enrollment}</p>
 <p>姓名：${teas.name}
