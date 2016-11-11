@@ -36,7 +36,7 @@ public class Change_tea implements Action {
 	      Connection con = null;
 	      Statement stmt = null;
 	      ResultSet rst = null;
-	      ResultSet rst2 = null;
+	      //ResultSet rst2 = null;
 	      try {
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {

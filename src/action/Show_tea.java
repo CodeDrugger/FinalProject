@@ -43,8 +43,8 @@ public class Show_tea implements Action {
 		    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
 		    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
 		          stmt=con.createStatement();   
-		          int i1=stmt.executeUpdate(sql_tea);
-		          int i2=stmt.executeUpdate(sql_stu);
+		          stmt.executeUpdate(sql_tea);
+		          stmt.executeUpdate(sql_stu);
 		          
 		          
 		        }catch (SQLException e) {

@@ -14,11 +14,12 @@ import domain.Student;
 import domain.Teacher;
 
 
+
 public class My_tea implements Action {
 	private String id_in;//主页面传入的学生id
 	
-	private Teacher teas;
-	private Student stu;
+	private Teacher teas = new Teacher();
+	private Student stu = new Student();
 	List<Teacher> select_tea = new ArrayList<>();
     List<Teacher> attention_tea = new ArrayList<>();
     List<Teacher> attention_me = new ArrayList<>();
@@ -83,8 +84,8 @@ public class My_tea implements Action {
 		      String stu_guan = stu_attentioned_tea+"/"+tea_name+" "+tea_id;
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
-		      int i1=stmt.executeUpdate(sql_tea);
-	          int i2=stmt.executeUpdate(sql_stu);
+		      stmt.executeUpdate(sql_tea);
+	          stmt.executeUpdate(sql_stu);
 	        	  
 
 	        }catch (SQLException e) {
@@ -155,8 +156,8 @@ public class My_tea implements Action {
 		      String stu_guan = stu_attentioned_tea.replaceAll("/"+tea_name+" "+tea_id,"");
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
-		      int i1=stmt.executeUpdate(sql_tea);
-	          int i2=stmt.executeUpdate(sql_stu);
+		      stmt.executeUpdate(sql_tea);
+	          stmt.executeUpdate(sql_stu);
 	        	  
 
 	        }catch (SQLException e) {
@@ -257,8 +258,8 @@ public class My_tea implements Action {
 		      String stu_guan = stu_selected_tea+"/"+tea_name+" "+tea_id;
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_me='"+tea_beiguan+"' where id='"+tea_id +"'";
-		      int i1=stmt.executeUpdate(sql_tea);
-	          int i2=stmt.executeUpdate(sql_stu);
+		      stmt.executeUpdate(sql_tea);
+	          stmt.executeUpdate(sql_stu);
 	        	  
 
 	        }catch (SQLException e) {
@@ -295,7 +296,7 @@ public class My_tea implements Action {
 	      String tea_name = null;
 	      String tea_id = null;
 	      String tea_selected_me = null;
-	      String tea_attentioned_stu = null;
+	      //String tea_attentioned_stu = null;
 	      //String tea_enrollment = null;
 	      //String tea_in_enrollment = null;
 	      //int tea_num1;
@@ -319,7 +320,7 @@ public class My_tea implements Action {
 	       		  tea_name = rst.getString("name");
 	       		  tea_id=rst.getString("id");
 	       		  tea_selected_me=rst.getString("selected_me");
-	       		  tea_attentioned_stu = rst.getString("attentioned_stu");
+	       		  //tea_attentioned_stu = rst.getString("attentioned_stu");
 	       		  //tea_enrollment = rst.getString("enrollment");
 	       		  //tea_in_enrollment = rst.getString("in_enrollment");
 	       	  }
@@ -358,8 +359,8 @@ public class My_tea implements Action {
 		      String stu_guan = stu_selected_tea.replaceAll("/"+tea_name+" "+tea_id,"");
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_me='"+tea_beiguan+"' where id='"+tea_id +"'";
-		      int i1=stmt.executeUpdate(sql_tea);
-	          int i2=stmt.executeUpdate(sql_stu);
+		      stmt.executeUpdate(sql_tea);
+	          stmt.executeUpdate(sql_stu);
 	        	  
 
 	        }catch (SQLException e) {

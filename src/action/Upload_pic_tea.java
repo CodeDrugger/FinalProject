@@ -12,7 +12,6 @@ import java.sql.Statement;
 
 import com.opensymphony.xwork2.Action;
 import org.apache.commons.io.FileUtils;
-import com.opensymphony.xwork2.ActionContext;
 
 public class Upload_pic_tea implements Action{
     private File image; //上传的文件
@@ -20,8 +19,8 @@ public class Upload_pic_tea implements Action{
     private String imageContentType; //文件类型
     private String id;
     private String visitfile;
-    
-    
+    private String message;
+     
 	public String execute() throws Exception {
 		String ret = SUCCESS;
         String realpath = "C:/Software/WebProject/FinalProject/WebContent/photos_tea/"+id;
@@ -32,7 +31,7 @@ public class Upload_pic_tea implements Action{
             	savefile.getParentFile().delete();
             savefile.getParentFile().mkdirs();
             FileUtils.copyFile(image, savefile);
-            ActionContext.getContext().put("message", "文件上传成功");
+            message="文件上传成功..";
         }
         visitfile = "photos_tea/"+id+"/"+id+".png";
         
@@ -70,52 +69,34 @@ public class Upload_pic_tea implements Action{
 	
         return ret;
     }
-
-
-
 	public File getImage() {
 		return image;
 	}
-
-
-
 	public void setImage(File image) {
 		this.image = image;
 	}
-
-
-
 	public String getImageFileName() {
 		return imageFileName;
 	}
-
-
-
 	public void setImageFileName(String imageFileName) {
 		this.imageFileName = imageFileName;
 	}
-
-
-
 	public String getImageContentType() {
 		return imageContentType;
 	}
-
-
-
 	public void setImageContentType(String imageContentType) {
 		this.imageContentType = imageContentType;
 	}
-
-
-
 	public String getId() {
 		return id;
 	}
-
-
-
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}    
 }

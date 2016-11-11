@@ -12,7 +12,6 @@ import java.sql.Statement;
 
 import com.opensymphony.xwork2.Action;
 import org.apache.commons.io.FileUtils;
-import com.opensymphony.xwork2.ActionContext;
 
 public class Upload_pic implements Action{
     private File image; //上传的文件

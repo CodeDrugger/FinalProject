@@ -6,7 +6,7 @@ import domain.Login;
 import service.LoginService;
 
 public class LoginAction implements Action {
-	private Login login = new Login();
+	private Login login;
 	private String id;
 	private String info = "";
 	

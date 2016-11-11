@@ -57,6 +57,7 @@ try {
 }
 %>
 您好，<a href="./Show_stu.action?stuc.id=${id }"><%=name%></a>
+<a href="./Mytea.action?id_in=${id}">11</a>
 推荐导师：
 <a href=""></a>
 </body>

@@ -81,8 +81,8 @@ public class My_stu implements Action {
 		      String tea_guan = tea_attentioned_stu+"/"+tea_name+" "+tea_id;
 		      String sql_stu = "update stu_inf set attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
-		      int i1=stmt.executeUpdate(sql_tea);
-	          int i2=stmt.executeUpdate(sql_stu);
+		      stmt.executeUpdate(sql_tea);
+	          stmt.executeUpdate(sql_stu);
 	        	  
 
 	        }catch (SQLException e) {
@@ -141,17 +141,17 @@ public class My_stu implements Action {
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
     	      {
-    		  stu_name = rst2.getString("name");
-    		  stu_id = rst2.getString(("id"));
-    		  stu_attentioned_me = rst2.getString("attentioned_me");
+	    		  stu_name = rst2.getString("name");
+	    		  stu_id = rst2.getString(("id"));
+	    		  stu_attentioned_me = rst2.getString("attentioned_me");
     	      }
 		      String stu_beiguan = stu_attentioned_me.replaceAll("/"+tea_name+" "+tea_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_name+" "+stu_id,"");
 		      String sql_stu = "update stu_inf set attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
-		      int i1=stmt.executeUpdate(sql_tea);
-	          int i2=stmt.executeUpdate(sql_stu);
+		      stmt.executeUpdate(sql_tea);
+	          stmt.executeUpdate(sql_stu);
 	        	  
 
 	        }catch (SQLException e) {
@@ -182,13 +182,13 @@ public class My_stu implements Action {
 	      ResultSet rst2 = null;
 	      String stu_name = null;
 	      String stu_id = null;
-	      String stu_attentioned_me = null;
-	      String stu_attentioned_tea = null;
+	      //String stu_attentioned_me = null;
+	     // String stu_attentioned_tea = null;
 	      String stu_selected_tea = null;
 	      String stu_selected_me =null;
 	      String tea_name = null;
 	      String tea_id = null;
-	      String tea_attentioned_stu = null;
+	      //String tea_attentioned_stu = null;
 	      String tea_selected_stu = null;
 	      String tea_enrollment = null;
 	      String tea_in_enrollment = null;
@@ -214,7 +214,7 @@ public class My_stu implements Action {
 	       		  tea_name = rst.getString("name");
 	       		  tea_id=rst.getString("id");
 	       		  tea_selected_stu=rst.getString("selected_stu");
-	       		  tea_attentioned_stu = rst.getString("attentioned_stu");
+	       		  //tea_attentioned_stu = rst.getString("attentioned_stu");
 	       		  tea_enrollment = rst.getString("enrollment");
 	       		  tea_in_enrollment = rst.getString("in_enrollment");
 	       	  }
@@ -235,11 +235,11 @@ public class My_stu implements Action {
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
     	      {
-    		  stu_name = rst2.getString("name");
-    		  stu_id = rst2.getString(("id"));
-    		  stu_selected_tea = rst2.getString("selected_tea");
-    		  stu_selected_me = rst2.getString("selected_me");
-    		  stu_state=rst2.getString("state");
+	    		  stu_name = rst2.getString("name");
+	    		  stu_id = rst2.getString(("id"));
+	    		  stu_selected_tea = rst2.getString("selected_tea");
+	    		  stu_selected_me = rst2.getString("selected_me");
+	    		  stu_state=rst2.getString("state");
     	      }
 	          if(stu_state.equals("1"))
 	          {
@@ -251,8 +251,8 @@ public class My_stu implements Action {
 		      String tea_guan = tea_selected_stu+"/"+stu_name+" "+stu_id;
 		      String sql_stu = "update stu_inf set selected_me='"+stu_beiguan+"',selected_tea='"+stu_selected_tea+ "',state='1'"+" where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_stu='"+tea_guan+"',in_enrollment='"+tea_in_enrollment+"' where id='"+tea_id +"'";
-		      int i1=stmt.executeUpdate(sql_tea);
-	          int i2=stmt.executeUpdate(sql_stu);
+		      stmt.executeUpdate(sql_tea);
+	          stmt.executeUpdate(sql_stu);
 	        	  
 
 	        }catch (SQLException e) {

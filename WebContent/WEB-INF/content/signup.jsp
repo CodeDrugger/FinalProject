@@ -55,9 +55,9 @@ pageEncoding="utf8"%>
                 <input type="text" name="login.username" class="form-control" placeholder="用户名">
                 <input type="text" name="login.password" class="form-control" placeholder="密码">
 
-                <select class="selectpicker form-control" data-style="btn-primary" style="margin-bottom: 5%">
-                    <option value="导师">导师</option>
-                    <option value="学生">学生</option>
+                <select name="login.userclass" class="selectpicker form-control" data-style="btn-primary" style="margin-bottom: 5%">
+                    <option value="1">导师</option>
+                    <option value="2">学生</option>
                 </select>
                 <input type="submit" value="注册" class="form-control">
             </form>

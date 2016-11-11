@@ -39,10 +39,16 @@ public class SignUpService {
 			    		"','" + String.valueOf(id) +
 			    	    "')");
 			    int sta = 0;
-			    if (login.getUserclass().equals("1"))
-			    	sta = stmt.executeUpdate("insert into tea_inf (id) values ('" + String.valueOf(id) + "')");
-			    else if(login.getUserclass().equals("2"))
-			    	sta = stmt.executeUpdate("insert into stu_inf (id) values ('" + String.valueOf(id) + "')");
+			    if (login.getUserclass().equals("2"))
+			    	sta = stmt.executeUpdate("insert into stu_inf "
+			    			+ "(id,selected_tea,selected_me,attentioned_tea,attentioned_me) "
+			    			+ "values "
+			    			+ "('" + String.valueOf(id) + "',' ',' ',' ',' ')");
+			    else if(login.getUserclass().equals("1"))
+			    	sta = stmt.executeUpdate("insert into tea_inf "
+			    			+ "(id,enrollment,in_enrollment,selected_stu,selected_me,attentioned_stu,attentioned_me) "
+			    			+ "values "
+			    			+ "('" + String.valueOf(id) + "','20','0',' ',' ',' ',' ')");
 			    int stat = stmt.executeUpdate("update id_alloc set id='" + String.valueOf(id + 1) + "'");
 			    if (state == 0 || stat == 0 || sta == 0)
 			    {
