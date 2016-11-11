@@ -37,7 +37,7 @@ try {
   			wish_major = rs.getString("wish_major");
   		}
   	}
-  	/*ResultSet rst = stmt.executeQuery("select * from tea_inf where major='" + wish_major + "' order by rate desc");
+  	ResultSet rst = stmt.executeQuery("select * from tea_inf where major='" + wish_major + "' order by rate desc");
   	int i = 0;
   	while (rst.next())
   	{
@@ -49,7 +49,7 @@ try {
   		}
   		else
   			break;
-  	}*/
+  	}
   	connect.close();
 } catch (SQLException e) {
   	e.printStackTrace();
