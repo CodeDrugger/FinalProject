@@ -11,7 +11,7 @@
 <body>
 
     <h1>学生信息</h1>
-      <p>照片：<img src="" alt="" name="picture" width="120" height="32" id="picture" style="background-color: #999999" />
+      <p>照片：<img src="${stus.picture_name}" />
       </p>
       <p>姓名：${stus.name}
       </p>

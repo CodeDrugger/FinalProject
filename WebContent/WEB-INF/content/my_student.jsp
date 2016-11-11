@@ -99,23 +99,38 @@ a:hover, a:active, a:focus { /* 此组选择器将为键盘导航者提供与鼠
     </tr>
     </s:iterator>
     </table>
-    
-    
-    <h2>我关注的学生</h2>
+    <h2>选择我的学生</h2>
     <table width = "300" border = "1">
 	<tr>
 	<th>学生姓名</th>
     <th>操作</th>
     <th>操作</th>
 	</tr>
+  	<s:iterator value = "selected_me" var = "sm">
+    <tr>
+    <td><a href="Mystu_inf.action?stu_inf_id=${sm.id}&id_in=${id_in}">${sm.name}</a></td>
+    <td><form name="form3" method="post" action="Choose_stu">
+    	<input type="hidden"  name="teacher_id" value="${id_in}" />
+        <input type="hidden"  name="student_id" value="${sm.id}" />
+  		<input type="submit"  value="选择该学生"/>
+		</form></td>
+    <td><form name="form3" method="post" action="Tea_cancel_attention">
+    	<input type="hidden"  name="teacher_id" value="${id_in}" />
+        <input type="hidden"  name="student_id" value="${sm.id}" />
+  		<input type="submit"  value="取消关注"/>
+		</form></td>
+    </tr>
+    </s:iterator>
+    </table>
+    <h2>我关注的学生</h2>
+    <table width = "300" border = "1">
+	<tr>
+	<th>学生姓名</th>
+    <th>操作</th>
+	</tr>
   	<s:iterator value = "attention_stu" var = "at">
     <tr>
     <td><a href="Mystu_inf.action?stu_inf_id=${at.id}&id_in=${id_in}">${at.name}</a></td>
-    <td><form name="form3" method="post" action="Choose_stu">
-    	<input type="hidden"  name="teacher_id" value="${id_in}" />
-        <input type="hidden"  name="student_id" value="${am.id}" />
-  		<input type="submit"  value="选择该学生"/>
-		</form></td>
     <td><form name="form3" method="post" action="Tea_cancel_attention">
     	<input type="hidden"  name="teacher_id" value="${id_in}" />
         <input type="hidden"  name="student_id" value="${am.id}" />

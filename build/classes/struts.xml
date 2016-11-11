@@ -16,16 +16,16 @@
             <result name="success">/WEB-INF/content/my_tea_inf.jsp</result>
         </action>
         <action name="Stu_cancel_choose" class="action.My_tea" method="Cancel_choose">
-            <result name="success">/WEB-INF/content/my_teacher.jsp</result>
+            <result name="*">/WEB-INF/content/My_tea_message.jsp</result>
         </action>
         <action name="Choose_tea" class="action.My_tea" method="Choose_tea">
-            <result name="success">/WEB-INF/content/my_tea_inf.jsp</result>
+            <result name="*">/WEB-INF/content/My_tea_message.jsp</result>
         </action>
         <action name="Stu_cancel_attention" class="action.My_tea" method="Cancel_attention">
-            <result name="success">/WEB-INF/content/my_tea_inf.jsp</result>
+            <result name="*">/WEB-INF/content/My_tea_message.jsp</result>
         </action>
         <action name="Attention_tea" class="action.My_tea" method="Attention_tea">
-            <result name="success">/WEB-INF/content/my_tea_inf.jsp</result>
+            <result name="*">/WEB-INF/content/My_tea_message.jsp</result>
         </action>
         
         <!-- my_student界面 -->
@@ -36,13 +36,13 @@
             <result name="success">/WEB-INF/content/my_stu_inf.jsp</result>
         </action>
         <action name="Choose_stu" class="action.My_stu" method="Choose_stu">
-            <result name="success">/WEB-INF/content/my_stu_inf.jsp</result>
+            <result name="*">/WEB-INF/content/My_stu_message.jsp</result>
         </action>
         <action name="Tea_cancel_attention" class="action.My_stu" method="Cancel_attention">
-            <result name="success">/WEB-INF/content/my_stu_inf.jsp</result>
+            <result name="*">/WEB-INF/content/My_stu_message.jsp</result>
         </action>
         <action name="Attention_stu" class="action.My_stu" method="Attention_stu">
-            <result name="success">/WEB-INF/content/my_stu_inf.jsp</result>
+            <result name="*">/WEB-INF/content/My_stu_message.jsp</result>
         </action>
 
 
