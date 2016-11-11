@@ -9,6 +9,7 @@
 </head>
 <body>
 <form action="SearchStu" method="get">
+  <input type="hidden" name="id" value="${id}">
   <input type="hidden" name="search.user" value="1">
   <input type="text" name="search.keyword" value="">
   <input type="submit" value="给我搜">

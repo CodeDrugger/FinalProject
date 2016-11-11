@@ -75,7 +75,7 @@ public class My_tea implements Action {
       	      }
 	          if(stu_attentioned_tea.contains(tea_name+" "+tea_id))
 		      {
-	        	  message = "已经选过该导师！";
+	        	  message = "已经选过该导师";
 	        	  return "has attentioned";
 		      }
 		      String tea_beiguan = tea_attentioned_me+"/"+stu_name+" "+stu_id;
@@ -90,7 +90,6 @@ public class My_tea implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
-	            message="关注失败！数据库语句出现错误!";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -104,7 +103,7 @@ public class My_tea implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	message = "关注成功!";
+	message = "成功关注该导师";
 	return ret;
 	
 	}
@@ -163,7 +162,6 @@ public class My_tea implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
-	            message = "取消选择失败,数据库出现错误!";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -177,7 +175,7 @@ public class My_tea implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	message = "取消关注成功!";
+	message = "已取消关注该导师";
 	return ret;
 	}
 	public String Choose_tea(){
@@ -247,7 +245,7 @@ public class My_tea implements Action {
     	      }
 	          if(stu_state.equals("1"))
 	          {
-	        	  message="你已经和导师完成互选";
+	        	  message="你已经和其他导师完成互选";
 	        	  return "has been selected";
 	          }
 	          if(stu_selected_tea.contains(tea_name+" "+tea_id))
@@ -266,7 +264,6 @@ public class My_tea implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
-	            message="选择失败,数据库语句执行失败";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -280,7 +277,7 @@ public class My_tea implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	message="选择成功";
+	message="选择导师成功";
 	return ret;
 	}
 	
@@ -346,8 +343,12 @@ public class My_tea implements Action {
 	        	  stu_state=rst2.getString("state");
 	          }
 	          
-	          if(!stu_selected_tea.contains(tea_name+" "+tea_id))
-		      		return "not selected";
+	          /*if(!stu_selected_tea.contains(tea_name+" "+tea_id))
+		      {
+	        	  setMessage("");
+	        	  return "not selected";
+		      }
+		      */
 	          if(stu_state.equals("1"))
 	          {
 	        	  message="你已经和导师完成互选";
@@ -377,6 +378,7 @@ public class My_tea implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
+	setMessage("已取消选择该导师");
 	return ret;
 	}
 	

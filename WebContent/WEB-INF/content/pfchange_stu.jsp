@@ -58,10 +58,6 @@
             <input type="hidden" name="stuc.id" value="${stuc.id}" />
             <input type="submit" value="提交" /></p>
         </form>
-        <form name="form4" method="post" action="Return_stu_search">
-          <input type="submit" value="返回"></input></form>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
   </body>
 
 </html>

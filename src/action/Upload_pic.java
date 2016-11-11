@@ -20,6 +20,7 @@ public class Upload_pic implements Action{
     private String imageContentType; //文件类型
     private String id;
     private String visitfile;
+    private String message;
     
     
 	public String execute() throws Exception {
@@ -33,7 +34,7 @@ public class Upload_pic implements Action{
             	savefile.getParentFile().delete();
             savefile.getParentFile().mkdirs();
             FileUtils.copyFile(image, savefile);
-            ActionContext.getContext().put("message", "文件上传成功");
+            message="文件上传成功.";
         }
         visitfile = "photos/"+id+"/"+id+".png";
         
@@ -118,5 +119,18 @@ public class Upload_pic implements Action{
 
 	public void setId(String id) {
 		this.id = id;
-	}    
+	}
+
+
+
+	public String getMessage() {
+		return message;
+	}
+
+
+
+	public void setMessage(String message) {
+		this.message = message;
+	}   
+	
 }

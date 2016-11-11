@@ -25,13 +25,13 @@
 <p>专业：: ${teas.major}</p>
 <p>研究方向：${teas.research_field}
 </p>
-<p>个人简介：${teas.zhibo}
+<p>个人简介：${teas.self_intro}
 </p>
 <p>电话：${teas.tel}
 </p>
       <p>email：${teas.email}
 </p>
-<form name="form4" method="post" action="Attention_tea">
+<form name="form4" method="post" action="stu_attention_tea">
   <p>
     <input type="submit"  value="关注该导师"/>
     <input type="hidden"  name="teas.name" value="${teas.name}"  />

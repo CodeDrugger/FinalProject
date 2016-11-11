@@ -39,7 +39,7 @@
 </p>
 <p>email：${stus.email}
 </p>
-<form id="form1" name="form1" method="post" action="Attention_stu">
+<form id="form1" name="form1" method="post" action="tea_attention_stu">
   <p>
     <input type="submit" value="关注该学生" />
    	<input type="hidden"  name="stus.name" value="${stus.name}"  />

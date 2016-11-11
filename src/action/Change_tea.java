@@ -93,7 +93,6 @@ public class Change_tea implements Action {
 	      String sql = "update tea_inf set "
 	    		+"sex='"+teac.getSex()+"',"
 	    	    +"name='"+teac.getName()+"',"
-	      		+"picture_name='"+teac.getPicture_name()+"',"
 	    		+"self_intro='"+teac.getSelf_intro()+"',"
 	      		+"research_field='"+teac.getResearch_field()+"',"
 	    		+"college='"+teac.getCollege()+"',"+"xueyuan='"+teac.getXueyuan()+"',"

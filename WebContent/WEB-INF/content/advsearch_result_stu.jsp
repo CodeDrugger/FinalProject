@@ -48,7 +48,7 @@
 <div>
   <s:iterator value="list" var="l" status="st">
     <div>
-	   <h3><a href="">${l.name}</a></h3>
+	   <h3><a href="./Show_stu_tea?id_in=${id}&teas.id=${l.id}">${l.name}</a></h3>
 	   <div>
 		 <p>姓名：${l.name}</p>
 		 <p>学院：${l.xueyuan}</p>

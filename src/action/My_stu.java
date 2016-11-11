@@ -73,7 +73,7 @@ public class My_stu implements Action {
       	      }
 	          if(tea_attentioned_stu.contains(stu_name+" "+stu_id))
 		      {
-	        	  message="已经关注该学生";
+	        	  message="已关注该学生";
 	        	  return "has attentioned";
 		      }
 		      String stu_beiguan = stu_attentioned_me+"/"+stu_name+" "+stu_id;
@@ -88,7 +88,6 @@ public class My_stu implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
-	            message="数据库语句出现错误";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -102,7 +101,7 @@ public class My_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	message="关注成功";
+	message="成功关注该学生";
 	return ret;
 	
 	}
@@ -158,7 +157,6 @@ public class My_stu implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
-	            message="数据库执行出错";
 	            ret = ERROR;
 	        }finally{
 	            try{
@@ -172,7 +170,7 @@ public class My_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	message="取消关注成功";
+	message="已取消关注该学生";
 	return ret;
 	}
 	public String Choose_stu(){
@@ -224,7 +222,10 @@ public class My_stu implements Action {
 	          tea_num1 = Integer.parseInt(tea_in_enrollment);
 	          tea_num2 = Integer.parseInt(tea_enrollment);
 	          if(tea_num1>=tea_num2)
+	          {
+	        	  message = "您的名额已满";
 	        	  return "teacher full";
+	          }
 	          else 
 	          {
 	        	  tea_num1++;
@@ -241,7 +242,10 @@ public class My_stu implements Action {
     		  stu_state=rst2.getString("state");
     	      }
 	          if(stu_state.equals("1"))
+	          {
+	        	  setMessage("该学生已完成互选");
 	        	  return "has been selected";//该学生已经和导师完成互选了
+	          }
 		      String stu_beiguan = stu_selected_me+"/"+tea_name+" "+tea_id;
 		             stu_selected_tea="/"+tea_name+" "+tea_id;
 		      String tea_guan = tea_selected_stu+"/"+stu_name+" "+stu_id;
@@ -267,7 +271,7 @@ public class My_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	      
+	setMessage("选择学生成功");      
 	return ret;
 	}
 	
