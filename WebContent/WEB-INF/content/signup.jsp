@@ -36,6 +36,9 @@ pageEncoding="utf8"%>
             border-radius: 2px;
             border: none;
         }
+        select::hover {
+        	border: 0;
+        }
         </style>
     <title>注册</title>
 </head>
@@ -47,12 +50,15 @@ pageEncoding="utf8"%>
                 <span class="fa fa-user-circle-o"></span>
                 注册
             </h2>
+            ${info}
             <form action="SignUp" method="get" role="form">
                 <input type="text" name="login.username" class="form-control" placeholder="用户名">
                 <input type="text" name="login.password" class="form-control" placeholder="密码">
-                导师<input type="radio" name="login.userclass" value="1">
-                学生<input type="radio" name="login.userclass" value="2">
-				${info}
+                <select name="login.userclass" class="form-control" style="margin-bottom: 5%">
+                  <option value="1">导师</option>
+                  <option value="2">学生</option>
+                </select>
+				
                 <input type="submit" value="注册" class="form-control">
             </form>
         </div>

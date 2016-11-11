@@ -52,7 +52,7 @@
 	   <div>
 		 <p>姓名：${l.name}</p>
 		 <p>学院：${l.xueyuan}</p>
-		 <p>研究方向：${l.research_filed}</p>
+		 <p>研究方向：${l.research_field}</p>
 	   </div>
 	 </div>
   </s:iterator>
