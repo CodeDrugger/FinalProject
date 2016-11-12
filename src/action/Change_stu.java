@@ -142,7 +142,7 @@ public class Change_stu implements Action {
 	      Connection con = null;
 	      Statement stmt = null;
 	      //ResultSet rst = null;
-	      String realpath = "C:/Software/WebProject/FinalProject/WebContent/photos/"+id;
+	      String realpath = "C:/big/FinalProject/WebContent/photos/"+id;
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
 	      System.out.println("realpath: "+realpath);
 	      if (image != null) {

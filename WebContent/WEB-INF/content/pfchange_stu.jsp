@@ -75,7 +75,7 @@
                     <li><a href="#">关注我的</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./Show_stu.action?stus.id=${login.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
+                    <li><a href="./Show_stu.action?stuc.id=${login.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料">修改个人资料</a></li>
                     <li><a href="#">注销账户</a></li>
                 </ul>
             </div>
@@ -90,13 +90,11 @@
             </h1>
         </div>
         <div class="panel-body">
+            <form id="form1" name="form1" method="post" enctype="multipart/form-data" action="Change_stu">
             <div id="preview">
                 <img id="imghead" border=0 src="${stuc.picture_name}" width="120" height="180" />
             </div>
             <input type="file" onchange="previewImage(this)" name="image">
-            <input type="hidden" name="id" value="${stuc.id}">
-            
-            <form id="form1" name="form1" method="post" action="Change_stu">
                 <p>
                     <label style="font-size: larger" class="labelst">姓名:</label>
                     <input name="stuc.name" type="text" id="name_stu" value="${stuc.name}" class="inputgg">

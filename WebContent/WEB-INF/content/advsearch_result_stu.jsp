@@ -48,6 +48,8 @@
 <div>
   <s:iterator value="list" var="l" status="st">
     <div>
+    ${id}
+    ${l.id}
 	   <h3><a href="./Show_stu_tea?id_in=${id}&teas.id=${l.id}">${l.name}</a></h3>
 	   <div>
 		 <p>姓名：${l.name}</p>
