@@ -28,45 +28,40 @@ pageEncoding="utf8"%>
 </head>
 <body>
  <%
-    String name = "点此完善信息";
-    String wish_major = "";
-    String[] reco_name= {"","","","",""};
-    String[] reco_id= {"","","","",""};
-    String id = (String)request.getAttribute("id");
-    try {
-    Class.forName("com.mysql.jdbc.Driver");
-    } catch (ClassNotFoundException e) {
-    e.printStackTrace();
-    }
-    try {
-    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
-    Statement stmt = connect.createStatement();
-    ResultSet rs = stmt.executeQuery("select * from stu_inf where id='"+ id + "'");
-    if (rs.next())
-    {
-    if (rs.getString("name").length() > 0)
-    {
-    name = rs.getString("name");
-    wish_major = rs.getString("wish_major");
-    }
-    }
-    ResultSet rst = stmt.executeQuery("select * from tea_inf where major='" + wish_major + "' order by rate desc");
-    int i = 0;
-    while (rst.next())
-    {
-    if (i < 5)
-    {
-    reco_name[i] = rst.getString("name");
-    reco_id[i] = rst.getString("id");
-    i++;
-    }
-    else
-    break;
-    }
-    connect.close();
-    } catch (SQLException e) {
-    e.printStackTrace();
-    }
+ String name = "点此完善信息";
+ String wish_major = "";
+ String[] reco_name = {"", "", "", "", ""};
+ String[] reco_id = {"", "", "", "", ""};
+ String id = (String) request.getAttribute("id");
+ try {
+     Class.forName("com.mysql.jdbc.Driver");
+ } catch (ClassNotFoundException e) {
+     e.printStackTrace();
+ }
+ try {
+     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+     Statement stmt = connect.createStatement();
+     ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
+     if (rs.next()) {
+         if (rs.getString("name").length() > 0) {
+             name = rs.getString("name");
+             wish_major = rs.getString("wish_major");
+         }
+     }
+     ResultSet rst = stmt.executeQuery("select * from tea_inf where major='" + wish_major + "' order by rate desc");
+     int i = 0;
+     while (rst.next()) {
+         if (i < 5) {
+             reco_name[i] = rst.getString("name");
+             reco_id[i] = rst.getString("id");
+             i++;
+         } else
+             break;
+     }
+     connect.close();
+ } catch (SQLException e) {
+     e.printStackTrace();
+ }
     %>
 <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">

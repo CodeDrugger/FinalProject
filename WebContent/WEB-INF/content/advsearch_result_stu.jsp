@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf8"
+<%@ page language="java" contentType="text/html; charset=utf8" import="java.sql.*"
     pageEncoding="utf8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
@@ -32,7 +32,7 @@
         .templeft{
             margin-left: 10%;
             position : absolute;
-            width: 60%;
+            width: 50%;
             left:0px;
         }
         .shortselect{
@@ -69,6 +69,28 @@
 <script src="js/advsearch_result_tea.js"></script>
 </head>
 <body>
+<c:set var="id" value="${id}" scope="request"></c:set>
+	<%
+	String id = (String)request.getAttribute("id");
+	String name = "点此完善信息";
+	try {
+	    Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+	    e.printStackTrace();
+	}
+	try {
+	    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+	    Statement stmt = connect.createStatement();
+	    ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
+	    if (rs.next()) {
+	        if (rs.getString("name").length() > 0) {
+	        }
+	    }
+	    connect.close();
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	%>
 	<nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -88,14 +110,12 @@
                 <li><a href="#">关注我的</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="./Show_stu.action?stus.id=${login.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
+                <li><a href="./Show_stu.action?stus.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
                 <li><a href="#">注销账户</a></li>
             </ul>
         </div>
     </div>
 </nav>
-<c:set var="id" value="${id }" scope="request"></c:set>
-<%String id = (String)request.getAttribute("id");%>
 <div class="container templeft">
     <s:iterator value="list" var="l" status="st">
         <div class="ggo">
@@ -103,7 +123,10 @@
             <div>
                 <span>姓名：${l.name}</span>
                 <span>学院：${l.xueyuan}</span>
-                <span>研究方向：${l.research_filed}</span>
+                <span>研究方向：${l.research_field}</span>
+            </div>
+            <div>
+            	<p>&nbsp;&nbsp;&nbsp;&nbsp;${l.self_intro}</p>
             </div>
         </div>
     </s:iterator>

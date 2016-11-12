@@ -1,7 +1,7 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -52,6 +52,29 @@
 </head>
 
 <body>
+<c:set var="id" value="${teac.id}" scope="request"></c:set>
+	<%
+	String id = (String)request.getAttribute("id");
+	String name = "点此完善信息";
+	try {
+	    Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+	    e.printStackTrace();
+	}
+	try {
+	    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+	    Statement stmt = connect.createStatement();
+	    ResultSet rs = stmt.executeQuery("select * from tea_inf where id='" + id + "'");
+	    if (rs.next()) {
+	        if (rs.getString("name").length() > 0) {
+	        	name = rs.getString("name");
+	        }
+	    }
+	    connect.close();
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	%>
 <div class="header">
     <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -70,7 +93,7 @@
                     <li><a href="#">关注我的</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./Show_stu.action?stus.id=${login.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料">个人资料</a></li>
+                    <li><a href="./Show_tea.action?teac.id=${teac.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
                     <li><a href="#">注销账户</a></li>
                 </ul>
             </div>
@@ -133,10 +156,11 @@
             </form>
         </div>
     </div>
+</div>
     <script type="text/javascript">
         function previewImage(file)
         {
-            var MAXWIDTH  = 260;
+            var MAXWIDTH  = 120;
             var MAXHEIGHT = 180;
             var div = document.getElementById('preview');
             if (file.files && file.files[0])

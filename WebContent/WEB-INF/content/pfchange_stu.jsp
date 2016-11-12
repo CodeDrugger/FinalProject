@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" pageEncoding="utf-8" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" pageEncoding="utf-8" %>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -11,6 +11,63 @@
     <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/font-awesome.css">
     <title>更改学生信息</title>
+    <script type="text/javascript">
+    function previewImage(file)
+    {
+        var MAXWIDTH  = 120;
+        var MAXHEIGHT = 180;
+        var div = document.getElementById('preview');
+        if (file.files && file.files[0])
+        {
+            div.innerHTML ='<img id=imghead>';
+            var img = document.getElementById('imghead');
+            img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                img.width  =  rect.width;
+                img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+                img.style.marginTop = rect.top+'px';
+            }
+            var reader = new FileReader();
+            reader.onload = function(evt){img.src = evt.target.result;}
+            reader.readAsDataURL(file.files[0]);
+        }
+        else //兼容IE
+        {
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img id=imghead>';
+            var img = document.getElementById('imghead');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+        }
+    }
+    function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+        var param = {top:0, left:0, width:width, height:height};
+        if( width>maxWidth || height>maxHeight )
+        {
+            rateWidth = width / maxWidth;
+            rateHeight = height / maxHeight;
+
+            if( rateWidth > rateHeight )
+            {
+                param.width =  maxWidth;
+                param.height = Math.round(height / rateWidth);
+            }else
+            {
+                param.width = Math.round(width / rateHeight);
+                param.height = maxHeight;
+            }
+        }
+
+        param.left = Math.round((maxWidth - param.width) / 2);
+        param.top = Math.round((maxHeight - param.height) / 2);
+        return param;
+    }
+	</script>
     <script src="js/pfchange.js" charset="utf-8"></script>
     <style>
         #preview{width:260px;height:190px;border:0;overflow:hidden;}
@@ -55,6 +112,29 @@
     </style>
 </head>
 <body>
+<c:set var="id" value="${stuc.id}" scope="request"></c:set>
+	<%
+	String id = (String)request.getAttribute("id");
+	String name = "点此完善信息";
+	try {
+	    Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+	    e.printStackTrace();
+	}
+	try {
+	    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+	    Statement stmt = connect.createStatement();
+	    ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
+	    if (rs.next()) {
+	        if (rs.getString("name").length() > 0) {
+	        	name = rs.getString("name");
+	        }
+	    }
+	    connect.close();
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	%>
 <div class="header">
     <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -75,7 +155,7 @@
                     <li><a href="#">关注我的</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./Show_stu.action?stus.id=${login.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
+                    <li><a href="./Show_stu.action?stuc.id=${stuc.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
                     <li><a href="#">注销账户</a></li>
                 </ul>
             </div>
@@ -147,7 +227,7 @@
                     <input name="stuc.email" type="text" value="${stuc.email}" class="inputgg"/></p>
                 <p>
                     <label style="font-size: larger;margin-right: 8%; margintop :0px;">个人简介:</label>
-                    <textarea name="stuc.self_intro" type="text" value="${stuc.self_intro}" class="inputgg" rowa=5></textarea>
+                    <textarea name="stuc.self_intro" value="${stuc.self_intro}" class="inputgg" rows=5></textarea>
                 </p>
                 <p>
                     <input type="hidden" name="id" value="${stuc.id}" />
@@ -158,64 +238,6 @@
     </div>
 
 </div>
-<script type="text/javascript">
-    function previewImage(file)
-    {
-        var MAXWIDTH  = 260;
-        var MAXHEIGHT = 180;
-        var div = document.getElementById('preview');
-        if (file.files && file.files[0])
-        {
-            div.innerHTML ='<img id=imghead>';
-            var img = document.getElementById('imghead');
-            img.onload = function(){
-                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
-                img.width  =  rect.width;
-                img.height =  rect.height;
-//                 img.style.marginLeft = rect.left+'px';
-                img.style.marginTop = rect.top+'px';
-            }
-            var reader = new FileReader();
-            reader.onload = function(evt){img.src = evt.target.result;}
-            reader.readAsDataURL(file.files[0]);
-        }
-        else //兼容IE
-        {
-            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
-            file.select();
-            var src = document.selection.createRange().text;
-            div.innerHTML = '<img id=imghead>';
-            var img = document.getElementById('imghead');
-            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
-            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
-            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
-            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
-        }
-    }
-    function clacImgZoomParam( maxWidth, maxHeight, width, height ){
-        var param = {top:0, left:0, width:width, height:height};
-        if( width>maxWidth || height>maxHeight )
-        {
-            rateWidth = width / maxWidth;
-            rateHeight = height / maxHeight;
-
-            if( rateWidth > rateHeight )
-            {
-                param.width =  maxWidth;
-                param.height = Math.round(height / rateWidth);
-            }else
-            {
-                param.width = Math.round(width / rateHeight);
-                param.height = maxHeight;
-            }
-        }
-
-        param.left = Math.round((maxWidth - param.width) / 2);
-        param.top = Math.round((maxHeight - param.height) / 2);
-        return param;
-    }
-</script>
-
 </body>
 
 </html>
