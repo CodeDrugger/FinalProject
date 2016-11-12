@@ -1,11 +1,14 @@
 package action;
 
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.apache.commons.io.FileUtils;
 
 import com.opensymphony.xwork2.Action;
 
@@ -14,7 +17,52 @@ import domain.Student;
 public class Change_stu implements Action {
 	private Student stuc;
 	private String id;
+	private String message;
 	
+	private File image; //上传的文件
+    private String imageFileName; //文件名称
+    private String imageContentType; //文件类型
+    private String visitfile;
+	public String getMessage() {
+		return message;
+	}
+	
+	public File getImage() {
+		return image;
+	}
+
+	public void setImage(File image) {
+		this.image = image;
+	}
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
+	}
+
+	public String getImageContentType() {
+		return imageContentType;
+	}
+
+	public void setImageContentType(String imageContentType) {
+		this.imageContentType = imageContentType;
+	}
+
+	public String getVisitfile() {
+		return visitfile;
+	}
+
+	public void setVisitfile(String visitfile) {
+		this.visitfile = visitfile;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -94,6 +142,19 @@ public class Change_stu implements Action {
 	      Connection con = null;
 	      Statement stmt = null;
 	      //ResultSet rst = null;
+	      String realpath = "C:/big/FinalProject/WebContent/photos/"+id;
+	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
+	      System.out.println("realpath: "+realpath);
+	      if (image != null) {
+	         File savefile = new File(new File(realpath), id+".png");
+	      if (savefile.getParentFile().exists())
+	         savefile.getParentFile().delete();
+	      savefile.getParentFile().mkdirs();
+	      FileUtils.copyFile(image, savefile);
+	      message="文件上传成功.";
+	        }
+	      visitfile = "photos/"+id+"/"+id+".png";
+	      
 	      String sql = "update stu_inf set "
 	      		  + "name='"+stuc.getName()+"',"
 	    		  +"sex='"+stuc.getSex()+"',"
@@ -107,7 +168,8 @@ public class Change_stu implements Action {
 	    		  +"honor='"+stuc.getHonor()+"',"
 	      		  +"self_intro='"+stuc.getSelf_intro()+"',"
 	    		  +"tel='"+stuc.getTel()+"',"
-	      		  +"email='"+stuc.getEmail()+"'" 
+	      		  +"email='"+stuc.getEmail()+"'," 
+	      		  +"picture_name='"+visitfile+"'"
 	    		  + " where id='"+stuc.getId() +"'";
 	      try {
 				Class.forName("com.mysql.jdbc.Driver");

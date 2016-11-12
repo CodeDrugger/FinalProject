@@ -33,13 +33,13 @@
 </p>
 <form name="form4" method="post" action="stu_attention_tea">
   <p>
-    <input type="submit"  value="关注该导师"/>
-    <input type="hidden"  name="teas.name" value="${teas.name}"  />
+  	<input type="hidden"  name="teas.name" value="${teas.name}"  />
     <input type="hidden"  name="teas.id" value="${teas.id}"  />
     <input type="hidden"  name="teas.attentioned_me" value="${teas.attentioned_me}" />
     <input type="hidden"  name="stu_select.name" value="${stu_name}"  />
     <input type="hidden"  name="stu_select.id" value="${stu_id}"  />
     <input type="hidden"  name="stu_select.attentioned_tea" value="${stu_attentioned_tea}"  />
+    <input type="submit"  value="关注该导师"/>
   </p>
 </form>
 <form name="form3" method="post" action="Return_stu_search">
