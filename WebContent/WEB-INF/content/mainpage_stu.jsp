@@ -5,7 +5,6 @@ pageEncoding="utf8"%>
 <html>
 <head>
     <title></title>
-    <script src="js/advsearch_result_tea.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
@@ -78,7 +77,7 @@ pageEncoding="utf8"%>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="mainpage_stu.html">主页</a>
+            <a class="navbar-brand" href="./mainpage_stu.action">主页</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,10 +99,10 @@ pageEncoding="utf8"%>
     <form action="SearchStu" method="get" class="mmm">
         <input type="hidden" name="id" value="${id}" style="width:50%;height:50px">
         <input type="hidden" name="search.user" value="1" style="width:50%;height:50px">
-        <input type="text" name="search.keyword" value="" style="width:50%;height:50px">
+        <input type="text" name="search.keyword" value="" style="width:50%;height:50px;padding-left: 5px">
         <input type="submit" value="给我搜" style="width:10%;height:50px">
     </form>
-    <c:set var="id" value="${login.id }" scope="request"></c:set>
+    <c:set var="id" value="${id }" scope="request"></c:set>
    
     推荐导师：
     <a href=""></a>

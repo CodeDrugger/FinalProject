@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
     pageEncoding="utf8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,10 +46,12 @@
   <input type="text" name="advsch.keyword">
   <input type="submit" value="给我搜">
 </form>
+<c:set var="id" value="${id }" scope="request"></c:set>
+<%String id = (String)request.getAttribute("id");%>
 <div>
   <s:iterator value="list" var="l" status="st">
     <div>
-	   <h3><a href="./Show_stu_tea?id_in=${id}&teas.id=${l.id}">${l.name}</a></h3>
+	   <h3><a href="./Show_stu_tea?id_in=<%=id%>&teas.id=${l.id}">${l.name}</a></h3>
 	   <div>
 		 <p>姓名：${l.name}</p>
 		 <p>学院：${l.xueyuan}</p>

@@ -3,7 +3,7 @@ package domain;
 public class Questions {
 	private String id;
 	private String amount;
-	private String[] questions = new String[10];
+	private String[] questions;
 	public String getId() {
 		return id;
 	}
