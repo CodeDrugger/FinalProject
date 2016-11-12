@@ -5,7 +5,6 @@ pageEncoding="utf8"%>
 <html>
 <head>
     <title></title>
-    <script src="js/advsearch_result_tea.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
@@ -29,45 +28,40 @@ pageEncoding="utf8"%>
 </head>
 <body>
  <%
-    String name = "点此完善信息";
-    String wish_major = "";
-    String[] reco_name= {"","","","",""};
-    String[] reco_id= {"","","","",""};
-    String id = (String)request.getAttribute("id");
-    try {
-    Class.forName("com.mysql.jdbc.Driver");
-    } catch (ClassNotFoundException e) {
-    e.printStackTrace();
-    }
-    try {
-    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
-    Statement stmt = connect.createStatement();
-    ResultSet rs = stmt.executeQuery("select * from stu_inf where id='"+ id + "'");
-    if (rs.next())
-    {
-    if (rs.getString("name").length() > 0)
-    {
-    name = rs.getString("name");
-    wish_major = rs.getString("wish_major");
-    }
-    }
-    ResultSet rst = stmt.executeQuery("select * from tea_inf where major='" + wish_major + "' order by rate desc");
-    int i = 0;
-    while (rst.next())
-    {
-    if (i < 5)
-    {
-    reco_name[i] = rst.getString("name");
-    reco_id[i] = rst.getString("id");
-    i++;
-    }
-    else
-    break;
-    }
-    connect.close();
-    } catch (SQLException e) {
-    e.printStackTrace();
-    }
+ String name = "点此完善信息";
+ String wish_major = "";
+ String[] reco_name = {"", "", "", "", ""};
+ String[] reco_id = {"", "", "", "", ""};
+ String id = (String) request.getAttribute("id");
+ try {
+     Class.forName("com.mysql.jdbc.Driver");
+ } catch (ClassNotFoundException e) {
+     e.printStackTrace();
+ }
+ try {
+     Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+     Statement stmt = connect.createStatement();
+     ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
+     if (rs.next()) {
+         if (rs.getString("name").length() > 0) {
+             name = rs.getString("name");
+             wish_major = rs.getString("wish_major");
+         }
+     }
+     ResultSet rst = stmt.executeQuery("select * from tea_inf where major='" + wish_major + "' order by rate desc");
+     int i = 0;
+     while (rst.next()) {
+         if (i < 5) {
+             reco_name[i] = rst.getString("name");
+             reco_id[i] = rst.getString("id");
+             i++;
+         } else
+             break;
+     }
+     connect.close();
+ } catch (SQLException e) {
+     e.printStackTrace();
+ }
     %>
 <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -78,7 +72,7 @@ pageEncoding="utf8"%>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="mainpage_stu.html">主页</a>
+            <a class="navbar-brand" href="./mainpage_stu.action">主页</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,10 +94,10 @@ pageEncoding="utf8"%>
     <form action="SearchStu" method="get" class="mmm">
         <input type="hidden" name="id" value="${id}" style="width:50%;height:50px">
         <input type="hidden" name="search.user" value="1" style="width:50%;height:50px">
-        <input type="text" name="search.keyword" value="" style="width:50%;height:50px">
+        <input type="text" name="search.keyword" value="" style="width:50%;height:50px;padding-left: 5px">
         <input type="submit" value="给我搜" style="width:10%;height:50px">
     </form>
-    <c:set var="id" value="${login.id }" scope="request"></c:set>
+    <c:set var="id" value="${id }" scope="request"></c:set>
    
     推荐导师：
     <a href=""></a>

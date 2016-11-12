@@ -119,7 +119,11 @@
             <result name="signed">/WEB-INF/content/signup.jsp</result>
         </action>
 		
-		<action name="Create_ques" class="action.Create_ques"><!-- 问卷bug:跳转之后没有id！！ -->
+		<action name="My_ques" class="action.My_ques"><!-- 我的问卷-->
+            <result name="success">/WEB-INF/content/create_questions.jsp</result>
+        </action>
+		
+		<action name="Create_ques" class="action.Create_ques"><!-- 我的问卷-->
             <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
         </action>
 		
