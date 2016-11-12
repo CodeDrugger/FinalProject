@@ -16,6 +16,7 @@
     </div>
   </div>
   <input type="button" value="新增" onclick="newLine()">
+  <input type="button" value="删除" onclick="removeLine()">
   <input id="amount" type="hidden" name="q.amount">
   <input type="submit" value="提交">
 </form>   

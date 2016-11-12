@@ -15,3 +15,17 @@ function newLine()
 		alert("您最多能设置10个问题！");
 	}
 }
+function removeLine()
+{
+	amount--;
+	if (amount > 1)
+	{
+		var div_block = document.getElementById("block" + amount);
+		var div_content = document.getElementById("content");
+		div_content.removeChild(div_block);
+	}
+	else
+	{
+		amount++;
+	}
+}
