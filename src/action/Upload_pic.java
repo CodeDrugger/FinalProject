@@ -37,7 +37,7 @@ public class Upload_pic implements Action{
         }
         visitfile = "photos/"+id+"/"+id+".png";
         
-	      Connection con = null;
+	      /*Connection con = null;
 	      Statement stmt = null;
 	      //ResultSet rst = null;
 	      String sql = "update stu_inf set picture_name='"+visitfile+"' where id='"+id +"'";
@@ -68,7 +68,7 @@ public class Upload_pic implements Action{
 	                    e.printStackTrace();
 	                }   
 	            }
-	
+	    */
         return ret;
     }
 

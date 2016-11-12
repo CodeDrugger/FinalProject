@@ -139,9 +139,9 @@ public class Show_stu implements Action {
 	         rst2 = stmt.executeQuery("select * from tea_inf where id='"+id_in+"'");
 	         while(rst2.next())
        	  {
-       		  tea_name = rst.getString("name");
-       		  tea_id = rst.getString(("id"));
-       		  tea_attentioned_stu = rst.getString("attentioned_stu");
+       		  tea_name = rst2.getString("name");
+       		  tea_id = rst2.getString(("id"));
+       		  tea_attentioned_stu = rst2.getString("attentioned_stu");
        	  }
 
 	        	  

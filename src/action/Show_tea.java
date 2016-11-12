@@ -16,7 +16,7 @@ import domain.Teacher;
 
 public class Show_tea implements Action {
 	private Teacher teas; //传入teas.id
-	private Student stu_select;
+	private Student stu_select=new Student();
 	private Student id_in;
 	private String stu_id;
 	private String stu_name;
@@ -105,9 +105,9 @@ public class Show_tea implements Action {
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+id_in+"'");
 	          while(rst2.next())
         	  {
-        		  stu_name = rst.getString("name");
-        		  stu_id = rst.getString(("id"));
-        		  stu_attentioned_tea = rst.getString("attentioned_tea");
+        		  stu_name = rst2.getString("name");
+        		  stu_id = rst2.getString(("id"));
+        		  stu_attentioned_tea = rst2.getString("attentioned_tea");
         	  }
 	        	  
 
