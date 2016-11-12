@@ -38,14 +38,15 @@
             margin-right: 12%;
         }
         .inputgg{
-            width: 50%;
+           width: 50%;
+            border-radius: 0.5rem;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
             margin: 10px auto;
             padding: 5px;
-            boder: 1px;
+            opacity:0.8;
         }
         textarea{ resize:none; width:200px; height:200px;}
     </style>
@@ -101,13 +102,13 @@
     </nav>
 </div>
 <div class="container wrap">
-    <div class="panel panel-default inner" style="width:70%">
+    <div class="panel panel-default inner" style="width:70%" style="text-align: center">
         <div class="panel-heading">
-            <h1 class="panel-title" style="font-size: larger" style="text-align: center">
+            <h1 class="panel-title" style="font-size: larger" >
                 导师信息
             </h1>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="text-align: left">
             <form id="form1" name="form1" method="post" action="Change_tea" enctype="multipart/form-data">
                 <div id="preview">
                     <img id="imghead" border=0 src="${teac.picture_name}"  width="120" height="180" />
@@ -147,7 +148,7 @@
                     <input type="text" name="teac.email" value="${teac.email}" class="inputgg"></p>
                 <p>
                     <label style="font-size: larger;margin-right: 7.5%;"> 个人简介:</label>
-                    <textarea name="teac.self_intro" value="${teac.self_intro}" class="inputgg" rowa=5></textarea>
+                    <textarea name="teac.self_intro" value="${teac.self_intro}" class="inputgg" rowa=5 style="vertical-align: top;"></textarea>
                     <br /></p>
                 <p>
                     <input type="hidden" name="id" value="${teac.id}" />
@@ -213,6 +214,34 @@
             param.top = Math.round((maxHeight - param.height) / 2);
             return param;
         }
+    function ResizeImages()
+{
+   var myimg,oldwidth,oldheight;
+   var maxwidth=120;
+   var maxheight=180
+   var imgs = document.getElementById('preview').getElementsByTagName('img');   
+   for(i=0;i<imgs.length;i++){
+     myimg = imgs[i];
+
+     if(myimg.width > myimg.height)
+     {
+         if(myimg.width > maxwidth)
+         {
+            oldwidth = myimg.width;
+            myimg.height = myimg.height * (maxwidth/oldwidth);
+            myimg.width = maxwidth;
+         }
+     }else{
+         if(myimg.height > maxheight)
+         {
+            oldheight = myimg.height;
+            myimg.width = myimg.width * (maxheight/oldheight);
+            myimg.height = maxheight;
+         }
+     }
+   }
+}
+ResizeImages();
     </script>
 </body>
 
