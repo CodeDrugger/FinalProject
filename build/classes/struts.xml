@@ -64,12 +64,6 @@
 
 
 
-    	<action name="Return_stu_search" class="action.Jump" >
-            <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
-        </action>
-        <action name="Return_tea_search" class="action.Jump" >
-            <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
-        </action>
         <action name="Change_stu" class="action.Change_stu"><!-- 学生资料 -->
             <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
             <result name="error">/WEB-INF/content/error.jsp</result>
@@ -139,6 +133,14 @@
         </action>
 		
 		<action name="Create_ques" class="action.Create_ques"><!-- 我的问卷-->
+            <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
+        </action>
+		
+		<action name="His_ques" class="action.His_ques"><!-- 他的问卷-->
+            <result name="success">/WEB-INF/content/answer_questions.jsp</result>
+        </action>
+		
+		<action name="Answer_ques" class="action.Answer_ques"><!-- 跳转。。。-->
             <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
         </action>
 		

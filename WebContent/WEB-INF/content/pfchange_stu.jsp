@@ -105,19 +105,6 @@ ResizeImages();
             background-image: url("images/1.png");
             padding-top: 70px;
         }
-        .becenter{
-            text-align: justify
-            overflow:hidden}
-        .wrap {
-            float: left; /* 自适应内容宽度 */
-            position: relative;
-            left: 50%;
-        }
-        .inner {
-            position: relative;
-            margin-left: auto;
-            margin-right: auto;
-        }
         .labelst{
             margin-right: 12%;
         }
@@ -131,9 +118,6 @@ ResizeImages();
             margin: 10px auto;
             padding: 5px;
             opacity:0.8;
-        }
-        .inputsubmit{
-
         }
         textarea{ resize:none; width:200px; height:200px;}
     </style>
@@ -183,14 +167,16 @@ ResizeImages();
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="./Show_stu.action?stuc.id=${stuc.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
-                    <li><a href="#">注销账户</a></li>
+                    <li><a href="./loginpage.action">注销账户</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
-<div class="container wrap">
-    <div class="panel panel-default inner" style="width: 70%">
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title" style="font-size: larger">
                 学生信息
@@ -260,8 +246,11 @@ ResizeImages();
                     <input type="hidden" name="id" value="${stuc.id}" />
                     <input type="hidden" name="stuc.id" value="${stuc.id}" />
                     <input type="submit" value="提交" /></p>
+                    <input type="button" value="返回" onclick="history.back();">
             </form>
         </div>
+    </div>
+      </div>
     </div>
 
 </div>

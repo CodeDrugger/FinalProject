@@ -20,20 +20,6 @@
             background-image: url("images/1.png");
             padding-top: 70px;
         }
-        .becenter{
-            text-align: justify
-        }
-        .wrap {
-            float: left; /* 自适应内容宽度 */
-            position: relative;
-            left: 50%;
-        }
-        .inner {
-            position: relative;
-            left: -50%;
-            margin-left: auto;
-            margin-right: auto;
-        }
         .labelst{
             margin-right: 12%;
         }
@@ -97,14 +83,16 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="./Show_tea.action?teac.id=${teac.id}" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
-                    <li><a href="#">注销账户</a></li>
+                    <li><a href="./loginpage.action">注销账户</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
-<div class="container wrap">
-    <div class="panel panel-default inner" style="width:70%" style="text-align: center">
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default" style="width:100%" style="text-align: center">
         <div class="panel-heading">
             <h1 class="panel-title" style="font-size: larger" >
                 导师信息
@@ -123,7 +111,8 @@
                 </p>
                 <p>
                     <label style="font-size: larger;margin-right:7.5%"> 招生人数:</label>
-                    <input type="text" name="teac.enrollment" value="${teac.enrollment }" class="inputgg">(已招人数：${teac.in_enrollment}*招生人数应大于目前已招人数)</p>
+                    <input type="text" name="teac.enrollment" value="${teac.enrollment }" class="inputgg"></p>
+                    <p>(已招人数：${teac.in_enrollment}*招生人数应大于目前已招人数)</p>
                 <p>
                     <label style="font-size: larger" class="labelst"> 性别:</label>
                     <input id="sex" type="hidden" value="${teac.sex}"/>
@@ -155,10 +144,16 @@
                 <p>
                     <input type="hidden" name="id" value="${teac.id}" />
                     <input type="hidden" name="teac.id" value="${teac.id}" />
+                    <input type="button" value="返回" onclick="history.back();">
                     <input type="submit" value="提交" /></p>
             </form>
         </div>
     </div>
+        </div>
+    </div>
+      </div>
+    </div>
+    
 </div>
     <script type="text/javascript">
         function previewImage(file)

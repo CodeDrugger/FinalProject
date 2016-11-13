@@ -1,12 +1,13 @@
 <%@ taglib uri="/struts-tags" prefix="s"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,domain.Student" errorPage="" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>学生信息</title>
+<script src="js/attention.js"></script>
 </head>
 
 <body>
@@ -61,12 +62,14 @@ try{
 		  tea_id = rst2.getString(("id"));
 		  tea_attentioned_stu = rst2.getString("attentioned_stu");
 	  }
-   if(tea_attentioned_stu.contains(stus.getName()+" "+stus.getId()))
+   if (tea_attentioned_stu != null && stus.getName() != null)
    {
- 	  message="1";
-	}
-
-  	  
+	   if(tea_attentioned_stu.contains(stus.getName()+" "+stus.getId()))
+	   {
+	 	  message="1";
+		}
+   }
+   
 
   }catch (SQLException e) {
       // TODO Auto-generated catch block
@@ -115,18 +118,17 @@ try{
 </p>
 <form id="form1" name="form1" method="post" action="tea_attention_stu">
   <p>
-    <input type="submit" value="关注该学生" />
+    <input id="submit" type="submit" value="关注" />
    	<input type="hidden"  name="stus.name" value="<%=stus.getName()%>"  />
     <input type="hidden"  name="stus.id" value="<%=stus.getId()%>"  />
     <input type="hidden"  name="stus.attentioned_me" value="<%=stus.getAttentioned_me()%>" />
     <input type="hidden"  name="tea_select.name" value="<%=tea_name%>"  />
     <input type="hidden"  name="tea_select.id" value="<%=tea_id%>"  />
-    <input type="hidden"  name="id_in" value="<%=tea_id%>"/>;
+    <input type="hidden"  name="id_in" value="<%=tea_id%>"/>
     <input type="hidden"  name="tea_select.attentioned_stu" value="<%=tea_attentioned_stu%>"  />
+    <input type="button" value="返回" onclick="history.back();">
+    <input id="msg" type="hidden"  value="<%=message%>"/>
   </p>
-</form>
-<form name="form3" method="post" action="Return_stu_search">
-  <input type="submit"  value="返回"/>
 </form>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
