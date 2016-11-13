@@ -105,19 +105,6 @@ ResizeImages();
             background-image: url("images/1.png");
             padding-top: 70px;
         }
-        .becenter{
-            text-align: justify
-            overflow:hidden}
-        .wrap {
-            float: left; /* 自适应内容宽度 */
-            position: relative;
-            left: 50%;
-        }
-        .inner {
-            position: relative;
-            margin-left: auto;
-            margin-right: auto;
-        }
         .labelst{
             margin-right: 12%;
         }
@@ -131,9 +118,6 @@ ResizeImages();
             margin: 10px auto;
             padding: 5px;
             opacity:0.8;
-        }
-        .inputsubmit{
-
         }
         textarea{ resize:none; width:200px; height:200px;}
     </style>
@@ -189,8 +173,10 @@ ResizeImages();
         </div>
     </nav>
 </div>
-<div class="container wrap">
-    <div class="panel panel-default inner" style="width: 70%">
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+          <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title" style="font-size: larger">
                 学生信息
@@ -262,6 +248,8 @@ ResizeImages();
                     <input type="submit" value="提交" /></p>
             </form>
         </div>
+    </div>
+      </div>
     </div>
 
 </div>
