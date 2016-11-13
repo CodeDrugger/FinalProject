@@ -200,7 +200,7 @@ public class Change_stu implements Action {
 	                }   
 	            }
 	        
-	
+	setId(getStuc().getId());
 	return ret;
 	}
 

@@ -192,7 +192,7 @@ public class Change_tea implements Action {
 	                }   
 	            }
 	        
-	
+	setId(getTeac().getId());
 	return ret;
 	}
 
