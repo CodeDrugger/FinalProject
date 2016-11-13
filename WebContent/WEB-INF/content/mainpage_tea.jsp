@@ -89,6 +89,7 @@ try {
         <input type="text" name="search.keyword" value="" style="width:50%;height:50px;padding-left: 5px">
         <input type="submit" value="给我搜" style="width:10%;height:50px">
     </form>
+    
     <c:set var="id" value="${id }" scope="request"></c:set>
    
     推荐学生：

@@ -67,6 +67,34 @@
         param.top = Math.round((maxHeight - param.height) / 2);
         return param;
     }
+        function ResizeImages()
+{
+   var myimg,oldwidth,oldheight;
+   var maxwidth=120;
+   var maxheight=180
+   var imgs = document.getElementById('preview').getElementsByTagName('img');   
+   for(i=0;i<imgs.length;i++){
+     myimg = imgs[i];
+
+     if(myimg.width > myimg.height)
+     {
+         if(myimg.width > maxwidth)
+         {
+            oldwidth = myimg.width;
+            myimg.height = myimg.height * (maxwidth/oldwidth);
+            myimg.width = maxwidth;
+         }
+     }else{
+         if(myimg.height > maxheight)
+         {
+            oldheight = myimg.height;
+            myimg.width = myimg.width * (maxheight/oldheight);
+            myimg.height = maxheight;
+         }
+     }
+   }
+}
+ResizeImages();
 	</script>
     <script src="js/pfchange.js" charset="utf-8"></script>
     <style>
@@ -87,7 +115,6 @@
         }
         .inner {
             position: relative;
-            left: -50%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -126,7 +153,7 @@
 	    Statement stmt = connect.createStatement();
 	    ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
 	    if (rs.next()) {
-	        if (rs.getString("name").length() > 0) {
+	        if (rs.getString("name") != null && rs.getString("name").length() > 0) {
 	        	name = rs.getString("name");
 	        }
 	    }
@@ -165,11 +192,12 @@
 <div class="container wrap">
     <div class="panel panel-default inner" style="width: 70%">
         <div class="panel-heading">
-            <h1 class="panel-title" style="font-size: larger" style="text-align: center">
+            <h1 class="panel-title" style="font-size: larger">
                 学生信息
             </h1>
         </div>
-        <div class="panel-body">         
+        <div class="panel-body" style="text-align: left">
+            
             <form id="form1" name="form1" method="post" action="Change_stu" enctype="multipart/form-data">
                 <div id="preview">
                 <img id="imghead" border=0 src="${stuc.picture_name}" width="120" height="180" />
@@ -191,32 +219,32 @@
                     <input name="stuc.age" type="text" id="age_stu" value="${stuc.age}" class="inputgg"/>
                 </p>
                 <p>
-                    <label style="font-size: larger;margin-right: 8%;">本科学科:</label>
+                    <label style="font-size: larger;margin-right: 7.5%;">本科学科:</label>
                     <input name="stuc.benke_major" type="text" id="name_stu4" value="${stuc.benke_major}" class="inputgg"/></p>
                 <p>
-                    <label style="font-size: larger;margin-right: 4%;">报考硕士类别:</label>
+                    <label style="font-size: larger;margin-right: 3.5%;">报考硕士类别:</label>
                     <input id="wish_class" type="hidden" value="${stuc.wish_class}"/>
                     学硕<input id="wish_class_xueshuo" name="stuc.wish_class" type="radio"  value="学硕"/>
                     专硕<input id="wish_class_zhuanshuo" type="radio" name="stuc.wish_class"  value="专硕"/>
                     不确定<input id="wish_class_buqueding" type="radio" name="stuc.wish_class"  value="不确定"/></p>
                 <p>
-                    <label style="font-size: larger;margin-right: 8%;">入选方式:</label>
+                    <label style="font-size: larger;margin-right: 7.5%;">入选方式:</label>
                     <input id="bein_class" type="hidden" value="${stuc.bein_class}"/>
                     保研<input id="bein_class_baoyan" type="radio" name="stuc.bein_class" id="stuc.bein_class" value="保研" />
                     考研<input id="bein_class_kaoyan" type="radio" name="stuc.bein_class" id="stuc.bein_class" value="考研" /></p>
                 <p>
-                    <label style="font-size: larger;margin-right: 2%;">研究生意愿学科:</label>
+                    <label style="font-size: larger;margin-right: 1.5%;">研究生意愿学科:</label>
                     <input name="stuc.wish_major" type="text" id="stuc.wish_major" value="${stuc.wish_major}" class="inputgg"/></p>
                 <p>
-                    <label style="font-size: larger;margin-right: 2%;">是否有直博意愿:</label>
+                    <label style="font-size: larger;margin-right: 1.5%;">是否有直博意愿:</label>
                     <input id="zhibo" type="hidden" value="${stuc.zhibo}"/>
                     是<input id="zhibo_shi" type="radio" name="stuc.zhibo" value="是" />
                     否<input id="zhibo_fou" type="radio" name="stuc.zhibo" value="否" /></p>
                 <p>
-                    <label style="font-size: larger;margin-right: 6%;">本科学分绩:</label>
+                    <label style="font-size: larger;margin-right: 5.5%;">本科学分绩:</label>
                     <input name="stuc.score" type="text" value="${stuc.score}" class="inputgg"/></p>
                 <p>
-                    <label style="font-size: larger;margin-right: 8%;">个人荣誉:</label>
+                    <label style="font-size: larger;margin-right: 7.5%;">个人荣誉:</label>
                     <input name="stuc.honor" type="text" value="${stuc.honor}" class="inputgg"/></p>
                 <p>
                     <label style="font-size: larger;margin-right: 12%;">电话:</label>
@@ -225,8 +253,8 @@
                     <label style="font-size: larger;margin-right: 10%;">email:</label>
                     <input name="stuc.email" type="text" value="${stuc.email}" class="inputgg"/></p>
                 <p>
-                    <label style="font-size: larger;margin-right: 8%; margintop :0px;">个人简介:</label>
-                    <textarea name="stuc.self_intro" value="${stuc.self_intro}" class="inputgg" rows=5></textarea>
+                    <label style="font-size: larger;margin-right: 7.5%; margintop :0px;">个人简介:</label>
+                    <textarea name="stuc.self_intro" value="${stuc.self_intro}" class="inputgg" rows=5 style="vertical-align: top;"></textarea>
                 </p>
                 <p>
                     <input type="hidden" name="id" value="${stuc.id}" />
