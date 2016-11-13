@@ -83,7 +83,7 @@ pageEncoding="utf8"%>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="./Show_stu.action?stuc.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
-                <li><a href="#">注销账户</a></li>
+                <li><a href="./loginpage.action">注销账户</a></li>
             </ul>
         </div>
     </div>

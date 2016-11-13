@@ -183,7 +183,7 @@ ResizeImages();
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="./Show_stu.action?stuc.id=${stuc.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
-                    <li><a href="#">注销账户</a></li>
+                    <li><a href="./loginpage.action">注销账户</a></li>
                 </ul>
             </div>
         </div>
@@ -260,6 +260,7 @@ ResizeImages();
                     <input type="hidden" name="id" value="${stuc.id}" />
                     <input type="hidden" name="stuc.id" value="${stuc.id}" />
                     <input type="submit" value="提交" /></p>
+                    <input type="button" value="返回" onclick="history.back();">
             </form>
         </div>
     </div>

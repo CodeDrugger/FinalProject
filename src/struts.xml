@@ -127,6 +127,14 @@
             <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
         </action>
 		
+		<action name="His_ques" class="action.His_ques"><!-- 他的问卷-->
+            <result name="success">/WEB-INF/content/answer_questions.jsp</result>
+        </action>
+		
+		<action name="Answer_ques" class="action.Answer_ques"><!-- 跳转。。。-->
+            <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
+        </action>
+		
         <action name="*">
             <result>/WEB-INF/content/{1}.jsp</result>
         </action>

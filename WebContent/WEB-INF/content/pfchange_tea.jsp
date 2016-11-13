@@ -97,7 +97,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="./Show_tea.action?teac.id=${teac.id}" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
-                    <li><a href="#">注销账户</a></li>
+                    <li><a href="./loginpage.action">注销账户</a></li>
                 </ul>
             </div>
         </div>
@@ -155,6 +155,7 @@
                 <p>
                     <input type="hidden" name="id" value="${teac.id}" />
                     <input type="hidden" name="teac.id" value="${teac.id}" />
+                    <input type="button" value="返回" onclick="history.back();">
                     <input type="submit" value="提交" /></p>
             </form>
         </div>
