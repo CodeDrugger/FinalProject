@@ -121,6 +121,7 @@ try{
     <input type="hidden"  name="stus.attentioned_me" value="<%=stus.getAttentioned_me()%>" />
     <input type="hidden"  name="tea_select.name" value="<%=tea_name%>"  />
     <input type="hidden"  name="tea_select.id" value="<%=tea_id%>"  />
+    <input type="hidden"  name="id_in" value="<%=tea_id%>"/>;
     <input type="hidden"  name="tea_select.attentioned_stu" value="<%=tea_attentioned_stu%>"  />
     <input id="msg" type="hidden"  value="<%=message%>"/>
   </p>

@@ -34,10 +34,8 @@ public class Show_tea implements Action {
 		      String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+teas.getId() +"'";
 		      if(stu_select.getAttentioned_tea().contains(teas.getName()+" "+teas.getId()))
 		      {
-		    	  message="已经关注过该导师.";
 		    	  return "has_selected";
 			  }
-		      message="成功关注该导师.";
 		      try {
 					Class.forName("com.mysql.jdbc.Driver");
 				} catch (ClassNotFoundException e) {
@@ -73,67 +71,7 @@ public class Show_tea implements Action {
 		}
 		
 	public String execute() throws Exception {
-		
-		  String ret = SUCCESS;
-	      Connection con = null;
-	      Statement stmt = null;
-	      ResultSet rst = null;
-	      ResultSet rst2 = null;
-	      try {
-				Class.forName("com.mysql.jdbc.Driver");
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-	      try{   
-	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
-	          stmt=con.createStatement();   
-	          rst = stmt.executeQuery("select * from tea_inf where id='"+teas.getId()+"'");
-	        	  while(rst.next())
-	        	  {
-	        		  teas.setEnrollment(rst.getString("enrollment"));
-	        		  teas.setIn_enrollment(rst.getString("in_enrollment"));
-	        		  teas.setName(rst.getString("name"));
-	        		  teas.setSex(rst.getString("sex"));
-	        		  teas.setId(rst.getString("id"));
-	        		  teas.setPicture_name(rst.getString("picture_name"));
-	        		  teas.setSelf_intro(rst.getString("self_intro"));
-	        		  teas.setResearch_field(rst.getString("research_field"));
-	        		  teas.setCollege(rst.getString("college"));
-	        		  teas.setXueyuan(rst.getString("xueyuan"));
-	        		  teas.setMajor(rst.getString("major"));
-	        		  teas.setTel(rst.getString("tel"));
-	        		  teas.setEmail(rst.getString("email"));
-	        		  teas.setAttentioned_me(rst.getString("attentioned_me"));
-	        	  }
-	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+id_in+"'");
-	          while(rst2.next())
-        	  {
-        		  stu_name = rst2.getString("name");
-        		  stu_id = rst2.getString(("id"));
-        		  stu_attentioned_tea = rst2.getString("attentioned_tea");
-        	  }
-	        	  
-
-	        }catch (SQLException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	            ret = ERROR;
-	        }finally{
-	            try{
-	            	if(stmt!=null)
-	            		stmt.close();
-	            	if(con!=null)           
-	                    con.close();
-	            	
-	                } catch (SQLException e) {
-	                    // TODO Auto-generated catch block
-	                    e.printStackTrace();
-	                }   
-	            }
-	      
-	
-	return ret;
+		return SUCCESS;
 	}
 	
 	public String getMessage() {
