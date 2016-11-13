@@ -69,6 +69,7 @@
 <script src="js/advsearch_result_tea.js"></script>
 </head>
 <body>
+
 <c:set var="id" value="${id}" scope="request"></c:set>
 	<%
 	String id = (String)request.getAttribute("id");
@@ -84,6 +85,7 @@
 	    ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
 	    if (rs.next()) {
 	        if (rs.getString("name") != null && rs.getString("name").length() > 0) {
+	        	name = rs.getString("name");
 	        }
 	    }
 	    connect.close();

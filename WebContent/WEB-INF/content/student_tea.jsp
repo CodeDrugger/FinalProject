@@ -1,11 +1,12 @@
 <%@ taglib uri="/struts-tags" prefix="s"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,domain.Teacher" errorPage="" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>导师信息</title>
+<script src="js/attention.js"></script>
 </head>
 
 <body>
@@ -58,11 +59,13 @@ try{
 		  stu_id = rst2.getString(("id"));
 		  stu_attentioned_tea = rst2.getString("attentioned_tea");
 	  }
-    if(stu_attentioned_tea.contains(teas.getName()+" "+teas.getId()))
+    if (stu_attentioned_tea != null && teas.getName() != null)
     {
-  	  message="1";
-	}
-
+    	if(stu_attentioned_tea.contains(teas.getName()+" "+teas.getId()))
+        {
+      	  message="1";
+    	}
+    }
   }catch (SQLException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -109,14 +112,13 @@ try{
     <input type="hidden"  name="teas.attentioned_me" value="<%=teas.getAttentioned_me()%>" />
     <input type="hidden"  name="stu_select.name" value="<%=stu_name%>"  />
     <input type="hidden"  name="stu_select.id" value="<%=stu_id%>"  />
-    <input type="hidden"  name="id_in" value="<%=stu_id%>"/>;
+    <input type="hidden"  name="id_in" value="<%=stu_id%>"/>
     <input type="hidden"  name="stu_select.attentioned_tea" value="<%=stu_attentioned_tea%>"  />
     <input id="msg" type="hidden"  value="<%=message%>"/>
+    <input type="button" value="返回" onclick="history.back();">
     <input id="submit" type="submit"  value="关注"/>
   </p>
-</form>
-<form name="form3" method="post" action="Return_stu_search">
-  <input type="submit"  value="返回"/>
+  
 </form>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
