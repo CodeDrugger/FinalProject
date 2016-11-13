@@ -49,12 +49,6 @@
 
 
 
-    	<action name="Return_stu_search" class="action.Jump" >
-            <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
-        </action>
-        <action name="Return_tea_search" class="action.Jump" >
-            <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
-        </action>
         <action name="Change_stu" class="action.Change_stu"><!-- 学生资料 -->
             <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
             <result name="error">/WEB-INF/content/error.jsp</result>
@@ -82,11 +76,11 @@
         </action>
         
         <action name="tea_attention_stu" class="action.Show_stu" method="Attention_on_stu"> <!-- 搜索后学生信息页面关注学生 -->
-            <result name="*">/WEB-INF/content/temp1.jsp</result>
+            <result name="*">/WEB-INF/content/teacher_stu.jsp</result>
         </action>
         
         <action name="stu_attention_tea" class="action.Show_tea" method="Attention_on_tea"><!-- 搜索后导师信息页面关注导师 -->
-            <result name="*">/WEB-INF/content/temp1.jsp</result>
+            <result name="*">/WEB-INF/content/student_tea.jsp</result>
         </action>
 
     	<action name="SearchStu" class="action.MainSearch"><!-- 学生搜索 -->
@@ -124,6 +118,14 @@
         </action>
 		
 		<action name="Create_ques" class="action.Create_ques"><!-- 我的问卷-->
+            <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
+        </action>
+		
+		<action name="His_ques" class="action.His_ques"><!-- 他的问卷-->
+            <result name="success">/WEB-INF/content/answer_questions.jsp</result>
+        </action>
+		
+		<action name="Answer_ques" class="action.Answer_ques"><!-- 跳转。。。-->
             <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
         </action>
 		

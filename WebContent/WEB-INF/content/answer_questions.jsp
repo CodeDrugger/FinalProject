@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
     pageEncoding="utf8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
@@ -12,20 +12,17 @@ var array = [];
 	array.push(${u})
 </c:forEach> 
 </script>
-<script src="js/my_questions.js"></script>
+<script src="js/his_questions.js"></script>
 </head>
 <body>
-
-<form action="Create_ques" method="post">
+<div id="info"><h2>该导师暂无问卷T_T</h2></div>
+<form action="Answer_ques" method="post">
   <div id="content"></div>
-  <input type="hidden" name="id" value="${id}">
-  <input type="hidden" name="q.id" value="${id}">
   <input id="dbamount" type="hidden" value="${q.amount}">
-  <input type="button" value="新增" onclick="newLine()">
-  <input type="button" value="删除" onclick="removeLine()">
-  <input id="amounttodb" type="hidden" name="q.amount">
-  <input type="submit" value="提交">
-</form>   
-
+  <input type="hidden" name="a.id_tea" value="${q.id}">
+  <input type="hidden" name="a.id_stu" value="${id}">
+  <input type="button" value="返回" onclick="history.back();">
+  <input id="submit" type="submit" value="提交">
+</form>
 </body>
 </html>

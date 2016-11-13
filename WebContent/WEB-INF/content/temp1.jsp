@@ -12,6 +12,7 @@ ${message}
 <form id="form" method="get">
 <input id="msg" type="hidden" value="${message}">
 <input id="input" type="hidden">
+<input id="input2" type="hidden">
 <input type="submit" value="返回">
 </form>
 </body>
