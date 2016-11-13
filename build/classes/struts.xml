@@ -9,8 +9,14 @@
 
     <package name="default" namespace="/" extends="struts-default">
     	<!-- my_teacher界面 -->
-    	<action name="Mytea" class="action.My_tea">
-            <result name="success">/WEB-INF/content/my_tea.jsp</result>
+    	<action name="my_attention_tea" class="action.My_tea">
+            <result name="success">/WEB-INF/content/my_attention_tea.jsp</result>
+        </action>
+        <action name="my_choose_tea" class="action.My_tea">
+            <result name="success">/WEB-INF/content/my_choose_tea.jsp</result>
+        </action>
+        <action name="attention_me_tea" class="action.My_tea">
+            <result name="success">/WEB-INF/content/attention_me_tea.jsp</result>
         </action>
         <action name="Mytea_inf" class="action.My_tea" method="Mytea_inf">
             <result name="success">/WEB-INF/content/my_tea_inf.jsp</result>
@@ -29,8 +35,17 @@
         </action>
         
         <!-- my_student界面 -->
-    	<action name="Mystu" class="action.My_stu">
-            <result name="success">/WEB-INF/content/my_stu.jsp</result>
+    	<action name="my_attention_stu" class="action.My_stu">
+            <result name="success">/WEB-INF/content/my_attention_stu.jsp</result>
+        </action>
+        <action name="attention_me_stu" class="action.My_stu">
+            <result name="success">/WEB-INF/content/attention_me_stu.jsp</result>
+        </action>
+        <action name="my_choose_stu" class="action.My_stu">
+            <result name="success">/WEB-INF/content/my_choose_stu.jsp</result>
+        </action>
+        <action name="choose_me_stu" class="action.My_stu">
+            <result name="success">/WEB-INF/content/choose_me_stu.jsp</result>
         </action>
         <action name="Mystu_inf" class="action.My_stu" method="Mystu_inf">
             <result name="success">/WEB-INF/content/my_stu_inf.jsp</result>

@@ -16,8 +16,8 @@ import domain.Teacher;
 
 public class My_stu implements Action {
 	private String id_in;
-	private Teacher teas;
-	private Student stu;
+	private Teacher teas=new Teacher();
+	private Student stu=new Student();
 	List<Student> select_stu = new ArrayList<>();
     List<Student> attention_stu = new ArrayList<>();
     List<Student> attention_me = new ArrayList<>();
@@ -360,10 +360,12 @@ public class My_stu implements Action {
 	        	 at = rst.getString("attentioned_stu");
 	        	 st = rst.getString("selected_stu");
 	        	 sm = rst.getString("selected_me");
-	        	 stu.setAttentioned_me(am);
-	        	 stu.setAttentioned_tea(at);
-	        	 stu.setSelected_tea(st);
-	        	 stu.setSelected_me(sm);
+	        	 if(am==null)
+	        		 System.out.println("boom");
+	        	 teas.setAttentioned_me(am);
+	        	 teas.setAttentioned_stu(at);
+	        	 teas.setSelected_stu(st);
+	        	 teas.setSelected_me(sm);
 	          }
 	          //对字符串进行处理
 	          
@@ -382,6 +384,8 @@ public class My_stu implements Action {
 	          for(i=0;i<len1;i++)
 	          {
 	        	 Student t = new Student();
+	        	 if(aml[i].equals("")||aml[i].equals(" "))
+	        		 continue;
 	        	 String s[] = aml[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
@@ -390,6 +394,8 @@ public class My_stu implements Action {
 	          for(i=0;i<len2;i++)
 	          {
 	        	 Student t = new Student();
+	        	 if(atl[i].equals("")||atl[i].equals(" "))
+	        		 continue;
 	        	 String s[] = atl[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
@@ -398,6 +404,8 @@ public class My_stu implements Action {
 	          for(i=0;i<len3;i++)
 	          {
 	        	 Student t = new Student();
+	        	 if(stl[i].equals("")||stl[i].equals(" "))
+	        		 continue;
 	        	 String s[] = stl[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
@@ -407,6 +415,8 @@ public class My_stu implements Action {
 	          for(i=0;i<len4;i++)
 	          {
 	        	 Student t = new Student();
+	        	 if(sml[i].equals("")||sml[i].equals(" "))
+	        		 continue;
 	        	 String s[] = sml[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);

@@ -476,38 +476,38 @@ public class My_tea implements Action {
 	          int len1 = aml.length;
 	          int len2 = atl.length;
 	          int len3 = stl.length;
-	          
-	          int i = 0;
 	        
-	          for(i=0;i<len1;i++)
+	          for(int i=0;i<len1;i++)
 	          {
 	        	 Teacher t = new Teacher();
-	        	 String s[] = aml[i].split(" ");  
+	        	 if(aml[i].equals("")||aml[i].equals(" "))
+	        		 continue;
+	        	 String s[] = aml[i].split(" "); 
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 select_tea.add(t);
 	          }	  
-	          for(i=0;i<len2;i++)
+	          for(int i=0;i<len2;i++)
 	          {
 	        	 Teacher t = new Teacher();
+	        	 if(atl[i].equals("")||atl[i].equals(" "))
+	        		 continue;
 	        	 String s[] = atl[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 attention_tea.add(t);
 	          }	  
-	          for(i=0;i<len3;i++)
+	          for(int i=0;i<len3;i++)
 	          {
 	        	 Teacher t = new Teacher();
-	        	 String s[] = stl[i].split(" ");  
+	        	 if(stl[i].equals("")||stl[i].equals(" "))
+	        		 continue;
+	        	 String s[] = stl[i].split(" "); 
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 attention_me.add(t);
 	          }	  
 	          
-	          
-
-	        	  
-
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
