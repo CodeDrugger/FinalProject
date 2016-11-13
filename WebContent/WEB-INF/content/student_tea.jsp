@@ -109,6 +109,7 @@ try{
     <input type="hidden"  name="teas.attentioned_me" value="<%=teas.getAttentioned_me()%>" />
     <input type="hidden"  name="stu_select.name" value="<%=stu_name%>"  />
     <input type="hidden"  name="stu_select.id" value="<%=stu_id%>"  />
+    <input type="hidden"  name="id_in" value="<%=stu_id%>"/>;
     <input type="hidden"  name="stu_select.attentioned_tea" value="<%=stu_attentioned_tea%>"  />
     <input id="msg" type="hidden"  value="<%=message%>"/>
     <input type="submit"  value="关注该导师"/>

@@ -334,6 +334,7 @@ public class My_stu implements Action {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
+		//所需输入 id_in 
 		String ret = SUCCESS;
 	      Connection con = null;
 	      Statement stmt = null;
