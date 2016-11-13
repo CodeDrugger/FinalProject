@@ -43,7 +43,7 @@ pageEncoding="utf8"%>
      Statement stmt = connect.createStatement();
      ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
      if (rs.next()) {
-         if (rs.getString("name").length() > 0) {
+         if (rs.getString("name") != null && rs.getString("name").length() > 0) {
              name = rs.getString("name");
              wish_major = rs.getString("wish_major");
          }

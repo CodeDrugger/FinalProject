@@ -53,6 +53,7 @@
 </head>
 
 <body>
+
 <c:set var="id" value="${teac.id}" scope="request"></c:set>
 	<%
 	String id = (String)request.getAttribute("id");
@@ -67,7 +68,7 @@
 	    Statement stmt = connect.createStatement();
 	    ResultSet rs = stmt.executeQuery("select * from tea_inf where id='" + id + "'");
 	    if (rs.next()) {
-	        if (rs.getString("name").length() > 0) {
+	        if (rs.getString("name") != null && rs.getString("name").length() > 0) {
 	        	name = rs.getString("name");
 	        }
 	    }
@@ -92,9 +93,10 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#">我关注的</a></li>
                     <li><a href="#">关注我的</a></li>
+                    <li><a href="./My_ques.action?id=${teac.id}&q.id=${teac.id}">我的问卷</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./Show_tea.action?teac.id=${teac.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
+                    <li><a href="./Show_tea.action?teac.id=${teac.id}" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
                     <li><a href="#">注销账户</a></li>
                 </ul>
             </div>
