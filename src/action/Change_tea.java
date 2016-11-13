@@ -135,12 +135,12 @@ public class Change_tea implements Action {
 	}
 	@Override
 	public String execute() throws Exception{
-		
+		  setId(getTeac().getId());
 		  String ret = SUCCESS;
 	      Connection con = null;
 	      Statement stmt = null;
 	      //ResultSet rst = null;
-	      String realpath = "C:/big/FinalProject/WebContent/photos_tea/"+id;
+	      String realpath = "C:/Users/daisf/Documents/FinalProject/WebContent/photos_tea/"+id;
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
 	      System.out.println("realpath: "+realpath);
 	      if (image != null) {
@@ -191,8 +191,7 @@ public class Change_tea implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	        
-	setId(getTeac().getId());
+	       
 	return ret;
 	}
 

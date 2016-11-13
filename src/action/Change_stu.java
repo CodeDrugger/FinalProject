@@ -137,12 +137,12 @@ public class Change_stu implements Action {
 	}
 	
 	public String execute() throws Exception{
-		
+		  setId(getStuc().getId());
 		  String ret = SUCCESS;
 	      Connection con = null;
 	      Statement stmt = null;
 	      //ResultSet rst = null;
-	      String realpath = "C:/big/FinalProject/WebContent/photos/"+id;
+	      String realpath = "C:/Users/daisf/Documents/FinalProject/WebContent/photos/"+id;
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
 	      System.out.println("realpath: "+realpath);
 	      if (image != null) {
@@ -200,7 +200,6 @@ public class Change_stu implements Action {
 	                }   
 	            }
 	        
-	setId(getStuc().getId());
 	return ret;
 	}
 
