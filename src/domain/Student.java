@@ -7,6 +7,7 @@ public class Student {
 	private String age;
 	private String benke_major;
 	private String wish_major;
+	private String wish_xueyuan;
 	private String zhibo;
 	private String wish_class;
 	private String bein_class;
@@ -25,10 +26,10 @@ public class Student {
 	
 	public Student() {}
 
-	public Student(String id, String name, String sex, String age, String benke_major, String wish_major, String zhibo,
-			String wish_class, String bein_class, String score, String honor, String self_intro, String tel,
-			String email, String picture_name, String selected_tea, String attentioned_tea, String attentioned_me,
-			String state,String rate) {
+	public Student(String id, String name, String sex, String age, String benke_major, String wish_major,
+			String wish_xueyuan, String zhibo, String wish_class, String bein_class, String score, String honor,
+			String self_intro, String tel, String email, String picture_name, String selected_tea, String selected_me,
+			String attentioned_tea, String attentioned_me, String state, String rate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -36,6 +37,7 @@ public class Student {
 		this.age = age;
 		this.benke_major = benke_major;
 		this.wish_major = wish_major;
+		this.wish_xueyuan = wish_xueyuan;
 		this.zhibo = zhibo;
 		this.wish_class = wish_class;
 		this.bein_class = bein_class;
@@ -46,12 +48,18 @@ public class Student {
 		this.email = email;
 		this.picture_name = picture_name;
 		this.selected_tea = selected_tea;
+		this.selected_me = selected_me;
 		this.attentioned_tea = attentioned_tea;
 		this.attentioned_me = attentioned_me;
 		this.state = state;
 		this.rate = rate;
 	}
-	
+	public String getWish_xueyuan() {
+		return wish_xueyuan;
+	}
+	public void setWish_xueyuan(String wish_xueyuan) {
+		this.wish_xueyuan = wish_xueyuan;
+	}
 	public String getSelected_me() {
 		return selected_me;
 	}
