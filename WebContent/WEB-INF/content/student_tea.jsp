@@ -51,6 +51,7 @@ try{
   		  teas.setTel(rst.getString("tel"));
   		  teas.setEmail(rst.getString("email"));
   		  teas.setAttentioned_me(rst.getString("attentioned_me"));
+  		  teas.setRate(rst.getString("rate"));
   	  }
     rst2 = stmt.executeQuery("select * from stu_inf where id='"+id_in+"'");
     while(rst2.next())
@@ -110,6 +111,7 @@ try{
   	<input type="hidden"  name="teas.name" value="<%=teas.getName()%>"  />
     <input type="hidden"  name="teas.id" value="<%=teas.getId()%>"  />
     <input type="hidden"  name="teas.attentioned_me" value="<%=teas.getAttentioned_me()%>" />
+    <input type="hidden"  name="teas.rate" value="<%=teas.getRate()%>"  />
     <input type="hidden"  name="stu_select.name" value="<%=stu_name%>"  />
     <input type="hidden"  name="stu_select.id" value="<%=stu_id%>"  />
     <input type="hidden"  name="id_in" value="<%=stu_id%>"/>
