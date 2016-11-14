@@ -44,7 +44,7 @@ public class My_stu implements Action {
 	      String tea_name = null;
 	      String tea_id = null;
 	      String tea_attentioned_stu = null;
-	      
+	      String stu_rate=null;
 	      
 	      stu_id = student_id;
 	      tea_id = teacher_id;
@@ -70,7 +70,11 @@ public class My_stu implements Action {
       		  stu_name = rst2.getString("name");
       		  stu_id = rst2.getString(("id"));
       		  stu_attentioned_me = rst2.getString("attentioned_me");
+      		  stu_rate=rst2.getString("rate");
       	      }
+	          int rate=Integer.parseInt(stu_rate);
+	          rate++;
+	          stu_rate=rate+"";
 	          if(tea_attentioned_stu.contains(stu_name+" "+stu_id))
 		      {
 	        	  message="已关注该学生";
@@ -79,7 +83,7 @@ public class My_stu implements Action {
 		      String stu_beiguan = stu_attentioned_me+"/"+stu_name+" "+stu_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String tea_guan = tea_attentioned_stu+"/"+tea_name+" "+tea_id;
-		      String sql_stu = "update stu_inf set attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
+		      String sql_stu = "update stu_inf set rate='"+stu_rate+"',attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
 	          stmt.executeUpdate(sql_stu);
@@ -115,6 +119,7 @@ public class My_stu implements Action {
 	      String stu_name = null;
 	      String stu_id = null;
 	      String stu_attentioned_me = null;
+	      String stu_rate=null;
 	      String tea_name = null;
 	      String tea_id = null;
 	      String tea_attentioned_stu = null;
@@ -144,13 +149,16 @@ public class My_stu implements Action {
 	    		  stu_name = rst2.getString("name");
 	    		  stu_id = rst2.getString(("id"));
 	    		  stu_attentioned_me = rst2.getString("attentioned_me");
+	    		  stu_rate=rst2.getString(("rate"));
     	      }
-	          
+	          int rate=Integer.parseInt(stu_rate);
+	          rate--;
+	          stu_rate=rate+"";
 		      String stu_beiguan = stu_attentioned_me.replaceAll("/"+tea_name+" "+tea_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		
 		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_name+" "+stu_id,"");
-		      String sql_stu = "update stu_inf set attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
+		      String sql_stu = "update stu_inf set rate='"+stu_rate+"',attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
 	          stmt.executeUpdate(sql_stu);

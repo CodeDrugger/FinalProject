@@ -47,7 +47,7 @@ public class My_tea implements Action {
 	      String tea_name = null;
 	      String tea_id = null;
 	      String tea_attentioned_me = null;
-	      
+	      String tea_rate=null;
 	      
 	      stu_id = student_id;
 	      tea_id = teacher_id;
@@ -66,7 +66,11 @@ public class My_tea implements Action {
 	       		  tea_name = rst.getString("name");
 	       		  tea_id=rst.getString("id");
 	       		  tea_attentioned_me=rst.getString("attentioned_me");
+	       		  tea_rate=rst.getString("rate");
 	       	  }
+	          int rate=Integer.parseInt(tea_rate);
+	          rate++;
+	          tea_rate=rate+"";
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
       	      {
@@ -83,7 +87,7 @@ public class My_tea implements Action {
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String stu_guan = stu_attentioned_tea+"/"+tea_name+" "+tea_id;
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
-		      String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
+		      String sql_tea = "update tea_inf set rate='"+tea_rate+"',attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
 	          stmt.executeUpdate(sql_stu);
 	        	  
@@ -121,7 +125,7 @@ public class My_tea implements Action {
 	      String tea_name = null;
 	      String tea_id = null;
 	      String tea_attentioned_me = null;
-	      
+	      String tea_rate=null;
 	      
 	      stu_id = student_id;
 	      tea_id = teacher_id;
@@ -140,7 +144,11 @@ public class My_tea implements Action {
 	       		  tea_name = rst.getString("name");
 	       		  tea_id=rst.getString("id");
 	       		  tea_attentioned_me=rst.getString("attentioned_me");
+	       		  tea_rate=rst.getString("rate");
 	       	  }
+	          int rate=Integer.parseInt(tea_rate);
+	          rate--;
+	          tea_rate=rate+"";
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
     	      {
@@ -155,7 +163,7 @@ public class My_tea implements Action {
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String stu_guan = stu_attentioned_tea.replaceAll("/"+tea_name+" "+tea_id,"");
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
-		      String sql_tea = "update tea_inf set attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
+		      String sql_tea = "update tea_inf set rate='"+tea_rate+"',attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
 	          stmt.executeUpdate(sql_stu);
 	        	  

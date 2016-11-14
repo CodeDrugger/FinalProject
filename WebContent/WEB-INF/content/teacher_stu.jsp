@@ -54,6 +54,7 @@ try{
   		  stus.setTel(rst.getString("tel"));
   		  stus.setEmail(rst.getString("email"));
   		  stus.setAttentioned_me(rst.getString("attentioned_me"));
+  		  stus.setRate(rst.getString("rate"));
   	  }
    rst2 = stmt.executeQuery("select * from tea_inf where id='"+id_in+"'");
    while(rst2.next())
@@ -121,6 +122,7 @@ try{
     <input id="submit" type="submit" value="关注" />
    	<input type="hidden"  name="stus.name" value="<%=stus.getName()%>"  />
     <input type="hidden"  name="stus.id" value="<%=stus.getId()%>"  />
+    <input type="hidden"  name="stus.rate" value="<%=stus.getRate()%>"  />
     <input type="hidden"  name="stus.attentioned_me" value="<%=stus.getAttentioned_me()%>" />
     <input type="hidden"  name="tea_select.name" value="<%=tea_name%>"  />
     <input type="hidden"  name="tea_select.id" value="<%=tea_id%>"  />

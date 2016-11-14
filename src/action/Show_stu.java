@@ -70,14 +70,19 @@ public class Show_stu implements Action {
 	      Connection con = null;
 	      Statement stmt = null;
 	      //ResultSet rst = null;
+	      String rates=null;
+	      rates=stus.getRate();
+	      int rate=Integer.parseInt(rates);
+	      rate++;
+	      rates=rate+"";
 	      String stu_beiguan = stus.getAttentioned_me()+"/"+tea_select.getName()+" "+tea_select.getId();
 	      //格式 /name id 0:待定 1:同一 2:不同意
 	      String tea_guan = tea_select.getAttentioned_stu()+"/"+stus.getName()+" "+stus.getId();
 	      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_select.getId() +"'";
-	      String sql_stu = "update stu_inf set attentioned_me='"+stu_beiguan+ "' where id='"+stus.getId() +"'";
+	      String sql_stu = "update stu_inf set rate='"+rates+"',attentioned_me='"+stu_beiguan+ "' where id='"+stus.getId() +"'";
 	      if(tea_select.getAttentioned_stu().contains(stus.getName()+" "+stus.getId()))
 	      {
-	    	  message="已经关注过该学生";
+	    	  message="已经关注了该学生";
 	    	  return "has_selected";
 	      }
 	      message="成功关注该学生.";
