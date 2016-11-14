@@ -11,15 +11,17 @@
 <div class="container">
   <div class="content">
     <h1>我关注的导师    </h1>
-    <table width = "300" border = "1">
+    <table width="300" border="1">
       <tr>
 	<th>导师姓名</th>
+	<th>个人简介</th>
     <th>操作</th>
     <th>操作</th>
 	</tr>
-  	<s:iterator value = "attention_tea" var = "at">
+  	<s:iterator value="attention_tea" var="at">
     <tr>
     <td><a href="Mytea_inf.action?tea_inf_id=${at.id}&id_in=${id_in}">${at.name}</a></td>
+    <td>${at.self_intro}</td>
     <td><form name="form3" method="post" action="Choose_tea">
     	<input type="hidden"  name="teacher_id" value="${at.id}" />
         <input type="hidden"  name="student_id" value="${id_in}" />

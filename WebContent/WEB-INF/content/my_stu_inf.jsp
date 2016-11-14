@@ -1,5 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s"%> 
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,domain.Student,domain.Teacher,java.util.List,java.util.ArrayList" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html>
@@ -11,9 +12,9 @@
 <body>
 
     <h1>学生信息</h1>
-      <p>照片：<img src="" alt="" name="picture" width="120" height="32" id="picture" style="background-color: #999999" />
+      <p>照片：<img src="${stu.picture_name}" alt="" name="picture" width="120" height="32" id="picture" style="background-color: #999999" />
       </p>
-      <p>姓名：${sts.name}
+      <p>姓名：${stu.name}
       </p>
       <p>
         性别： ${stu.sex}

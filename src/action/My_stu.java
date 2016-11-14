@@ -24,7 +24,7 @@ public class My_stu implements Action {
     List<Student> selected_me = new ArrayList<>();
     
 	private String stu_inf_id;
-	private Student stu_inf;
+	private Student stu_inf=new Student();
 	
 	private String teacher_id;
 	private String student_id;
@@ -145,8 +145,10 @@ public class My_stu implements Action {
 	    		  stu_id = rst2.getString(("id"));
 	    		  stu_attentioned_me = rst2.getString("attentioned_me");
     	      }
+	          
 		      String stu_beiguan = stu_attentioned_me.replaceAll("/"+tea_name+" "+tea_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
+		
 		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_name+" "+stu_id,"");
 		      String sql_stu = "update stu_inf set attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
@@ -188,7 +190,7 @@ public class My_stu implements Action {
 	      String stu_selected_me =null;
 	      String tea_name = null;
 	      String tea_id = null;
-	      //String tea_attentioned_stu = null;
+	      String tea_attentioned_stu = null;
 	      String tea_selected_stu = null;
 	      String tea_enrollment = null;
 	      String tea_in_enrollment = null;
@@ -214,7 +216,7 @@ public class My_stu implements Action {
 	       		  tea_name = rst.getString("name");
 	       		  tea_id=rst.getString("id");
 	       		  tea_selected_stu=rst.getString("selected_stu");
-	       		  //tea_attentioned_stu = rst.getString("attentioned_stu");
+	       		  tea_attentioned_stu = rst.getString("attentioned_stu");
 	       		  tea_enrollment = rst.getString("enrollment");
 	       		  tea_in_enrollment = rst.getString("in_enrollment");
 	       	  }
@@ -241,10 +243,17 @@ public class My_stu implements Action {
 	    		  stu_selected_me = rst2.getString("selected_me");
 	    		  stu_state=rst2.getString("state");
     	      }
-	          if(stu_state.equals("1"))
+	          if(stu_state==null)
+	        	  ;
+	          else if(stu_state.equals("1"))
 	          {
 	        	  setMessage("该学生已完成互选");
 	        	  return "has been selected";//该学生已经和导师完成互选了
+	          }
+	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
+	          {
+	        	  message="不能选择你未关注的学生";
+	        	  return "can't choose stu which you don't attention";
 	          }
 		      String stu_beiguan = stu_selected_me+"/"+tea_name+" "+tea_id;
 		             stu_selected_tea="/"+tea_name+" "+tea_id;
@@ -275,7 +284,7 @@ public class My_stu implements Action {
 	return ret;
 	}
 	
-	public String Mytea_inf() {
+	public String Mystu_inf() {
 		//need tea_inf_id  id_in
 		  String ret = SUCCESS;
 	      Connection con = null;
@@ -372,7 +381,7 @@ public class My_stu implements Action {
 	          String aml[] = am.split("/");
 	          String atl[] = at.split("/");
 	          String stl[] = st.split("/");
-	          String sml[] = st.split("/");
+	          String sml[] = sm.split("/");
 	          //提示信息的添加
 	          int len1 = aml.length;
 	          int len2 = atl.length;
@@ -389,7 +398,8 @@ public class My_stu implements Action {
 	        	 String s[] = aml[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
-	        	 select_stu.add(t);
+	        	 t.setSelf_intro(get_self_intro(s[1]));
+	        	 attention_me.add(t);
 	          }	  
 	          for(i=0;i<len2;i++)
 	          {
@@ -399,6 +409,7 @@ public class My_stu implements Action {
 	        	 String s[] = atl[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 attention_stu.add(t);
 	          }	  
 	          for(i=0;i<len3;i++)
@@ -409,7 +420,8 @@ public class My_stu implements Action {
 	        	 String s[] = stl[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
-	        	 attention_me.add(t);
+	        	 t.setSelf_intro(get_self_intro(s[1]));
+	        	 select_stu.add(t);
 	          }	  
 	          
 	          for(i=0;i<len4;i++)
@@ -420,6 +432,7 @@ public class My_stu implements Action {
 	        	 String s[] = sml[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 selected_me.add(t);
 	          }	  
 
@@ -445,7 +458,44 @@ public class My_stu implements Action {
 	
 	return ret;
 	}
+	public String get_self_intro(String id)
+	{
+		  String self_intro="";
+	      Connection con = null;
+	      Statement stmt = null;
+	      ResultSet rst = null;
+	      try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	      try{   
+	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	          stmt=con.createStatement();   
+	          rst = stmt.executeQuery("select * from stu_inf where id='"+id+"'");
+	        	  while(rst.next())
+	        	  {
+	        		  self_intro=rst.getString("self_intro");
+	        	  }	        	  
 
+	        }catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }finally{
+	            try{
+	            	if(stmt!=null)
+	            		stmt.close();
+	            	if(con!=null)           
+	                    con.close();
+	            	
+	                } catch (SQLException e) {
+	                    // TODO Auto-generated catch block
+	                    e.printStackTrace();
+	                }   
+	            }
+		return self_intro;
+	}
 	public String getId_in() {
 		return id_in;
 	}

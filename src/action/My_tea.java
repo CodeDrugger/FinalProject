@@ -25,7 +25,7 @@ public class My_tea implements Action {
     List<Teacher> attention_me = new ArrayList<>();
     
 	private String tea_inf_id;
-	private Teacher tea_inf;
+	private Teacher tea_inf=new Teacher();
 	
 	private String teacher_id;
 	private String student_id;
@@ -231,11 +231,6 @@ public class My_tea implements Action {
 	        	  tea_in_enrollment = tea_num1+"";
 	          }
 	          */
-	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
-	          {
-	        	  message="该导师未关注你的情况下无法选择该导师";
-	        	  return "teacher not attention you";
-	          }
 	          rst2 = stmt.executeQuery("select * from stu_inf where id='"+stu_id+"'");
 	          while(rst2.next())
     	      {
@@ -244,7 +239,14 @@ public class My_tea implements Action {
     		  stu_selected_tea = rst2.getString("selected_tea");
     		  stu_state=rst2.getString("state");
     	      }
-	          if(stu_state.equals("1"))
+	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
+	          {
+	        	  message="该导师未关注你的情况下无法选择该导师";
+	        	  return "teacher not attention you";
+	          }
+	          if(stu_state==null)
+	        	  ;
+	          else if(stu_state.equals("1"))
 	          {
 	        	  message="你已经和其他导师完成互选";
 	        	  return "has been selected";
@@ -350,7 +352,9 @@ public class My_tea implements Action {
 	        	  return "not selected";
 		      }
 		      */
-	          if(stu_state.equals("1"))
+	          if(stu_state==null)
+	        	  ;
+	          else if(stu_state.equals("1"))
 	          {
 	        	  message="你已经和导师完成互选";
 	        	  return "has been selected";
@@ -485,7 +489,8 @@ public class My_tea implements Action {
 	        	 String s[] = aml[i].split(" "); 
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
-	        	 select_tea.add(t);
+	        	 t.setSelf_intro(get_self_intro(s[1]));
+	        	 attention_me.add(t);
 	          }	  
 	          for(int i=0;i<len2;i++)
 	          {
@@ -495,6 +500,7 @@ public class My_tea implements Action {
 	        	 String s[] = atl[i].split(" ");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 attention_tea.add(t);
 	          }	  
 	          for(int i=0;i<len3;i++)
@@ -505,7 +511,8 @@ public class My_tea implements Action {
 	        	 String s[] = stl[i].split(" "); 
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
-	        	 attention_me.add(t);
+	        	 t.setSelf_intro(get_self_intro(s[1]));
+	        	 select_tea.add(t);
 	          }	  
 	          
 	        }catch (SQLException e) {
@@ -528,7 +535,44 @@ public class My_tea implements Action {
 	
 	return ret;
 	}
+	public String get_self_intro(String id)
+	{
+		  String self_intro="";
+	      Connection con = null;
+	      Statement stmt = null;
+	      ResultSet rst = null;
+	      try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	      try{   
+	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	          stmt=con.createStatement();   
+	          rst = stmt.executeQuery("select * from tea_inf where id='"+id+"'");
+	        	  while(rst.next())
+	        	  {
+	        		  self_intro=rst.getString("self_intro");
+	        	  }	        	  
 
+	        }catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }finally{
+	            try{
+	            	if(stmt!=null)
+	            		stmt.close();
+	            	if(con!=null)           
+	                    con.close();
+	            	
+	                } catch (SQLException e) {
+	                    // TODO Auto-generated catch block
+	                    e.printStackTrace();
+	                }   
+	            }
+		return self_intro;
+	}
 	public String getId_in() {
 		return id_in;
 	}

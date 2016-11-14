@@ -19,7 +19,7 @@ window.onload=function(){
 		input.value = "${teacher_id}";
 	}
 	*/
-	if(msg=="成功关注该导师."||meg=="已经关注过该导师.")
+	/*if(msg=="成功关注该导师."||meg=="已经关注过该导师.")
 	{
 		form.action="Show_stu_tea";
 		input.name="teas.id";
@@ -34,6 +34,6 @@ window.onload=function(){
 		input.value="${stus.id}";
 		input2.name="id_in";
 		input2.value="${tea_select.id}";
-	}
+	}*/
 	
 }
