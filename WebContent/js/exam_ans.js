@@ -13,8 +13,8 @@ window.onload=function(){
 		{
 			var div_block = document.createElement("div");
 			div_block.id = "block" + i;
-			div_block.innerHTML = "<div class=\"col-md-5\"><div class=\"panel panel-default\"><div class=\"panel-heading\">问题:"+i+ques[i - 1]+
-			"</div><div class=\"panel-body\"><textarea readonly=\"readonly\">"+ans[i - 1]+"</textarea></div></div></div>";
+			div_block.innerHTML = "问题" + i + "：<input type=\"text\" style=\"border:none;margin-bottom:2%\"  value=\"" + ques[i - 1] + "\" readonly=\"readonly\"><br>"
+			+ "<textarea readonly=\"readonly\">" + ans[i - 1] + "</textarea>";
 			div_content.appendChild(div_block);
 		}
 		amount++;

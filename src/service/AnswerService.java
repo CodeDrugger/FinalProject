@@ -45,7 +45,7 @@ public class AnswerService {
 						+ "'" + a.getId_stu() + "',"
 						+ "'" + a.getAmount() + "',"
 						+ "'" + ques + "',"
-						+ "'" + ans + "'");
+						+ "'" + ans + "')");
 			}
 			
 		} catch (SQLException e) {

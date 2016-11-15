@@ -52,6 +52,29 @@ pageEncoding="utf8"%>
 </style>
 </head>
 <body>
+<c:set var="id" value="${id}" scope="request"></c:set>
+	<%
+	String id = (String)request.getAttribute("id");
+	String name = "点此完善信息";
+	try {
+	    Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+	    e.printStackTrace();
+	}
+	try {
+	    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+	    Statement stmt = connect.createStatement();
+	    ResultSet rs = stmt.executeQuery("select * from tea_inf where id='" + id + "'");
+	    if (rs.next()) {
+	        if (rs.getString("name") != null && rs.getString("name").length() > 0) {
+	        	name = rs.getString("name");
+	        }
+	    }
+	    connect.close();
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	%>
  <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
      <div class="container-fluid">
          <div class="navbar-header">
@@ -61,7 +84,7 @@ pageEncoding="utf8"%>
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
              </button>
-             <a class="navbar-brand" href="./mainpage_tea.action">主页</a>
+             <a class="navbar-brand" href="./MainPage.action?id=${id}&userclass=1">主页</a>
          </div>
 
          <!-- Collect the nav links, forms, and other content for toggling -->

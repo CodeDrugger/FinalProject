@@ -85,7 +85,7 @@
 
             <body>
                 <c:set var="id" value="${id}" scope="request"></c:set>
-                <%
+	<%
 	String id = (String)request.getAttribute("id");
 	String name = "点此完善信息";
 	try {
@@ -96,9 +96,10 @@
 	try {
 	    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
 	    Statement stmt = connect.createStatement();
-	    ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
+	    ResultSet rs = stmt.executeQuery("select * from tea_inf where id='" + id + "'");
 	    if (rs.next()) {
 	        if (rs.getString("name") != null && rs.getString("name").length() > 0) {
+	        	name = rs.getString("name");
 	        }
 	    }
 	    connect.close();
@@ -128,7 +129,7 @@
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a href="./Show_stu.action?stus.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料">
+                                        <a href="./Show_tea.action?teac.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料">
                                             <%=name%>
                                         </a>
                                     </li>

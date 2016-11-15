@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf8"
+<%@ page language="java" contentType="text/html; charset=utf8" import="java.sql.*"
 pageEncoding="utf8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -11,6 +11,11 @@ pageEncoding="utf8"%>
 	<link rel="stylesheet" href="css/font-awesome.css">
 	<title>回答问卷</title>
 	<style>
+	 body{
+            font-family: 'microsoft yahei',Arial,sans-serif;
+            background-image: url("images/1.png");
+            padding-top: 70px;
+        }
 	.subinp{
     width: 125px;
     border-radius: 3em;
@@ -22,7 +27,7 @@ pageEncoding="utf8"%>
   }
   textarea{
     resize: none;
-    width: 80%;
+    width: 100%;
     height: 120px;
   }
 	</style>
@@ -34,6 +39,29 @@ pageEncoding="utf8"%>
 	</script>
 </head>
 <body>
+<c:set var="id" value="${id}" scope="request"></c:set>
+    <%
+    String id = (String)request.getAttribute("id");
+    String name = "点此完善信息";
+    try {
+    Class.forName("com.mysql.jdbc.Driver");
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+}
+try {
+Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+Statement stmt = connect.createStatement();
+ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
+if (rs.next()) {
+if (rs.getString("name") != null && rs.getString("name").length() > 0) {
+name = rs.getString("name");
+}
+}
+connect.close();
+} catch (SQLException e) {
+e.printStackTrace();
+}
+%>
 	<nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
 	    <div class="container-fluid">
 	        <div class="navbar-header">
@@ -43,7 +71,7 @@ pageEncoding="utf8"%>
 	                <span class="icon-bar"></span>
 	                <span class="icon-bar"></span>
 	            </button>
-	            <a class="navbar-brand" href="./mainpage_stu.action">主页</a>
+	            <a class="navbar-brand" href="./MainPage.action?id=${id}&userclass=2">主页</a>
 	        </div>
 
 	        <!-- Collect the nav links, forms, and other content for toggling -->
@@ -69,9 +97,10 @@ pageEncoding="utf8"%>
 						<div id="info"><h2>该导师暂无问卷T_T</h2></div>
 						<form action="Answer_ques" method="post">
 							<div id="content"></div>
-							<input id="dbamount" type="hidden" value="${q.amount}">
+							<input id="dbamount" type="hidden" name="a.amount" value="${q.amount}">
 							<input type="hidden" name="a.id_tea" value="${q.id}">
 							<input type="hidden" name="a.id_stu" value="${id}">
+							<input type="hidden" name="id" value="${id}">
 							<input type="button" value="返回" onclick="history.back();" class="subinp">
 							<input id="submit" type="submit" value="提交" class="subinp">
 						</form>

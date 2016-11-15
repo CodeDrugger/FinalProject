@@ -53,7 +53,7 @@ try {
   			xueyuan = rs.getString("xueyuan");
   		}
   	}
-  	ResultSet rst = stmt.executeQuery("select * from stu_inf where state<>1 and wish_xueyuan='" + xueyuan + "' order by rate desc,score desc");
+  	ResultSet rst = stmt.executeQuery("select * from stu_inf where wish_xueyuan='" + xueyuan + "' order by rate desc,score desc");
   	while (rst.next())
   	{
   		if (i < 5) {

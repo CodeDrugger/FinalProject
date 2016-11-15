@@ -115,7 +115,7 @@ e.printStackTrace();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="mainpage_stu.html">主页</a>
+            <a class="navbar-brand" href="./MainPage.action?id=${id}&userclass=2">主页</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -126,7 +126,7 @@ e.printStackTrace();
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="./Show_stu.action?stus.id=${id }" data-toggle="tooltip" data-placement="left"
+                    <a href="./Show_stu.action?stuc.id=${id }" data-toggle="tooltip" data-placement="left"
                     title="查看个人资料">
                     <%=name%>
                 </a>

@@ -16,8 +16,9 @@ window.onload=function()
 		{
 			var div_block = document.createElement("div");
 			div_block.id = "block" + i;
-			div_block.innerHTML = "<div class=\"col-md-5\"><div class=\"panel panel-default\"><div class=\"panel-heading\">问题:"+i+array[i-1]+
-			"</div><div class=\"panel-body\"><textarea></textarea></div></div></div>";
+			div_block.innerHTML = "问题" + i 
+			+ "：<input type=\"text\" style=\"border:none\" name=\"a.questions\" value=\"" + array[i - 1] + "\" readonly=\"readonly\"><br>"
+			+ "<textarea name=\"a.answers\"></textarea>";
 			div_content.appendChild(div_block);
 		}
 		amount++;

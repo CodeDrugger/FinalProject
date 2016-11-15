@@ -24,7 +24,7 @@ public class Exam_ans implements Action {
 	public String execute() throws Exception {
 		InitAnsService is = new InitAnsService();
 		is.doInitAns(a);
-		return null;
+		return SUCCESS;
 	}
 
 }

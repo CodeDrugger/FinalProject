@@ -77,7 +77,7 @@ pageEncoding="utf8"%>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./mainpage_stu.action">主页</a>
+            <a class="navbar-brand" href="./MainPage.action?id=${id}&userclass=2">主页</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

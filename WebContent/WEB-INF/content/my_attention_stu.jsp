@@ -32,33 +32,29 @@
     </style>
 </head>
 <body>
- <%
-String name = "点此完善信息";
-String major = "";
-String id = (String)request.getAttribute("id");
-try {
-  Class.forName("com.mysql.jdbc.Driver");
-} catch (ClassNotFoundException e) {
-  e.printStackTrace();
-}
-try {
-  Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
-  Statement stmt = connect.createStatement();
-  ResultSet rs = stmt.executeQuery("select * from tea_inf where id='"+ id + "'");
-    if (rs.next())
-    {
-      if (rs.getString("name") != null && rs.getString("name").length() > 0)
-      {
-        name = rs.getString("name");
-        major = rs.getString("major");
-      } 
-    }
-    ResultSet rst = stmt.executeQuery("select * from stu_inf where wish_major='" + major + "' order by rate desc,score desc");
-    connect.close();
-} catch (SQLException e) {
-    e.printStackTrace();
-}
-%>
+<c:set var="id" value="${id_in}" scope="request"></c:set>
+	<%
+	String id = (String)request.getAttribute("id");
+	String name = "点此完善信息";
+	try {
+	    Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+	    e.printStackTrace();
+	}
+	try {
+	    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+	    Statement stmt = connect.createStatement();
+	    ResultSet rs = stmt.executeQuery("select * from tea_inf where id='" + id + "'");
+	    if (rs.next()) {
+	        if (rs.getString("name") != null && rs.getString("name").length() > 0) {
+	        	name = rs.getString("name");
+	        }
+	    }
+	    connect.close();
+	} catch (SQLException e) {
+	    e.printStackTrace();
+	}
+	%>
 <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -68,7 +64,7 @@ try {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./mainpage_tea.action">主页</a>
+            <a class="navbar-brand" href="./MainPage.action?id=${id_in}&userclass=1">主页</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

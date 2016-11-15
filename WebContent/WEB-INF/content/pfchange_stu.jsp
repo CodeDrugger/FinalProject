@@ -155,7 +155,7 @@ ResizeImages();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="./mainpage_stu.action">主页</a>
+            <a class="navbar-brand" href="./MainPage.action?id=${id}&userclass=2">主页</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -242,7 +242,7 @@ ResizeImages();
                     <input name="stuc.email" type="text" value="${stuc.email}" class="inputgg"/></p>
                 <p>
                     <label style="font-size: larger;margin-right: 7.5%; margintop :0px;">个人简介:</label>
-                    <textarea name="stuc.self_intro" value="${stuc.self_intro}" class="inputgg" rows=5 style="vertical-align: top;"></textarea>
+                    <textarea name="stuc.self_intro" class="inputgg" rows=5 style="vertical-align: top;">${stuc.self_intro}</textarea>
                 </p>
                 <p>
                     <input type="hidden" name="id" value="${stuc.id}" />
