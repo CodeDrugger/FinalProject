@@ -25,8 +25,8 @@ pageEncoding="utf8"%>
   }
   .inputq {
     background: #fafdfe;
-    height: 28px;
-    width: 180px;
+    height: 35px;
+    width: 70%;
     line-height: 28px;
     border: 1px solid #9bc0dd;
     -moz-border-radius: 2px;
@@ -35,64 +35,114 @@ pageEncoding="utf8"%>
     margin-bottom: 10px;
     margin-left: 7%;
   }
+  .subinp{
+    width: 125px;
+    border-radius: 3em;
+    border-style: outset;
+    height: 30px;
+    margin-right: 2%;
+    outline:none;
+    background-image: url("images/7.jpg");
+  }
+  textarea{
+    resize: none;
+    width: 80%;
+    height: 120px;
+  }
 </style>
 </head>
 <body>
-  <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="./mainpage_tea.action">主页</a>
-      </div>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="#">我关注的</a>
-          </li>
-          <li>
-            <a href="#">关注我的</a>
-          </li>
-          <li>
-            <a href="./My_ques.action?id=${id}&q.id=${id}">我的问卷</a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="./Show_tea.action?teac.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料">
-              <%=name%>
-            </a>
-          </li>
-          <li>
-            <a href="./loginpage.action">注销账户</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <%
+ String name = "点此完善信息";
+ String xueyuan = "";
+ String[] reco_name = {"", "", "", "", ""};
+ String[] reco_id = {"", "", "", "", ""};
+ String[] reco_benke = {"", "", "", "", ""};
+ String[] reco_pic = {"", "", "", "", ""};
+ String id = (String)request.getAttribute("id");
+ int i = 0;
+ try {
+ 	Class.forName("com.mysql.jdbc.Driver");
+ } catch (ClassNotFoundException e) {
+ 	e.printStackTrace();
+ }
+ try {
+ 	Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+ 	Statement stmt = connect.createStatement();
+ 	ResultSet rs = stmt.executeQuery("select * from tea_inf where id='"+ id + "'");
+   	if (rs.next())
+   	{
+   		if (rs.getString("name") != null && rs.getString("name").length() > 0)
+   		{
+   			name = rs.getString("name");
+   			xueyuan = rs.getString("xueyuan");
+   		}
+   	}
+   	ResultSet rst = stmt.executeQuery("select * from stu_inf where state<>1 and wish_major='" + xueyuan + "' order by rate desc,score desc");
+   	while (rst.next())
+   	{
+   		if (i < 5) {
+             reco_name[i] = rst.getString("name");
+             reco_id[i] = rst.getString("id");
+             reco_benke[i] = rst.getString("benke_major");
+             reco_pic[i] = rst.getString("picture_name");
+             i++;
+         } else
+             break;
+   	}
+   	connect.close();
+ } catch (SQLException e) {
+   	e.printStackTrace();
+ }
+ %>
+ <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
+     <div class="container-fluid">
+         <div class="navbar-header">
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                 <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="./mainpage_tea.action">主页</a>
+         </div>
+
+         <!-- Collect the nav links, forms, and other content for toggling -->
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+             <ul class="nav navbar-nav">
+                 <li><a href="./my_attention_stu?id_in=${id}">我关注的学生</a></li>
+                 <li><a href="./attention_me_stu?id_in=${id}">关注我的学生</a></li>
+                 <li><a href="./my_choose_stu?id_in=${id}">我选择的学生</a></li>
+                 <li><a href="./choose_me_stu?id_in=${id}">选择我的学生</a></li>
+                 <li><a href="./My_ques.action?id=${id}&id=${id}">我的问卷</a></li>
+             </ul>
+             <ul class="nav navbar-nav navbar-right">
+                 <li><a href="./Show_tea.action?teac.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
+                 <li><a href="./loginpage.action">注销账户</a></li>
+             </ul>
+         </div>
+     </div>
+ </nav>
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-      <div class="panel">
-        <div class="panel-body">
+        <h2>创建你的问卷</h2>
+      <div class="panel panel-default">
+        <div class="panel-body" style="background:#fefefa;">
           <form action="Create_ques" method="post">
           <div id="content"></div>
           <input type="hidden" name="id" value="${id}">
           <input type="hidden" name="q.id" value="${id}">
           <input id="dbamount" type="hidden" value="${q.amount}">
-          <input type="button" value="新增" onclick="newLine()">
-          <input type="button" value="删除" onclick="removeLine()">
+          <input type="button" value="新增"onclick="newLine()" class="subinp" style="margin-left:20%;">
+          <input type="button" value="删除" onclick="removeLine()" class="subinp">
           <input id="amounttodb" type="hidden" name="q.amount">
-          <input type="submit" value="提交">
-        </form>  
+          <input type="submit" value="提交" class="subinp" />
+        </form>
+      </div>
         </div>
       </div>
       </div>
     </div>
-  </div>
 </body>
 </html>
