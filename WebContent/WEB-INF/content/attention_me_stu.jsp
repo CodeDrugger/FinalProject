@@ -32,33 +32,7 @@
   </style>
 </head>
 <body>
- <%
-String name = "点此完善信息";
-String major = "";
-String id = (String)request.getAttribute("id");
-try {
-  Class.forName("com.mysql.jdbc.Driver");
-} catch (ClassNotFoundException e) {
-  e.printStackTrace();
-}
-try {
-  Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
-  Statement stmt = connect.createStatement();
-  ResultSet rs = stmt.executeQuery("select * from tea_inf where id='"+ id + "'");
-    if (rs.next())
-    {
-      if (rs.getString("name") != null && rs.getString("name").length() > 0)
-      {
-        name = rs.getString("name");
-        major = rs.getString("major");
-      } 
-    }
-    ResultSet rst = stmt.executeQuery("select * from stu_inf where wish_major='" + major + "' order by rate desc,score desc");
-    connect.close();
-} catch (SQLException e) {
-    e.printStackTrace();
-}
-%>
+
 <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -74,14 +48,14 @@ try {
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="./my_attention_stu?id_in=${id}">我关注的学生</a></li>
-                <li><a href="./attention_me_stu?id_in=${id}">关注我的学生</a></li>
-                <li><a href="./my_choose_stu?id_in=${id}">我选择的学生</a></li>
-                <li><a href="./choose_me_stu?id_in=${id}">选择我的学生</a></li>
-                <li><a href="./My_ques.action?id=${id}&q.id=${id}">我的问卷</a></li>
+                <li><a href="./my_attention_stu?id_in=${id_in}">我关注的学生</a></li>
+                <li><a href="./attention_me_stu?id_in=${id_in}">关注我的学生</a></li>
+                <li><a href="./my_choose_stu?id_in=${id_in}">我选择的学生</a></li>
+                <li><a href="./choose_me_stu?id_in=${id_in}">选择我的学生</a></li>
+                <li><a href="./My_ques.action?id=${id_in}&q.id=${id_in}">我的问卷</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="./Show_tea.action?teac.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
+                <li><a href="./Show_tea.action?teac.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料">bug</a></li>
                 <li><a href="./loginpage.action">注销账户</a></li>
             </ul>
         </div>
@@ -101,6 +75,14 @@ try {
                   <input type="hidden"  name="student_id" value="${am.id}" />
                   <input type="submit"  value="关注TA" class="btninp" />
                 </form></div>
+                <div class="incard">
+                	<form action="Exam_ans" method="post">
+                	  <input type="hidden" name="a.id_tea" value="${id_in}">
+                	  <input type="hidden" name="a.id_stu" value="${am.id}">
+                	  <input type="hidden" name="id" value="${am.id}">
+                	  <input type="submit" value="TA的问卷答案" class="btninp">
+                	</form>
+                </div>
               </div>
             </div>
           </div>

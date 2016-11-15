@@ -80,9 +80,9 @@ public class My_stu implements Action {
 	        	  message="已关注该学生";
 	        	  return "has attentioned";
 		      }
-		      String stu_beiguan = stu_attentioned_me+"/"+stu_name+" "+stu_id;
+		      String stu_beiguan = stu_attentioned_me+"/"+tea_name+" "+tea_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
-		      String tea_guan = tea_attentioned_stu+"/"+tea_name+" "+tea_id;
+		      String tea_guan = tea_attentioned_stu+"/"+stu_name+" "+stu_id;
 		      String sql_stu = "update stu_inf set rate='"+stu_rate+"',attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);

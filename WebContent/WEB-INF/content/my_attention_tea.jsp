@@ -83,9 +83,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="./my_attention_tea?id_in=${id}">我关注的导师</a></li>
-                <li><a href="./attention_me_tea?id_in=${id}">关注我的导师</a></li>
-                <li><a href="./my_choose_tea?id_in=${id}">我选择的导师</a></li>
+                <li><a href="./my_attention_tea?id_in=${id_in}">我关注的导师</a></li>
+                <li><a href="./attention_me_tea?id_in=${id_in}">关注我的导师</a></li>
+                <li><a href="./my_choose_tea?id_in=${id_in}">我选择的导师</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="./Show_stu.action?stuc.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
@@ -116,6 +116,13 @@
               <input type="hidden"  name="teacher_id" value="${at.id}" />
               <input type="hidden"  name="student_id" value="${id_in}" />
               <input type="submit"  value="取关TA" class="btninp" />
+            </form>
+          </div>
+          <div class="incard">
+            <form method="post" action="His_ques">
+              <input type="hidden"  name="q.id" value="${at.id}" />
+              <input type="hidden"  name="id" value="${id_in}" />
+              <input type="submit"  value="回答TA的问卷" class="btninp" />
             </form>
           </div>
         </div>
