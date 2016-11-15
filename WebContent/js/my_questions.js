@@ -7,7 +7,7 @@ window.onload=function()
 		amount++;
 		var div_block = document.createElement("div");
 		div_block.id = "block" + amount;
-		div_block.innerHTML = "问题" + amount + "：<input type=\"text\" name=\"q.questions\">";
+		div_block.innerHTML = "问题" + amount + "：<input type=\"text\" name=\"q.questions\" class=\"inputq\">";
 		amount++;
 		div_content.appendChild(div_block);
 	}
@@ -17,7 +17,7 @@ window.onload=function()
 		{
 			var div_block = document.createElement("div");
 			div_block.id = "block" + i;
-			div_block.innerHTML = "问题" + i + "：<input type=\"text\" name=\"q.questions\" value=\"" + array[i - 1] + "\">";
+			div_block.innerHTML = "问题" + i + "：<input type=\"text\" class=\"inputq\" name=\"q.questions\" value=\"" + array[i - 1] + "\">";
 			div_content.appendChild(div_block);
 		}
 		amount++;
@@ -31,7 +31,7 @@ function newLine()
 	{
 		var div_block = document.createElement("div");
 		div_block.id = "block" + amount;
-		div_block.innerHTML = "问题" + amount + "：<input type=\"text\" name=\"q.questions\">";
+		div_block.innerHTML = "问题" + amount + "：<input type=\"text\" class=\"inputq\" name=\"q.questions\">";
 		amount++;
 		div_content.appendChild(div_block);
 	}

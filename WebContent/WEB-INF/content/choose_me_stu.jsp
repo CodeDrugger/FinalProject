@@ -74,11 +74,11 @@ try {
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="./my_attention_stu?id_in=${id}">我关注的学生</a></li>
-                <li><a href="./attention_me_stu?id_in=${id}">关注我的学生</a></li>
-                <li><a href="./my_choose_stu?id_in=${id}">我选择的学生</a></li>
-                <li><a href="./choose_me_stu?id_in=${id}">选择我的学生</a></li>
-                <li><a href="./My_ques.action?id=${id}&q.id=${id}">我的问卷</a></li>
+                <li><a href="./my_attention_stu?id_in=${id_in}">我关注的学生</a></li>
+                <li><a href="./attention_me_stu?id_in=${id_in}">关注我的学生</a></li>
+                <li><a href="./my_choose_stu?id_in=${id_in}">我选择的学生</a></li>
+                <li><a href="./choose_me_stu?id_in=${id_in}">选择我的学生</a></li>
+                <li><a href="./My_ques.action?id=${id_in}&q.id=${id_in}">我的问卷</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="./Show_tea.action?teac.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
@@ -90,7 +90,7 @@ try {
 <div class="container">
   <h2 style="margin-bottom: 5%;">选择我的学生</h2>
   <div class="row">
-    <s:iterator value="attention_me" var="am">
+    <s:iterator value="selected_me" var="sm">
     <div class="col-md-3 ">
       <div class="panel card">
         <div class="panel-body">

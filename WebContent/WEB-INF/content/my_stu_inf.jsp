@@ -80,11 +80,11 @@ try {
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="./my_attention_stu?id_in=${id}">我关注的学生</a></li>
-                <li><a href="./attention_me_stu?id_in=${id}">关注我的学生</a></li>
-                <li><a href="./my_choose_stu?id_in=${id}">我选择的学生</a></li>
-                <li><a href="./choose_me_stu?id_in=${id}">选择我的学生</a></li>
-                <li><a href="./My_ques.action?id=${id}&q.id=${id}">我的问卷</a></li>
+                <li><a href="./my_attention_stu?id_in=${id_in}">我关注的学生</a></li>
+                <li><a href="./attention_me_stu?id_in=${id_in}">关注我的学生</a></li>
+                <li><a href="./my_choose_stu?id_in=${id_in}">我选择的学生</a></li>
+                <li><a href="./choose_me_stu?id_in=${id_in}">选择我的学生</a></li>
+                <li><a href="./My_ques.action?id=${id_in}&q.id=${id_in}">我的问卷</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="./Show_tea.action?teac.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
@@ -104,54 +104,54 @@ try {
                             <div class="bigfont">照片<span class="info"><img src="" alt="" name="picture" width="120" height="180" id="picture" style="background-color: #999999"/></span>
                             </div>
                             <div class="bigfont">
-                                姓名<span class="info">$ { stu.name }
+                                姓名<span class="info">${ stu.name }
                             </span>
                         </div>
                         <div class="bigfont">
-                            性别<span class="info">$ { stu.sex }
+                            性别<span class="info">${ stu.sex }
                         </span>
                     </div>
                     <div class="bigfont">
-                        年龄<span class="info">$ { stu.age }
+                        年龄<span class="info">${ stu.age }
                     </span>
                 </div>
                 <div class="bigfont">
-                    本科学科<span class="info" style="margin-left: 16%">$ { stu.benke_major }
+                    本科学科<span class="info" style="margin-left: 16%">${ stu.benke_major }
                 </span>
             </div>
             <div class="bigfont">
-                报考硕士类别<span class="info" style="margin-left: 12%">$ { stu.wish_class }
+                报考硕士类别<span class="info" style="margin-left: 12%">${ stu.wish_class }
             </span>
         </div>
         <div class="bigfont">
-            入选方式<span class="info" style="margin-left: 16%;">$ { stu.bein_class }
+            入选方式<span class="info" style="margin-left: 16%;">${ stu.bein_class }
         </span>
     </div>
     <div class="bigfont">
-        报考专业<span class="info" style="margin-left: 10%;">$ { stu.wish_xueyuan }
-    </span>
+        报考学院<span class="info" style="margin-left: 10%;">${ stu.wish_xueyuan }
+    </span></div>
     <div class="bigfont">
-        报考专业<span class="info" style="margin-left: 10%;">$ { stu.wish_major }
+        报考专业<span class="info" style="margin-left: 10%;">${ stu.wish_major }
     </span>
 </div>
 <div class="bigfont">
-    是否有直博意愿<span class="info" style="margin-left: 10%;">$ { stu.zhibo }
+    是否有直博意愿<span class="info" style="margin-left: 10%;">${ stu.zhibo }
 </span>
 </div>
 <div class="bigfont">
-    本科学分绩<span class="info" style="margin-left: 14%">$ { stu.score }
+    本科学分绩<span class="info" style="margin-left: 14%">${ stu.score }
 </span>
 </div>
 <div class="bigfont">
-    个人荣誉<span class="info" style="margin-left: 16%;">$ { stu.honor }
+    个人荣誉<span class="info" style="margin-left: 16%;">${ stu.honor }
 </span>
 </div>
 <div class="bigfont">
-    email<span class="info" style="margin-left: 19%">$ { stu.email }
+    email<span class="info" style="margin-left: 19%">${ stu.email }
 </span>
 </div>
 <div class="bigfont">
-    电话<span class="info">$ { stu.tel }
+    电话<span class="info">${ stu.tel }
 </span>
 </div>
 <div class="bigfont">
