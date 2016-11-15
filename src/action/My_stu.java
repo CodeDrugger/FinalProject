@@ -319,6 +319,7 @@ public class My_stu implements Action {
 	        		  stu.setZhibo(rst.getString("zhibo"));
 	        		  stu.setWish_class(rst.getString("wish_class"));
 	        		  stu.setBein_class(rst.getString("bein_class"));
+	        		  stu.setWish_xueyuan(rst.getString("wish_xueyuan"));
 	        		  stu.setScore(rst.getString("score"));
 	        		  stu.setHonor(rst.getString("honor"));
 	        		  stu.setSelf_intro(rst.getString("self_intro"));

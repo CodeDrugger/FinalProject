@@ -55,6 +55,7 @@ try{
   		  stus.setEmail(rst.getString("email"));
   		  stus.setAttentioned_me(rst.getString("attentioned_me"));
   		  stus.setRate(rst.getString("rate"));
+  		  stus.setWish_xueyuan(rst.getString("Wish_xueyuan"));
   	  }
    rst2 = stmt.executeQuery("select * from tea_inf where id='"+id_in+"'");
    while(rst2.next())
@@ -104,7 +105,8 @@ try{
   <p>报考硕士类别: <%=stus.getWish_class()%>
   </p>
   <p>入选方式：: <%=stus.getBein_class()%></p>
-  <p>研究生意愿学科：<%=stus.getWish_major()%></p>
+  <p>报考学院：<%=stus.getWish_xueyuan()%></p>
+  <p>报考专业：<%=stus.getWish_major()%></p>
       <p>是否有直博意愿：<%=stus.getZhibo()%>
       </p>
       <p>本科学分绩：<%=stus.getScore()%>

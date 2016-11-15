@@ -220,7 +220,7 @@ ResizeImages();
                     考研<input id="bein_class_kaoyan" type="radio" name="stuc.bein_class" id="stuc.bein_class" value="考研" /></p>
                     <p>
                     <label style="font-size: larger;margin-right: 1.5%;">报考学院:</label>
-                    <input name="stuc.wish_major" type="text" id="stuc.wish_major" value="${stuc.wish_xueyuan}" class="inputgg"/></p>
+                    <input name="stuc.wish_xueyuan" type="text" id="stuc.wish_xueyuan" value="${stuc.wish_xueyuan}" class="inputgg"/></p>
                 <p>
                     <label style="font-size: larger;margin-right: 1.5%;">报考专业:</label>
                     <input name="stuc.wish_major" type="text" id="stuc.wish_major" value="${stuc.wish_major}" class="inputgg"/></p>
