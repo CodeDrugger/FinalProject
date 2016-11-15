@@ -3,8 +3,9 @@ package domain;
 public class Answers {
 	private String id_tea;
 	private String id_stu;
-	private String questions;
-	private String answers;
+	private String amount;
+	private String[] questions;
+	private String[] answers;
 	public String getId_tea() {
 		return id_tea;
 	}
@@ -17,17 +18,22 @@ public class Answers {
 	public void setId_stu(String id_stu) {
 		this.id_stu = id_stu;
 	}
-	public String getQuestions() {
+	public String getAmount() {
+		return amount;
+	}
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+	public String[] getQuestions() {
 		return questions;
 	}
-	public void setQuestions(String questions) {
+	public void setQuestions(String[] questions) {
 		this.questions = questions;
 	}
-	public String getAnswers() {
+	public String[] getAnswers() {
 		return answers;
 	}
-	public void setAnswers(String answers) {
+	public void setAnswers(String[] answers) {
 		this.answers = answers;
 	}
-	
 }

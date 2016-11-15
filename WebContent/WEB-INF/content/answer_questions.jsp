@@ -29,7 +29,7 @@ pageEncoding="utf8"%>
 	<script type="text/javascript">
 		var array = [];
 		<c:forEach items="${q.questions}" var="u">
-		array.push(${u})
+		array.push("${u}")
 		</c:forEach> 
 	</script>
 </head>
