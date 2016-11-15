@@ -146,33 +146,32 @@ ResizeImages();
 	    e.printStackTrace();
 	}
 	%>
-<div class="header">
-    <nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="mainpage_stu.html">主页</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">我关注的</a></li>
-                    <li><a href="#">关注我的</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="./Show_stu.action?stuc.id=${stuc.id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
-                    <li><a href="./loginpage.action">注销账户</a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./mainpage_stu.action">主页</a>
         </div>
-    </nav>
-</div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="./my_attention_tea?id_in=${id}">我关注的导师</a></li>
+                <li><a href="./attention_me_tea?id_in=${id}">关注我的导师</a></li>
+                <li><a href="./my_choose_tea?id_in=${id}">我选择的导师</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./Show_stu.action?stuc.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
+                <li><a href="./loginpage.action">注销账户</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">

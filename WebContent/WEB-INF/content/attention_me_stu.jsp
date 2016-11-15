@@ -20,6 +20,7 @@
     }
     .card{
       background-image: url("images/2.jpg"); 
+      border: none;
     }
     .incard{
       margin-bottom: 10%;
@@ -31,7 +32,7 @@
   </style>
 </head>
 <body>
-   <%
+ <%
 String name = "点此完善信息";
 String major = "";
 String id = (String)request.getAttribute("id");
@@ -73,8 +74,10 @@ try {
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">我关注的</a></li>
-                <li><a href="#">关注我的</a></li>
+                <li><a href="./my_attention_stu?id_in=${id}">我关注的学生</a></li>
+                <li><a href="./attention_me_stu?id_in=${id}">关注我的学生</a></li>
+                <li><a href="./my_choose_stu?id_in=${id}">我选择的学生</a></li>
+                <li><a href="./choose_me_stu?id_in=${id}">选择我的学生</a></li>
                 <li><a href="./My_ques.action?id=${id}&q.id=${id}">我的问卷</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
