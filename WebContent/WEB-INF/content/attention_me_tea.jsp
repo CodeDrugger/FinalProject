@@ -48,8 +48,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#">我关注的</a></li>
-                <li><a href="#">关注我的</a></li>
+                <li><a href="./my_attention_tea?id_in=${id}">我关注的导师</a></li>
+                <li><a href="./attention_me_tea?id_in=${id}">关注我的导师</a></li>
+                <li><a href="./my_choose_tea?id_in=${id}">我选择的导师</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="./Show_stu.action?stuc.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料">bug</a></li>
