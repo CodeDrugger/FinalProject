@@ -3,6 +3,7 @@ package domain;
 public class AdvSearch_tea {
 	private String benke_major = "";
 	private String wish_major = "";
+	private String wish_xueyuan="";
 	private String zhibo = "";
 	private String wish_class = "";
 	private String bein_class = "";
@@ -10,6 +11,12 @@ public class AdvSearch_tea {
 	private int range;//0:bigger,1:smaller,2:equal,-1:don't care
 	private String keyword;
 	
+	public String getWish_xueyuan() {
+		return wish_xueyuan;
+	}
+	public void setWish_xueyuan(String wish_xueyuan) {
+		this.wish_xueyuan = wish_xueyuan;
+	}
 	public String getBenke_major() {
 		return benke_major;
 	}

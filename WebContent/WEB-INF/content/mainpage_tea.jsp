@@ -29,8 +29,13 @@ pageEncoding="utf8"%>
 <body>
  <%
 String name = "点此完善信息";
-String major = "";
+String xueyuan = "";
+String[] reco_name = {"", "", "", "", ""};
+String[] reco_id = {"", "", "", "", ""};
+String[] reco_benke = {"", "", "", "", ""};
+String[] reco_pic = {"", "", "", "", ""};
 String id = (String)request.getAttribute("id");
+int i = 0;
 try {
 	Class.forName("com.mysql.jdbc.Driver");
 } catch (ClassNotFoundException e) {
@@ -45,10 +50,21 @@ try {
   		if (rs.getString("name") != null && rs.getString("name").length() > 0)
   		{
   			name = rs.getString("name");
-  			major = rs.getString("major");
+  			xueyuan = rs.getString("xueyuan");
   		}	
   	}
-  	ResultSet rst = stmt.executeQuery("select * from stu_inf where wish_major='" + major + "' order by rate desc,score desc");
+  	ResultSet rst = stmt.executeQuery("select * from stu_inf where state<>1 and wish_major='" + xueyuan + "' order by rate desc,score desc");
+  	while (rst.next())
+  	{
+  		if (i < 5) {
+            reco_name[i] = rst.getString("name");
+            reco_id[i] = rst.getString("id");
+            reco_benke[i] = rst.getString("benke_major");
+            reco_pic[i] = rst.getString("picture_name");
+            i++;
+        } else
+            break;
+  	}
   	connect.close();
 } catch (SQLException e) {
   	e.printStackTrace();
@@ -86,7 +102,7 @@ try {
 <div class="container becenter">
     <img src="images/4.jpg" height="150" width="200" style="margin-bottom: 2% ;border-radius: 5em">
     <form action="SearchTea" method="get" class="mmm">
-        <input type="hidden" name="id" value="${id}" style="width:50%;height:50px">
+        <input id="id_main" type="hidden" name="id" value="${id}" style="width:50%;height:50px">
         <input type="hidden" name="search.user" value="0" style="width:50%;height:50px">
         <input type="text" name="search.keyword" value="" style="width:50%;height:50px;padding-left: 5px">
         <input type="submit" value="给我搜" style="width:10%;height:50px">
@@ -95,7 +111,45 @@ try {
     <c:set var="id" value="${id }" scope="request"></c:set>
    
     推荐学生：
-    <a href=""></a>
+    <input id="number" type="hidden" value="<%=i%>">
+    <table><tr id="reco"></tr></table>
 </div>
+<script type="text/javascript">
+var reco_name = new Array();
+var reco_id = new Array();
+var reco_benke = new Array();
+var reco_pic = new Array();
+<%
+for (int j = 0; j < 5; j++){
+%>
+reco_name[<%=j%>] = '<%=reco_name[j]%>';
+reco_id[<%=j%>] = '<%=reco_id[j]%>';
+reco_benke[<%=j%>] = '<%=reco_benke[j]%>';
+reco_pic[<%=j%>] = '<%=reco_pic[j]%>';
+<%}%>
+window.onload=function(){
+	var reco = document.getElementById("reco");
+	var number = document.getElementById("number").value;
+	var id_main = document.getElementById("id_main").value;
+	for (var i = 1; i <= number; i++){
+		var div = document.createElement("div");	
+		var td = document.createElement("td");
+		var div_img = document.createElement("div");
+		var div_name = document.createElement("div");
+		var div_benke = document.createElement("div");
+		div_img.innerHTML=
+		"<a href=\"./Show_tea_stu?id_in=" + id_main + "&stus.id=" + reco_id[i - 1] + "\">" + 
+		"<img src=\"" + reco_pic[i - 1] +"\">" + "</a>";
+		div_name.innerHTML=
+		"<a href=\"./Show_tea_stu?id_in=" + id_main + "&stus.id=" + reco_id[i - 1] + "\">" + reco_name[i - 1] + "</a>";
+		div_benke.innerHTML=reco_benke[i - 1];
+		div.appendChild(div_img);
+		div.appendChild(div_name);
+		div.appendChild(div_benke);
+		td.appendChild(div);
+		reco.appendChild(td);		
+	}	
+}
+</script>
 </body>
 </html>

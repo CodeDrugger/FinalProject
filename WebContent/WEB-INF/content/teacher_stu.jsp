@@ -124,25 +124,26 @@ try{
     con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
     stmt=con.createStatement();   
     rst = stmt.executeQuery("select * from stu_inf where id='"+stus.getId()+"'");
-      while(rst.next())
-      {
-        stus.setId(rst.getString("id"));
-        stus.setName(rst.getString("name"));
-        stus.setSex(rst.getString("sex"));
-        stus.setAge(rst.getString("age"));
-        stus.setBenke_major(rst.getString("benke_major"));
-        stus.setWish_major(rst.getString("wish_major"));
-        stus.setZhibo(rst.getString("zhibo"));
-        stus.setWish_class(rst.getString("wish_class"));
-        stus.setBein_class(rst.getString("bein_class"));
-        stus.setScore(rst.getString("score"));
-        stus.setHonor(rst.getString("honor"));
-        stus.setSelf_intro(rst.getString("self_intro"));
-        stus.setTel(rst.getString("tel"));
-        stus.setEmail(rst.getString("email"));
-        stus.setAttentioned_me(rst.getString("attentioned_me"));
-        stus.setRate(rst.getString("rate"));
-      }
+  	  while(rst.next())
+  	  {
+  		  stus.setId(rst.getString("id"));
+  		  stus.setName(rst.getString("name"));
+  		  stus.setSex(rst.getString("sex"));
+  		  stus.setAge(rst.getString("age"));
+  		  stus.setBenke_major(rst.getString("benke_major"));
+  		  stus.setWish_major(rst.getString("wish_major"));
+  		  stus.setZhibo(rst.getString("zhibo"));
+  		  stus.setWish_class(rst.getString("wish_class"));
+  		  stus.setBein_class(rst.getString("bein_class"));
+  		  stus.setScore(rst.getString("score"));
+  		  stus.setHonor(rst.getString("honor"));
+  		  stus.setSelf_intro(rst.getString("self_intro"));
+  		  stus.setTel(rst.getString("tel"));
+  		  stus.setEmail(rst.getString("email"));
+  		  stus.setAttentioned_me(rst.getString("attentioned_me"));
+  		  stus.setRate(rst.getString("rate"));
+  		  stus.setWish_xueyuan(rst.getString("Wish_xueyuan"));
+  	  }
    rst2 = stmt.executeQuery("select * from tea_inf where id='"+id_in+"'");
    while(rst2.next())
     {

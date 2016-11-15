@@ -111,6 +111,7 @@ public class Change_stu implements Action {
 	        		  stuc.setEmail(rst.getString("email"));
 	        		  stuc.setPicture_name(rst.getString("picture_name"));
 	        		  stuc.setId(rst.getString("id"));
+	        		  stuc.setWish_xueyuan(rst.getString("wish_xueyuan"));
 	        	  }
 
 	        	  
@@ -169,6 +170,7 @@ public class Change_stu implements Action {
 	      		  +"self_intro='"+stuc.getSelf_intro()+"',"
 	    		  +"tel='"+stuc.getTel()+"',"
 	      		  +"email='"+stuc.getEmail()+"'," 
+	      		  +"wish_xueyuan='"+stuc.getWish_xueyuan()+"',"
 	      		  +"picture_name='"+visitfile+"'"
 	    		  + " where id='"+stuc.getId() +"'";
 	      try {

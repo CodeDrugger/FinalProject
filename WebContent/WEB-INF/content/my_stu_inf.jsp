@@ -104,51 +104,54 @@ try {
                             <div class="bigfont">照片<span class="info"><img src="" alt="" name="picture" width="120" height="180" id="picture" style="background-color: #999999"/></span>
                             </div>
                             <div class="bigfont">
-                                姓名<span Class="info">$ { stu.name }
+                                姓名<span class="info">$ { stu.name }
                             </span>
                         </div>
                         <div class="bigfont">
-                            性别<span Class="info">$ { stu.sex }
+                            性别<span class="info">$ { stu.sex }
                         </span>
                     </div>
                     <div class="bigfont">
-                        年龄<span Class="info">$ { stu.age }
+                        年龄<span class="info">$ { stu.age }
                     </span>
                 </div>
                 <div class="bigfont">
-                    本科学科<span Class="info" style="margin-left: 16%">$ { stu.benke_major }
+                    本科学科<span class="info" style="margin-left: 16%">$ { stu.benke_major }
                 </span>
             </div>
             <div class="bigfont">
-                报考硕士类别<span Class="info" style="margin-left: 12%">$ { stu.wish_class }
+                报考硕士类别<span class="info" style="margin-left: 12%">$ { stu.wish_class }
             </span>
         </div>
         <div class="bigfont">
-            入选方式<span Class="info" style="margin-left: 16%;">$ { stu.bein_class }
+            入选方式<span class="info" style="margin-left: 16%;">$ { stu.bein_class }
         </span>
     </div>
     <div class="bigfont">
-        研究生意愿学科<span Class="info" style="margin-left: 10%;">$ { stu.wish_major }
+        报考专业<span class="info" style="margin-left: 10%;">$ { stu.wish_xueyuan }
+    </span>
+    <div class="bigfont">
+        报考专业<span class="info" style="margin-left: 10%;">$ { stu.wish_major }
     </span>
 </div>
 <div class="bigfont">
-    是否有直博意愿<span Class="info" style="margin-left: 10%;">$ { stu.zhibo }
+    是否有直博意愿<span class="info" style="margin-left: 10%;">$ { stu.zhibo }
 </span>
 </div>
 <div class="bigfont">
-    本科学分绩<span Class="info" style="margin-left: 14%">$ { stu.score }
+    本科学分绩<span class="info" style="margin-left: 14%">$ { stu.score }
 </span>
 </div>
 <div class="bigfont">
-    个人荣誉<span Class="info" style="margin-left: 16%;">$ { stu.honor }
+    个人荣誉<span class="info" style="margin-left: 16%;">$ { stu.honor }
 </span>
 </div>
 <div class="bigfont">
-    email<span Class="info" style="margin-left: 19%">$ { stu.email }
+    email<span class="info" style="margin-left: 19%">$ { stu.email }
 </span>
 </div>
 <div class="bigfont">
-    电话<span Class="info">$ { stu.tel }
+    电话<span class="info">$ { stu.tel }
 </span>
 </div>
 <div class="bigfont">

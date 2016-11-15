@@ -204,7 +204,7 @@ ResizeImages();
                     <input name="stuc.age" type="text" id="age_stu" value="${stuc.age}" class="inputgg"/>
                 </p>
                 <p>
-                    <label style="font-size: larger;margin-right: 7.5%;">本科学科:</label>
+                    <label style="font-size: larger;margin-right: 7.5%;">本科专业:</label>
                     <input name="stuc.benke_major" type="text" id="name_stu4" value="${stuc.benke_major}" class="inputgg"/></p>
                 <p>
                     <label style="font-size: larger;margin-right: 3.5%;">报考硕士类别:</label>
@@ -217,8 +217,11 @@ ResizeImages();
                     <input id="bein_class" type="hidden" value="${stuc.bein_class}"/>
                     保研<input id="bein_class_baoyan" type="radio" name="stuc.bein_class" id="stuc.bein_class" value="保研" />
                     考研<input id="bein_class_kaoyan" type="radio" name="stuc.bein_class" id="stuc.bein_class" value="考研" /></p>
+                    <p>
+                    <label style="font-size: larger;margin-right: 1.5%;">报考学院:</label>
+                    <input name="stuc.wish_xueyuan" type="text" id="stuc.wish_xueyuan" value="${stuc.wish_xueyuan}" class="inputgg"/></p>
                 <p>
-                    <label style="font-size: larger;margin-right: 1.5%;">研究生意愿学科:</label>
+                    <label style="font-size: larger;margin-right: 1.5%;">报考专业:</label>
                     <input name="stuc.wish_major" type="text" id="stuc.wish_major" value="${stuc.wish_major}" class="inputgg"/></p>
                 <p>
                     <label style="font-size: larger;margin-right: 1.5%;">是否有直博意愿:</label>

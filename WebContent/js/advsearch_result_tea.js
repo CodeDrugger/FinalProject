@@ -30,14 +30,7 @@ function selectBenkeMajor()
 	}
 	var benke_xueyuan = document.getElementById("benke_xueyuan");
 	var benke_xueyuan_value = benke_xueyuan.value;
-	if (benke_xueyuan_value == "控制科学与工程系") 
-	{
-		addBenkeOption("","-请选择-");
-		addBenkeOption("自动化","自动化");
-		addBenkeOption("探测制导与控制技术","探测制导与控制技术");
-		addBenkeOption("智能控制技术","智能控制技术");
-	}
-	else if (benke_xueyuan_value == "航天工程与力学系")
+	if (benke_xueyuan_value == "航天学院")
 	{
 		addBenkeOption("","-请选择-");
 		addBenkeOption("工科试验班","工科试验班");
@@ -105,17 +98,13 @@ function selectBenkeMajor()
 		addBenkeOption("建筑电气与智能化","建筑电气与智能化");
 		addBenkeOption("电气工程技术","电气工程技术");
 	}
-	else if (benke_xueyuan_value == "物理系")
+	else if (benke_xueyuan_value == "理学院")
 	{
 		addBenkeOption("","-请选择-");
 		addBenkeOption("应用物理学","应用物理学");
 		addBenkeOption("光电信息科学与技术","光电信息科学与技术");
 		addBenkeOption("核物理","核物理");
 		addBenkeOption("光电信息科学与工程","光电信息科学与工程");
-	}
-	else if (benke_xueyuan_value == "数学系")
-	{
-		addBenkeOption("","-请选择-");
 		addBenkeOption("数学及应用数学","数学及应用数学");
 		addBenkeOption("信息与计算科学","信息与计算科学");
 		addBenkeOption("统计学","统计学");

@@ -24,7 +24,8 @@ public class AdvSchService_tea {
 			Statement stmt = connect.createStatement();
 			String sqlstr = "select * from stu_inf where "
 						+ "benke_major like '%" + advsch.getBenke_major() + "%' and "
-						+ "wish_major like '%" + advsch.getWish_class() + "%' and "
+						+ "wish_major like '%" + advsch.getWish_major() + "%' and "
+						+ "wish_xueyuan like '%" + advsch.getWish_xueyuan() + "%' and "
 						+ "zhibo like '%" + advsch.getZhibo() + "%' and "
 						+ "wish_class like '%" + advsch.getWish_class() + "%' and "
 						+ "bein_class like '%" + advsch.getBein_class() + "%'";
@@ -36,21 +37,6 @@ public class AdvSchService_tea {
 				sqlstr += (" and score=" + advsch.getScore());
 			if (!advsch.getKeyword().equals(""))
 			{
-				/*
-				 * private String id;
-				private String name;
-				private String sex;
-				private String age;
-				private String honor;
-				private String self_intro;
-				private String tel;
-				private String email;
-				private String picture_name;
-				private String selected_tea; //只能有一个，改变状态
-				private String attentioned_tea;
-				private String attentioned_me;
-				private String state;
-				 */
 				String k = advsch.getKeyword();
 				sqlstr += (" and ("
 						+ "name like '%" + k + "%' or "
@@ -71,6 +57,7 @@ public class AdvSchService_tea {
 	    				rs.getString("age"),
 	    				rs.getString("benke_major"),
 	    				rs.getString("wish_major"),
+	    				rs.getString("wish_xueyuan"),
 	    				rs.getString("zhibo"),
 	    				rs.getString("wish_class"),
 	    				rs.getString("bein_class"),
@@ -81,6 +68,7 @@ public class AdvSchService_tea {
 	    				rs.getString("email"),
 	    				rs.getString("picture_name"),
 	    				rs.getString("selected_tea"),
+	    				rs.getString("selected_me"),
 	    				rs.getString("attentioned_tea"),
 	    				rs.getString("attentioned_me"),
 	    				rs.getString("state"),
