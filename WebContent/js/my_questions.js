@@ -22,6 +22,7 @@ window.onload=function()
 		}
 		amount++;
 	}
+	document.getElementById("amounttodb").value = amount - 1;
 }
 	
 function newLine()

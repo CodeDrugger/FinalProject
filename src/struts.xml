@@ -141,7 +141,16 @@
         </action>
 		
 		<action name="Answer_ques" class="action.Answer_ques"><!-- 跳转。。。-->
-            <result name="success">/WEB-INF/content/mainpage_tea.jsp</result>
+            <result name="success">/WEB-INF/content/mainpage_stu.jsp</result>
+        </action>
+		
+		<action name="Exam_ans" class="action.Exam_ans"><!-- 跳转。。。-->
+            <result name="success">/WEB-INF/content/exam_answers.jsp</result>
+        </action>
+		
+		<action name="MainPage" class="action.MainPage"><!-- 跳转到主页-->
+            <result name="teacher">/WEB-INF/content/mainpage_tea.jsp</result>
+            <result name="student">/WEB-INF/content/mainpage_stu.jsp</result>
         </action>
 		
         <action name="*">

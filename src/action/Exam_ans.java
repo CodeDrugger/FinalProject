@@ -3,12 +3,11 @@ package action;
 import com.opensymphony.xwork2.Action;
 
 import domain.Answers;
-import service.AnswerService;
+import service.InitAnsService;
 
-public class Answer_ques implements Action {
+public class Exam_ans implements Action {
 	private Answers a;
 	private String id;
-	
 	public Answers getA() {
 		return a;
 	}
@@ -23,9 +22,9 @@ public class Answer_ques implements Action {
 	}
 	@Override
 	public String execute() throws Exception {
-		AnswerService as = new AnswerService();
-		as.doSaveAns(a);
-		return SUCCESS;
+		InitAnsService is = new InitAnsService();
+		is.doInitAns(a);
+		return null;
 	}
 
 }
