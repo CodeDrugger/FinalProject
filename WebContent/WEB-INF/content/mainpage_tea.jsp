@@ -51,7 +51,7 @@ try {
   		{
   			name = rs.getString("name");
   			xueyuan = rs.getString("xueyuan");
-  		}	
+  		}
   	}
   	ResultSet rst = stmt.executeQuery("select * from stu_inf where state<>1 and wish_xueyuan='" + xueyuan + "' order by rate desc,score desc");
   	while (rst.next())
@@ -107,12 +107,17 @@ try {
         <input type="text" name="search.keyword" value="" style="width:50%;height:50px;padding-left: 5px">
         <input type="submit" value="给我搜" style="width:10%;height:50px">
     </form>
-    
+
     <c:set var="id" value="${id }" scope="request"></c:set>
-   
-    推荐学生：
+
+    <h3>推荐学生</h3>
     <input id="number" type="hidden" value="<%=i%>">
-    <table><tr id="reco"></tr></table>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" id="reco">
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
 var reco_name = new Array();
@@ -132,23 +137,24 @@ window.onload=function(){
 	var number = document.getElementById("number").value;
 	var id_main = document.getElementById("id_main").value;
 	for (var i = 1; i <= number; i++){
-		var div = document.createElement("div");	
+		var div = document.createElement("div");
 		var td = document.createElement("td");
 		var div_img = document.createElement("div");
 		var div_name = document.createElement("div");
 		var div_benke = document.createElement("div");
 		div_img.innerHTML=
-		"<a href=\"./Show_tea_stu?id_in=" + id_main + "&stus.id=" + reco_id[i - 1] + "\">" + 
+		"<a href=\"./Show_tea_stu?id_in=" + id_main + "&stus.id=" + reco_id[i - 1] + "\">" +
 		"<img src=\"" + reco_pic[i - 1] +"\">" + "</a>";
 		div_name.innerHTML=
 		"<a href=\"./Show_tea_stu?id_in=" + id_main + "&stus.id=" + reco_id[i - 1] + "\">" + reco_name[i - 1] + "</a>";
 		div_benke.innerHTML=reco_benke[i - 1];
+    div.className='col-md-4';
 		div.appendChild(div_img);
 		div.appendChild(div_name);
 		div.appendChild(div_benke);
 		td.appendChild(div);
-		reco.appendChild(td);		
-	}	
+		reco.appendChild(td);
+	}
 }
 </script>
 </body>

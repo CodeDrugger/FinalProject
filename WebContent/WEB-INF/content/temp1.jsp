@@ -4,11 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>Insert title here</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+<title>Message</title>
+<style>
+body{
+    font-family: 'microsoft yahei',Arial,sans-serif;
+    background-image: url("images/1.png");
+    padding-top: 70px;
+}
+</style>
 <script src="js/jump.js" charset="utf-8"></script>
 </head>
 <body>
-${message}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <h2>${message}</h2>
+      </div>
+    </div>
+  </div>
 <form id="form" method="get">
 <input id="msg" type="hidden" value="${message}">
 <input id="input" type="hidden">
