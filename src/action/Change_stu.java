@@ -145,18 +145,21 @@ public class Change_stu implements Action {
 	      //ResultSet rst = null;
 	      Change_stu.class.getResource("/");
 	      String realpath = "C:/Users/daisf/Documents/FinalProject/WebContent/photos/"+id;
+	      //String realpath ="C:/Users/daisf/Documents/apache-tomcat-7.0.70/webapps/photos/"+id;
+	      //C:\Users\daisf\Documents\apache-tomcat-7.0.70\webapps\FinalProject\photos
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
 	      System.out.println("realpath: "+realpath);
-	      System.out.println(Change_stu.class.getResource("/"));
+	      String type=imageContentType.split("/")[1];
+	      System.out.println(type);
 	      if (image != null) {
-	         File savefile = new File(new File(realpath), id+".png");
+	         File savefile = new File(new File(realpath), id+"."+type);
 	      if (savefile.getParentFile().exists())
 	         savefile.getParentFile().delete();
 	      savefile.getParentFile().mkdirs();
 	      FileUtils.copyFile(image, savefile);
 	      message="文件上传成功.";
 	        }
-	      visitfile = "photos/"+id+"/"+id+".png";
+	      visitfile = "photos/"+id+"/"+id+"."+type;
 	      
 	      String sql = "update stu_inf set "
 	      		  + "name='"+stuc.getName()+"',"

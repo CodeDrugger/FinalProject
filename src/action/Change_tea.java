@@ -141,17 +141,19 @@ public class Change_tea implements Action {
 	      Statement stmt = null;
 	      //ResultSet rst = null;
 	      String realpath = "C:/Users/daisf/Documents/FinalProject/WebContent/photos_tea/"+id;
+	      //String realpath ="C:/Users/daisf/Documents/apache-tomcat-7.0.70/webapps/photos_tea/"+id;
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
 	      System.out.println("realpath: "+realpath);
+	      String type=imageContentType.split("/")[1];
 	      if (image != null) {
-	         File savefile = new File(new File(realpath), id+".png");
+	         File savefile = new File(new File(realpath), id+"."+type);
 	      if (savefile.getParentFile().exists())
 	         savefile.getParentFile().delete();
 	      savefile.getParentFile().mkdirs();
 	      FileUtils.copyFile(image, savefile);
 	      message="文件上传成功.";
 	        }
-	      visitfile = "photos_tea/"+id+"/"+id+".png";
+	      visitfile = "photos_tea/"+id+"/"+id+"."+type;
 	      String sql = "update tea_inf set "
 	    		+"sex='"+teac.getSex()+"',"
 	    	    +"name='"+teac.getName()+"',"
