@@ -141,7 +141,7 @@
                     <input type="text" name="teac.email" value="${teac.email}" class="inputgg"></p>
                 <p>
                     <label style="font-size: larger;margin-right: 7.5%;"> 个人简介:</label>
-                    <textarea name="teac.self_intro" value="${teac.self_intro}" class="inputgg" rowa=5 style="vertical-align: top;"></textarea>
+                    <textarea name="teac.self_intro"  class="inputgg" rowa=5 style="vertical-align: top;">${teac.self_intro}</textarea>
                     <br /></p>
                 <p>
                     <input type="hidden" name="id" value="${teac.id}" />

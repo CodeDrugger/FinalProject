@@ -82,7 +82,7 @@ e.printStackTrace();
                 <li><a href="./my_choose_tea?id_in=${id_in}">我选择的导师</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="./Show_stu.action?stuc.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
+                <li><a href="./Show_stu.action?stuc.id=${id_in}" data-toggle="tooltip" data-placement="left" title="查看个人资料"><%=name%></a></li>
                 <li><a href="./loginpage.action">注销账户</a></li>
             </ul>
         </div>

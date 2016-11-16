@@ -151,7 +151,7 @@ public class Change_tea implements Action {
 	      FileUtils.copyFile(image, savefile);
 	      message="文件上传成功.";
 	        }
-	      visitfile = "photos/"+id+"/"+id+".png";
+	      visitfile = "photos_tea/"+id+"/"+id+".png";
 	      String sql = "update tea_inf set "
 	    		+"sex='"+teac.getSex()+"',"
 	    	    +"name='"+teac.getName()+"',"

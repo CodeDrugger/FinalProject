@@ -98,7 +98,7 @@
                             <h1>学生信息</h1>
                         </div>
                         <div class="panel-body">
-                            <div class="bigfont">照片<span class="info"><img src="" alt="" name="picture" width="120" height="180" id="picture" style="background-color: #999999"/></span>
+                            <div class="bigfont">照片<span class="info"><img src="${stu.picture_name }" alt="" name="picture" width="120" height="180" id="picture" style="background-color: #999999"/></span>
                             </div>
                             <div class="bigfont">
                                 姓名<span class="info">${ stu.name }

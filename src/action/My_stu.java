@@ -326,6 +326,7 @@ public class My_stu implements Action {
 	        		  stu.setTel(rst.getString("tel"));
 	        		  stu.setEmail(rst.getString("email"));
 	        		  stu.setAttentioned_me(rst.getString("attentioned_me"));
+	        		  stu.setPicture_name(rst.getString("picture_name"));
 	        	  }	        	  
 
 	        }catch (SQLException e) {

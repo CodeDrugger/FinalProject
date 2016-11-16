@@ -143,9 +143,11 @@ public class Change_stu implements Action {
 	      Connection con = null;
 	      Statement stmt = null;
 	      //ResultSet rst = null;
+	      Change_stu.class.getResource("/");
 	      String realpath = "C:/Users/daisf/Documents/FinalProject/WebContent/photos/"+id;
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
 	      System.out.println("realpath: "+realpath);
+	      System.out.println(Change_stu.class.getResource("/"));
 	      if (image != null) {
 	         File savefile = new File(new File(realpath), id+".png");
 	      if (savefile.getParentFile().exists())
