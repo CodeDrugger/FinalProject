@@ -248,7 +248,6 @@ ResizeImages();
                     <input type="hidden" name="id" value="${stuc.id}" />
                     <input type="hidden" name="stuc.id" value="${stuc.id}" />
                     <input type="submit" value="提交" /></p>
-                    <input type="button" value="返回" onclick="history.back();">
             </form>
         </div>
     </div>

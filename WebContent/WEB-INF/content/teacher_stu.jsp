@@ -138,7 +138,8 @@ try{
   		  stus.setEmail(rst.getString("email"));
   		  stus.setAttentioned_me(rst.getString("attentioned_me"));
   		  stus.setRate(rst.getString("rate"));
-  		  stus.setWish_xueyuan(rst.getString("Wish_xueyuan"));
+  		  stus.setWish_xueyuan(rst.getString("wish_xueyuan"));
+  		  stus.setPicture_name(rst.getString("picture_name"));
   	  }
    rst2 = stmt.executeQuery("select * from tea_inf where id='"+id_in+"'");
    while(rst2.next())
@@ -181,7 +182,7 @@ try{
                             <h1>学生信息</h1>
                         </div>
                         <div class="panel-body">
-                            <div class="bigfont">照片<span class="info"><img src="<%=stus.getPicture_name()%>" alt="" name="picture" width="120" height="180" id="picture" style="background-color: #999999"/></span>
+                            <div class="bigfont">照片<span class="info"><img src="<%=stus.getPicture_name()%>"  name="picture" width="120" height="180" id="picture" style="background-color: #999999"/></span>
                             </div>
                             <div class="bigfont">
                                 姓名<span Class="info"><%=stus.getName()%>
@@ -250,5 +251,10 @@ try{
     <input id="msg" type="hidden"  value="<%=message%>" />
   </p>
 </form>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>

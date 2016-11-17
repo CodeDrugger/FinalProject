@@ -146,7 +146,6 @@
                 <p>
                     <input type="hidden" name="id" value="${teac.id}" />
                     <input type="hidden" name="teac.id" value="${teac.id}" />
-                    <input type="button" value="返回" onclick="history.back();">
                     <input type="submit" value="提交" /></p>
             </form>
         </div>

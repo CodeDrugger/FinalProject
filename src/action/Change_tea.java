@@ -139,21 +139,24 @@ public class Change_tea implements Action {
 		  String ret = SUCCESS;
 	      Connection con = null;
 	      Statement stmt = null;
+	      String type=null;
+	      int judge=0;
 	      //ResultSet rst = null;
-	      String realpath = "C:/Users/daisf/Documents/FinalProject/WebContent/photos_tea/"+id;
+	      String realpath = "C:/Software/WebProject/FinalProject/WebContent/photos_tea/"+id;
 	      //String realpath ="C:/Users/daisf/Documents/apache-tomcat-7.0.70/webapps/photos_tea/"+id;
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
 	      System.out.println("realpath: "+realpath);
-	      String type=imageContentType.split("/")[1];
 	      if (image != null) {
+	    	 type=imageContentType.split("/")[1];
 	         File savefile = new File(new File(realpath), id+"."+type);
 	      if (savefile.getParentFile().exists())
 	         savefile.getParentFile().delete();
 	      savefile.getParentFile().mkdirs();
 	      FileUtils.copyFile(image, savefile);
 	      message="文件上传成功.";
-	        }
 	      visitfile = "photos_tea/"+id+"/"+id+"."+type;
+	      judge=1;
+	        }
 	      String sql = "update tea_inf set "
 	    		+"sex='"+teac.getSex()+"',"
 	    	    +"name='"+teac.getName()+"',"
@@ -162,9 +165,9 @@ public class Change_tea implements Action {
 	    		+"college='"+teac.getCollege()+"',"+"xueyuan='"+teac.getXueyuan()+"',"
 	      		+"major='"+teac.getMajor()+"',"
 	    		+"tel='"+teac.getTel()+"',"
-	      		+"email='"+teac.getEmail()+"'," 
-	      		+"picture_name='"+visitfile+"'"
-	    		+ " where id='"+teac.getId() +"'";	     
+	      		+"email='"+teac.getEmail()+"'" 
+	    		+ " where id='"+teac.getId() +"'";	 
+	      String sql2="update tea_inf set picture_name='"+visitfile+"' where id='"+teac.getId()+"'";
 	      try {
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
@@ -176,11 +179,13 @@ public class Change_tea implements Action {
 	          stmt=con.createStatement();   
 	          //int i=
 	          stmt.executeUpdate(sql);
+	          if(judge==1)
+	        	  stmt.executeUpdate(sql2);
 	          
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
-	            ret = ERROR;
+	            //ret = ERROR;
 	        }finally{
 	            try{
 	            	if(stmt!=null)

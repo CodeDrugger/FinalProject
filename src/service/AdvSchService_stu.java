@@ -25,13 +25,13 @@ public class AdvSchService_stu {
 			if (advsch.getResearch_filed().equals("请填写研究方向"))
 				advsch.setResearch_filed("");		
 			String sqlstr = "select * from tea_inf where "
-					+ "research_filed like '%" + advsch.getResearch_filed() + "%' and "
+					+ "research_field like '%" + advsch.getResearch_filed() + "%' and "
 					+ "xueyuan like '%" + advsch.getXueyuan() + "%' and "
 					+ "major like '%" + advsch.getMajor() + "%' and "
 					+ "enrollment-in_enrollment>0";
 			if (advsch.getIsfull().equals("full"))
 				sqlstr = "select * from tea_inf where "
-						+ "research_filed like '%" + advsch.getResearch_filed() + "%' and "
+						+ "research_field like '%" + advsch.getResearch_filed() + "%' and "
 						+ "xueyuan like '%" + advsch.getXueyuan() + "%' and "
 						+ "major like '%" + advsch.getMajor() + "%'";
 			if (!advsch.getKeyword().equals(""))

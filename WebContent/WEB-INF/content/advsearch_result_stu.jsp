@@ -131,7 +131,7 @@ e.printStackTrace();
                     <%=name%>
                 </a>
             </li>
-            <li><a href="#">注销账户</a></li>
+            <li><a href="./loginpage.action">注销账户</a></li>
         </ul>
     </div>
 </div>
@@ -157,6 +157,7 @@ e.printStackTrace();
     </div>
     <div class="panel-body">
         <form action="AdvSearch_stu" method="post" style="margin-left: 20%">
+        	<input type="hidden" name="id" value="${id}">
             <div class="leng">导师所在学院：</div>
             <select id="wish_xueyuan" name="advsch.xueyuan" onchange="selectWishMajor()" class="shortselect">
                 <option value="">-请选择-</option>

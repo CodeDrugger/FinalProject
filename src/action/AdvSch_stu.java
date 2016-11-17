@@ -10,7 +10,14 @@ import service.AdvSchService_stu;
 public class AdvSch_stu implements Action {
 	private AdvSearch_stu advsch;
 	private ArrayList<Object> list;
+	private String id;
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public ArrayList<Object> getList() {
 		return list;
 	}
@@ -27,7 +34,7 @@ public class AdvSch_stu implements Action {
 	@Override
 	public String execute() throws Exception {
 		AdvSchService_stu ass = new AdvSchService_stu();
-		ass.doAdvSch_stu(advsch);
+		setList(ass.doAdvSch_stu(advsch));
 		return SUCCESS;
 	}
 

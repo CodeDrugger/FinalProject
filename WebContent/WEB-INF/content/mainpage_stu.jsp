@@ -141,11 +141,11 @@ window.onload=function(){
 		var div_field = document.createElement("div");
 		div_img.innerHTML=
 		"<a href=\"./Show_stu_tea?id_in=" + id_main + "&teas.id=" + reco_id[i - 1] + "\">" +
-		"<img src=\"" + reco_pic[i - 1] +"\">" + "</a>";
+		"<img src=\"" + reco_pic[i - 1] +"\" width=\"120\" height=\"180\">" + "</a>";
 		div_name.innerHTML=
 		"<a href=\"./Show_stu_tea?id_in=" + id_main + "&teas.id=" + reco_id[i - 1] + "\">" + reco_name[i - 1] + "</a>";
 		div_field.innerHTML=reco_field[i - 1];
-    div.className='col-md-4';
+    //div.className='col-md-4';
 		div.appendChild(div_img);
 		div.appendChild(div_name);
 		div.appendChild(div_field);

@@ -133,7 +133,7 @@
                                             <%=name%>
                                         </a>
                                     </li>
-                                    <li><a href="#">注销账户</a></li>
+                                    <li><a href="./loginpage.action">注销账户</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -157,6 +157,7 @@
                         </div>
                         <div class="panel-body">
                             <form action="AdvSearch_tea" method="post" style="margin-left: 20%">
+                           		<input type="hidden" name="id" value="${id}">
                                 <div class="leng">本科学院：</div>
                                 <select id="benke_xueyuan" onchange="selectBenkeMajor()" class="shortselect">
 								    <option value="">-请选择-</option>
@@ -214,8 +215,8 @@
                                 <div class="leng">是否直博：</div>
                                 <select name="advsch.zhibo" class="shortselect">
     <option value="">-请选择-</option>
-    <option value="直博">直博</option>
-    <option value="非直博">非直博</option>
+    <option value="是">直博</option>
+    <option value="否">非直博</option>
   </select>
                                 <div class="leng">入选方式：</div>
                                 <select name="advsch.bein_class" class="shortselect">
@@ -236,7 +237,7 @@
     <option value="1">小于</option>
     <option value="2">等于</option>
   </select>
-                                <span><input id="input" type="text" name="advsch.score" value="请填写小于100的数" onclick="resetInput()" class="inputq"> </span> 
+                                <span><input id="input" type="text" name="advsch.score" onclick="resetInput()" class="inputq"> </span> 
                                 <div class="leng">其他关键字</div>
                                 <input type="text" name="advsch.keyword">
                                 <input type="submit" value="给我搜">
