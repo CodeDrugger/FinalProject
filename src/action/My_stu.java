@@ -78,14 +78,14 @@ public class My_stu implements Action {
 	          int rate=Integer.parseInt(stu_rate);
 	          rate++;
 	          stu_rate=rate+"";
-	          if(tea_attentioned_stu.contains(stu_name+" "+stu_id))
+	          if(tea_attentioned_stu.contains(stu_name+"@.@"+stu_id))
 		      {
 	        	  message="已关注该学生";
 	        	  return "has attentioned";
 		      }
-		      String stu_beiguan = stu_attentioned_me+"/"+tea_name+" "+tea_id;
+		      String stu_beiguan = stu_attentioned_me+"/"+tea_name+"@.@"+tea_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
-		      String tea_guan = tea_attentioned_stu+"/"+stu_name+" "+stu_id;
+		      String tea_guan = tea_attentioned_stu+"/"+stu_name+"@.@"+stu_id;
 		      String sql_stu = "update stu_inf set rate='"+stu_rate+"',attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -161,10 +161,10 @@ public class My_stu implements Action {
 	          int rate=Integer.parseInt(stu_rate);
 	          rate--;
 	          stu_rate=rate+"";
-		      String stu_beiguan = stu_attentioned_me.replaceAll("/"+tea_name+" "+tea_id,"");
+		      String stu_beiguan = stu_attentioned_me.replaceAll("/"+tea_name+"@.@"+tea_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		
-		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_name+" "+stu_id,"");
+		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_name+"@.@"+stu_id,"");
 		      String sql_stu = "update stu_inf set rate='"+stu_rate+"',attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -269,14 +269,14 @@ public class My_stu implements Action {
 	        	  setMessage("该学生已完成互选");
 	        	  return "has been selected";//该学生已经和导师完成互选了
 	          }
-	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
+	          if(!tea_attentioned_stu.contains(stu_name+"@.@"+stu_id))
 	          {
 	        	  message="不能选择你未关注的学生";
 	        	  return "can't choose stu which you don't attention";
 	          }
-		      String stu_beiguan = stu_selected_me+"/"+tea_name+" "+tea_id;
-		             stu_selected_tea="/"+tea_name+" "+tea_id;
-		      String tea_guan = tea_selected_stu+"/"+stu_name+" "+stu_id;
+		      String stu_beiguan = stu_selected_me+"/"+tea_name+"@.@"+tea_id;
+		             stu_selected_tea="/"+tea_name+"@.@"+tea_id;
+		      String tea_guan = tea_selected_stu+"/"+stu_name+"@.@"+stu_id;
 		      String sql_stu = "update stu_inf set selected_me='"+stu_beiguan+"',selected_tea='"+stu_selected_tea+ "',state='1'"+" where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_stu='"+tea_guan+"',in_enrollment='"+tea_in_enrollment+"' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -418,7 +418,7 @@ public class My_stu implements Action {
 	        	 Student t = new Student();
 	        	 if(aml[i].equals("")||aml[i].equals(" "))
 	        		 continue;
-	        	 String s[] = aml[i].split(" ");  
+	        	 String s[] = aml[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 t.setSelf_intro(get_self_intro(s[1]));
@@ -429,7 +429,7 @@ public class My_stu implements Action {
 	        	 Student t = new Student();
 	        	 if(atl[i].equals("")||atl[i].equals(" "))
 	        		 continue;
-	        	 String s[] = atl[i].split(" ");  
+	        	 String s[] = atl[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 t.setSelf_intro(get_self_intro(s[1]));
@@ -440,7 +440,7 @@ public class My_stu implements Action {
 	        	 Student t = new Student();
 	        	 if(stl[i].equals("")||stl[i].equals(" "))
 	        		 continue;
-	        	 String s[] = stl[i].split(" ");  
+	        	 String s[] = stl[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 t.setSelf_intro(get_self_intro(s[1]));
@@ -452,7 +452,7 @@ public class My_stu implements Action {
 	        	 Student t = new Student();
 	        	 if(sml[i].equals("")||sml[i].equals(" "))
 	        		 continue;
-	        	 String s[] = sml[i].split(" ");  
+	        	 String s[] = sml[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 t.setSelf_intro(get_self_intro(s[1]));

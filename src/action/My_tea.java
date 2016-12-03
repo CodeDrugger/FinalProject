@@ -78,14 +78,14 @@ public class My_tea implements Action {
       		  stu_id = rst2.getString(("id"));
       		  stu_attentioned_tea = rst2.getString("attentioned_tea");
       	      }
-	          if(stu_attentioned_tea.contains(tea_name+" "+tea_id))
+	          if(stu_attentioned_tea.contains(tea_name+"@.@"+tea_id))
 		      {
 	        	  message = "已经选过该导师";
 	        	  return "has attentioned";
 		      }
-		      String tea_beiguan = tea_attentioned_me+"/"+stu_name+" "+stu_id;
+		      String tea_beiguan = tea_attentioned_me+"/"+stu_name+"@.@"+stu_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
-		      String stu_guan = stu_attentioned_tea+"/"+tea_name+" "+tea_id;
+		      String stu_guan = stu_attentioned_tea+"/"+tea_name+"@.@"+tea_id;
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set rate='"+tea_rate+"',attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -159,9 +159,9 @@ public class My_tea implements Action {
 	          /*if(!stu_attentioned_tea.contains(tea_name+" "+tea_id))
 		      		return "not attentioned";
 		      */
-		      String tea_beiguan = tea_attentioned_me.replaceAll("/"+stu_name+" "+stu_id,"");
+		      String tea_beiguan = tea_attentioned_me.replaceAll("/"+stu_name+"@.@"+stu_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
-		      String stu_guan = stu_attentioned_tea.replaceAll("/"+tea_name+" "+tea_id,"");
+		      String stu_guan = stu_attentioned_tea.replaceAll("/"+tea_name+"@.@"+tea_id,"");
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set rate='"+tea_rate+"',attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -247,7 +247,7 @@ public class My_tea implements Action {
     		  stu_selected_tea = rst2.getString("selected_tea");
     		  stu_state=rst2.getString("state");
     	      }
-	          if(!tea_attentioned_stu.contains(stu_name+" "+stu_id))
+	          if(!tea_attentioned_stu.contains(stu_name+"@.@"+stu_id))
 	          {
 	        	  message="该导师未关注你的情况下无法选择该导师";
 	        	  return "teacher not attention you";
@@ -259,13 +259,13 @@ public class My_tea implements Action {
 	        	  message="你已经和其他导师完成互选";
 	        	  return "has been selected";
 	          }
-	          if(stu_selected_tea.contains(tea_name+" "+tea_id))
+	          if(stu_selected_tea.contains(tea_name+"@.@"+tea_id))
 		      {
 	        	  message="已经选择过该导师";
 	        	  return "has selected";
 		      }
-		      String tea_beiguan = tea_selected_me+"/"+stu_name+" "+stu_id;
-		      String stu_guan = stu_selected_tea+"/"+tea_name+" "+tea_id;
+		      String tea_beiguan = tea_selected_me+"/"+stu_name+"@.@"+stu_id;
+		      String stu_guan = stu_selected_tea+"/"+tea_name+"@.@"+tea_id;
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_me='"+tea_beiguan+"' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -367,8 +367,8 @@ public class My_tea implements Action {
 	        	  message="你已经和导师完成互选";
 	        	  return "has been selected";
 	          }
-		      String tea_beiguan = tea_selected_me.replaceAll("/"+stu_name+" "+stu_id,"");
-		      String stu_guan = stu_selected_tea.replaceAll("/"+tea_name+" "+tea_id,"");
+		      String tea_beiguan = tea_selected_me.replaceAll("/"+stu_name+"@.@"+stu_id,"");
+		      String stu_guan = stu_selected_tea.replaceAll("/"+tea_name+"@.@"+tea_id,"");
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_me='"+tea_beiguan+"' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -494,7 +494,7 @@ public class My_tea implements Action {
 	        	 Teacher t = new Teacher();
 	        	 if(aml[i].equals("")||aml[i].equals(" "))
 	        		 continue;
-	        	 String s[] = aml[i].split(" "); 
+	        	 String s[] = aml[i].split("@.@"); 
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 t.setSelf_intro(get_self_intro(s[1]));
@@ -505,7 +505,7 @@ public class My_tea implements Action {
 	        	 Teacher t = new Teacher();
 	        	 if(atl[i].equals("")||atl[i].equals(" "))
 	        		 continue;
-	        	 String s[] = atl[i].split(" ");  
+	        	 String s[] = atl[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 t.setSelf_intro(get_self_intro(s[1]));
@@ -516,7 +516,7 @@ public class My_tea implements Action {
 	        	 Teacher t = new Teacher();
 	        	 if(stl[i].equals("")||stl[i].equals(" "))
 	        		 continue;
-	        	 String s[] = stl[i].split(" "); 
+	        	 String s[] = stl[i].split("@.@"); 
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
 	        	 t.setSelf_intro(get_self_intro(s[1]));
