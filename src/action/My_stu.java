@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.Action;
 
 import domain.Student;
 import domain.Teacher;
+import service.SendMail;
 
 
 public class My_stu implements Action {
@@ -45,6 +46,7 @@ public class My_stu implements Action {
 	      String tea_id = null;
 	      String tea_attentioned_stu = null;
 	      String stu_rate=null;
+	      String stu_email=null;
 	      
 	      stu_id = student_id;
 	      tea_id = teacher_id;
@@ -71,6 +73,7 @@ public class My_stu implements Action {
       		  stu_id = rst2.getString(("id"));
       		  stu_attentioned_me = rst2.getString("attentioned_me");
       		  stu_rate=rst2.getString("rate");
+      		  stu_email=rst2.getString("email");
       	      }
 	          int rate=Integer.parseInt(stu_rate);
 	          rate++;
@@ -105,6 +108,8 @@ public class My_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
+	SendMail s = new SendMail();
+	s.send_mail(stu_email,"有新导师关注了你!(来自研究生导师互选系统)","导师："+tea_name+"关注了你");
 	message="成功关注该学生";
 	return ret;
 	
@@ -120,6 +125,7 @@ public class My_stu implements Action {
 	      String stu_id = null;
 	      String stu_attentioned_me = null;
 	      String stu_rate=null;
+	      String stu_email=null;
 	      String tea_name = null;
 	      String tea_id = null;
 	      String tea_attentioned_stu = null;
@@ -149,7 +155,8 @@ public class My_stu implements Action {
 	    		  stu_name = rst2.getString("name");
 	    		  stu_id = rst2.getString(("id"));
 	    		  stu_attentioned_me = rst2.getString("attentioned_me");
-	    		  stu_rate=rst2.getString(("rate"));
+	    		  stu_rate=rst2.getString("rate");
+	    		  stu_email=rst2.getString("email");
     	      }
 	          int rate=Integer.parseInt(stu_rate);
 	          rate--;
@@ -181,6 +188,8 @@ public class My_stu implements Action {
 	                }   
 	            }
 	message="已取消关注该学生";
+	SendMail s = new SendMail();
+	s.send_mail(stu_email,"有导师取消了对你的关注(来自研究生导师互选系统)","导师："+tea_name+"取消了对你的关注");
 	return ret;
 	}
 	public String Choose_stu(){
@@ -203,6 +212,7 @@ public class My_stu implements Action {
 	      String tea_enrollment = null;
 	      String tea_in_enrollment = null;
 	      String stu_state=null;
+	      String stu_email=null;
 	      int tea_num1;
 	      int tea_num2;
 	      
@@ -250,6 +260,7 @@ public class My_stu implements Action {
 	    		  stu_selected_tea = rst2.getString("selected_tea");
 	    		  stu_selected_me = rst2.getString("selected_me");
 	    		  stu_state=rst2.getString("state");
+	    		  stu_email=rst2.getString("email");
     	      }
 	          if(stu_state==null)
 	        	  ;
@@ -288,7 +299,9 @@ public class My_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-	setMessage("选择学生成功");      
+	setMessage("选择学生成功");     
+	SendMail s = new SendMail();
+	s.send_mail(stu_email,"有导师选择了你!(来自研究生导师互选系统)","导师："+tea_name+"选择了你"+"，你已经成功完成了和导师的互选，good good study，day day up！");
 	return ret;
 	}
 	

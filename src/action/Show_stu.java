@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.Action;
 
 import domain.Student;
 import domain.Teacher;
+import service.SendMail;
 
 public class Show_stu implements Action {
 	private Student stus;
@@ -70,6 +71,8 @@ public class Show_stu implements Action {
 	      Statement stmt = null;
 	      //ResultSet rst = null;
 	      String rates=null;
+	      String stu_email=null;
+	      stu_email=stus.getEmail();
 	      rates=stus.getRate();
 	      int rate=Integer.parseInt(rates);
 	      rate++;
@@ -114,7 +117,8 @@ public class Show_stu implements Action {
 	                }   
 	            }
 	        
-	
+	SendMail s = new SendMail();
+	s.send_mail(stu_email,"有新导师关注了你!(来自研究生导师互选系统)","导师："+tea_select.getName()+"关注了你");
 	return ret;
 	}
 	public String execute() throws Exception {	

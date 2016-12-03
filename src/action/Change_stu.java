@@ -119,7 +119,6 @@ public class Change_stu implements Action {
 	        }catch (SQLException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
-	            ret = ERROR;
 	        }finally{
 	            try{
 	            	if(stmt!=null)

@@ -242,6 +242,7 @@ try{
     <input type="hidden"  name="stus.name" value="<%=stus.getName()%>"  />
     <input type="hidden"  name="stus.id" value="<%=stus.getId()%>"  />
     <input type="hidden"  name="stus.rate" value="<%=stus.getRate()%>"  />
+    <input type="hidden"  name="stus.email" value="<%=stus.getEmail()%>"  />
     <input type="hidden"  name="stus.attentioned_me" value="<%=stus.getAttentioned_me()%>" />
     <input type="hidden"  name="tea_select.name" value="<%=tea_name%>"  />
     <input type="hidden"  name="tea_select.id" value="<%=tea_id%>"  />
