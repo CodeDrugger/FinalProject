@@ -1,0 +1,68 @@
+create database fpdb;
+create table login (username varchar(20) not null,password varchar(20) not null,userclass varchar(1) not null,id varchar(20) not null);
+
+create user 'fp_user'@'%' identified by '123456';
+grant all on fpdb.* to 'fp_user'@'%';
+flush privileges;
+
+create table id_alloc(id varchar(20) not null);
+insert into id_alloc(id) values ('1');
+
+create table stu_inf(
+id varchar(20) not null,
+name varchar(20),
+sex varchar(20),
+age varchar(20),
+benke_major varchar(50),
+wish_major varchar(50),
+wish_xueyuan varchar(50),
+zhibo varchar(20),
+wish_class varchar(20),
+bein_class varchar(20),
+score varchar(20),
+honor varchar(1000),
+self_intro varchar(1000),
+tel varchar(20),
+email varchar(20),
+picture_name varchar(50),
+selected_tea varchar(200),
+selected_me varchar(200),
+attentioned_tea varchar(200),
+attentioned_me varchar(200),
+state varchar(20),
+rate varchar(20)
+);
+
+create table tea_inf(
+id varchar(20) not null,
+name varchar(20),
+sex varchar(20),
+picture_name varchar(50),
+self_intro varchar(1000),
+research_field varchar(100),
+college varchar(20),
+xueyuan varchar(50),
+major varchar(50),
+tel varchar(20),
+email varchar(20),
+enrollment varchar(10),
+in_enrollment varchar(10),
+selected_stu varchar(200),
+selected_me varchar(200),
+attentioned_stu varchar(200),
+attentioned_me varchar(200),
+rate varchar(10));
+
+alter table xx add xx varchar(20) not null;
+
+create table questions (
+    id varchar(20) not null,
+    amount varchar(3) not null,
+    questions varchar(1000) not null);
+
+create table answers (
+    id_tea varchar(20) not null,
+    id_stu varchar(20) not null,
+    amount varchar(3) not null,
+    questions varchar(1000) not null,
+    answers varchar(3000) not null);

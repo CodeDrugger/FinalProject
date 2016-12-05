@@ -26,15 +26,15 @@ public class Show_tea implements Action {
 			  String ret = SUCCESS;
 		      Connection con = null;
 		      Statement stmt = null;
-		      String tea_beiguan = teas.getAttentioned_me()+"/"+stu_select.getName()+" "+stu_select.getId();
+		      String tea_beiguan = teas.getAttentioned_me()+"/"+stu_select.getName()+"@.@"+stu_select.getId();
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      int rate=Integer.parseInt(teas.getRate());
 		      rate++;
 		      String rates=rate+"";
-		      String stu_guan = stu_select.getAttentioned_tea()+"/"+teas.getName()+" "+teas.getId();
+		      String stu_guan = stu_select.getAttentioned_tea()+"/"+teas.getName()+"@.@"+teas.getId();
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_select.getId() +"'";
 		      String sql_tea = "update tea_inf set rate='"+rates+"',attentioned_me='"+tea_beiguan+ "' where id='"+teas.getId() +"'";
-		      if(stu_select.getAttentioned_tea().contains(teas.getName()+" "+teas.getId()))
+		      if(stu_select.getAttentioned_tea().contains(teas.getName()+"@.@"+teas.getId()))
 		      {
 		    	  return "has_selected";
 			  }

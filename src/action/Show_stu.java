@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.Action;
 
 import domain.Student;
 import domain.Teacher;
+import service.SendMail;
 
 public class Show_stu implements Action {
 	private Student stus;
@@ -70,16 +71,18 @@ public class Show_stu implements Action {
 	      Statement stmt = null;
 	      //ResultSet rst = null;
 	      String rates=null;
+	      String stu_email=null;
+	      stu_email=stus.getEmail();
 	      rates=stus.getRate();
 	      int rate=Integer.parseInt(rates);
 	      rate++;
 	      rates=rate+"";
-	      String stu_beiguan = stus.getAttentioned_me()+"/"+tea_select.getName()+" "+tea_select.getId();
+	      String stu_beiguan = stus.getAttentioned_me()+"/"+tea_select.getName()+"@.@"+tea_select.getId();
 	      //格式 /name id 0:待定 1:同一 2:不同意
-	      String tea_guan = tea_select.getAttentioned_stu()+"/"+stus.getName()+" "+stus.getId();
+	      String tea_guan = tea_select.getAttentioned_stu()+"/"+stus.getName()+"@.@"+stus.getId();
 	      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_select.getId() +"'";
 	      String sql_stu = "update stu_inf set rate='"+rates+"',attentioned_me='"+stu_beiguan+ "' where id='"+stus.getId() +"'";
-	      if(tea_select.getAttentioned_stu().contains(stus.getName()+" "+stus.getId()))
+	      if(tea_select.getAttentioned_stu().contains(stus.getName()+"@.@"+stus.getId()))
 	      {
 	    	  message="已经关注了该学生";
 	    	  return "has_selected";
@@ -114,7 +117,8 @@ public class Show_stu implements Action {
 	                }   
 	            }
 	        
-	
+	SendMail s = new SendMail();
+	s.send_mail(stu_email,"有新导师关注了你!(来自研究生导师互选系统)","导师："+tea_select.getName()+"关注了你");
 	return ret;
 	}
 	public String execute() throws Exception {	
