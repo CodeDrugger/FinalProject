@@ -116,7 +116,7 @@ pageEncoding="utf8"%>
           <input id="dbamount" type="hidden" value="${q.amount}">
           <input type="button" value="新增"onclick="newLine()" class="subinp" style="margin-left:20%;">
           <input type="button" value="删除" onclick="removeLine()" class="subinp">
-          <input id="amounttodb" type="hidden" name="q.amount">
+          <input id="amounttodb" type="hidden" name="q.amount" value="${q.amount}">
           <input type="submit" value="提交" class="subinp" />
         </form>
       </div>

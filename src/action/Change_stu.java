@@ -145,7 +145,7 @@ public class Change_stu implements Action {
 	      //ResultSet rst = null;
 	      String type=null;
 	      int judge=0;
-	      String realpath = "C:/Software/WebProject/FinalProject/WebContent/photos/"+id;
+	      String realpath = "D:/Eclipse/apache-tomcat-9.0.0.M10/webapps/FinalProject/photos/"+id;
 	      //String realpath ="C:/Users/daisf/Documents/apache-tomcat-7.0.70/webapps/photos/"+id;
 	      //C:\Users\daisf\Documents\apache-tomcat-7.0.70\webapps\FinalProject\photos
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images

@@ -142,7 +142,7 @@ public class Change_tea implements Action {
 	      String type=null;
 	      int judge=0;
 	      //ResultSet rst = null;
-	      String realpath = "C:/Software/WebProject/FinalProject/WebContent/photos_tea/"+id;
+	      String realpath = "D:/Eclipse/apache-tomcat-9.0.0.M10/webapps/FinalProject/photos_tea/"+id;
 	      //String realpath ="C:/Users/daisf/Documents/apache-tomcat-7.0.70/webapps/photos_tea/"+id;
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
 	      System.out.println("realpath: "+realpath);
