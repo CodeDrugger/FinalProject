@@ -1,3 +1,6 @@
+/*
+ * created by shadow erii 
+ * */
 function resetInput()
 {
 	var ipt = document.getElementById("input");

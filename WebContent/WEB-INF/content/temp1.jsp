@@ -3,28 +3,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/bootstrap-theme.css">
-  <link rel="stylesheet" href="css/font-awesome.css">
-<title>Message</title>
-<style>
-body{
-    font-family: 'microsoft yahei',Arial,sans-serif;
-    background-image: url("images/1.png");
-    padding-top: 70px;
-}
-</style>
-<script src="js/jump.js" charset="utf-8"></script>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properties -->
+  <title>mainpage_stu</title>
+  <link rel="stylesheet" type="text/css" href="css/semantic.css">
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="js/semantic.min.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="ui grid">
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <h2>${message}</h2>
+      <div class="six wide column"></div>
+      <div class="three wide column">
+        <h1><i class="hourglass half icon"></i>${message}</h1>
       </div>
     </div>
   </div>

@@ -1,68 +1,108 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
 pageEncoding="utf8"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <style>
-        body{
-            font-family: 'microsoft yahei',Arial,sans-serif;
-            background-image: url("images/1.png");
-        }
-        .signuppanel {
-            text-align: center;
-            width: 300px;
-            border-radius: 0.5rem;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: 10px auto;
-            padding: 20px;
-            opacity:0.8;
-        }
-        .row {
-            padding: 13% 0px;
-        }
-        input {
-            margin-bottom: 17px;
-            padding: 15px;
-            background-color: #ECF4F4;
-            border-radius: 2px;
-            border: none;
-        }
-        select::hover {
-        	border: 0;
-        }
-        </style>
-    <title>注册</title>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properties -->
+  <title>signup</title>
+  <link rel="stylesheet" type="text/css" href="css/semantic.css">
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="js/semantic.min.js"></script>
+
+  <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+
+  <script>
+  $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            username: {
+              identifier  : 'username',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your username'
+                }
+              ]
+            },
+            password: {
+              identifier  : 'password',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your password'
+                }
+              ]
+            }
+          }
+        })
+      ;
+    })
+  ;
+  </script>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="panel signuppanel">
-            <h2>
-                <span class="fa fa-user-circle-o"></span>
-                注册
-            </h2>
-            ${info}
-            <form action="SignUp" method="get" role="form">
-                <input type="text" name="login.username" class="form-control" placeholder="用户名">
-                <input type="text" name="login.password" class="form-control" placeholder="密码">
 
-                <select name="login.userclass" class="selectpicker form-control" data-style="btn-primary" style="margin-bottom: 5%">
-                    <option value="1">导师</option>
-                    <option value="2">学生</option>
-                </select>
-                <input type="submit" value="注册" class="form-control">
-            </form>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <img src="images/logo.png" class="image">
+      <div class="content">
+        Sign-up to your account
+      </div>
+    </h2>
+    <form class="ui large form" action="SignUp" method="get">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="login.username" placeholder="username">
+          </div>
         </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="login.password" placeholder="Password">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui slider checkbox" name="login.userclass">
+            <input type="checkbox" name="newsletter" value="1">
+            <label>signup as teacher</label>
+          </div>
+        </div>
+        <button class="ui fluid large teal submit button" onclick="javascript:form.submit();">Signup</button>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
     </div>
+  </div>
 </div>
+
 </body>
+
 </html>

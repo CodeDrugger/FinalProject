@@ -6,89 +6,31 @@ pageEncoding="utf8"%>
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <style>
-        body {
-            font-family: 'microsoft yahei', Arial, sans-serif;
-            background-image: url("images/1.png");
-            padding-top: 70px;
-        }
-        
-        .navopa {
-            opacity: .9;
-        }
-        
-        .disaa {
-            text-align: center;
-        }
-        
-        .tempright {
-            position: fixed;
-            width: 30%;
-            right: 0px;
-        }
-        
-        .templeft {
-            margin-left: 10%;
-            position: absolute;
-            width: 50%;
-            left: 0px;
-        }
-        
-        .tempcenter {
-            position: absolute;
-            margin-left: 60%;
-            width: 5%;
-        }
-        
-        .shortselect {
-            background: #fafdfe;
-            height: 28px;
-            width: 180px;
-            line-height: 28px;
-            border: 1px solid #9bc0dd;
-            -moz-border-radius: 2px;
-            -webkit-border-radius: 2px;
-            border-radius: 2px;
-        }
-        
-        .inputq {
-            background: #fafdfe;
-            height: 28px;
-            width: 180px;
-            line-height: 28px;
-            border: 1px solid #9bc0dd;
-            -moz-border-radius: 2px;
-            -webkit-border-radius: 2px;
-            border-radius: 2px;
-        }
-        
-        .leng {
-            height: auto;
-            width: auto;
-            font-size: larger;
-        }
-        
-        .ggo {
-            margin-bottom: 7%;
-        }
-    </style>
-    <title>搜索结果</title>
-    <script src="js/advsearch_result_tea.js"></script>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <!-- Site Properties -->
+  <title>search_result</title>
+  <link rel="stylesheet" type="text/css" href="css/semantic.css">
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="js/semantic.min.js"></script>
+  <script src="js/adserch_reasult.js"></script>
+  <style>
+    body {
+      font-family: "楷体";
+    }
+  </style>
 </head>
 
 <body>
-    <c:set var="id" value="${id}" scope="request"></c:set>
-    <%
-    String id = (String)request.getAttribute("id");
-    String name = "点此完善信息";
-    try {
-    Class.forName("com.mysql.jdbc.Driver");
+  <!--@java-->
+  <c:set var="id" value="${id}" scope="request"></c:set>
+  <%
+  String id = (String)request.getAttribute("id");
+  String name = "点此完善信息";
+  try {
+  Class.forName("com.mysql.jdbc.Driver");
 } catch (ClassNotFoundException e) {
 e.printStackTrace();
 }
@@ -106,60 +48,64 @@ connect.close();
 e.printStackTrace();
 }
 %>
-<nav class="navbar navbar-default navopa navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="./MainPage.action?id=${id}&userclass=2">主页</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="./my_attention_tea?id_in=${id}">我关注的导师</a></li>
-                <li><a href="./attention_me_tea?id_in=${id}">关注我的导师</a></li>
-                <li><a href="./my_choose_tea?id_in=${id}">我选择的导师</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="./Show_stu.action?stuc.id=${id }" data-toggle="tooltip" data-placement="left"
-                    title="查看个人资料">
-                    <%=name%>
-                </a>
-            </li>
-            <li><a href="./loginpage.action">注销账户</a></li>
-        </ul>
+  <!--sidebar on the top-->
+  <div class="ui attached tiny stackable menu grey inverted">
+    <div class="ui container">
+      <a class="item" href="./MainPage.action?id=${id}&userclass=2"><i class="home icon"></i>主页</a>
+      <a class="item" href="./my_attention_tea?id_in=${id}"><i class="grid layout icon"></i> 考研互选 </a>
+      <div class="right item">
+        <a class="item" href="./Show_stu.action?stuc.id=${id }"><i class="settings icon"></i><%=name%></a>
+        <a class="item" href="./loginpage.action"><i class="moon icon"></i>注销账户</a>
+      </div>
     </div>
-</div>
-</nav>
-<div class="container templeft">
-    <s:iterator value="list" var="l" status="st">
-    <div class="ggo">
-        <h3><a href="./Show_stu_tea?id_in=<%=id%>&teas.id=${l.id}">${l.name}</a></h3>
-        <div>
-            <span>姓名：${l.name}</span>
-            <span>学院：${l.xueyuan}</span>
-            <span>研究方向：${l.research_field}</span>
+  </div>
+  <h4 class="ui horizontal divider header">
+    <i class="find icon"></i>
+  </h4>
+  <!--the mainpage content-->
+  <div class="ui grid">
+    <div class="row">
+      <div class="three wide column"></div>
+      <!--the search result-->
+      <div class="eight wide column">
+        <div class="ui divided items">
+          <h2 class="ui center aligned icon header">
+            Searchs result
+          </h2>
+          <s:iterator value="list" var="l" status="st">
+          <div class="item">
+            <div class="ui small image">
+              <img src="./images/elyse.png">
+            </div>
+            <div class="content">
+              <a class="header" href="./Show_stu_tea?id_in=<%=id%>&teas.id=${l.id}">${l.name}</a>
+              <div class="meta">
+                <span>学院：${l.xueyuan}</span>
+                <span>研究方向：${l.research_field}</span>
+              </div>
+              <div class="description">
+                ${l.self_intro}
+              </div>
+              <div class="ui extra">
+                ${l.xueyuan}的教授
+              </div>
+            </div>
+          </div>
+          </s:iterator>
         </div>
-        <div>
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;${l.self_intro}</p>
-        </div>
-    </div>
-</s:iterator>
-</div>
-<div class="container tempright">
-    <div class="panel panel-default">
-        <div class="panel-heading" style="font-size: larger">高级搜索</div>
-    </div>
-    <div class="panel-body">
-        <form action="AdvSearch_stu" method="post" style="margin-left: 20%">
-        	<input type="hidden" name="id" value="${id}">
-            <div class="leng">导师所在学院：</div>
-            <select id="wish_xueyuan" name="advsch.xueyuan" onchange="selectWishMajor()" class="shortselect">
+      </div>
+      <div class="column">
+        <div class="ui vertical divider"></div>
+      </div>
+      <div class="three wide column">
+        <h1 class="ui horizontal divider header">
+          <i class="search icon"></i> 高级搜索
+        </h1>
+        <form class="ui form" action="AdvSearch_stu" method="post">
+          <h3 class="ui dividing header">导师信息</h3>
+          <div class="field">
+            <label>导师所在学院</label>
+            <select id="wish_xueyuan" name="advsch.xueyuan" onchange="selectWishMajor()" class="ui fluid search dropdown">
                 <option value="">-请选择-</option>
                 <option value="航天学院">航天学院</option>
                 <option value="机电工程学院">机电工程学院</option>
@@ -182,19 +128,38 @@ e.printStackTrace();
                 <option value="化工与化学学院">化工与化学学院</option>
                 <option value="马克思主义学院">马克思主义学院</option>
                 <option value="体育部">体育部</option>
-            </select><br/><br/>
-            <div class="leng>">导师专业：</div>
-            <select id="wish_major" name="advsch.major" class="shortselect"></select><br/><br/>
-            <div class="leng">导师研究方向：</div>
-            <input id="input" type="text" name="advsch.research_filed" value="请填写研究方向" onclick="resetInput()" class="inputq"><br/><br/>
-            <span class="leng">是否包括已招满的导师：</span>
-            <input type="checkbox" value="full"><br/><br/>
-            <div class="leng">其他关键字：</div>
-            <input type="text" name="advsch.keyword" class="inputq"><br/><br/>
-            <input type="submit" value="搜索" style="width: 14%">
+            </select>
+          </div>
+          <div class="field">
+            <label>导师专业</label>
+            <select id="wish_major" name="advsch.major" class="ui fluid dropdown"></select>
+          </div>
+          <div class="field">
+            <label>导师研究方向</label>
+            <input id="input" type="text" name="advsch.research_filed" placeholder="请填写研究方向" onclick="resetInput()" style="font-family:楷体">
+          </div>
+          <div class="ui segment">
+            <div class="field">
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="gift">
+                <label>是否包括招满的导师</label>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>其他</label>
+            <input type="text" name="advsch.keyword" style="font-family:楷体">
+          </div>
+          <div class="ui button" tabindex="0" onclick="javascript:form.submit();">搜索</div>
         </form>
+      </div>
     </div>
-</div>
+  </div>
 </body>
+<script>
+  $('#wish_xueyuan')
+  .dropdown()
+  ;
+</script>
 
 </html>
