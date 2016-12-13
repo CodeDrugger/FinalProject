@@ -74,7 +74,7 @@ try {
 </div>
 
 <!--the big search-->
-<form action="SearchStu" method="get">
+<form action="SearchStu" method="post">
   <input id="id_main" type="hidden" name="id" value="${id}">
   <input type="hidden" name="search.user" value="1">
   <div class="ui container">
@@ -90,11 +90,11 @@ try {
 
 <!-- the Recommend-->
 <c:set var="id" value="${id }" scope="request"></c:set>
-<div calss="ui container">
+<div class="ui container">
   <h4 class="ui horizontal divider header"><i class="tag icon"></i>Recommend</h4>
   <div class="ui raised very padded container">
     <input id="number" type="hidden" value="<%=i%>">
-  	<div class="ui link cards" id="repo">
+  	<div class="ui four doubling cards" id="reco">
 
     </div>
   </div>
@@ -124,11 +124,14 @@ window.onload=function(){
     div_card.className="card";
 		var div_img = document.createElement("div");
     div_img.className = "image";
-    div_img.innerHTML="<img src=\"" + reco_pic[i-1] + "\">"
+    div_img.innerHTML="<a href=\"./Show_stu_tea?id_in=" + id_main + "&teas.id=" + reco_id[i - 1] + "\">" +
+	"<img style=\"width:100%;\" src=\"" + reco_pic[i-1] + "\">" + "</a>";
     var div_content = document.createElement("div");
     div_content.className = "content";
-    div_content.innerHTML="<a class=\" header\" href=\" ./Show_stu_tea?id_in= " + id_main +"&teas.id="+reco_id[i-1] + "\"></a>"+
-    "<div class=\"description\">" + reco_fild[i-1] +"</div>";
+    
+    div_content.innerHTML="<a class=\" header\" href=\" ./Show_stu_tea?id_in= " + 
+    id_main +"&teas.id="+reco_id[i-1] + "\">"+ reco_name[i-1] +"</a>"+
+    "<div class=\"description\">" + reco_field[i-1] +"</div>";
     div_card.appendChild(div_img);
     div_card.appendChild(div_content);
 		reco.appendChild(div_card);

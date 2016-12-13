@@ -79,12 +79,12 @@
       <div class="ui item">
         <h2><i class="opencart icon"></i>关注</h2>
         <a class="item" href="./my_attention_stu?id_in=${id}"><i class="attach icon"></i>我关注的</a>
-        <a class="active item" href="./attention_me_stu?id_in=${id}"><i class="attach icon"></i>关注我的</a>
+        <a class="item" href="./attention_me_stu?id_in=${id}"><i class="attach icon"></i>关注我的</a>
       </div>
       <div class="item">
         <h2><i class="gg icon"></i>选择</h2>
         <a class="item" href="./my_choose_stu?id_in=${id}"><i class="attach icon"></i>我选择的</a>
-        <a class="item" href="./choose_me_stu?id_in=${id}"><i class="attach icon"></i>选择我的</a>
+        <a class="active item" href="./choose_me_stu?id_in=${id}"><i class="attach icon"></i>选择我的</a>
       </div>
     </div>
   </div>

@@ -74,9 +74,9 @@
 <!--the main content-->
 <div class="ui grid">
   <div class="three wide column"></div>
-  <div class="three wide column">
+  <div class="two wide column">
     <!--the sideber of the left-->
-    <div class="ui massive pointing vertical menu">
+    <div class="ui large pointing vertical menu">
       <div class="ui item">
         <h2><i class="opencart icon"></i>关注</h2>
         <a class="active item" href="./my_attention_stu?id_in=${id}"><i class="attach icon"></i>我关注的</a>
@@ -89,6 +89,8 @@
       </div>
     </div>
   </div>
+  <!-- the kongge -->
+  <div class="one wide column"></div>
   <!--the student-->
   <div class="six wide stretched column">
     <div class="ui segment">

@@ -75,7 +75,7 @@ e.printStackTrace();
           <s:iterator value="list" var="l" status="st">
           <div class="item">
             <div class="ui small image">
-              <img src="./images/elyse.png">
+              <img src="${l.picture_name}">
             </div>
             <div class="content">
               <a class="header" href="./Show_stu_tea?id_in=<%=id%>&teas.id=${l.id}">${l.name}</a>

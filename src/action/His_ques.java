@@ -2,13 +2,20 @@ package action;
 
 import com.opensymphony.xwork2.Action;
 
+import domain.Answers;
 import domain.Questions;
 import service.InitQuesService;
 
 public class His_ques implements Action {
 	private Questions q;
 	private String id;
-	
+	private Answers a;
+	public Answers getA() {
+		return a;
+	}
+	public void setA(Answers a) {
+		this.a = a;
+	}
 	public Questions getQ() {
 		return q;
 	}
