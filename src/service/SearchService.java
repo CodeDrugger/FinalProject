@@ -21,7 +21,7 @@ public class SearchService {
 			e.printStackTrace();
 		}
 		try {
-			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+			Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 			Statement stmt = connect.createStatement();
 		    String k = search.getKeyword();
 		    if (search.getUser() == 0)//导师执行搜索
