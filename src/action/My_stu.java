@@ -307,60 +307,8 @@ public class My_stu implements Action {
 	
 	public String Mystu_inf() {
 		//need tea_inf_id  id_in
-		  String ret = SUCCESS;
-	      Connection con = null;
-	      Statement stmt = null;
-	      ResultSet rst = null;
-	      try {
-				Class.forName("com.mysql.jdbc.Driver");
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-	      try{   
-	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
-	          stmt=con.createStatement();   
-	          rst = stmt.executeQuery("select * from stu_inf where id='"+stu_inf_id+"'");
-	        	  while(rst.next())
-	        	  {
-	        		  stu.setId(rst.getString("id"));
-	        		  stu.setName(rst.getString("name"));
-	        		  stu.setSex(rst.getString("sex"));
-	        		  stu.setAge(rst.getString("age"));
-	        		  stu.setBenke_major(rst.getString("benke_major"));
-	        		  stu.setWish_major(rst.getString("wish_major"));
-	        		  stu.setZhibo(rst.getString("zhibo"));
-	        		  stu.setWish_class(rst.getString("wish_class"));
-	        		  stu.setBein_class(rst.getString("bein_class"));
-	        		  stu.setWish_xueyuan(rst.getString("wish_xueyuan"));
-	        		  stu.setScore(rst.getString("score"));
-	        		  stu.setHonor(rst.getString("honor"));
-	        		  stu.setSelf_intro(rst.getString("self_intro"));
-	        		  stu.setTel(rst.getString("tel"));
-	        		  stu.setEmail(rst.getString("email"));
-	        		  stu.setAttentioned_me(rst.getString("attentioned_me"));
-	        		  stu.setPicture_name(rst.getString("picture_name"));
-	        	  }	        	  
-
-	        }catch (SQLException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	            ret = ERROR;
-	        }finally{
-	            try{
-	            	if(stmt!=null)
-	            		stmt.close();
-	            	if(con!=null)           
-	                    con.close();
-	            	
-	                } catch (SQLException e) {
-	                    // TODO Auto-generated catch block
-	                    e.printStackTrace();
-	                }   
-	            }
-	      
 	
-	return ret;
+		return SUCCESS;
 	}
 	
 	@Override

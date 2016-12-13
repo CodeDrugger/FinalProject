@@ -191,7 +191,7 @@
                         <div class="ui segment" style="font-size:20px;padding: 16px;">
                             <div class="ui transparent input">
                                 <input type="text" name="teac.enrollment" value="${teac.enrollment }">
-                                <p>(已招人数：${teac.in_enrollment}*招生人数应大于目前已招人数)</p>
+                                <label>(已招人数：${teac.in_enrollment}*招生人数应大于目前已招人数)</label>
                             </div>
                         </div>
                         <div class="ui segment" style="font-size:20px;padding: 16px;">

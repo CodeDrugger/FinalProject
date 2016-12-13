@@ -1,6 +1,7 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,domain.Student,domain.Teacher,java.util.List,java.util.ArrayList" errorPage="" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <html>
@@ -11,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>my_attention_tea</title>
+  <title>mainpage_stu</title>
   <link rel="stylesheet" type="text/css" href="css/semantic.css">
 
   <script src="js/jquery-3.1.1.min.js"></script>
@@ -68,7 +69,7 @@
 <!-- divider-->
 <h2 class="ui horizontal divider header">
   <i class="trophy icon"></i>
-  关注的导师
+  关注与选择
 </h2>
 <!--the main content-->
 <div class="ui grid">
@@ -82,36 +83,28 @@
       </div>
       <div class="item">
         <h2><i class="gg icon"></i>选择</h2>
-        <a class="active item" href="./my_choose_tea?id_in=${id}"><i class="attach icon"></i>我选择的</a>
-        <a class="item" href="./choose_me_tea?id_in=${id}"><i class="attach icon"></i>选择我的</a>
+        <a class="item" href="./my_choose_tea?id_in=${id}"><i class="attach icon"></i>我选择的</a>
+        <a class="active item" href="./choose_me_tea?id_in=${id}"><i class="attach icon"></i>选择我的</a>
       </div>
     </div>
   </div>
   <div class="six wide stretched column">
     <div class="ui segment">
       <div class="ui divided items">
-        <s:iterator value="select_tea" var="st">
+        <s:iterator value="selected_me" var="sm">
         <div class="item">
           <div class="ui small image">
             <img src="./images/elyse.png">
           </div>
           <div class="content">
-            <a class="header" href="Mytea_inf.action?tea_inf_id=${st.id}&id_in=${id_in}">${st.name}</a>
+            <a class="header" href="Mytea_inf.action?tea_inf_id=${sm.id}&id_in=${id_in}">${sm.name}</a>
             <div class="meta">
               <span>个人简介</span>
             </div>
             <div class="description fixup">
-              ${st.self_intro}
+              ${am.self_intro}
             </div>
             <div class="ui extra">
-              <form name="form3" method="post" action="Stu_cancel_choose" class="ui form">
-                <input type="hidden"  name="teacher_id" value="${st.id}" />
-                <input type="hidden"  name="student_id" value="${id_in}" />
-              <button type = "submit" class="ui right floated primary button" onclick="javascript:form.submit();">
-                  取消选择
-              <i class="right chevron icon"></i>
-              </button>
-             </form>
             </div>
           </div>
         </div>

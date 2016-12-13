@@ -23,7 +23,14 @@ public class My_tea implements Action {
 	List<Teacher> select_tea = new ArrayList<>();
     List<Teacher> attention_tea = new ArrayList<>();
     List<Teacher> attention_me = new ArrayList<>();
+    List<Teacher> selected_me = new ArrayList<>();
     
+	public List<Teacher> getSelected_me() {
+		return selected_me;
+	}
+	public void setSelected_me(List<Teacher> selected_me) {
+		this.selected_me = selected_me;
+	}
 	private String tea_inf_id;
 	private Teacher tea_inf=new Teacher();
 	
@@ -397,56 +404,8 @@ public class My_tea implements Action {
 	
 	public String Mytea_inf() {
 		//need tea_inf_id  id_in
-		  String ret = SUCCESS;
-	      Connection con = null;
-	      Statement stmt = null;
-	      ResultSet rst = null;
-	      try {
-				Class.forName("com.mysql.jdbc.Driver");
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-	      try{   
-	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
-	          stmt=con.createStatement();   
-	          rst = stmt.executeQuery("select * from tea_inf where id='"+tea_inf_id+"'");
-	        	  while(rst.next())
-	        	  {
-	        		  tea_inf.setEnrollment(rst.getString("enrollment"));
-	        		  tea_inf.setIn_enrollment(rst.getString("in_enrollment"));
-	        		  tea_inf.setName(rst.getString("name"));
-	        		  tea_inf.setSex(rst.getString("sex"));
-	        		  tea_inf.setId(rst.getString("id"));
-	        		  tea_inf.setPicture_name(rst.getString("picture_name"));
-	        		  tea_inf.setSelf_intro(rst.getString("self_intro"));
-	        		  tea_inf.setResearch_field(rst.getString("research_field"));
-	        		  tea_inf.setCollege(rst.getString("college"));
-	        		  tea_inf.setXueyuan(rst.getString("xueyuan"));
-	        		  tea_inf.setMajor(rst.getString("major"));
-	        		  tea_inf.setTel(rst.getString("tel"));
-	        		  tea_inf.setEmail(rst.getString("email"));
-	        	  }	        	  
-
-	        }catch (SQLException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	            ret = ERROR;
-	        }finally{
-	            try{
-	            	if(stmt!=null)
-	            		stmt.close();
-	            	if(con!=null)           
-	                    con.close();
-	            	
-	                } catch (SQLException e) {
-	                    // TODO Auto-generated catch block
-	                    e.printStackTrace();
-	                }   
-	            }
-	      
-	
-	return ret;
+		 
+	    return SUCCESS;
 	}
 	
 	@Override
@@ -460,6 +419,7 @@ public class My_tea implements Action {
 	      String am = null;
 	      String at = null;
 	      String st = null;
+	      String sm = null;
 	      try { 
 				Class.forName("com.mysql.jdbc.Driver");
 			} catch (ClassNotFoundException e) {
@@ -475,20 +435,23 @@ public class My_tea implements Action {
 	        	 am = rst.getString("attentioned_me");
 	        	 at = rst.getString("attentioned_tea");
 	        	 st = rst.getString("selected_tea");
+	        	 sm = rst.getString("selected_me");
 	        	 stu.setAttentioned_me(am);
 	        	 stu.setAttentioned_tea(at);
 	        	 stu.setSelected_tea(st);
+	        	 stu.setSelected_tea(sm);
 	          }
 	          //对字符串进行处理
 	          
 	          String aml[] = am.split("/");
 	          String atl[] = at.split("/");
 	          String stl[] = st.split("/");
+	          String sml[] = sm.split("/");
 	          //提示信息的添加
 	          int len1 = aml.length;
 	          int len2 = atl.length;
 	          int len3 = stl.length;
-	        
+	          int len4 = sml.length;
 	          for(int i=0;i<len1;i++)
 	          {
 	        	 Teacher t = new Teacher();
@@ -521,6 +484,17 @@ public class My_tea implements Action {
 	        	 t.setId(s[1]);
 	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 select_tea.add(t);
+	          }	  
+	          for(int i=0;i<len4;i++)
+	          {
+	        	 Teacher t = new Teacher();
+	        	 if(sml[i].equals("")||sml[i].equals(" "))
+	        		 continue;
+	        	 String s[] = sml[i].split("@.@"); 
+	        	 t.setName(s[0]);
+	        	 t.setId(s[1]);
+	        	 t.setSelf_intro(get_self_intro(s[1]));
+	        	 selected_me.add(t);
 	          }	  
 	          
 	        }catch (SQLException e) {
