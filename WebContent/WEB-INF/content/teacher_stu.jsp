@@ -56,14 +56,32 @@
     <!--sidebar on the top-->
     <div class="ui attached tiny stackable menu grey inverted">
       <div class="ui container">
-        <a class="item" href="./MainPage.action?id=${id}&userclass=1"><i class="home icon"></i>主页</a>
-        <a class="item" href="./my_attention_stu?id_in=${id}"><i class="grid layout icon"></i> 考研互选 </a>
-        <a class="item" href="./My_ques.action?id=${id}&q.id=${id}"><i class="skyatlas icon"></i>我的问卷</a>
-        <div class="right item">
-          <a class="item" href="./Show_tea.action?teac.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><i class="settings icon"></i><%=name%></a>
-          <a class="item" href="./loginpage.action"><i class="moon icon"></i>注销账户</a>
-        </div>
+	   <form name="form20" action="MainPage" method="post">   
+	   <input type="hidden" name="id" value="${id}"/>
+	   <input type="hidden" name="userclass" value="1"/>
+	   </form>
+	   
+	   <form name="form21" action="my_attention_stu" method="post">   
+		<input type="hidden" name="id_in" value="${id}"/></form>
+		
+		<form name="form22" action="My_ques.action" method="post">   
+		<input type="hidden" name="id" value="${id}"/>
+		<input type="hidden" name="q.id" value="${id}"/>
+		</form>
+		
+      <a class="item" href="javascript:document.form20.submit();"><i class="home icon"></i>主页</a>
+      <a class="item" href="javascript:document.form21.submit();"><i class="grid layout icon"></i> 考研互选 </a>
+      <a class="item" href="javascript:document.form22.submit();"><i class="skyatlas icon"></i>我的问卷</a>
+      <div class="right item">
+		<form name="form23" action="Show_tea" method="post">   
+		<input type="hidden" name="teac.id" value="${id}"/></form>
+		
+		<form name="form24" action="loginpage" method="post"></form>
+		
+        <a class="item" href="javascript:document.form23.submit();" data-toggle="tooltip" data-placement="left" title="查看个人资料"><i class="settings icon"></i><%=name%></a>
+        <a class="item" href="javascript:document.form24.submit();"><i class="moon icon"></i>注销账户</a>
       </div>
+</div>
     </div>
     <!--the title of the page-->
     <h2 class="ui horizontal divider header">
@@ -256,7 +274,7 @@
         <div class="row">
             <div class="seven wide column"></div>
             <div class="three wide column">
-                <form name="form4" method="post" action="stu_attention_tea">
+                <form name="form4" method="post" action="tea_attention_stu">
                   <input type="hidden"  name="stus.name" value="<%=stus.getName()%>"  />
                   <input type="hidden"  name="stus.id" value="<%=stus.getId()%>"  />
                   <input type="hidden"  name="stus.rate" value="<%=stus.getRate()%>"  />
@@ -270,6 +288,7 @@
                         <button class="ui labeled inverted violet icon button" id="submit" type="submit">
                             <i class="red heart icon"></i>关注
                         </button>
+                        </form>
             </div>
         </div>
     </div>

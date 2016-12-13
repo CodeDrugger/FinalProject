@@ -56,14 +56,32 @@
 <!--sidebar on the top-->
 <div class="ui attached tiny stackable menu grey inverted">
   <div class="ui container">
-    <a class="item" href="./MainPage.action?id=${id}&userclass=1"><i class="home icon"></i>主页</a>
-    <a class="active item" href="./my_attention_stu?id_in=${id}"><i class="grid layout icon"></i> 考研互选 </a>
-    <a class="item" href="./My_ques.action?id=${id}&q.id=${id}"><i class="skyatlas icon"></i>我的问卷</a>
-    <div class="right item">
-      <a class="item" href="./Show_tea.action?teac.id=${id }" data-toggle="tooltip" data-placement="left" title="查看个人资料"><i class="settings icon"></i><%=name%></a>
-      <a class="item" href="./loginpage.action"><i class="moon icon"></i>注销账户</a>
-    </div>
-  </div>
+	   <form name="form20" action="MainPage" method="post">   
+	   <input type="hidden" name="id" value="${id}"/>
+	   <input type="hidden" name="userclass" value="1"/>
+	   </form>
+	   
+	   <form name="form21" action="my_attention_stu" method="post">   
+		<input type="hidden" name="id_in" value="${id}"/></form>
+		
+		<form name="form22" action="My_ques.action" method="post">   
+		<input type="hidden" name="id" value="${id}"/>
+		<input type="hidden" name="q.id" value="${id}"/>
+		</form>
+		
+      <a class="item" href="javascript:document.form20.submit();"><i class="home icon"></i>主页</a>
+      <a class="item" href="javascript:document.form21.submit();"><i class="grid layout icon"></i> 考研互选 </a>
+      <a class="item" href="javascript:document.form22.submit();"><i class="skyatlas icon"></i>我的问卷</a>
+      <div class="right item">
+		<form name="form23" action="Show_tea" method="post">   
+		<input type="hidden" name="teac.id" value="${id}"/></form>
+		
+		<form name="form24" action="loginpage" method="post"></form>
+		
+        <a class="item" href="javascript:document.form23.submit();" data-toggle="tooltip" data-placement="left" title="查看个人资料"><i class="settings icon"></i><%=name%></a>
+        <a class="item" href="javascript:document.form24.submit();"><i class="moon icon"></i>注销账户</a>
+      </div>
+</div>
 </div>
 
 <!-- divider-->
@@ -79,13 +97,26 @@
     <div class="ui massive pointing vertical menu">
       <div class="ui item">
         <h2><i class="opencart icon"></i>关注</h2>
-        <a class="active item" href="./my_attention_stu?id_in=${id}"><i class="attach icon"></i>我关注的</a>
-        <a class="item" href="./attention_me_stu?id_in=${id}"><i class="attach icon"></i>关注我的</a>
+		
+		<form name="form30" action="my_attention_stu" method="post">   
+		<input type="hidden" name="id_in" value="${id}"/></form>
+
+		<form name="form31" action="attention_me_stu" method="post">   
+		<input type="hidden" name="id_in" value="${id}"/></form>
+		
+        <a class="item" href="javascript:document.form30.submit();"><i class="attach icon"></i>我关注的</a>
+        <a class="active item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
       </div>
       <div class="item">
         <h2><i class="gg icon"></i>选择</h2>
-        <a class="item" href="./my_choose_stu?id_in=${id}"><i class="attach icon"></i>我选择的</a>
-        <a class="item" href="./choose_me_stu?id_in=${id}"><i class="attach icon"></i>选择我的</a>
+		<form name="form32" action="my_choose_stu" method="post">   
+		<input type="hidden" name="id_in" value="${id}"/></form>
+		
+		<form name="form33" action="choose_me_stu" method="post">   
+		<input type="hidden" name="id_in" value="${id}"/></form>
+		
+        <a class="item" href="javascript:document.form32.submit();"><i class="attach icon"></i>我选择的</a>
+        <a class="item" href="javascript:document.form33.submit();"><i class="attach icon"></i>选择我的</a>
       </div>
     </div>
   </div>
@@ -99,7 +130,11 @@
               <img src="./images/elyse.png">
             </div>
             <div class="content">
-              <a class="header" href="Mystu_inf.action?stu_inf_id=${at.id}&id_in=${id_in}">${at.name}</a>
+                <form name="form40" action="Mystu_inf" method="post">   
+				<input type="hidden" name="stu_inf_id" value="${at.id}"/>
+				<input type="hidden" name="id_in" value="${id_in}"/>
+				</form>
+				<a class="header" href="javascript:document.form40.submit();">${at.name}</a>
               <div class="meta">
                 <span>个人简介</span>
               </div>
