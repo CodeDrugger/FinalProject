@@ -23,6 +23,7 @@ pageEncoding="utf8"%>
     </style>
     <script type="text/javascript">
   		var array = [];
+<<<<<<< HEAD
 		var ans = [];
 		<c:forEach items="${q.questions}" var="u">
 		array.push("${u}")
@@ -30,6 +31,11 @@ pageEncoding="utf8"%>
 		<c:forEach items="${a.answers}" var="u">
 		ans.push("${u}")
 		</c:forEach> 
+=======
+  		<c:forEach items="${q.questions}" var="u">
+  		array.push("${u}")
+  		</c:forEach> 
+>>>>>>> d1525f9213a164af01de0d44c64535f0221fc25d
   	</script>
   </head>
 
@@ -60,13 +66,21 @@ pageEncoding="utf8"%>
     <!--sidebar on the top-->
     <div class="ui attached tiny stackable menu grey inverted">
       <div class="ui container">
-        <a class="item" href="./MainPage.action?id=${id}&userclass=2"><i class="home icon"></i>主页</a>
-        <a class="item" href="./my_attention_tea?id_in=${id}"><i class="grid layout icon"></i> 考研互选 </a>
-        <div class="right item">
-          <a class="item" href="./Show_stu.action?stuc.id=${id }"><i class="settings icon"></i><%=name%></a>
-          <a class="item" href="./loginpage.action"><i class="moon icon"></i>注销账户</a>
-        </div>
+		<form name="form20" action="MainPage" method="post">   
+		<input type="hidden" name="id" value="${id}"/>
+		<input type="hidden" name="userclass" value="2"/></form>
+		<form name="form21" action="my_attention_tea" method="post">   
+		<input type="hidden" name="id_in" value="${id}"/></form>
+      <a class="item" href="javascript:document.form10.submit();"><i class="home icon"></i>主页</a>
+      <a class="item" href="javascript:document.form10.submit();"><i class="grid layout icon"></i> 考研互选 </a>
+      <div class="right item">
+		<form name="form22" action="Show_stu" method="post">   
+		<input type="hidden" name="stuc.id" value="${id}"/></form>
+		<form name="form23" action="loginpage" method="post"></form>
+        <a class="item" href="javascript:document.form10.submit();"><i class="settings icon"></i><%=name%></a>
+        <a class="item" href="javascript:document.form10.submit();"><i class="moon icon"></i>注销账户</a>
       </div>
+</div>
     </div>
 
     <!---the introduce-->
