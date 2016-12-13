@@ -7,9 +7,12 @@ window.onload=function()
 		amount++;
 		var div_block = document.createElement("div");
 		div_block.id = "block" + amount;
-		div_block.innerHTML = "问题" + amount + "：<input type=\"text\" name=\"q.questions\" class=\"inputq\">";
+		div_block.className ="ui clearing segment";
+		div_block.style = "font-size:20px;"
+		div_block.innerHTML = "问题" + amount + ": <div id=\"block\" class=\"ui fluid transparent input\"> <input type=\"text\" name=\"q.questions\"></div>";
 		amount++;
 		div_content.appendChild(div_block);
+		document.getElementById("amounttodb").value = amount - 1;
 	}
 	else
 	{
@@ -17,10 +20,13 @@ window.onload=function()
 		{
 			var div_block = document.createElement("div");
 			div_block.id = "block" + i;
-			div_block.innerHTML ="问题" + i + "：<input type=\"text\" class=\"inputq\" name=\"q.questions\" value=\"" + array[i - 1] + "\">";
+			div_block.className ="ui clearing segment";
+			div_block.style = "font-size:20px;"
+			div_block.innerHTML = "问题" + i + ": <div id=\"block\" class=\"ui fluid transparent input\"> <input type=\"text\" name=\"q.questions\" value=\"" + array[i-1] + "\"></div>";
 			div_content.appendChild(div_block);
 		}
 		amount++;
+		document.getElementById("amounttodb").value = amount - 1;
 	}
 }
 
@@ -30,9 +36,11 @@ function newLine()
 	{
 		var div_block = document.createElement("div");
 		div_block.id = "block" + amount;
-		div_block.innerHTML = div_block.innerHTML ="问题" + amount + "：<input type=\"text\" class=\"inputq\" name=\"q.questions\">";
-		amount++;
+		div_block.className ="ui clearing segment";
+		div_block.style = "font-size:20px;"	
+		div_block.innerHTML = "问题" + amount + ": <div id=\"block\" class=\"ui fluid transparent input\"> <input type=\"text\" name=\"q.questions\"></div>";
 		div_content.appendChild(div_block);
+		amount++;
 	}
 	else
 	{

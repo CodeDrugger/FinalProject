@@ -1,61 +1,104 @@
 <%@ page language="java" contentType="text/html; charset=utf8" pageEncoding="utf8"%>
-<!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
-    <title>登录</title>
-    <style>
-        body{
-            font-family: 'microsoft yahei',Arial,sans-serif;
-            background-image: url("images/1.png");
-        }
-        .loginpanel {
-            text-align: center;
-            width: 300px;
-            border-radius: 0.5rem;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: 10px auto;
-            padding: 20px;
-            opacity:0.8;
-        }
-        .row {
-            padding: 13% 0px;
-        }
-        input {
-            margin-bottom: 17px;
-            padding: 15px;
-            background-color: #ECF4F4;
-            border-radius: 2px;
-            border: none;
-        }
 
-    </style>
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <!-- Site Properties -->
+  <title>login</title>
+  <link rel="stylesheet" type="text/css" href="css/semantic.css">
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script type="text/javascript" src="js/semantic.min.js"></script>
+
+  <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+
+  <script>
+  $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            username: {
+              identifier  : 'username',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your username'
+                }
+              ]
+            },
+            password: {
+              identifier  : 'password',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your password'
+                }
+              ]
+            }
+          }
+        })
+      ;
+    })
+  ;
+  </script>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="panel loginpanel">
-            <h2>
-                <span class="fa fa-user-circle-o"></span>
-                登录
-            </h2>
-            <form role="form" action="LoginAction" method="get">
-                <input class="form-control" name="login.username" type="text" placeholder="登录账号">
-                <input class="form-control" name="login.password" type="password" placeholder="输入密码">
-                ${info}
-                <input class="form-control" type="submit" value="登录">
-            </form>
-            <a  href="./signup.action">没有账号?注册</a>
+
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <img src="images/logo.png" class="image">
+      <div class="content">
+        Sign-in to your account
+      </div>
+    </h2>
+    <form class="ui large form" action="LoginAction" method="get">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="login.username" placeholder="username">
+          </div>
         </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="login.password" placeholder="Password">
+          </div>
+        </div>
+        ${info}
+        <button class="ui fluid large teal submit button" onclick="javascript:form.submit();">Login</button>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message">
+      New to us? <a href="./signup.action">Sign Up</a>
     </div>
+  </div>
 </div>
+
 </body>
+
 </html>

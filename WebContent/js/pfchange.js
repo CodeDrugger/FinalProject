@@ -1,5 +1,5 @@
 window.onload=function(){
-	var sex = document.getElementById("sex").value; 
+	var sex = document.getElementById("sex").value; 
 	var sex_nan = document.getElementById("sex_nan");
 	var sex_nv = document.getElementById("sex_nv");
 	if (sex == "男"){
@@ -13,7 +13,7 @@ window.onload=function(){
 		sex_nv.checked = "";
 	}
 	
-	var wish_class = document.getElementById("wish_class").value; 
+	var wish_class = document.getElementById("wish_class").value; 
 	var wish_class_xueshuo = document.getElementById("wish_class_xueshuo");
 	var wish_class_zhuanshuo = document.getElementById("wish_class_zhuanshuo");
 	var wish_class_buqueding = document.getElementById("wish_class_buqueding");
@@ -35,7 +35,7 @@ window.onload=function(){
 		wish_class_buqueding.checked = "";
 	}
 	
-	var bein_class = document.getElementById("bein_class").value; 
+	var bein_class = document.getElementById("bein_class").value; 
 	var bein_class_baoyan = document.getElementById("bein_class_baoyan");
 	var bein_class_kaoyan = document.getElementById("bein_class_kaoyan");
 	if (bein_class == "保研"){
@@ -49,7 +49,7 @@ window.onload=function(){
 		bein_class_kaoyan.checked = "";
 	}
 	
-	var zhibo = document.getElementById("zhibo").value; 
+	var zhibo = document.getElementById("zhibo").value; 
 	var zhibo_shi = document.getElementById("zhibo_shi");
 	var zhibo_fou = document.getElementById("zhibo_fou");
 	if (zhibo == "是"){
