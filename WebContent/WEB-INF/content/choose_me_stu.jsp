@@ -122,17 +122,18 @@
   <div class="six wide stretched column">
     <div class="ui segment">
       <div class="ui divided items">
+      
         <s:iterator value="selected_me" var="sm">
           <div class="item">
             <div class="ui small image">
               <img src="./images/elyse.png">
             </div>
             <div class="content">
-                <form name="form40" action="Mystu_inf" method="post">   
+                <form name="gg5${sm.id}" action="Mystu_inf" method="post">   
 				<input type="hidden" name="stu_inf_id" value="${sm.id}"/>
 				<input type="hidden" name="id_in" value="${id_in}"/>
 				</form>
-				<a class="header" href="javascript:document.form40.submit();">${sm.name}</a>
+				<a class="header" href="javascript:document.gg5${sm.id}.submit();">${sm.name}</a>
               <div class="meta">
                 <span>个人简介</span>
               </div>

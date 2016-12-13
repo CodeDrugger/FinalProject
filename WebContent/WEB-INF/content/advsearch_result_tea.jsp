@@ -92,13 +92,18 @@ pageEncoding="utf8"%>
           <h2 class="ui center aligned icon header">
             Searchs result
           </h2>
+          
           <s:iterator value="list" var="l" status="st">
           <div class="item">
             <div class="ui small image">
               <img src="${l.picture_name }">
             </div>
             <div class="content">
-              <a class="header" href="./Show_tea_stu.action?id_in=<%=id%>&stus.id=${l.id}">${l.name}</a>
+            <form name="gg2${l.id}" action="Show_tea_stu" method="post">
+            	<input type="hidden" name="id_in" value="<%=id%>">
+            	<input type="hidden" name="stus.id" value="${l.id}">
+            </form>
+              <a class="header" href="javascript:document.gg2${l.id}.submit();">${l.name}</a>
               <div class="meta">
                 <span>性别：${l.sex}</span>
                 <span>本科专业：${l.benke_major}</span>

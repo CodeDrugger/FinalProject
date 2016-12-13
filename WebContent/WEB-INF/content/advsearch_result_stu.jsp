@@ -48,6 +48,7 @@ connect.close();
 e.printStackTrace();
 }
 %>
+
   <!--sidebar on the top-->
   <div class="ui attached tiny stackable menu grey inverted">
     <div class="ui container">
@@ -78,7 +79,7 @@ e.printStackTrace();
       <div class="eight wide column">
         <div class="ui divided items">
           <h2 class="ui center aligned icon header">
-            Searchs result
+            Search result
           </h2>
           <s:iterator value="list" var="l" status="st">
           <div class="item">
@@ -86,7 +87,12 @@ e.printStackTrace();
               <img src="${l.picture_name}">
             </div>
             <div class="content">
-              <a class="header" href="./Show_stu_tea?id_in=<%=id%>&teas.id=${l.id}">${l.name}</a>
+            <form name="gg1${l.id}" action="Show_stu_tea" method="post">
+            	<input type="hidden" name="id_in" value="<%=id%>"/>
+            	<input type="hidden" name="teas.id" value="${l.id}"/>
+            </form>
+              <a class="header" href="javascript:document.gg1${l.id}.submit();">${l.name}</a>
+               
               <div class="meta">
                 <span>学院：${l.xueyuan}</span>
                 <span>研究方向：${l.research_field}</span>

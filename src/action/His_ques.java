@@ -32,6 +32,8 @@ public class His_ques implements Action {
 	public String execute() throws Exception {
 		InitQuesService is = new InitQuesService();
 		is.doInitQues(q);
+		a = new Answers();
+		is.doInitAns(a, id);
 		return SUCCESS;
 	}
 

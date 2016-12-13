@@ -121,6 +121,10 @@ try {
   </div>
 </div>
 </body>
+<form name="form103" action="Show_tea_stu" method="post">
+	<input id="rpg1" type="hidden" name="id_in">
+	<input id="rpg2" type="hidden" name="stus.id">
+</form>
 <script type="text/javascript">
 var reco_name = new Array();
 var reco_id = new Array();
@@ -138,22 +142,24 @@ window.onload=function(){
   var reco = document.getElementById("reco");
 	var number = document.getElementById("number").value;
 	var id_main = document.getElementById("id_main").value;
+	var rpg1 = document.getElementById("rpg1");
+	var rpg2 = document.getElementById("rpg2");
+	rpg1.value = id_main;
   if(number)
 	for (var i = 1; i <= number; i++){
 		var div_card = document.createElement("div");
     div_card.className="card";
 		var div_img = document.createElement("div");
     div_img.className = "image";
-    div_img.innerHTML="<a href=\" ./Show_tea_stu?id_in= " + 
-    id_main +"&stus.id="+reco_id[i-1] + "\">"+ "<img style=\"width:100%;\" src=\"" + reco_pic[i-1] + "\">" +"</a>";
+    div_img.innerHTML="<a href=\"javascript:document.form103.submit();\">"+ "<img style=\"width:100%;\" src=\"" + reco_pic[i-1] + "\">" +"</a>";
     var div_content = document.createElement("div");
     div_content.className = "content";
-    div_content.innerHTML="<a class=\" header\" href=\" ./Show_tea_stu?id_in= " + 
-    id_main +"&stus.id="+reco_id[i-1] + "\">"+ reco_name[i-1] +"</a>"+
+    div_content.innerHTML="<a class=\" header\" href=\"javascript:document.form103.submit();\">"+ reco_name[i-1] +"</a>"+
     "<div class=\"description\">" + reco_benke[i-1] +"</div>";
     div_card.appendChild(div_img);
     div_card.appendChild(div_content);
 		reco.appendChild(div_card);
+		rpg2.value = reco_id[i - 1];
 	}
 }
 </script>

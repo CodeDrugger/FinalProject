@@ -131,11 +131,12 @@
               <img src="./images/elyse.png">
             </div>
             <div class="content">
-                <form name="form40" action="Mystu_inf" method="post">   
+                 <form name="gg9${st.id}" action="Mystu_inf" method="post">   
 				<input type="hidden" name="stu_inf_id" value="${st.id}"/>
 				<input type="hidden" name="id_in" value="${id_in}"/>
 				</form>
-				<a class="header" href="javascript:document.form40.submit();">${st.name}</a>
+                
+				<a class="header" href="javascript:document.gg9${st.id}.submit();">${st.name}</a>
               <div class="meta">
                 <span>个人简介</span>
               </div>

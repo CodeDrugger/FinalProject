@@ -169,15 +169,24 @@
                 <div class="ui piled segments">
                     <div class="ui segment" style="font-size:20px;">
                         姓名：
-                        <%=teas.getName()%>
+                <div class="ui transparent input" style="height: 60%">
+                        <input type="text" placeholder=" " value="<%=teas.getName()%>" readonly="readonly">
+                    </div>
+                        
                     </div>
                     <div class="ui segment" style="font-size:20px;">
                         学校：
-                        <%=teas.getCollege()%>
+                        <div class="ui transparent input" style="height: 60%">
+                        <input type="text" placeholder=" " value="<%=teas.getCollege()%>" readonly="readonly">
+                    </div>
+                        
                     </div>
                     <div class="ui segment" style="font-size:20px;">
                         学院：
-                        <%=teas.getXueyuan()%>
+                        <div class="ui transparent input" style="height: 60%">
+                        <input type="text" placeholder=" " value="<%=teas.getXueyuan()%>" readonly="readonly">
+                    </div>
+                        
                     </div>
                 </div>
             </div>
@@ -209,23 +218,40 @@
             <div class="four wide column">
                 <div class="ui piled segments">
                     <div class="ui segment" style="font-size:20px;">
-                        <%=teas.getMajor()%>
+                        
+                        <div class="ui transparent input" style="height: 60%">
+                        <input type="text" placeholder=" " value="<%=teas.getMajor()%>" readonly="readonly">
+                    </div>
                     </div>
                     <div class="ui segment" style="font-size:20px;">
-                        <%=teas.getResearch_field()%>
+                    <div class="ui transparent input" style="height: 60%">
+                        <input type="text" placeholder=" " value="<%=teas.getResearch_field()%>" readonly="readonly">
+                    </div>
+                        
                     </div>
                     <div class="ui segment" style="font-size:20px;">
-                        <%=teas.getIn_enrollment()%>/
-                            <%=teas.getEnrollment()%>
+                    <div class="ui transparent input" style="height: 60%">
+                        <input type="text" placeholder=" " value="<%=teas.getIn_enrollment()%>/<%=teas.getEnrollment()%>" readonly="readonly">
+                    </div>
+                        
                     </div>
                     <div class="ui segment" style="font-size:20px;">
-                        <%=teas.getEmail()%>
+                    <div class="ui transparent input" style="height: 60%">
+                        <input type="text" placeholder=" " value="<%=teas.getEmail()%>" readonly="readonly">
+                    </div>
+                        
                     </div>
                     <div class="ui segment" style="font-size:20px;">
-                        <%=teas.getTel()%>
+                    <div class="ui transparent input" style="height: 60%">
+                        <input type="text" placeholder=" " value="<%=teas.getTel()%>" readonly="readonly">
+                    </div>
+                        
                     </div>
                     <div class="ui segment fixup" style="font-size:20px;">
-                        <%=teas.getSelf_intro()%>
+                    <div class="ui transparent input" style="height: 60%">
+                        <input type="text" placeholder=" " value="<%=teas.getSelf_intro()%>" readonly="readonly">
+                    </div>
+                        
                     </div>
                 </div>
             </div>

@@ -82,7 +82,7 @@
 <div class="ui grid">
   <div class="three wide column"></div>
   <div class="three wide column">
-    <div class="ui massive pointing vertical menu">
+    <div class="ui large pointing vertical menu">
       <div class="ui item">
         <h2><i class="opencart icon"></i>关注</h2>
 		
@@ -93,7 +93,7 @@
 		<input type="hidden" name="id_in" value="${id}"/></form>
 		
         <a class="item" href="javascript:document.form30.submit();"><i class="attach icon"></i>我关注的</a>
-        <a class="active item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
+        <a class="item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
       </div>
       <div class="item">
         <h2><i class="gg icon"></i>选择</h2>
@@ -103,7 +103,7 @@
 		<form name="form33" action="choose_me_tea" method="post">   
 		<input type="hidden" name="id_in" value="${id}"/></form>
 		
-        <a class="item" href="javascript:document.form32.submit();"><i class="attach icon"></i>我选择的</a>
+        <a class="active item" href="javascript:document.form32.submit();"><i class="attach icon"></i>我选择的</a>
         <a class="item" href="javascript:document.form33.submit();"><i class="attach icon"></i>选择我的</a>
       </div>
     </div>
@@ -111,17 +111,18 @@
   <div class="six wide stretched column">
     <div class="ui segment">
       <div class="ui divided items">
+      
         <s:iterator value="select_tea" var="st">
         <div class="item">
           <div class="ui small image">
             <img src="./images/elyse.png">
           </div>
           <div class="content">
-            <form name="form40" action="Mytea_inf" method="post">   
+            <form name="gg10${st.id}" action="Mytea_inf" method="post">   
 			<input type="hidden" name="tea_inf_id" value="${st.id}"/>
 			<input type="hidden" name="id_in" value="${id_in}"/>
 			</form>
-			<a class="header" href="javascript:document.form40.submit();">${st.name}</a>           
+			<a class="header" href="javascript:document.gg10${st.id}.submit();">${st.name}</a>           
             <div class="meta">
               <span>个人简介</span>
             </div>

@@ -123,17 +123,18 @@
   <div class="six wide stretched column">
     <div class="ui segment">
       <div class="ui divided items">
+      
         <s:iterator value="attention_me" var="am">
           <div class="item">
             <div class="ui small image">
               <img src="./images/elyse.png">
             </div>
             <div class="content">
-              <form name="form40" action="Mystu_inf" method="post">   
+              <form name="gg3${am.id}" action="Mystu_inf" method="post">   
 				<input type="hidden" name="stu_inf_id" value="${am.id}"/>
 				<input type="hidden" name="id_in" value="${id_in}"/>
 				</form>
-				<a class="header" href="javascript:document.form40.submit();">${am.name}</a>
+				<a class="header" href="javascript:document.gg3${am.id}.submit();">${am.name}</a>
               <div class="meta">
                 <span>个人简介</span>
               </div>

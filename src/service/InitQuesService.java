@@ -55,6 +55,8 @@ public class InitQuesService {
 		    else
 		    {
 		    	a.setAmount("0");
+		    	String[] temp = {""};
+		    	a.setAnswers(temp);
 		    }
 		    connect.close();
 		} catch (SQLException e) {
