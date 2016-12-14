@@ -73,7 +73,7 @@ pageEncoding="utf8"%>
         Sign-up to your account
       </div>
     </h2>
-    <form class="ui large form" action="SignUp" method="get">
+    <form class="ui large form" action="SignUp" method="post">
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">

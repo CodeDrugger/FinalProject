@@ -91,7 +91,7 @@ public class Change_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          rst = stmt.executeQuery("select * from stu_inf where id='"+stuc.getId()+"'");
 	        	  while(rst.next())
@@ -144,7 +144,8 @@ public class Change_stu implements Action {
 	      //ResultSet rst = null;
 	      String type=null;
 	      int judge=0;
-	      String realpath = "D:/Eclipse/apache-tomcat-9.0.0.M10/webapps/FinalProject/photos/"+id;
+	      String realpath = "C:/hostadmin/tomcat80/webapps/FinalProject/photos/" + id;
+	      //String realpath = "D:/Eclipse/apache-tomcat-9.0.0.M10/webapps/FinalProject/photos/"+id;
 	      //String realpath ="C:/Users/daisf/Documents/apache-tomcat-7.0.70/webapps/photos/"+id;
 	      //C:\Users\daisf\Documents\apache-tomcat-7.0.70\webapps\FinalProject\photos
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
@@ -186,7 +187,7 @@ public class Change_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          //int i=
 	          stmt.executeUpdate(sql);

@@ -40,7 +40,7 @@
 	    e.printStackTrace();
 	}
 	try {
-	    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+	    Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb", "fp_user", "123456");
 	    Statement stmt = connect.createStatement();
 	    ResultSet rs = stmt.executeQuery("select * from tea_inf where id='" + id + "'");
 	    if (rs.next()) {
@@ -95,7 +95,7 @@
 <div class="ui grid">
   <div class="three wide column"></div>
   <div class="three wide column">
-    <div class="ui massive pointing vertical menu">
+    <div class="ui large pointing vertical menu">
       <div class="ui item">
         <h2><i class="opencart icon"></i>关注</h2>
 		
@@ -118,23 +118,25 @@
 		
         <a class="item" href="javascript:document.form32.submit();"><i class="attach icon"></i>我选择的</a>
         <a class="item" href="javascript:document.form33.submit();"><i class="attach icon"></i>选择我的</a>
+
       </div>
     </div>
   </div>
   <div class="six wide stretched column">
     <div class="ui segment">
       <div class="ui divided items">
+      
         <s:iterator value="attention_me" var="am">
           <div class="item">
             <div class="ui small image">
-              <img src="./images/elyse.png">
+              <img src="${am.picture_name }">
             </div>
             <div class="content">
-              <form name="form40" action="Mystu_inf" method="post">   
+              <form name="gg3${am.id}" action="Mystu_inf" method="post">   
 				<input type="hidden" name="stu_inf_id" value="${am.id}"/>
 				<input type="hidden" name="id_in" value="${id_in}"/>
 				</form>
-				<a class="header" href="javascript:document.form40.submit();">${am.name}</a>
+				<a class="header" href="javascript:document.gg3${am.id}.submit();">${am.name}</a>
               <div class="meta">
                 <span>个人简介</span>
               </div>

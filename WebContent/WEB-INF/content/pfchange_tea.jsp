@@ -70,7 +70,7 @@
   	    e.printStackTrace();
   	}
   	try {
-  	    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+  	    Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb", "fp_user", "123456");
   	    Statement stmt = connect.createStatement();
   	    ResultSet rs = stmt.executeQuery("select * from tea_inf where id='" + id + "'");
   	    if (rs.next()) {
@@ -209,10 +209,12 @@
                           </div>
                         </div>
                         <div class="ui segment" style="font-size:20px;padding: 16px;">
-                            <div class="ui transparent input">
+                            <div class="ui transparent input" style="width: 50%">
                                 <input type="text" name="teac.enrollment" value="${teac.enrollment }">
-                                <label>(已招人数：${teac.in_enrollment}*招生人数应大于目前已招人数)</label>
                             </div>
+                            <div class="fixup" style="display: inline;">
+                            (已招人数：${teac.in_enrollment})</div>
+                            
                         </div>
                         <div class="ui segment" style="font-size:20px;padding: 16px;">
                             <div class="ui transparent input">

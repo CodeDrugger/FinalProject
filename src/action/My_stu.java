@@ -58,7 +58,7 @@ public class My_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          rst = stmt.executeQuery("select * from tea_inf where id='"+tea_id+"'");
 	          while(rst.next())
@@ -143,7 +143,7 @@ public class My_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          rst = stmt.executeQuery("select * from tea_inf where id='"+tea_id+"'");
 	          while(rst.next())
@@ -231,7 +231,7 @@ public class My_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          rst = stmt.executeQuery("select * from tea_inf where id='"+tea_id+"'");
 	          while(rst.next())
@@ -338,7 +338,7 @@ public class My_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          rst = stmt.executeQuery("select * from tea_inf where id='"+id_in+"'");
 	          while(rst.next())
@@ -376,6 +376,7 @@ public class My_stu implements Action {
 	        	 String s[] = aml[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setPicture_name(getpicture(s[1]));
 	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 attention_me.add(t);
 	          }	  
@@ -387,6 +388,7 @@ public class My_stu implements Action {
 	        	 String s[] = atl[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setPicture_name(getpicture(s[1]));
 	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 attention_stu.add(t);
 	          }	  
@@ -398,6 +400,7 @@ public class My_stu implements Action {
 	        	 String s[] = stl[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setPicture_name(getpicture(s[1]));
 	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 select_stu.add(t);
 	          }	  
@@ -410,6 +413,7 @@ public class My_stu implements Action {
 	        	 String s[] = sml[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setPicture_name(getpicture(s[1]));
 	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 selected_me.add(t);
 	          }	  
@@ -436,7 +440,11 @@ public class My_stu implements Action {
 	
 	return ret;
 	}
+<<<<<<< HEAD
 	public String picture(String id)
+=======
+	public String getpicture(String id)
+>>>>>>> bf2b2af5472a585d102719a45e8a8367b2844e2b
 	{
 		  String picture="";
 	      Connection con = null;
@@ -487,7 +495,7 @@ public class My_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          rst = stmt.executeQuery("select * from stu_inf where id='"+id+"'");
 	        	  while(rst.next())

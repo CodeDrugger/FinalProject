@@ -20,7 +20,7 @@ public class AdvSchService_stu {
 			e.printStackTrace();
 		}
 		try {
-			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+			Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 			Statement stmt = connect.createStatement();
 			if (advsch.getResearch_filed().equals("请填写研究方向"))
 				advsch.setResearch_filed("");		

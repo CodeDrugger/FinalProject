@@ -35,7 +35,7 @@ pageEncoding="utf8"%>
 e.printStackTrace();
 }
 try {
-Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb", "fp_user", "123456");
 Statement stmt = connect.createStatement();
 ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
 if (rs.next()) {
@@ -48,6 +48,7 @@ connect.close();
 e.printStackTrace();
 }
 %>
+
   <!--sidebar on the top-->
   <div class="ui attached tiny stackable menu grey inverted">
     <div class="ui container">
@@ -81,15 +82,20 @@ e.printStackTrace();
       <div class="eight wide column">
         <div class="ui divided items">
           <h2 class="ui center aligned icon header">
-            Searchs result
+            Search result
           </h2>
           <s:iterator value="list" var="l" status="st">
           <div class="item">
             <div class="ui small image">
-              <img src="./images/elyse.png">
+              <img src="${l.picture_name}">
             </div>
             <div class="content">
-              <a class="header" href="./Show_stu_tea?id_in=<%=id%>&teas.id=${l.id}">${l.name}</a>
+            <form name="gg1${l.id}" action="Show_stu_tea" method="post">
+            	<input type="hidden" name="id_in" value="<%=id%>"/>
+            	<input type="hidden" name="teas.id" value="${l.id}"/>
+            </form>
+              <a class="header" href="javascript:document.gg1${l.id}.submit();">${l.name}</a>
+               
               <div class="meta">
                 <span>学院：${l.xueyuan}</span>
                 <span>研究方向：${l.research_field}</span>
@@ -113,6 +119,7 @@ e.printStackTrace();
           <i class="search icon"></i> 高级搜索
         </h1>
         <form class="ui form" action="AdvSearch_stu" method="post">
+        	<input type="hidden" name="id" value="${id }">
           <h3 class="ui dividing header">导师信息</h3>
           <div class="field">
             <label>导师所在学院</label>

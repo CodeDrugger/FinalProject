@@ -35,7 +35,7 @@ pageEncoding="utf8"%>
       e.printStackTrace();
   }
   try {
-      Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+      Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb", "fp_user", "123456");
       Statement stmt = connect.createStatement();
       ResultSet rs = stmt.executeQuery("select * from tea_inf where id='" + id + "'");
       if (rs.next()) {
@@ -94,22 +94,27 @@ pageEncoding="utf8"%>
           <h2 class="ui center aligned icon header">
             Searchs result
           </h2>
+          
           <s:iterator value="list" var="l" status="st">
           <div class="item">
             <div class="ui small image">
-              <img src="./images/elyse.png">
+              <img src="${l.picture_name }">
             </div>
             <div class="content">
-              <a class="header" href="./Show_tea_stu.action?id_in=<%=id%>&stus.id=${l.id}">${l.name}</a>
+            <form name="gg2${l.id}" action="Show_tea_stu" method="post">
+            	<input type="hidden" name="id_in" value="<%=id%>">
+            	<input type="hidden" name="stus.id" value="${l.id}">
+            </form>
+              <a class="header" href="javascript:document.gg2${l.id}.submit();">${l.name}</a>
               <div class="meta">
                 <span>性别：${l.sex}</span>
                 <span>本科专业：${l.benke_major}</span>
               </div>
+              <div class="ui extra">
+                自我介绍：
+              </div>
               <div class="description">
                 ${l.self_intro}
-              </div>
-              <div class="ui extra">
-                Additional Detail
               </div>
             </div>
           </div>
@@ -125,6 +130,7 @@ pageEncoding="utf8"%>
           <i class="search icon"></i> 高级搜索
         </h1>
         <form class="ui form" action="AdvSearch_tea" method="post">
+        	<input type="hidden" name="id" value="${id }">
           <h3 class="ui dividing header">学生信息</h3>
           <div class="field">
             <label>本科学院</label>

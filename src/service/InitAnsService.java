@@ -17,7 +17,7 @@ public class InitAnsService {
 			e.printStackTrace();
 		}
 		try {
-			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+			Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 			Statement stmt = connect.createStatement();
 		    ResultSet rs = stmt.executeQuery("select * from answers where "
 		    		+ "id_tea='" + a.getId_tea() + "' and id_stu='" + a.getId_stu() + "'");

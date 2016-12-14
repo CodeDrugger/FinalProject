@@ -94,7 +94,7 @@ public class Change_tea implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          rst = stmt.executeQuery("select * from tea_inf where id='"+teac.getId()+"'");
 	        	  while(rst.next())
@@ -142,7 +142,8 @@ public class Change_tea implements Action {
 	      String type=null;
 	      int judge=0;
 	      //ResultSet rst = null;
-	      String realpath = "D:/Eclipse/apache-tomcat-9.0.0.M10/webapps/FinalProject/photos_tea/"+id;
+	      String realpath = "C:/hostadmin/tomcat80/webapps/FinalProject/photos_tea/" + id;
+	      //String realpath = "D:/Eclipse/apache-tomcat-9.0.0.M10/webapps/FinalProject/photos_tea/"+id;
 	      //String realpath ="C:/Users/daisf/Documents/apache-tomcat-7.0.70/webapps/photos_tea/"+id;
 	        //D:\apache-tomcat-6.0.18\webapps\struts2_upload\images
 	      System.out.println("realpath: "+realpath);
@@ -175,7 +176,7 @@ public class Change_tea implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          //int i=
 	          stmt.executeUpdate(sql);

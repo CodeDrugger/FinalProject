@@ -35,7 +35,7 @@ try {
     e.printStackTrace();
 }
 try {
-    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+    Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb", "fp_user", "123456");
     Statement stmt = connect.createStatement();
     ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
     if (rs.next()) {
@@ -101,7 +101,7 @@ try {
 </div>
 
 <!--the big search-->
-<form action="SearchStu" method="get">
+<form action="SearchStu" method="post">
   <input id="id_main" type="hidden" name="id" value="${id}">
   <input type="hidden" name="search.user" value="1">
   <div class="ui container">
@@ -117,11 +117,11 @@ try {
 
 <!-- the Recommend-->
 <c:set var="id" value="${id }" scope="request"></c:set>
-<div calss="ui container">
+<div class="ui container">
   <h4 class="ui horizontal divider header"><i class="tag icon"></i>Recommend</h4>
   <div class="ui raised very padded container">
     <input id="number" type="hidden" value="<%=i%>">
-  	<div class="ui link cards" id="repo">
+  	<div class="ui four doubling cards" id="reco">
 
     </div>
   </div>
@@ -145,20 +145,42 @@ window.onload=function(){
 	var reco = document.getElementById("reco");
 	var number = document.getElementById("number").value;
 	var id_main = document.getElementById("id_main").value;
+	//var rpg1 = document.getElementById("rpg1");
+	//var rpg2 = document.getElementById("rpg2");
+	//rpg1.value = id_main;
+	
   if(number)
 	for (var i = 1; i <= number; i++){
 		var div_card = document.createElement("div");
     div_card.className="card";
+    var form0 = document.createElement("form");
+    form0.name = "jb" + i;
+    form0.action = "Show_stu_tea";
+    form0.method = "post";
+    var input1 = document.createElement("input");
+    var input2 = document.createElement("input");
+    input1.type = "hidden";
+    input1.name = "id_in";
+    input1.value = id_main;
+    input2.type = "hidden";
+    input2.name = "teas.id";
+    input2.value = reco_id[i - 1];
+    form0.appendChild(input1);
+    form0.appendChild(input2);
+    div_card.appendChild(form0);
 		var div_img = document.createElement("div");
     div_img.className = "image";
-    div_img.innerHTML="<img src=\"" + reco_pic[i-1] + "\">"
+    div_img.innerHTML="<a href=\"javascript:document.jb"+i+".submit();\">" +
+	"<img style=\"width:100%;\" src=\"" + reco_pic[i-1] + "\">" + "</a>";
     var div_content = document.createElement("div");
     div_content.className = "content";
-    div_content.innerHTML="<a class=\" header\" href=\" ./Show_stu_tea?id_in= " + id_main +"&teas.id="+reco_id[i-1] + "\"></a>"+
-    "<div class=\"description\">" + reco_fild[i-1] +"</div>";
+    
+    div_content.innerHTML="<a class=\" header\" href=\"javascript:document.jb"+i+".submit();\">"+ reco_name[i-1] +"</a>"+
+    "<div class=\"description\">" + reco_field[i-1] +"</div>";
     div_card.appendChild(div_img);
     div_card.appendChild(div_content);
 		reco.appendChild(div_card);
+		//rpg2.value = reco_id[i - 1];
 	}
 }
 </script>

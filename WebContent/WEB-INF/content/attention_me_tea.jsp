@@ -42,7 +42,7 @@
   e.printStackTrace();
   }
   try {
-  Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+  Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb", "fp_user", "123456");
   Statement stmt = connect.createStatement();
   ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
   if (rs.next()) {
@@ -86,7 +86,7 @@
 <div class="ui grid">
   <div class="three wide column"></div>
   <div class="three wide column">
-    <div class="ui massive pointing vertical menu">
+    <div class="ui large pointing vertical menu">
       <div class="ui item">
         <h2><i class="opencart icon"></i>关注</h2>
 		
@@ -115,17 +115,18 @@
   <div class="six wide stretched column">
     <div class="ui segment">
       <div class="ui divided items">
+      
         <s:iterator value="attention_me" var="am">
         <div class="item">
           <div class="ui small image">
-            <img src="./images/elyse.png">
+            <img src="${am.picture_name }">
           </div>
           <div class="content">
-            <form name="form40" action="Mytea_inf" method="post">   
+            <form name="gg4${am.id}" action="Mytea_inf" method="post">   
 			<input type="hidden" name="tea_inf_id" value="${am.id}"/>
 			<input type="hidden" name="id_in" value="${id_in}"/>
 			</form>
-			<a class="header" href="javascript:document.form40.submit();">${am.name}</a>
+			<a class="header" href="javascript:document.gg4${am.id}.submit();">${am.name}</a>
             <div class="meta">
               <span>个人简介</span>
             </div>
@@ -138,7 +139,9 @@
               <input type="hidden"  name="student_id" value="${id_in}" />
               <button type = "submit" class="ui right floated primary button" onclick="javascript:form.submit();">
                   关注TA
-              <i class="right chevron icon"></i>
+                  <i class="right chevron icon"></i>
+                  </button>
+              
              </form>
             </div>
           </div>
@@ -148,7 +151,6 @@
     </div>
     </div>
   </div>
-</div>
 
 </body>
 

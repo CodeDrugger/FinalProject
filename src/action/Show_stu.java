@@ -98,7 +98,7 @@ public class Show_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          stmt.executeUpdate(sql_tea);
 	          stmt.executeUpdate(sql_stu);

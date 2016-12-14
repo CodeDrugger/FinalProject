@@ -23,9 +23,14 @@ pageEncoding="utf8"%>
     </style>
     <script type="text/javascript">
   		var array = [];
-  		<c:forEach items="${q.questions}" var="u">
-  		array.push("${u}")
-  		</c:forEach> 
+		var ans = [];
+		<c:forEach items="${q.questions}" var="u">
+		array.push("${u}")
+		</c:forEach> 
+		<c:forEach items="${a.answers}" var="u">
+		ans.push("${u}")
+		</c:forEach> 
+
   	</script>
   </head>
 
@@ -40,7 +45,7 @@ pageEncoding="utf8"%>
     e.printStackTrace();
     }
     try {
-    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+    Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb", "fp_user", "123456");
     Statement stmt = connect.createStatement();
     ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
     if (rs.next()) {
@@ -101,12 +106,13 @@ pageEncoding="utf8"%>
             <button class="ui labeled inverted violet icon button" onclick="history.back();">
                     <i class="chevron left icon"></i>返回
             </button>
-            <button class="ui labeled inverted violet icon button" onclick="javascript:form.submit();">
+            <button id="submit" class="ui labeled inverted violet icon button" onclick="javascript:form.submit();">
                     <i class="upload icon"></i>提交
             </button>
           </div>
         </div>
       </div>
+
     </form>
   </body>
 
