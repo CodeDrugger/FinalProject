@@ -9,19 +9,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>mainpage_stu</title>
+  <title>跳转</title>
   <link rel="stylesheet" type="text/css" href="css/semantic.css">
 
   <script src="js/jquery-3.1.1.min.js"></script>
   <script type="text/javascript" src="js/semantic.min.js"></script>
 </head>
 <body>
+  <h2 class="ui horizontal divider header">
+      <i class="browser icon"></i>我的信息
+  </h2>
   <div class="ui grid">
     <div class="row">
       <div class="six wide column"></div>
       <div class="three wide column">
+        <div class="ui raised segment">
         <h1><i class="hourglass half icon"></i>${message}</h1>
       </div>
+      </div>
+      <button type = "button" class="ui right floated primary button" onclick="javascript:history.go(-1);location.reload()">
+          我知道了
+      <i class="right chevron icon"></i></button>
     </div>
   </div>
 <!--  <form id="form" method="get">

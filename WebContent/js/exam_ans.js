@@ -13,7 +13,7 @@ window.onload=function(){
 		{
 			var div_block = document.createElement("div");
 			div_block.id = "block" + i;
-			div_block.innerHTML = "<div class=\"ui segment\"><lable>问题:" + ques[i-1] +"</label><textarea style=\"border: none;\" readonly=\"readonly\">" + ans[i-1] +"</textarea></div>";
+			div_block.innerHTML = "<div class=\"ui segment\"><lable>问题:" + ques[i-1] +"</label><p>" + ans[i-1] +"</p></div>";
 			div_content.appendChild(div_block);
 		}
 		amount++;
