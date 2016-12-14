@@ -32,7 +32,7 @@
 </head>
 <body>
   <!--@java-->
-  <c:set var="id" value="${id_in}" scope="request"></c:set>
+  <c:set var="id" value="${id}" scope="request"></c:set>
       <%
       String id = (String)request.getAttribute("id");
       String name = "点此完善信息";
@@ -62,7 +62,7 @@
 		<input type="hidden" name="id" value="${id}"/>
 		<input type="hidden" name="userclass" value="2"/></form>
 		<form name="form21" action="my_attention_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
       <a class="item" href="javascript:document.form20.submit();"><i class="home icon"></i>主页</a>
       <a class="item" href="javascript:document.form21.submit();"><i class="grid layout icon"></i> 考研互选 </a>
       <div class="right item">
@@ -70,7 +70,7 @@
 		<input type="hidden" name="stuc.id" value="${id}"/></form>
 		<form name="form23" action="loginpage" method="post"></form>
 		<form name="form24" action="message_stu" method="post">
-        <input type="hidden" name="id_in" value="${id}"/></form>
+        <input type="hidden" name="id" value="${id}"/></form>
       	<a class="item" href="javascript:document.form24.submit();"> <i class="message icon"></i>消息中心</a>
         <a class="item" href="javascript:document.form22.submit();"><i class="settings icon"></i><%=name%></a>
         <a class="item" href="javascript:document.form23.submit();"><i class="moon icon"></i>注销账户</a>
@@ -94,7 +94,7 @@
 		<input type="hidden" name="id" value="${id}"/></form>
 		
 		<form name="form31" action="attention_me_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
         <a class="item" href="javascript:document.form30.submit();"><i class="attach icon"></i>我关注的</a>
         <a class="active item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
@@ -102,10 +102,10 @@
       <div class="item">
         <h2><i class="gg icon"></i>选择</h2>
 		<form name="form32" action="my_choose_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
 		<form name="form33" action="choose_me_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
         <a class="item" href="javascript:document.form32.submit();"><i class="attach icon"></i>我选择的</a>
         <a class="item" href="javascript:document.form33.submit();"><i class="attach icon"></i>选择我的</a>
@@ -124,7 +124,7 @@
           <div class="content">
             <form name="gg4${am.id}" action="Mytea_inf" method="post">   
 			<input type="hidden" name="tea_inf_id" value="${am.id}"/>
-			<input type="hidden" name="id_in" value="${id_in}"/>
+			<input type="hidden" name="id" value="${id}"/>
 			</form>
 			<a class="header" href="javascript:document.gg4${am.id}.submit();">${am.name}</a>
             <div class="meta">
@@ -136,7 +136,7 @@
             <div class="ui extra">
               <form name="form4" method="post" action="Attention_tea">
               <input type="hidden"  name="teacher_id" value="${am.id}" />
-              <input type="hidden"  name="student_id" value="${id_in}" />
+              <input type="hidden"  name="student_id" value="${id}" />
               <button type = "submit" class="ui right floated primary button" onclick="javascript:form.submit();">
                   关注TA
                   <i class="right chevron icon"></i>

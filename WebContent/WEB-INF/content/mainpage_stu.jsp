@@ -86,7 +86,7 @@ try {
 		<form name="form21" action="my_attention_tea" method="post">   
 		<input type="hidden" name="id" value="${id}"/></form>
       <a class="item" href="javascript:document.form20.submit();"><i class="home icon"></i>主页</a>
-      <a class="item" href="javascript:document.form21.submit();"><i class="grid layout icon"></i> 考研互选 </a>
+      <a class="item" href="javascript:document.form21.submit();"><i class="grid layout icon"></i>考研互选 </a>
       <div class="right item">
 		<form name="form22" action="Show_stu" method="post">   
 		<input type="hidden" name="stuc.id" value="${id}"/></form>
@@ -160,7 +160,7 @@ window.onload=function(){
     var input1 = document.createElement("input");
     var input2 = document.createElement("input");
     input1.type = "hidden";
-    input1.name = "id_in";
+    input1.name = "id";
     input1.value = id_main;
     input2.type = "hidden";
     input2.name = "teas.id";

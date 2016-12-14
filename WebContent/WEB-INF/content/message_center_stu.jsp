@@ -66,7 +66,7 @@
                             <input type="hidden" name="id" value="${id}"/>
                             <input type="hidden" name="userclass" value="2"/></form>
                         <form name="form21" action="my_attention_tea" method="post">
-                            <input type="hidden" name="id_in" value="${id}"/></form>
+                            <input type="hidden" name="id" value="${id}"/></form>
                         <a class="item" href="javascript:document.form20.submit();">
                             <i class="home icon"></i>主页</a>
                         <a class="item" href="javascript:document.form21.submit();">
@@ -89,19 +89,24 @@
                     </div>
                 </div>
 
+                <h2 class="ui horizontal divider header">
+  <i class="cloud download icon"></i>
+  MESSAGE
+</h2>
+
                 <s:iterator value="show" var="s">
                     <div class="ui grid">
                         <div class="row">
-                            <div class="five wide column"></div>
-                            <div class="four wide column">
+                            <div class="seven wide column"></div>
+                            <div class="five wide column">
                                 <div class="ui success message">
                                     <i class="close icon"></i>
                                     <div class="header">
-                                        <form name="zz${s.id}" action="Mytea_inf" method="post">
+                                        <form name="gf${s.id}" action="Mytea_inf" method="post">
                                             <input type="hidden" name="tea_inf_id" value="${s.id}"/>
-                                            <input type="hidden" name="id_in" value="${id_in}"/>
+                                            <input type="hidden" name="id" value="${id}"/>
                                         </form>
-                                        <a class="header" href="javascript:document.zz${s.id}.submit();">${s.name}</a>
+                                        <a class="header" href="javascript:document.gf${s.id}.submit();">${s.name}</a>
                                     </div>
                                     <ul class="list">
                                         <li>${s.message}</li>

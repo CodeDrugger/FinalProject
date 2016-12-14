@@ -62,7 +62,7 @@ pageEncoding="utf8"%>
 	   </form>
 	   
 	   <form name="form21" action="my_attention_stu" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
 		<form name="form22" action="My_ques.action" method="post">   
 		<input type="hidden" name="id" value="${id}"/>

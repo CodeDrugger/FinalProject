@@ -73,7 +73,7 @@ pageEncoding="utf8"%>
 		
 		<form name="form24" action="loginpage" method="post"></form>
 		<form name="form25" action="message_ta" method="post">
-        <input type="hidden" name="id_in" value="${id}"/></form>
+        <input type="hidden" name="id" value="${id}"/></form>
       	<a class="item" href="javascript:document.form25.submit();"> <i class="message icon"></i>消息中心</a>
         <a class="item" href="javascript:document.form23.submit();" data-toggle="tooltip" data-placement="left" title="查看个人资料"><i class="settings icon"></i><%=name%></a>
         <a class="item" href="javascript:document.form24.submit();"><i class="moon icon"></i>注销账户</a>
@@ -102,7 +102,7 @@ pageEncoding="utf8"%>
             </div>
             <div class="content">
             <form name="gg2${l.id}" action="Show_tea_stu" method="post">
-            	<input type="hidden" name="id_in" value="<%=id%>">
+            	<input type="hidden" name="id" value="<%=id%>">
             	<input type="hidden" name="stus.id" value="${l.id}">
             </form>
               <a class="header" href="javascript:document.gg2${l.id}.submit();">${l.name}</a>
