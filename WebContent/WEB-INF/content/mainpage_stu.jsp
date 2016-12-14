@@ -56,6 +56,22 @@ try {
         } else
             break;
     }
+    
+    ResultSet rs2=stmt.executeQuery("select * from messagecenter where id='" + id + "'");
+    String before=null;
+    if(rs2.next())
+    {
+    	before=rs2.getString("message");
+    }
+    //初始化
+    if(!before.equals("@@"))
+    {
+    	if(before.split("@@").length==2)
+    		before=before+"@@";
+    	else if(before.split("@@").length==3)
+    		before="@@"+before.split("@@")[2];
+    	stmt.executeUpdate("update messagecenter set message='"+before+"'");	
+    }
     connect.close();
 } catch (SQLException e) {
     e.printStackTrace();
@@ -68,13 +84,16 @@ try {
 		<input type="hidden" name="id" value="${id}"/>
 		<input type="hidden" name="userclass" value="2"/></form>
 		<form name="form21" action="my_attention_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
       <a class="item" href="javascript:document.form20.submit();"><i class="home icon"></i>主页</a>
       <a class="item" href="javascript:document.form21.submit();"><i class="grid layout icon"></i> 考研互选 </a>
       <div class="right item">
 		<form name="form22" action="Show_stu" method="post">   
 		<input type="hidden" name="stuc.id" value="${id}"/></form>
 		<form name="form23" action="loginpage" method="post"></form>
+		<form name="form24" action="message_stu" method="post">
+        <input type="hidden" name="id" value="${id}"/></form>
+      	<a class="item" href="javascript:document.form24.submit();"> <i class="message icon"></i>消息中心</a>
         <a class="item" href="javascript:document.form22.submit();"><i class="settings icon"></i><%=name%></a>
         <a class="item" href="javascript:document.form23.submit();"><i class="moon icon"></i>注销账户</a>
       </div>

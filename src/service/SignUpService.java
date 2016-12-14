@@ -31,6 +31,7 @@ public class SignUpService {
 			ResultSet rs = stmt.executeQuery("select * from login where username='" + login.getUsername() + "'");
 			if (rs.next() == false)
 			{
+				stmt.executeUpdate("insert into messagecenter(id,message) values ('"+String.valueOf(id)+"',"+"'@@')");
 				int state = stmt.executeUpdate(
 			    		"insert into login (username,password,userclass,id) values " +
 			    		"('" + login.getUsername() +
@@ -39,6 +40,7 @@ public class SignUpService {
 			    		"','" + String.valueOf(id) +
 			    	    "')");
 			    int sta = 0;
+			    
 			    if (login.getUserclass().equals("2"))
 			    	sta = stmt.executeUpdate("insert into stu_inf "
 			    			+ "(id,selected_tea,selected_me,attentioned_tea,attentioned_me,rate) "
