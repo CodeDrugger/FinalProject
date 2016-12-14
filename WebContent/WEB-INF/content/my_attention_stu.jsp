@@ -104,8 +104,8 @@
 		<form name="form31" action="attention_me_stu" method="post">   
 		<input type="hidden" name="id_in" value="${id}"/></form>
 		
-        <a class="item" href="javascript:document.form30.submit();"><i class="attach icon"></i>我关注的</a>
-        <a class="active item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
+        <a class="active item" href="javascript:document.form30.submit();"><i class="attach icon"></i>我关注的</a>
+        <a class="item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
       </div>
       <div class="item">
         <h2><i class="gg icon"></i>选择</h2>
@@ -130,7 +130,7 @@
         <s:iterator value="attention_stu" var="at">
           <div class="item">
             <div class="ui small image">
-              <img src="./images/elyse.png">
+              <img src="${at.picture_name }">
             </div>
             <div class="content">
                  <form name="gg7${at.id}" action="Mystu_inf" method="post">   

@@ -128,6 +128,7 @@ pageEncoding="utf8"%>
           <i class="search icon"></i> 高级搜索
         </h1>
         <form class="ui form" action="AdvSearch_tea" method="post">
+        	<input type="hidden" name="id" value="${id }">
           <h3 class="ui dividing header">学生信息</h3>
           <div class="field">
             <label>本科学院</label>

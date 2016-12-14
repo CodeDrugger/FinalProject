@@ -116,7 +116,7 @@
         <s:iterator value="selected_me" var="sm">
         <div class="item">
           <div class="ui small image">
-            <img src="./images/elyse.png">
+            <img src="${sm.picture_name }">
           </div>
           <div class="content">
             <form name="gg6${sm.id}" action="Mytea_inf" method="post">   
@@ -128,7 +128,7 @@
               <span>个人简介</span>
             </div>
             <div class="description fixup">
-              ${am.self_intro}
+              ${sm.self_intro}
             </div>
             <div class="ui extra">
             </div>

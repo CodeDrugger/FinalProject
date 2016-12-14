@@ -115,7 +115,7 @@
         <s:iterator value="select_tea" var="st">
         <div class="item">
           <div class="ui small image">
-            <img src="./images/elyse.png">
+            <img src="${st.picture_name }">
           </div>
           <div class="content">
             <form name="gg10${st.id}" action="Mytea_inf" method="post">   

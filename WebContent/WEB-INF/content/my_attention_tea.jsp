@@ -116,7 +116,7 @@
         <s:iterator value="attention_tea" var="at">
         <div class="item">
           <div class="ui small image">
-            <img src="./images/elyse.png">
+            <img src="${at.picture_name }">
           </div>
           <div class="content">
             <form name="gg8${at.id}" action="Mytea_inf" method="post">   
@@ -131,10 +131,18 @@
               ${at.self_intro}
             </div>
             <div class="ui extra">
+            <form name="formgjy" method="post" action="Stu_cancel_attention">
+                  <input type="hidden"  name="student_id" value="${id_in}" />
+                  <input type="hidden"  name="teacher_id" value="${at.id}" />
+                  <button type = "submit" class="ui right floated  tiny primary button" onclick="javascript:form.submit();">
+                      取关TA
+                  <i class="right chevron icon"></i>
+                </button>
+                </form>
               <form name="form3" method="post" action="Choose_tea" class="ui form">
               <input type="hidden"  name="teacher_id" value="${at.id}" />
               <input type="hidden"  name="student_id" value="${id_in}" />
-              <button type = "submit" class="ui right floated primary button" onclick="javascript:form.submit();">
+              <button type = "submit" class="ui right floated tiny primary button" onclick="javascript:form.submit();">
                   选择TA
               <i class="right chevron icon"></i>
               </button>
@@ -142,11 +150,12 @@
              <form method="post" action="His_ques">
                <input type="hidden"  name="q.id" value="${at.id}" />
                <input type="hidden"  name="id" value="${id_in}" />
-               <button type = "submit" class="ui right floated primary button" onclick="javascript:form.submit();">
+               <button type = "submit" class="ui right floated tiny primary button" onclick="javascript:form.submit();">
                    回答TA的问卷
                <i class="right chevron icon"></i>
                </button>
              </form>
+             
             </div>
           </div>
         </div>

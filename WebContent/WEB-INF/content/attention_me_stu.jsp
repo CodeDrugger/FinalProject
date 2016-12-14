@@ -93,7 +93,7 @@
 <div class="ui grid">
   <div class="three wide column"></div>
   <div class="three wide column">
-    <div class="ui massive pointing vertical menu">
+    <div class="ui large pointing vertical menu">
       <div class="ui item">
         <h2><i class="opencart icon"></i>关注</h2>
 		
@@ -127,7 +127,7 @@
         <s:iterator value="attention_me" var="am">
           <div class="item">
             <div class="ui small image">
-              <img src="./images/elyse.png">
+              <img src="${am.picture_name }">
             </div>
             <div class="content">
               <form name="gg3${am.id}" action="Mystu_inf" method="post">   

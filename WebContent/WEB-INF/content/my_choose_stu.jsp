@@ -95,7 +95,7 @@
   <div class="three wide column"></div>
   <div class="three wide column">
     <!--the sideber of the left-->
-    <div class="ui massive pointing vertical menu">
+    <div class="ui large pointing vertical menu">
       <div class="ui item">
         <h2><i class="opencart icon"></i>关注</h2>
 		
@@ -106,7 +106,7 @@
 		<input type="hidden" name="id_in" value="${id}"/></form>
 		
         <a class="item" href="javascript:document.form30.submit();"><i class="attach icon"></i>我关注的</a>
-        <a class="active item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
+        <a class="item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
       </div>
       <div class="item">
         <h2><i class="gg icon"></i>选择</h2>
@@ -116,7 +116,7 @@
 		<form name="form33" action="choose_me_stu" method="post">   
 		<input type="hidden" name="id_in" value="${id}"/></form>
 		
-        <a class="item" href="javascript:document.form32.submit();"><i class="attach icon"></i>我选择的</a>
+        <a class="active item" href="javascript:document.form32.submit();"><i class="attach icon"></i>我选择的</a>
         <a class="item" href="javascript:document.form33.submit();"><i class="attach icon"></i>选择我的</a>
       </div>
     </div>
@@ -128,7 +128,7 @@
         <s:iterator value="select_stu" var="st">
           <div class="item">
             <div class="ui small image">
-              <img src="./images/elyse.png">
+              <img src="${st.picture_name }">
             </div>
             <div class="content">
                  <form name="gg9${st.id}" action="Mystu_inf" method="post">   

@@ -116,7 +116,7 @@
         <s:iterator value="attention_me" var="am">
         <div class="item">
           <div class="ui small image">
-            <img src="./images/elyse.png">
+            <img src="${am.picture_name }">
           </div>
           <div class="content">
             <form name="gg4${am.id}" action="Mytea_inf" method="post">   
@@ -136,7 +136,9 @@
               <input type="hidden"  name="student_id" value="${id_in}" />
               <button type = "submit" class="ui right floated primary button" onclick="javascript:form.submit();">
                   关注TA
-              <i class="right chevron icon"></i>
+                  <i class="right chevron icon"></i>
+                  </button>
+              
              </form>
             </div>
           </div>
@@ -146,7 +148,6 @@
     </div>
     </div>
   </div>
-</div>
 
 </body>
 

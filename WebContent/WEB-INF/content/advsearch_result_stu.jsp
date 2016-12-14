@@ -116,6 +116,7 @@ e.printStackTrace();
           <i class="search icon"></i> 高级搜索
         </h1>
         <form class="ui form" action="AdvSearch_stu" method="post">
+        	<input type="hidden" name="id" value="${id }">
           <h3 class="ui dividing header">导师信息</h3>
           <div class="field">
             <label>导师所在学院</label>

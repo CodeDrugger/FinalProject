@@ -108,10 +108,6 @@ try {
   </div>
 </div>
 </body>
-<form name="form102" action="Show_stu_tea" method="post">
-	<input id="rpg1" type="hidden" name="id_in">
-	<input id="rpg2" type="hidden" name="teas.id">
-</form>
 
 <script type="text/javascript">
 var reco_name = new Array();
@@ -130,27 +126,42 @@ window.onload=function(){
 	var reco = document.getElementById("reco");
 	var number = document.getElementById("number").value;
 	var id_main = document.getElementById("id_main").value;
-	var rpg1 = document.getElementById("rpg1");
-	var rpg2 = document.getElementById("rpg2");
-	rpg1.value = id_main;
+	//var rpg1 = document.getElementById("rpg1");
+	//var rpg2 = document.getElementById("rpg2");
+	//rpg1.value = id_main;
 	
   if(number)
 	for (var i = 1; i <= number; i++){
 		var div_card = document.createElement("div");
     div_card.className="card";
+    var form0 = document.createElement("form");
+    form0.name = "jb" + i;
+    form0.action = "Show_stu_tea";
+    form0.method = "post";
+    var input1 = document.createElement("input");
+    var input2 = document.createElement("input");
+    input1.type = "hidden";
+    input1.name = "id_in";
+    input1.value = id_main;
+    input2.type = "hidden";
+    input2.name = "teas.id";
+    input2.value = reco_id[i - 1];
+    form0.appendChild(input1);
+    form0.appendChild(input2);
+    div_card.appendChild(form0);
 		var div_img = document.createElement("div");
     div_img.className = "image";
-    div_img.innerHTML="<a href=\"javascript:document.form102.submit();\">" +
+    div_img.innerHTML="<a href=\"javascript:document.jb"+i+".submit();\">" +
 	"<img style=\"width:100%;\" src=\"" + reco_pic[i-1] + "\">" + "</a>";
     var div_content = document.createElement("div");
     div_content.className = "content";
     
-    div_content.innerHTML="<a class=\" header\" href=\"javascript:document.form102.submit();\">"+ reco_name[i-1] +"</a>"+
+    div_content.innerHTML="<a class=\" header\" href=\"javascript:document.jb"+i+".submit();\">"+ reco_name[i-1] +"</a>"+
     "<div class=\"description\">" + reco_field[i-1] +"</div>";
     div_card.appendChild(div_img);
     div_card.appendChild(div_content);
 		reco.appendChild(div_card);
-		rpg2.value = reco_id[i - 1];
+		//rpg2.value = reco_id[i - 1];
 	}
 }
 </script>

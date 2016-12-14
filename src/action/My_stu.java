@@ -369,6 +369,7 @@ public class My_stu implements Action {
 	        	 String s[] = aml[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setPicture_name(getpicture(s[1]));
 	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 attention_me.add(t);
 	          }	  
@@ -380,6 +381,7 @@ public class My_stu implements Action {
 	        	 String s[] = atl[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setPicture_name(getpicture(s[1]));
 	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 attention_stu.add(t);
 	          }	  
@@ -391,6 +393,7 @@ public class My_stu implements Action {
 	        	 String s[] = stl[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setPicture_name(getpicture(s[1]));
 	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 select_stu.add(t);
 	          }	  
@@ -403,6 +406,7 @@ public class My_stu implements Action {
 	        	 String s[] = sml[i].split("@.@");  
 	        	 t.setName(s[0]);
 	        	 t.setId(s[1]);
+	        	 t.setPicture_name(getpicture(s[1]));
 	        	 t.setSelf_intro(get_self_intro(s[1]));
 	        	 selected_me.add(t);
 	          }	  
@@ -428,6 +432,44 @@ public class My_stu implements Action {
 	      
 	
 	return ret;
+	}
+	public String getpicture(String id)
+	{
+		  String picture="";
+	      Connection con = null;
+	      Statement stmt = null;
+	      ResultSet rst = null;
+	      try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	      try{   
+	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
+	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	          stmt=con.createStatement();   
+	          rst = stmt.executeQuery("select * from stu_inf where id='"+id+"'");
+	        	  while(rst.next())
+	        	  {
+	        		  picture=rst.getString("picture_name");
+	        	  }	        	  
+
+	        }catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }finally{
+	            try{
+	            	if(stmt!=null)
+	            		stmt.close();
+	            	if(con!=null)           
+	                    con.close();
+	            	
+	                } catch (SQLException e) {
+	                    // TODO Auto-generated catch block
+	                    e.printStackTrace();
+	                }   
+	            }
+		return picture;
 	}
 	public String get_self_intro(String id)
 	{
