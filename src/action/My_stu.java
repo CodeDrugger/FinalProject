@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.opensymphony.xwork2.Action;
 
+import domain.Message_Service;
 import domain.Student;
 import domain.Teacher;
 import service.SendMail;
@@ -83,6 +84,8 @@ public class My_stu implements Action {
 	        	  message="已关注该学生";
 	        	  return "has attentioned";
 		      }
+	          Message_Service m=new Message_Service();
+		      m.set(stu_id,tea_id+"&&"+tea_name+"&&"+"关注了你");
 		      String stu_beiguan = stu_attentioned_me+"/"+tea_name+"@.@"+tea_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String tea_guan = tea_attentioned_stu+"/"+stu_name+"@.@"+stu_id;
@@ -163,7 +166,9 @@ public class My_stu implements Action {
 	          stu_rate=rate+"";
 		      String stu_beiguan = stu_attentioned_me.replaceAll("/"+tea_name+"@.@"+tea_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
-		
+		      
+		      Message_Service m=new Message_Service();
+		      m.set(stu_id,tea_id+"&&"+tea_name+"&&"+"取消关注了你");
 		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_name+"@.@"+stu_id,"");
 		      String sql_stu = "update stu_inf set rate='"+stu_rate+"',attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
@@ -274,6 +279,8 @@ public class My_stu implements Action {
 	        	  message="不能选择你未关注的学生";
 	        	  return "can't choose stu which you don't attention";
 	          }
+	          Message_Service m=new Message_Service();
+		      m.set(stu_id,tea_id+"&&"+tea_name+"&&"+"选择了你"); 
 		      String stu_beiguan = stu_selected_me+"/"+tea_name+"@.@"+tea_id;
 		             stu_selected_tea="/"+tea_name+"@.@"+tea_id;
 		      String tea_guan = tea_selected_stu+"/"+stu_name+"@.@"+stu_id;
@@ -446,7 +453,7 @@ public class My_stu implements Action {
 			}
 	      try{   
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
 	          rst = stmt.executeQuery("select * from stu_inf where id='"+id+"'");
 	        	  while(rst.next())

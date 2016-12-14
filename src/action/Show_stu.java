@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 import com.opensymphony.xwork2.Action;
 
+import domain.Message_Service;
 import domain.Student;
 import domain.Teacher;
 import service.SendMail;
@@ -82,6 +83,8 @@ public class Show_stu implements Action {
 	      String tea_guan = tea_select.getAttentioned_stu()+"/"+stus.getName()+"@.@"+stus.getId();
 	      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_select.getId() +"'";
 	      String sql_stu = "update stu_inf set rate='"+rates+"',attentioned_me='"+stu_beiguan+ "' where id='"+stus.getId() +"'";
+	      Message_Service m=new Message_Service();
+	      m.set(stus.getId(),tea_select.getId()+"&&"+tea_select.getName()+"&&"+"关注了你");
 	      if(tea_select.getAttentioned_stu().contains(stus.getName()+"@.@"+stus.getId()))
 	      {
 	    	  message="已经关注了该学生";

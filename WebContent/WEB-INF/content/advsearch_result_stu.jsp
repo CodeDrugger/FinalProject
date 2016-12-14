@@ -63,6 +63,9 @@ e.printStackTrace();
 		<form name="form22" action="Show_stu" method="post">   
 		<input type="hidden" name="stuc.id" value="${id}"/></form>
 		<form name="form23" action="loginpage" method="post"></form>
+		<form name="form24" action="message_stu" method="post">
+        <input type="hidden" name="id" value="${id}"/></form>
+      	<a class="item" href="javascript:document.form24.submit();"> <i class="message icon"></i>消息中心</a>
         <a class="item" href="javascript:document.form22.submit();"><i class="settings icon"></i><%=name%></a>
         <a class="item" href="javascript:document.form23.submit();"><i class="moon icon"></i>注销账户</a>
       </div>

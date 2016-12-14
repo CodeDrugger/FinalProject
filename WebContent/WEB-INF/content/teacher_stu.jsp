@@ -40,7 +40,7 @@
   	    e.printStackTrace();
   	}
   	try {
-  	    Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+  	    Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb", "fp_user", "123456");
   	    Statement stmt = connect.createStatement();
   	    ResultSet rs = stmt.executeQuery("select * from tea_inf where id='" + id + "'");
   	    if (rs.next()) {
@@ -77,7 +77,9 @@
 		<input type="hidden" name="teac.id" value="${id}"/></form>
 		
 		<form name="form24" action="loginpage" method="post"></form>
-		
+		<form name="form25" action="message_tea" method="post">
+        <input type="hidden" name="id" value="${id}"/></form>
+      	<a class="item" href="javascript:document.form25.submit();"> <i class="message icon"></i>消息中心</a>
         <a class="item" href="javascript:document.form23.submit();" data-toggle="tooltip" data-placement="left" title="查看个人资料"><i class="settings icon"></i><%=name%></a>
         <a class="item" href="javascript:document.form24.submit();"><i class="moon icon"></i>注销账户</a>
       </div>
@@ -111,7 +113,7 @@
       }
     try{
         //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+        con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
         stmt=con.createStatement();
         rst = stmt.executeQuery("select * from stu_inf where id='"+stus.getId()+"'");
       	  while(rst.next())

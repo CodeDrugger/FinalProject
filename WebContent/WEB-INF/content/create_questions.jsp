@@ -77,7 +77,9 @@ pageEncoding="utf8"%>
 		<input type="hidden" name="teac.id" value="${id}"/></form>
 		
 		<form name="form24" action="loginpage" method="post"></form>
-		
+		<form name="form25" action="message_tea" method="post">
+        <input type="hidden" name="id" value="${id}"/></form>
+      	<a class="item" href="javascript:document.form25.submit();"> <i class="message icon"></i>消息中心</a>
         <a class="item" href="javascript:document.form23.submit();" data-toggle="tooltip" data-placement="left" title="查看个人资料"><i class="settings icon"></i><%=name%></a>
         <a class="item" href="javascript:document.form24.submit();"><i class="moon icon"></i>注销账户</a>
       </div>
