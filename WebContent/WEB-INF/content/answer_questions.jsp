@@ -24,13 +24,21 @@ pageEncoding="utf8"%>
     <script type="text/javascript">
   		var array = [];
 		var ans = [];
+		var i = 0;
+		var j = 0;
 		<c:forEach items="${q.questions}" var="u">
 		array.push("${u}")
+		i++;
 		</c:forEach> 
 		<c:forEach items="${a.answers}" var="u">
 		ans.push("${u}")
+		j++;
 		</c:forEach> 
-
+		while (j < i)
+		{
+			ans.push("");
+			j++;
+		}
   	</script>
   </head>
 
