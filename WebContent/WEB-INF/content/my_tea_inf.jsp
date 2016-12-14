@@ -40,7 +40,7 @@
   e.printStackTrace();
   }
   try {
-  Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb", "fp_user", "123456");
+  Connection connect = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb", "fp_user", "123456");
   Statement stmt = connect.createStatement();
   ResultSet rs = stmt.executeQuery("select * from stu_inf where id='" + id + "'");
   if (rs.next()) {
@@ -98,7 +98,7 @@
         }
     try{
           //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-          con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+          con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
         stmt=con.createStatement();
         rst = stmt.executeQuery("select * from tea_inf where id='"+teas.getId()+"'");
           while(rst.next())

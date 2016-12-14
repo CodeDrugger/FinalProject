@@ -12,7 +12,7 @@ public class Message_Service {
 		public void set(String id,String message)
 		{
 			try{
-			  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+			  Connection con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 			  Statement stmt=con.createStatement();  
 			  ResultSet rs=null;
 			  rs=stmt.executeQuery("select * from messagecenter where id='"+"'");
@@ -34,7 +34,7 @@ public class Message_Service {
 		{
 			String message=null;
 			try{
-				  Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fpdb","fp_user","123456");
+				  Connection con =DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 				  Statement stmt=con.createStatement();  
 				  ResultSet rs=null;
 				  rs=stmt.executeQuery("select * from messagecenter where id='"+id+"'");
