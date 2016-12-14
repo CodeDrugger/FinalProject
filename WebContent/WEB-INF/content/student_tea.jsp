@@ -273,7 +273,7 @@
                         <input type="hidden" name="stu_select.attentioned_tea" value="<%=stu_attentioned_tea%>" />
                         <input id="msg" type="hidden" value="<%=message%>" />
                         <button class="ui labeled inverted violet icon button" id="submit" type="submit" onclick="javascript:form.submit();">
-                            <i class="red heart icon"></i>关注
+                            <i class="red heart icon"></i>
                         </button>
                         </form>
             </div>

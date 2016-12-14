@@ -15,7 +15,7 @@ public class Message_Service {
 			  Connection con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 			  Statement stmt=con.createStatement();  
 			  ResultSet rs=null;
-			  rs=stmt.executeQuery("select * from messagecenter where id='"+"'");
+			  rs=stmt.executeQuery("select * from messagecenter where id='"+id+"'");
 			  String before=null;
 			  if(rs.next())
 			  {

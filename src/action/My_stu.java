@@ -85,7 +85,7 @@ public class My_stu implements Action {
 	        	  return "has attentioned";
 		      }
 	          Message_Service m=new Message_Service();
-		      m.set(stu_id,tea_id+"&&"+tea_name+"&&"+"关注了你");
+		      m.set(stu_id,tea_id+"^&^"+tea_name+"^&^"+"关注了你");
 		      String stu_beiguan = stu_attentioned_me+"/"+tea_name+"@.@"+tea_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String tea_guan = tea_attentioned_stu+"/"+stu_name+"@.@"+stu_id;
@@ -168,7 +168,7 @@ public class My_stu implements Action {
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      
 		      Message_Service m=new Message_Service();
-		      m.set(stu_id,tea_id+"&&"+tea_name+"&&"+"取消关注了你");
+		      m.set(stu_id,tea_id+"^&^"+tea_name+"^&^"+"取消关注了你");
 		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_name+"@.@"+stu_id,"");
 		      String sql_stu = "update stu_inf set rate='"+stu_rate+"',attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
@@ -280,7 +280,7 @@ public class My_stu implements Action {
 	        	  return "can't choose stu which you don't attention";
 	          }
 	          Message_Service m=new Message_Service();
-		      m.set(stu_id,tea_id+"&&"+tea_name+"&&"+"选择了你"); 
+		      m.set(stu_id,tea_id+"^&^"+tea_name+"^&^"+"选择了你"); 
 		      String stu_beiguan = stu_selected_me+"/"+tea_name+"@.@"+tea_id;
 		             stu_selected_tea="/"+tea_name+"@.@"+tea_id;
 		      String tea_guan = tea_selected_stu+"/"+stu_name+"@.@"+stu_id;

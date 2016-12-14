@@ -109,11 +109,11 @@ try {
                                 <div class="ui success message">
                                     <i class="close icon"></i>
                                     <div class="header">
-                                      <form name="form40" action="Mystu_inf" method="post">
+                                      <form name="zz${s.id}" action="Mystu_inf" method="post">
                                           <input type="hidden" name="stu_inf_id" value="${s.id}"/>
-                                          <input type="hidden" name="id_in" value="${id_in}"/>
+                                          <input type="hidden" name="id_in" value="${id_in}" />
                                       </form>
-                                      <a class="header" href="javascript:document.form40.submit();">${s.name}</a>
+                                      <a class="header" href="javascript:document.zz${s.id}.submit();">${s.name}</a>
                                     </div>
                                     <ul class="list">
                                         <li>${s.message}</li>

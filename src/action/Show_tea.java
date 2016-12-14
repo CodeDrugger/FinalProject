@@ -36,7 +36,7 @@ public class Show_tea implements Action {
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_select.getId() +"'";
 		      String sql_tea = "update tea_inf set rate='"+rates+"',attentioned_me='"+tea_beiguan+ "' where id='"+teas.getId() +"'";
 		      Message_Service m=new Message_Service();
-		      m.set(teas.getId(),stu_select.getId()+"&&"+stu_select.getName()+"&&"+"关注了你");
+		      m.set(teas.getId(),stu_select.getId()+"^&^"+stu_select.getName()+"^&^"+"关注了你");
 		      if(stu_select.getAttentioned_tea().contains(teas.getName()+"@.@"+teas.getId()))
 		      {
 		    	  return "has_selected";

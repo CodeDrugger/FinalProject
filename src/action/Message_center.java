@@ -24,10 +24,10 @@ public class Message_center implements Action {
 			message=message.replaceAll("@@", "");
 		String mid[]=message.split("##");
 		int len=mid.length;
-		for(int i=0;i<len-1;i++)
+		for(int i=0;i<len;i++)
 		{
 			Message mm=new Message();
-			String[] s=mid[i].split("&&");
+			String[] s=mid[i].split("\\^\\&\\^");
 			mm.setId(s[0]);
 			mm.setName(s[1]);
 			mm.setMessage(s[2]);

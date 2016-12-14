@@ -92,7 +92,7 @@ public class My_tea implements Action {
 	        	  return "has attentioned";
 		      }
 	          Message_Service m=new Message_Service();
-		      m.set(tea_id,stu_id+"&&"+stu_name+"&&"+"关注了你");
+		      m.set(tea_id,stu_id+"^&^"+stu_name+"^&^"+"关注了你");
 		      String tea_beiguan = tea_attentioned_me+"/"+stu_name+"@.@"+stu_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String stu_guan = stu_attentioned_tea+"/"+tea_name+"@.@"+tea_id;
@@ -170,7 +170,7 @@ public class My_tea implements Action {
 		      		return "not attentioned";
 		      */
 	          Message_Service m=new Message_Service();
-		      m.set(tea_id,stu_id+"&&"+stu_name+"&&"+"取消关注了你");
+		      m.set(tea_id,stu_id+"^&^"+stu_name+"^&^"+"取消关注了你");
 		      String tea_beiguan = tea_attentioned_me.replaceAll("/"+stu_name+"@.@"+stu_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      String stu_guan = stu_attentioned_tea.replaceAll("/"+tea_name+"@.@"+tea_id,"");
@@ -277,7 +277,7 @@ public class My_tea implements Action {
 	        	  return "has selected";
 		      }
 	          Message_Service m=new Message_Service();
-		      m.set(tea_id,stu_id+"&&"+stu_name+"&&"+"选择了你");
+		      m.set(tea_id,stu_id+"^&^"+stu_name+"^&^"+"选择了你");
 		      String tea_beiguan = tea_selected_me+"/"+stu_name+"@.@"+stu_id;
 		      String stu_guan = stu_selected_tea+"/"+tea_name+"@.@"+tea_id;
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
@@ -382,7 +382,7 @@ public class My_tea implements Action {
 	        	  return "has been selected";
 	          }
 	          Message_Service m=new Message_Service();
-		      m.set(tea_id,stu_id+"&&"+stu_name+"&&"+"取消选择了你");
+		      m.set(tea_id,stu_id+"^&^"+stu_name+"^&^"+"取消选择了你");
 		      String tea_beiguan = tea_selected_me.replaceAll("/"+stu_name+"@.@"+stu_id,"");
 		      String stu_guan = stu_selected_tea.replaceAll("/"+tea_name+"@.@"+tea_id,"");
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";

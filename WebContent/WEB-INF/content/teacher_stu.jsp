@@ -288,7 +288,7 @@
                   <input type="hidden"  name="tea_select.attentioned_stu" value="<%=tea_attentioned_stu%>"/>
                         <input id="msg" type="hidden" value="<%=message%>" />
                         <button class="ui labeled inverted violet icon button" id="submit" type="submit">
-                            <i class="red heart icon"></i>关注
+                            <i class="red heart icon"></i>
                         </button>
                         </form>
             </div>
