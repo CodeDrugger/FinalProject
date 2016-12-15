@@ -20,18 +20,21 @@ public class Message_center implements Action {
 		message=m.get(id);
 		System.out.println(id);
 		System.out.println(message);
-		if(message.contains("@@"))
-			message=message.replaceAll("@@", "");
-		String mid[]=message.split("##");
-		int len=mid.length;
-		for(int i=0;i<len;i++)
+		if(!message.equals("@@"))
 		{
-			Message mm=new Message();
-			String[] s=mid[i].split("\\^\\&\\^");
-			mm.setId(s[0]);
-			mm.setName(s[1]);
-			mm.setMessage(s[2]);
-			show.add(mm);
+			if(message.contains("@@"))
+				message=message.replaceAll("@@", "");
+			String mid[]=message.split("##");
+			int len=mid.length;
+			for(int i=0;i<len;i++)
+			{
+				Message mm=new Message();
+				String[] s=mid[i].split("\\^\\&\\^");
+				mm.setId(s[0]);
+				mm.setName(s[1]);
+				mm.setMessage(s[2]);
+				show.add(mm);
+			}
 		}
 		
 		return SUCCESS;
