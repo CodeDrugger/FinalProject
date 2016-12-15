@@ -67,7 +67,12 @@ try {
     if(!before.equals("@@"))
     {
     	if(before.split("@@").length==2)
-    		before=before+"@@";
+    	{
+    		if(before.charAt(before.length()-1)!='@')
+    			before=before+"@@";
+    			
+    	}
+    		
     	else if(before.split("@@").length==3)
     		before="@@"+before.split("@@")[2];
     	stmt.executeUpdate("update messagecenter set message='"+before+"' where id='"+id+"'");	

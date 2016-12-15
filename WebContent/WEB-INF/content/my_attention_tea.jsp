@@ -158,18 +158,6 @@
                <i class="right chevron icon"></i>
                </button>
              </form>
-<<<<<<< HEAD
-                <form name="form3" method="post" action="Stu_cancel_attention">
-                  <input type="hidden"  name="student_id" value="${id_in}" />
-                  <input type="hidden"  name="teacher_id" value="${at.id}" />
-                  <button type = "submit" class="ui right floated primary button" onclick="javascript:form.submit();">
-                      取关TA
-                  <i class="right chevron icon"></i>
-                </button>
-                </form>
-=======
-             
->>>>>>> bf2b2af5472a585d102719a45e8a8367b2844e2b
             </div>
           </div>
         </div>
