@@ -76,11 +76,9 @@
 </div>
     </div>
     <!--@java-->
-    <c:set var="id" value="${id}" scope="request"></c:set>
     <c:set var="teas_id" value="${teas.id}" scope="request"></c:set>
     <%
     Teacher teas=new Teacher();
-    String id=null;
     Connection con = null;
     Statement stmt = null;
     ResultSet rst = null;
@@ -272,9 +270,8 @@
                         <input type="hidden" name="id" value="<%=stu_id%>" />
                         <input type="hidden" name="stu_select.attentioned_tea" value="<%=stu_attentioned_tea%>" />
                         <input id="msg" type="hidden" value="<%=message%>" />
-                        <button class="ui labeled inverted violet icon button" id="submit" type="submit" onclick="javascript:form.submit();">
-                            <i class="red heart icon"></i>
-                        </button>
+                        <input id="submit" type="submit" class="ui inverted violet button">
+                        
                         </form>
             </div>
         </div>

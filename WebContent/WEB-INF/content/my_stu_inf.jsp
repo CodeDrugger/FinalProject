@@ -102,7 +102,6 @@
     Statement stmt = null;
     ResultSet rst = null;
     ResultSet rst2 = null;
-    String id=null;
     String stus_id=null;
     stus.setId((String) request.getAttribute("stus_id"));
     id=(String) request.getAttribute("id");
