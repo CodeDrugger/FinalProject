@@ -91,7 +91,7 @@
         <h2><i class="opencart icon"></i>关注</h2>
 		
 		<form name="form30" action="my_attention_tea" method="post">   
-		<input type="hidden" name="id" value="${id}"/></form>
+		<input type="hidden" name="id_in" value="${id}"/></form>
 		
 		<form name="form31" action="attention_me_tea" method="post">   
 		<input type="hidden" name="id" value="${id}"/></form>

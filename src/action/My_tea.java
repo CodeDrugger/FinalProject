@@ -86,16 +86,16 @@ public class My_tea implements Action {
       		  stu_id = rst2.getString(("id"));
       		  stu_attentioned_tea = rst2.getString("attentioned_tea");
       	      }
-	          if(stu_attentioned_tea.contains(tea_name+"@.@"+tea_id))
+	          if(stu_attentioned_tea.contains(tea_id))
 		      {
 	        	  message = "已经选过该导师";
 	        	  return "has attentioned";
 		      }
 	          Message_Service m=new Message_Service();
 		      m.set(tea_id,stu_id+"^&^"+stu_name+"^&^"+"关注了你");
-		      String tea_beiguan = tea_attentioned_me+"/"+stu_name+"@.@"+stu_id;
+		      String tea_beiguan = tea_attentioned_me+"/"+stu_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
-		      String stu_guan = stu_attentioned_tea+"/"+tea_name+"@.@"+tea_id;
+		      String stu_guan = stu_attentioned_tea+"/"+tea_id;
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set rate='"+tea_rate+"',attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -171,9 +171,9 @@ public class My_tea implements Action {
 		      */
 	          Message_Service m=new Message_Service();
 		      m.set(tea_id,stu_id+"^&^"+stu_name+"^&^"+"取消关注了你");
-		      String tea_beiguan = tea_attentioned_me.replaceAll("/"+stu_name+"@.@"+stu_id,"");
+		      String tea_beiguan = tea_attentioned_me.replaceAll("/"+stu_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
-		      String stu_guan = stu_attentioned_tea.replaceAll("/"+tea_name+"@.@"+tea_id,"");
+		      String stu_guan = stu_attentioned_tea.replaceAll("/"+tea_id,"");
 		      String sql_stu = "update stu_inf set attentioned_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set rate='"+tea_rate+"',attentioned_me='"+tea_beiguan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -259,7 +259,7 @@ public class My_tea implements Action {
     		  stu_selected_tea = rst2.getString("selected_tea");
     		  stu_state=rst2.getString("state");
     	      }
-	          if(!tea_attentioned_stu.contains(stu_name+"@.@"+stu_id))
+	          if(!tea_attentioned_stu.contains(stu_id))
 	          {
 	        	  message="该导师未关注你的情况下无法选择该导师";
 	        	  return "teacher not attention you";
@@ -271,15 +271,15 @@ public class My_tea implements Action {
 	        	  message="你已经和其他导师完成互选";
 	        	  return "has been selected";
 	          }
-	          if(stu_selected_tea.contains(tea_name+"@.@"+tea_id))
+	          if(stu_selected_tea.contains(tea_id))
 		      {
 	        	  message="已经选择过该导师";
 	        	  return "has selected";
 		      }
 	          Message_Service m=new Message_Service();
 		      m.set(tea_id,stu_id+"^&^"+stu_name+"^&^"+"选择了你");
-		      String tea_beiguan = tea_selected_me+"/"+stu_name+"@.@"+stu_id;
-		      String stu_guan = stu_selected_tea+"/"+tea_name+"@.@"+tea_id;
+		      String tea_beiguan = tea_selected_me+"/"+stu_id;
+		      String stu_guan = stu_selected_tea+"/"+tea_id;
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_me='"+tea_beiguan+"' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -383,8 +383,8 @@ public class My_tea implements Action {
 	          }
 	          Message_Service m=new Message_Service();
 		      m.set(tea_id,stu_id+"^&^"+stu_name+"^&^"+"取消选择了你");
-		      String tea_beiguan = tea_selected_me.replaceAll("/"+stu_name+"@.@"+stu_id,"");
-		      String stu_guan = stu_selected_tea.replaceAll("/"+tea_name+"@.@"+tea_id,"");
+		      String tea_beiguan = tea_selected_me.replaceAll("/"+stu_id,"");
+		      String stu_guan = stu_selected_tea.replaceAll("/"+tea_id,"");
 		      String sql_stu = "update stu_inf set selected_tea='"+stu_guan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_me='"+tea_beiguan+"' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -463,47 +463,31 @@ public class My_tea implements Action {
 	          int len4 = sml.length;
 	          for(int i=0;i<len1;i++)
 	          {
-	        	 Teacher t = new Teacher();
 	        	 if(aml[i].equals("")||aml[i].equals(" "))
 	        		 continue;
-	        	 String s[] = aml[i].split("@.@"); 
-	        	 t.setName(s[0]);
-	        	 t.setId(s[1]);
-	        	 t.setSelf_intro(get_self_intro(s[1]));
-	        	 attention_me.add(t);
+	        	 String s = aml[i];
+	        	 attention_me.add(getAll(s));
 	          }	  
 	          for(int i=0;i<len2;i++)
 	          {
-	        	 Teacher t = new Teacher();
 	        	 if(atl[i].equals("")||atl[i].equals(" "))
 	        		 continue;
-	        	 String s[] = atl[i].split("@.@");  
-	        	 t.setName(s[0]);
-	        	 t.setId(s[1]);
-	        	 t.setSelf_intro(get_self_intro(s[1]));
-	        	 attention_tea.add(t);
+	        	 String s = atl[i] ;
+	        	 attention_tea.add(getAll(s));
 	          }	  
 	          for(int i=0;i<len3;i++)
 	          {
-	        	 Teacher t = new Teacher();
 	        	 if(stl[i].equals("")||stl[i].equals(" "))
 	        		 continue;
-	        	 String s[] = stl[i].split("@.@"); 
-	        	 t.setName(s[0]);
-	        	 t.setId(s[1]);
-	        	 t.setSelf_intro(get_self_intro(s[1]));
-	        	 select_tea.add(t);
+	        	 String s = stl[i];
+	        	 select_tea.add(getAll(s));
 	          }	  
 	          for(int i=0;i<len4;i++)
 	          {
-	        	 Teacher t = new Teacher();
 	        	 if(sml[i].equals("")||sml[i].equals(" "))
 	        		 continue;
-	        	 String s[] = sml[i].split("@.@"); 
-	        	 t.setName(s[0]);
-	        	 t.setId(s[1]);
-	        	 t.setSelf_intro(get_self_intro(s[1]));
-	        	 selected_me.add(t);
+	        	 String s = sml[i];
+	        	 selected_me.add(getAll(s));
 	          }	  
 	          
 	        }catch (SQLException e) {
@@ -526,9 +510,12 @@ public class My_tea implements Action {
 	
 	return ret;
 	}
-	public String get_self_intro(String id)
+	public Teacher getAll(String id)
 	{
+		  Teacher s=new Teacher();
+		  String picture="";
 		  String self_intro="";
+		  String name="";
 	      Connection con = null;
 	      Statement stmt = null;
 	      ResultSet rst = null;
@@ -544,7 +531,13 @@ public class My_tea implements Action {
 	          rst = stmt.executeQuery("select * from tea_inf where id='"+id+"'");
 	        	  while(rst.next())
 	        	  {
+	        		  picture=rst.getString("picture_name");
 	        		  self_intro=rst.getString("self_intro");
+	        		  name=rst.getString("name");
+	        		  s.setPicture_name(picture);
+	        		  s.setSelf_intro(self_intro);
+	        		  s.setName(name);
+	        		  s.setId(id);
 	        	  }	        	  
 
 	        }catch (SQLException e) {
@@ -562,7 +555,7 @@ public class My_tea implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-		return self_intro;
+		return s;
 	}
 	public String getId() {
 		return id;

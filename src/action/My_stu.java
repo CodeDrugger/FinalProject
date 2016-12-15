@@ -79,16 +79,16 @@ public class My_stu implements Action {
 	          int rate=Integer.parseInt(stu_rate);
 	          rate++;
 	          stu_rate=rate+"";
-	          if(tea_attentioned_stu.contains(stu_name+"@.@"+stu_id))
+	          if(tea_attentioned_stu.contains(stu_id))
 		      {
 	        	  message="已关注该学生";
 	        	  return "has attentioned";
 		      }
 	          Message_Service m=new Message_Service();
 		      m.set(stu_id,tea_id+"^&^"+tea_name+"^&^"+"关注了你");
-		      String stu_beiguan = stu_attentioned_me+"/"+tea_name+"@.@"+tea_id;
+		      String stu_beiguan = stu_attentioned_me+"/"+tea_id;
 		      //格式 /name id 0:待定 1:同一 2:不同意
-		      String tea_guan = tea_attentioned_stu+"/"+stu_name+"@.@"+stu_id;
+		      String tea_guan = tea_attentioned_stu+"/"+stu_id;
 		      String sql_stu = "update stu_inf set rate='"+stu_rate+"',attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -164,12 +164,12 @@ public class My_stu implements Action {
 	          int rate=Integer.parseInt(stu_rate);
 	          rate--;
 	          stu_rate=rate+"";
-		      String stu_beiguan = stu_attentioned_me.replaceAll("/"+tea_name+"@.@"+tea_id,"");
+		      String stu_beiguan = stu_attentioned_me.replaceAll("/"+tea_id,"");
 		      //格式 /name id 0:待定 1:同一 2:不同意
 		      
 		      Message_Service m=new Message_Service();
 		      m.set(stu_id,tea_id+"^&^"+tea_name+"^&^"+"取消关注了你");
-		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_name+"@.@"+stu_id,"");
+		      String tea_guan = tea_attentioned_stu.replaceAll("/"+stu_id,"");
 		      String sql_stu = "update stu_inf set rate='"+stu_rate+"',attentioned_me='"+stu_beiguan+ "' where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set attentioned_stu='"+tea_guan+ "' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -274,16 +274,16 @@ public class My_stu implements Action {
 	        	  setMessage("该学生已完成互选");
 	        	  return "has been selected";//该学生已经和导师完成互选了
 	          }
-	          if(!tea_attentioned_stu.contains(stu_name+"@.@"+stu_id))
+	          if(!tea_attentioned_stu.contains(stu_id))
 	          {
 	        	  message="不能选择你未关注的学生";
 	        	  return "can't choose stu which you don't attention";
 	          }
 	          Message_Service m=new Message_Service();
 		      m.set(stu_id,tea_id+"^&^"+tea_name+"^&^"+"选择了你"); 
-		      String stu_beiguan = stu_selected_me+"/"+tea_name+"@.@"+tea_id;
-		             stu_selected_tea="/"+tea_name+"@.@"+tea_id;
-		      String tea_guan = tea_selected_stu+"/"+stu_name+"@.@"+stu_id;
+		      String stu_beiguan = stu_selected_me+"/"+tea_id;
+		             stu_selected_tea="/"+tea_id;
+		      String tea_guan = tea_selected_stu+"/"+stu_id;
 		      String sql_stu = "update stu_inf set selected_me='"+stu_beiguan+"',selected_tea='"+stu_selected_tea+ "',state='1'"+" where id='"+stu_id +"'";
 		      String sql_tea = "update tea_inf set selected_stu='"+tea_guan+"',in_enrollment='"+tea_in_enrollment+"' where id='"+tea_id +"'";
 		      stmt.executeUpdate(sql_tea);
@@ -370,52 +370,32 @@ public class My_stu implements Action {
 	        
 	          for(i=0;i<len1;i++)
 	          {
-	        	 Student t = new Student();
 	        	 if(aml[i].equals("")||aml[i].equals(" "))
 	        		 continue;
-	        	 String s[] = aml[i].split("@.@");  
-	        	 t.setName(s[0]);
-	        	 t.setId(s[1]);
-	        	 t.setPicture_name(getpicture(s[1]));
-	        	 t.setSelf_intro(get_self_intro(s[1]));
-	        	 attention_me.add(t);
+	        	 String s = aml[i];  
+	        	 attention_me.add(getAll(s));
 	          }	  
 	          for(i=0;i<len2;i++)
 	          {
-	        	 Student t = new Student();
 	        	 if(atl[i].equals("")||atl[i].equals(" "))
 	        		 continue;
-	        	 String s[] = atl[i].split("@.@");  
-	        	 t.setName(s[0]);
-	        	 t.setId(s[1]);
-	        	 t.setPicture_name(getpicture(s[1]));
-	        	 t.setSelf_intro(get_self_intro(s[1]));
-	        	 attention_stu.add(t);
+	        	 String s = atl[i];  
+	        	 attention_stu.add(getAll(s));
 	          }	  
 	          for(i=0;i<len3;i++)
 	          {
-	        	 Student t = new Student();
 	        	 if(stl[i].equals("")||stl[i].equals(" "))
 	        		 continue;
-	        	 String s[] = stl[i].split("@.@");  
-	        	 t.setName(s[0]);
-	        	 t.setId(s[1]);
-	        	 t.setPicture_name(getpicture(s[1]));
-	        	 t.setSelf_intro(get_self_intro(s[1]));
-	        	 select_stu.add(t);
+	        	 String s = stl[i];  
+	        	 select_stu.add(getAll(s));
 	          }	  
 	          
 	          for(i=0;i<len4;i++)
 	          {
-	        	 Student t = new Student();
 	        	 if(sml[i].equals("")||sml[i].equals(" "))
 	        		 continue;
-	        	 String s[] = sml[i].split("@.@");  
-	        	 t.setName(s[0]);
-	        	 t.setId(s[1]);
-	        	 t.setPicture_name(getpicture(s[1]));
-	        	 t.setSelf_intro(get_self_intro(s[1]));
-	        	 selected_me.add(t);
+	        	 String s = sml[i];  
+	        	 selected_me.add(getAll(s));
 	          }	  
 
 	        	  
@@ -440,9 +420,12 @@ public class My_stu implements Action {
 	
 	return ret;
 	}
-	public String getpicture(String id)
+	public Student getAll(String id)
 	{
+		  Student s=new Student();
 		  String picture="";
+		  String self_intro="";
+		  String name="";
 	      Connection con = null;
 	      Statement stmt = null;
 	      ResultSet rst = null;
@@ -459,44 +442,12 @@ public class My_stu implements Action {
 	        	  while(rst.next())
 	        	  {
 	        		  picture=rst.getString("picture_name");
-	        	  }	        	  
-
-	        }catch (SQLException e) {
-	            // TODO Auto-generated catch block
-	            e.printStackTrace();
-	        }finally{
-	            try{
-	            	if(stmt!=null)
-	            		stmt.close();
-	            	if(con!=null)           
-	                    con.close();
-	            	
-	                } catch (SQLException e) {
-	                    // TODO Auto-generated catch block
-	                    e.printStackTrace();
-	                }   
-	            }
-		return picture;
-	}
-	public String get_self_intro(String id)
-	{
-		  String self_intro="";
-	      Connection con = null;
-	      Statement stmt = null;
-	      ResultSet rst = null;
-	      try {
-				Class.forName("com.mysql.jdbc.Driver");
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-	      try{   
-	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
-	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
-	          stmt=con.createStatement();   
-	          rst = stmt.executeQuery("select * from stu_inf where id='"+id+"'");
-	        	  while(rst.next())
-	        	  {
 	        		  self_intro=rst.getString("self_intro");
+	        		  name=rst.getString("name");
+	        		  s.setPicture_name(picture);
+	        		  s.setSelf_intro(self_intro);
+	        		  s.setName(name);
+	        		  s.setId(id);
 	        	  }	        	  
 
 	        }catch (SQLException e) {
@@ -514,8 +465,9 @@ public class My_stu implements Action {
 	                    e.printStackTrace();
 	                }   
 	            }
-		return self_intro;
+		return s;
 	}
+
 	public String getId() {
 		return id;
 	}
