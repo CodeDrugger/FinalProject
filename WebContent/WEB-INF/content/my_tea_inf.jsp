@@ -80,7 +80,6 @@
     <c:set var="teas_id" value="${tea_inf_id}" scope="request"></c:set>
     <%
     Teacher teas=new Teacher();
-    String id=null;
     Connection con = null;
     Statement stmt = null;
     ResultSet rst = null;
@@ -245,7 +244,7 @@
                         <input type="hidden" name="stu_select.id" value="<%=stu_id%>" />
                         <input type="hidden" name="id" value="<%=stu_id%>" />
                         <input type="hidden" name="stu_select.attentioned_tea" value="<%=stu_attentioned_tea%>" />
-                        <input id="msg" type="hidden" value="<%=message%>" />
+                        <input id="msg" type="hidden" value="<%=message%>" /> 
                         <button class="ui labeled inverted violet icon button" onclick="history.back();">
                             <i class="reply icon"></i>返回
                         </button>

@@ -102,7 +102,6 @@
     Statement stmt = null;
     ResultSet rst = null;
     ResultSet rst2 = null;
-    String id=null;
     String stus_id=null;
     stus.setId((String) request.getAttribute("stus_id"));
     id=(String) request.getAttribute("id");
@@ -287,9 +286,7 @@
                   <input type="hidden"  name="id" value="<%=tea_id%>"/>
                   <input type="hidden"  name="tea_select.attentioned_stu" value="<%=tea_attentioned_stu%>"/>
                         <input id="msg" type="hidden" value="<%=message%>" />
-                        <button class="ui labeled inverted violet icon button" id="submit" type="submit">
-                            <i class="red heart icon"></i>
-                        </button>
+                        <input id="submit" type="submit" class="ui inverted violet button">
                         </form>
             </div>
         </div>
