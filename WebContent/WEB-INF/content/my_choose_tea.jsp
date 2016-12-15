@@ -31,7 +31,7 @@
 </head>
 <body>
   <!--@java-->
-  <c:set var="id" value="${id_in}" scope="request"></c:set>
+  <c:set var="id" value="${id}" scope="request"></c:set>
       <%
       String id = (String)request.getAttribute("id");
       String name = "点此完善信息";
@@ -61,7 +61,7 @@
 		<input type="hidden" name="id" value="${id}"/>
 		<input type="hidden" name="userclass" value="2"/></form>
 		<form name="form21" action="my_attention_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
       <a class="item" href="javascript:document.form20.submit();"><i class="home icon"></i>主页</a>
       <a class="item" href="javascript:document.form21.submit();"><i class="grid layout icon"></i> 考研互选 </a>
       <div class="right item">
@@ -90,10 +90,10 @@
         <h2><i class="opencart icon"></i>关注</h2>
 		
 		<form name="form30" action="my_attention_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
 		<form name="form31" action="attention_me_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
         <a class="item" href="javascript:document.form30.submit();"><i class="attach icon"></i>我关注的</a>
         <a class="item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
@@ -101,10 +101,10 @@
       <div class="item">
         <h2><i class="gg icon"></i>选择</h2>
 		<form name="form32" action="my_choose_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
 		<form name="form33" action="choose_me_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
         <a class="active item" href="javascript:document.form32.submit();"><i class="attach icon"></i>我选择的</a>
         <a class="item" href="javascript:document.form33.submit();"><i class="attach icon"></i>选择我的</a>
@@ -123,7 +123,7 @@
           <div class="content">
             <form name="gg10${st.id}" action="Mytea_inf" method="post">   
 			<input type="hidden" name="tea_inf_id" value="${st.id}"/>
-			<input type="hidden" name="id_in" value="${id_in}"/>
+			<input type="hidden" name="id" value="${id}"/>
 			</form>
 			<a class="header" href="javascript:document.gg10${st.id}.submit();">${st.name}</a>           
             <div class="meta">
@@ -135,7 +135,7 @@
             <div class="ui extra">
               <form name="form3" method="post" action="Stu_cancel_choose" class="ui form">
                 <input type="hidden"  name="teacher_id" value="${st.id}" />
-                <input type="hidden"  name="student_id" value="${id_in}" />
+                <input type="hidden"  name="student_id" value="${id}" />
               <button type = "submit" class="ui right floated primary button" onclick="javascript:form.submit();">
                   取消选择
               <i class="right chevron icon"></i>

@@ -138,10 +138,7 @@ try {
   </div>
 </div>
 </body>
-<form name="form103" action="Show_tea_stu" method="post">
-	<input id="rpg1" type="hidden" name="id_in">
-	<input id="rpg2" type="hidden" name="stus.id">
-</form>
+
 <script type="text/javascript">
 var reco_name = new Array();
 var reco_id = new Array();
@@ -173,7 +170,7 @@ window.onload=function(){
     var input1 = document.createElement("input");
     var input2 = document.createElement("input");
     input1.type = "hidden";
-    input1.name = "id_in";
+    input1.name = "id";
     input1.value = id_main;
     input2.type = "hidden";
     input2.name = "stus.id";

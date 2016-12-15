@@ -17,7 +17,7 @@ import domain.Teacher;
 
 
 public class My_tea implements Action {
-	private String id_in;//主页面传入的学生id
+	private String id;//主页面传入的学生id
 	
 	private Teacher teas = new Teacher();
 	private Student stu = new Student();
@@ -412,7 +412,7 @@ public class My_tea implements Action {
 	}
 	
 	public String Mytea_inf() {
-		//need tea_inf_id  id_in
+		//need tea_inf_id  id
 		 
 	    return SUCCESS;
 	}
@@ -438,7 +438,7 @@ public class My_tea implements Action {
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
 	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
-	          rst = stmt.executeQuery("select * from stu_inf where id='"+id_in+"'");
+	          rst = stmt.executeQuery("select * from stu_inf where id='"+id+"'");
 	          while(rst.next())
 	          {
 	        	 am = rst.getString("attentioned_me");
@@ -557,13 +557,12 @@ public class My_tea implements Action {
 	            }
 		return s;
 	}
-	
-	public String getId_in() {
-		return id_in;
+	public String getId() {
+		return id;
 	}
 
-	public void setId_in(String id_in) {
-		this.id_in = id_in;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public Teacher getTeas() {

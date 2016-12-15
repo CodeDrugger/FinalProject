@@ -56,7 +56,7 @@ e.printStackTrace();
 		<input type="hidden" name="id" value="${id}"/>
 		<input type="hidden" name="userclass" value="2"/></form>
 		<form name="form21" action="my_attention_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
       <a class="item" href="javascript:document.form20.submit();"><i class="home icon"></i>主页</a>
       <a class="item" href="javascript:document.form21.submit();"><i class="grid layout icon"></i> 考研互选 </a>
       <div class="right item">
@@ -91,7 +91,7 @@ e.printStackTrace();
             </div>
             <div class="content">
             <form name="gg1${l.id}" action="Show_stu_tea" method="post">
-            	<input type="hidden" name="id_in" value="<%=id%>"/>
+            	<input type="hidden" name="id" value="<%=id%>"/>
             	<input type="hidden" name="teas.id" value="${l.id}"/>
             </form>
               <a class="header" href="javascript:document.gg1${l.id}.submit();">${l.name}</a>

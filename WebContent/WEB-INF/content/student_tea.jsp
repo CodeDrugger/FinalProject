@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/semantic.css">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
-    <script src="js/adserch_reasult.js"></script>
+    <script src="js/attention.js"></script>
     <style>
         body {
             font-family: "楷体";
@@ -30,7 +30,7 @@
 
 <body>
   <!--@java-->
-  <c:set var="id" value="${id_in}" scope="request"></c:set>
+  <c:set var="id" value="${id}" scope="request"></c:set>
       <%
       String id = (String)request.getAttribute("id");
       String name = "点此完善信息";
@@ -60,7 +60,7 @@
 		<input type="hidden" name="id" value="${id}"/>
 		<input type="hidden" name="userclass" value="2"/></form>
 		<form name="form21" action="my_attention_tea" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
       <a class="item" href="javascript:document.form20.submit();"><i class="home icon"></i>主页</a>
       <a class="item" href="javascript:document.form21.submit();"><i class="grid layout icon"></i> 考研互选 </a>
       <div class="right item">
@@ -76,11 +76,11 @@
 </div>
     </div>
     <!--@java-->
-    <c:set var="id_in" value="${id_in}" scope="request"></c:set>
+    <c:set var="id" value="${id}" scope="request"></c:set>
     <c:set var="teas_id" value="${teas.id}" scope="request"></c:set>
     <%
     Teacher teas=new Teacher();
-    String id_in=null;
+    String id=null;
     Connection con = null;
     Statement stmt = null;
     ResultSet rst = null;
@@ -89,7 +89,7 @@
     String stu_id=null;
     String stu_attentioned_tea=null;
     teas.setId((String) request.getAttribute("teas_id"));
-    id_in=(String) request.getAttribute("id_in");
+    id=(String) request.getAttribute("id");
     String message="0";
     try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -119,7 +119,7 @@
               teas.setAttentioned_me(rst.getString("attentioned_me"));
               teas.setRate(rst.getString("rate"));
           }
-        rst2 = stmt.executeQuery("select * from stu_inf where id='"+id_in+"'");
+        rst2 = stmt.executeQuery("select * from stu_inf where id='"+id+"'");
         while(rst2.next())
           {
               stu_name = rst2.getString("name");
@@ -269,7 +269,7 @@
                         <input type="hidden" name="teas.rate" value="<%=teas.getRate()%>" />
                         <input type="hidden" name="stu_select.name" value="<%=stu_name%>" />
                         <input type="hidden" name="stu_select.id" value="<%=stu_id%>" />
-                        <input type="hidden" name="id_in" value="<%=stu_id%>" />
+                        <input type="hidden" name="id" value="<%=stu_id%>" />
                         <input type="hidden" name="stu_select.attentioned_tea" value="<%=stu_attentioned_tea%>" />
                         <input id="msg" type="hidden" value="<%=message%>" />
                         <button class="ui labeled inverted violet icon button" id="submit" type="submit" onclick="javascript:form.submit();">

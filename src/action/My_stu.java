@@ -17,7 +17,7 @@ import service.SendMail;
 
 
 public class My_stu implements Action {
-	private String id_in;
+	private String id;
 	private Teacher teas=new Teacher();
 	private Student stu=new Student();
 	List<Student> select_stu = new ArrayList<>();
@@ -313,7 +313,7 @@ public class My_stu implements Action {
 	}
 	
 	public String Mystu_inf() {
-		//need tea_inf_id  id_in
+		//need tea_inf_id  id
 	
 		return SUCCESS;
 	}
@@ -321,7 +321,7 @@ public class My_stu implements Action {
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		//所需输入 id_in 
+		//所需输入 id 
 		String ret = SUCCESS;
 	      Connection con = null;
 	      Statement stmt = null;
@@ -340,7 +340,7 @@ public class My_stu implements Action {
 	    	  //con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bookdb", "root", "daidai");
 	    	  con = DriverManager.getConnection("jdbc:mysql://115.28.67.141:3306/fpdb","fp_user","123456");
 	          stmt=con.createStatement();   
-	          rst = stmt.executeQuery("select * from tea_inf where id='"+id_in+"'");
+	          rst = stmt.executeQuery("select * from tea_inf where id='"+id+"'");
 	          while(rst.next())
 	          {
 	        	 am = rst.getString("attentioned_me");
@@ -467,13 +467,13 @@ public class My_stu implements Action {
 	            }
 		return s;
 	}
-	
-	public String getId_in() {
-		return id_in;
+
+	public String getId() {
+		return id;
 	}
 
-	public void setId_in(String id_in) {
-		this.id_in = id_in;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public Teacher getTeas() {

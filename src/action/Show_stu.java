@@ -15,7 +15,7 @@ import service.SendMail;
 public class Show_stu implements Action {
 	private Student stus;
 	private Teacher tea_select;
-	private String id_in;
+	private String id;
 	private String tea_id;
 	private String tea_name;
 	private String tea_attentioned_stu;
@@ -41,11 +41,11 @@ public class Show_stu implements Action {
 		this.tea_select = tea_select;
 	}
 	
-	public String getId_in() {
-		return id_in;
+	public String getId() {
+		return id;
 	}
-	public void setId_in(String id_in) {
-		this.id_in = id_in;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getTea_id() {
 		return tea_id;

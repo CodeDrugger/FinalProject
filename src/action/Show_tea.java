@@ -17,7 +17,7 @@ import domain.Teacher;
 public class Show_tea implements Action {
 	private Teacher teas; //传入teas.id
 	private Student stu_select=new Student();
-	private String id_in;
+	private String id;
 	private String stu_id;
 	private String stu_name;
 	private String stu_attentioned_tea;
@@ -105,12 +105,12 @@ public class Show_tea implements Action {
 
 	
 
-	public String getId_in() {
-		return id_in;
+	public String getId() {
+		return id;
 	}
 
-	public void setId_in(String id_in) {
-		this.id_in = id_in;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getStu_id() {

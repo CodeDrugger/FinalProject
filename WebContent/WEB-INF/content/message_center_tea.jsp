@@ -71,7 +71,7 @@ try {
                         </form>
 
                         <form name="form21" action="my_attention_stu" method="post">
-                            <input type="hidden" name="id_in" value="${id}"/></form>
+                            <input type="hidden" name="id" value="${id}"/></form>
 
                         <form name="form22" action="My_ques.action" method="post">
                             <input type="hidden" name="id" value="${id}"/>
@@ -101,19 +101,23 @@ try {
                         </div>
                     </div>
                 </div>
+                <h2 class="ui horizontal divider header">
+  <i class="cloud download icon"></i>
+  MESSAGE
+</h2>
                 <s:iterator value="show" var="s">
                     <div class="ui grid">
                         <div class="row">
-                            <div class="five wide column"></div>
-                            <div class="four wide column">
+                            <div class="seven wide column"></div>
+                            <div class="five wide column">
                                 <div class="ui success message">
                                     <i class="close icon"></i>
                                     <div class="header">
-                                      <form name="zz${s.id}" action="Mystu_inf" method="post">
+                                      <form name="gd${s.id}" action="Mystu_inf" method="post">
                                           <input type="hidden" name="stu_inf_id" value="${s.id}"/>
-                                          <input type="hidden" name="id_in" value="${id_in}" />
+                                          <input type="hidden" name="id" value="${id}"/>
                                       </form>
-                                      <a class="header" href="javascript:document.zz${s.id}.submit();">${s.name}</a>
+                                      <a class="header" href="javascript:document.gd${s.id}.submit();">${s.name}</a>
                                     </div>
                                     <ul class="list">
                                         <li>${s.message}</li>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/semantic.css">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
-    <script src="js/adserch_reasult.js"></script>
+    <script src="js/attention.js"></script>
     <style>
         body {
             font-family: "楷体";
@@ -30,7 +30,7 @@
 
 <body>
   <!--@java-->
-  <c:set var="id" value="${id_in}" scope="request"></c:set>
+  <c:set var="id" value="${id}" scope="request"></c:set>
   	<%
   	String id = (String)request.getAttribute("id");
   	String name = "点此完善信息";
@@ -62,7 +62,7 @@
 	   </form>
 	   
 	   <form name="form21" action="my_attention_stu" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
 		<form name="form22" action="My_ques.action" method="post">   
 		<input type="hidden" name="id" value="${id}"/>
@@ -90,7 +90,7 @@
         <i class="unhide icon"></i>学生信息
     </h2>
     <!--@java-->
-    <c:set var="id_in" value="${id_in}" scope="request"></c:set>
+    <c:set var="id" value="${id}" scope="request"></c:set>
     <c:set var="stus_id" value="${stus.id}" scope="request"></c:set>
     <%
     Student stus = new Student();
@@ -102,10 +102,10 @@
     Statement stmt = null;
     ResultSet rst = null;
     ResultSet rst2 = null;
-    String id_in=null;
+    String id=null;
     String stus_id=null;
     stus.setId((String) request.getAttribute("stus_id"));
-    id_in=(String) request.getAttribute("id_in");
+    id=(String) request.getAttribute("id");
     try {
         Class.forName("com.mysql.jdbc.Driver");
       } catch (ClassNotFoundException e) {
@@ -137,7 +137,7 @@
       		  stus.setWish_xueyuan(rst.getString("wish_xueyuan"));
       		  stus.setPicture_name(rst.getString("picture_name"));
       	  }
-       rst2 = stmt.executeQuery("select * from tea_inf where id='"+id_in+"'");
+       rst2 = stmt.executeQuery("select * from tea_inf where id='"+id+"'");
        while(rst2.next())
         {
           tea_name = rst2.getString("name");
@@ -284,7 +284,7 @@
                   <input type="hidden"  name="stus.attentioned_me" value="<%=stus.getAttentioned_me()%>" />
                   <input type="hidden"  name="tea_select.name" value="<%=tea_name%>"  />
                   <input type="hidden"  name="tea_select.id" value="<%=tea_id%>"  />
-                  <input type="hidden"  name="id_in" value="<%=tea_id%>"/>
+                  <input type="hidden"  name="id" value="<%=tea_id%>"/>
                   <input type="hidden"  name="tea_select.attentioned_stu" value="<%=tea_attentioned_stu%>"/>
                         <input id="msg" type="hidden" value="<%=message%>" />
                         <button class="ui labeled inverted violet icon button" id="submit" type="submit">

@@ -30,8 +30,8 @@
 </head>
 <body>
 <!--@java-->
-<c:set var="id" value="${id_in}" scope="request"></c:set>
-<c:set var="id" value="${id_in}" scope="request"></c:set>
+<c:set var="id" value="${id}" scope="request"></c:set>
+<c:set var="id" value="${id}" scope="request"></c:set>
 	<%
 	String id = (String)request.getAttribute("id");
 	String name = "点此完善信息";
@@ -63,7 +63,7 @@
 	   </form>
 	   
 	   <form name="form21" action="my_attention_stu" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
 		<form name="form22" action="My_ques.action" method="post">   
 		<input type="hidden" name="id" value="${id}"/>
@@ -102,10 +102,10 @@
         <h2><i class="opencart icon"></i>关注</h2>
 		
 		<form name="form30" action="my_attention_stu" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 
 		<form name="form31" action="attention_me_stu" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
         <a class="item" href="javascript:document.form30.submit();"><i class="attach icon"></i>我关注的</a>
         <a class="item" href="javascript:document.form31.submit();"><i class="attach icon"></i>关注我的</a>
@@ -113,10 +113,10 @@
       <div class="item">
         <h2><i class="gg icon"></i>选择</h2>
 		<form name="form32" action="my_choose_stu" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
 		<form name="form33" action="choose_me_stu" method="post">   
-		<input type="hidden" name="id_in" value="${id}"/></form>
+		<input type="hidden" name="id" value="${id}"/></form>
 		
         <a class="active item" href="javascript:document.form32.submit();"><i class="attach icon"></i>我选择的</a>
         <a class="item" href="javascript:document.form33.submit();"><i class="attach icon"></i>选择我的</a>
@@ -135,7 +135,7 @@
             <div class="content">
                  <form name="gg9${st.id}" action="Mystu_inf" method="post">   
 				<input type="hidden" name="stu_inf_id" value="${st.id}"/>
-				<input type="hidden" name="id_in" value="${id_in}"/>
+				<input type="hidden" name="id" value="${id}"/>
 				</form>
                 
 				<a class="header" href="javascript:document.gg9${st.id}.submit();">${st.name}</a>
